@@ -1,8 +1,7 @@
 /* eslint-disable */
 // 小程序开发api接口工具包，https://github.com/gooking/wxapi
-const API_BASE_URL = process.env.npm_package_config_apiBaseDomain
-const subDomain = process.env.npm_package_config_subDomain
-
+var API_BASE_URL = 'https://api.it120.cc'
+var subDomain = 'tz'
 
 const request = (url, needSubDomain, method, data) => {
   const _url = API_BASE_URL + (needSubDomain ? '/' + subDomain : '') + url
@@ -51,6 +50,13 @@ Promise.prototype.finally = function (callback) {
 }
 
 module.exports = {
+  init2: (a, b) => {
+    API_BASE_URL = a
+    subDomain = b
+  },
+  init: (b) => {
+    subDomain = b
+  },
   request,
   queryMobileLocation: (data) => {
     return request('/common/mobile-segment/location', false, 'get', data)

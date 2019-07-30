@@ -14,7 +14,7 @@
 	"compileType": "miniprogram",
 	"libVersion": "2.2.3",
 	"appid": "",
-	"projectname": "miniprogram-demo",
+	"projectname": "apifm-wxapi",
 	"isGameTourist": false,
 	"condition": {
 		"search": {

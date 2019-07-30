@@ -1,12 +1,8 @@
 {
   "name": "apifm-wxapi",
-  "version": "1.0.3",
+  "version": "1.0.5",
   "description": "",
   "main": "miniprogram_dist/index.js",
-  "config": {
-    "apiBaseDomain": "https://api.it120.cc",
-    "subDomain": "tz"
-  },
   "scripts": {
     "dev": "gulp dev --develop",
     "watch": "gulp watch --develop --watch",

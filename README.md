@@ -28,21 +28,21 @@
 
 ## 使用方法
 
-1. 将本项目文件夹 "wxapi" 复制到您的小程序根目录；
+1. 免费注册开通后台管理账号并获得api接口权限；
+   > [免费开通后台账号](https://www.it120.cc/)
 
-2. 修改 config.js 文件， subDomain 改为你自己的域名
-
-   > 你可以 [免费开通后台账号](https://www.it120.cc/) ，开通后查看您的 subDomain 「[如何查看专属 subDomain](https://www.it120.cc/info/faq/10468)」
+2. 在你的小程序目录下安装 apifm-wxapi 模块；
+   > npm install apifm-wxapi
 
 3. 登录你的[小程序后台](https://mp.weixin.qq.com)，[设置小程序合法服务器域名](https://www.it120.cc/info/faq/10469)，修改后需要重启小程序开发工具才能生效
 
 4. 在您需要的地方引用工具类
 
-   > const WXAPI = require('wxapi/main')
-   >
-   > 或者
-   >
-   > import WXAPI from 'wxapi/main'
+   > const WXAPI = require('apifm-wxapi')
+
+   > WXAPI.init('您的专属域名')
+
+   > // 专属域名登录你的后台首页就可以看到
 
 5. 根据下面的文档调用接口即可
 
