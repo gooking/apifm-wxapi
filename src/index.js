@@ -155,8 +155,11 @@ module.exports = {
       type: 2
     })
   },
-  register: (data) => {
+  register_complex: (data) => {
     return request('/user/wxapp/register/complex', true, 'post', data)
+  },
+  register_simple: (data) => {
+    return request('/user/wxapp/register/simple', true, 'post', data)
   },
   banners: (data) => {
     return request('/banner/list', true, 'get', data)
@@ -439,6 +442,9 @@ module.exports = {
   },
   addComment: (data) => {
     return request('/comment/add', true, 'post', data)
+  },
+  commentList: (data) => {
+    return request('/comment/list', true, 'post', data)
   },
   modifyUserInfo: (data) => {
     return request('/user/modify', true, 'post', data)
