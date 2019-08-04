@@ -204,6 +204,11 @@ module.exports = {
   noticeList: (data) => {
     return request('/notice/list', true, 'post', data)
   },
+  noticeLastOne: (type) => {
+    return request('/notice/last-one', true, 'get', {
+      type
+    })
+  },
   noticeDetail: (id) => {
     return request('/notice/detail', true, 'get', {
       id
