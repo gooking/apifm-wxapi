@@ -149,17 +149,23 @@ module.exports = {
   alipay: (data) => {
     return request('/pay/alipay/semiAutomatic/payurl', true, 'post', data)
   },
-  login: (code) => {
+  login_wx: (code) => {
     return request('/user/wxapp/login', true, 'post', {
       code,
       type: 2
     })
+  },
+  login_username: (data) => {
+    return request('/user/username/login', true, 'post', data)
   },
   register_complex: (data) => {
     return request('/user/wxapp/register/complex', true, 'post', data)
   },
   register_simple: (data) => {
     return request('/user/wxapp/register/simple', true, 'post', data)
+  },
+  register_username: (data) => {
+    return request('/user/username/register', true, 'post', data)
   },
   banners: (data) => {
     return request('/banner/list', true, 'get', data)
