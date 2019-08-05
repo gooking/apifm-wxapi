@@ -258,6 +258,11 @@ module.exports = {
       goodsId
     })
   },
+  friendlyPartnerList: (type = '') => {
+    return request('/friendly-partner/list', true, 'post', {
+      type
+    })
+  },
   videoDetail: (videoId) => {
     return request('/media/video/detail', true, 'get', {
       videoId

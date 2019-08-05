@@ -17,7 +17,17 @@
   - [读取所有省份](#读取所有省份)
   - [读取下级省市区数据](#读取下级省市区数据)
   - [查询手机号码归属地](#查询手机号码归属地)
-- [读取 Banner 列表](#读取-banner-列表)
+- [基础运维](#基础运维)
+  - [读取 Banner 列表](#读取-banner-列表)
+  - [公告管理](#公告管理)
+    - [读取最新的一条公告](#读取最新的一条公告)
+    - [获取公告列表](#获取公告列表)
+    - [获取公告详情](#获取公告详情)
+  - [读取后台vip等级（用于判断是免费后台还是专业后台）](#读取后台vip等级用于判断是免费后台还是专业后台)
+  - [系统参数](#系统参数)
+    - [读取系统参数](#读取系统参数)
+    - [批量读取系统参数](#批量读取系统参数)
+  - [获取友情链接/合作伙伴](#获取友情链接合作伙伴)
 - [CMS模块](#cms模块)
   - [获取所有的CMS分类](#获取所有的cms分类)
   - [获取CMS文章列表](#获取cms文章列表)
@@ -28,19 +38,11 @@
   - [获取商品详情信息](#获取商品详情信息)
   - [获取商品价格（以便用户选择了不同规格尺寸后读取新价格）](#获取商品价格以便用户选择了不同规格尺寸后读取新价格)
   - [获取商品的评价](#获取商品的评价)
-- [站点信息](#站点信息)
-  - [读取后台vip等级（用于判断是免费后台还是专业后台）](#读取后台vip等级用于判断是免费后台还是专业后台)
-  - [读取系统参数](#读取系统参数)
-  - [批量读取系统参数](#批量读取系统参数)
 - [根据视频编号读取视频详情](#根据视频编号读取视频详情)
 - [优惠券管理](#优惠券管理)
   - [获取可领取优惠券](#获取可领取优惠券)
   - [领取优惠券](#领取优惠券)
   - [获取我的优惠券](#获取我的优惠券)
-- [公告管理](#公告管理)
-  - [读取最新的一条公告](#读取最新的一条公告)
-  - [获取公告列表](#获取公告列表)
-  - [获取公告详情](#获取公告详情)
 - [订单管理](#订单管理)
   - [我的订单统计](#我的订单统计)
   - [创建订单](#创建订单)
@@ -191,9 +193,42 @@ WXAPI.register_username(Object object)
 
 > WXAPI.queryMobileLocation(Object object)
 
-# 读取 Banner 列表
+# 基础运维
+
+## 读取 Banner 列表
 
 > WXAPI.banners(Object object)
+
+## 公告管理
+
+### 读取最新的一条公告
+
+> WXAPI.noticeLastOne(type)
+
+### 获取公告列表
+
+> WXAPI.noticeList(Object object)
+
+### 获取公告详情
+
+> WXAPI.noticeDetail(id)
+
+## 读取后台vip等级（用于判断是免费后台还是专业后台）
+
+> WXAPI.vipLevel()
+
+## 系统参数
+
+### 读取系统参数
+
+> WXAPI.queryConfig(Object object)
+### 批量读取系统参数
+
+> WXAPI.queryConfigBatch(keys)
+
+## 获取友情链接/合作伙伴
+
+> WXAPI.friendlyPartnerList(type)
 
 # CMS模块
 
@@ -231,19 +266,6 @@ WXAPI.register_username(Object object)
 
 > WXAPI.goodsReputation(Object object)
 
-# 站点信息
-
-## 读取后台vip等级（用于判断是免费后台还是专业后台）
-
-> WXAPI.vipLevel()
-
-## 读取系统参数
-
-> WXAPI.queryConfig(Object object)
-## 批量读取系统参数
-
-> WXAPI.queryConfigBatch(keys)
-
 # 根据视频编号读取视频详情
 
 > WXAPI.videoDetail(videoId)
@@ -261,20 +283,6 @@ WXAPI.register_username(Object object)
 ## 获取我的优惠券
 
 > WXAPI.myCoupons(Object object)
-
-# 公告管理
-
-## 读取最新的一条公告
-
-> WXAPI.noticeLastOne(type)
-
-## 获取公告列表
-
-> WXAPI.noticeList(Object object)
-
-## 获取公告详情
-
-> WXAPI.noticeDetail(id)
 
 # 订单管理
 
