@@ -95,3 +95,7 @@ WXAPI.queryMobileLocation({ mobile: '13500000000' }).then(res => {
 
 [「功能说明文档」](instructions.md)
 [「api接口文档」](https://api.it120.cc/doc.html)
+
+## 授权协议
+
+[MIT License](LICENSE)
