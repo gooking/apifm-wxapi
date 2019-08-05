@@ -16,7 +16,6 @@
 - [基础数据检索](#基础数据检索)
   - [读取所有省份](#读取所有省份)
   - [读取下级省市区数据](#读取下级省市区数据)
-  - [查询手机号码归属地](#查询手机号码归属地)
 - [基础运维](#基础运维)
   - [读取 Banner 列表](#读取-banner-列表)
   - [公告管理](#公告管理)
@@ -126,6 +125,9 @@
 - [留言 & 反馈](#留言--反馈)
   - [提交留言反馈](#提交留言反馈)
   - [读取留言 & 评论列表](#读取留言--评论列表)
+- [工具类](#工具类)
+  - [分布式系统唯一ID](#分布式系统唯一id)
+  - [手机号码归属地](#手机号码归属地)
 
 <!-- /TOC -->
 
@@ -188,10 +190,6 @@ WXAPI.register_username(Object object)
 ## 读取下级省市区数据
 
 > WXAPI.nextRegion(pid)
-
-## 查询手机号码归属地
-
-> WXAPI.queryMobileLocation(Object object)
 
 # 基础运维
 
@@ -561,3 +559,13 @@ WXAPI.register_username(Object object)
 ## 读取留言 & 评论列表
 
 > WXAPI.commentList(Object object)
+
+# 工具类
+
+## 分布式系统唯一ID
+
+> WXAPI.uniqueId(type)
+
+## 手机号码归属地
+
+> WXAPI.queryMobileLocation(Object object)

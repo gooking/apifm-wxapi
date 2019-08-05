@@ -1,6 +1,6 @@
 {
   "name": "apifm-wxapi",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "增加：友情链接/合作伙伴",
   "main": "miniprogram_dist/index.js",
   "scripts": {

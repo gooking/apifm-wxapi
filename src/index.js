@@ -464,5 +464,8 @@ module.exports = {
   },
   modifyUserInfo: (data) => {
     return request('/user/modify', true, 'post', data)
-  }
+  },
+  uniqueId: (type = '') => {
+    return request('/uniqueId/get', true, 'get', { type })
+  },
 }
