@@ -125,9 +125,14 @@
 - [留言 & 反馈](#留言--反馈)
   - [提交留言反馈](#提交留言反馈)
   - [读取留言 & 评论列表](#读取留言--评论列表)
-- [工具类](#工具类)
+- [活动 & 工具](#活动--工具)
   - [分布式系统唯一ID](#分布式系统唯一id)
   - [手机号码归属地](#手机号码归属地)
+  - [抽奖功能](#抽奖功能)
+    - [抽奖项目详情](#抽奖项目详情)
+    - [参与抽奖](#参与抽奖)
+    - [我的抽奖信息](#我的抽奖信息)
+    - [抽奖项目的所有抽奖记录明细](#抽奖项目的所有抽奖记录明细)
 
 <!-- /TOC -->
 
@@ -560,7 +565,7 @@ WXAPI.register_username(Object object)
 
 > WXAPI.commentList(Object object)
 
-# 工具类
+# 活动 & 工具
 
 ## 分布式系统唯一ID
 
@@ -569,3 +574,21 @@ WXAPI.register_username(Object object)
 ## 手机号码归属地
 
 > WXAPI.queryMobileLocation(Object object)
+
+## 抽奖功能
+
+### 抽奖项目详情
+
+> WXAPI.luckyInfo(id)
+
+### 参与抽奖
+
+> WXAPI.luckyInfoJoin(id)
+
+### 我的抽奖信息
+
+> WXAPI.luckyInfoJoinMy(id)
+
+### 抽奖项目的所有抽奖记录明细
+
+> WXAPI.luckyInfoJoinLogs(Object object)
