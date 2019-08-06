@@ -471,11 +471,11 @@ module.exports = {
   luckyInfo: (id) => {
     return request('/luckyInfo/info', true, 'get', { id })
   },
-  luckyInfoJoin: (id) => {
-    return request('/luckyInfo/join', true, 'post', { id })
+  luckyInfoJoin: (id, token) => {
+    return request('/luckyInfo/join', true, 'post', { id, token })
   },
-  luckyInfoJoinMy: (id) => {
-    return request('/luckyInfo/join/my', true, 'get', { id })
+  luckyInfoJoinMy: (id, token) => {
+    return request('/luckyInfo/join/my', true, 'get', { id, token })
   },
   luckyInfoJoinLogs: (data) => {
     return request('/luckyInfo/join/logs', true, 'post', data)

@@ -583,11 +583,11 @@ WXAPI.register_username(Object object)
 
 ### 参与抽奖
 
-> WXAPI.luckyInfoJoin(id)
+> WXAPI.luckyInfoJoin(id, token)
 
 ### 我的抽奖信息
 
-> WXAPI.luckyInfoJoinMy(id)
+> WXAPI.luckyInfoJoinMy(id, token)
 
 ### 抽奖项目的所有抽奖记录明细
 
