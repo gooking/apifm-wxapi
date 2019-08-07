@@ -424,6 +424,9 @@ module.exports = {
   cmsCategories: () => {
     return request('/cms/category/list', true, 'get', {})
   },
+  cmsCategoryDetail: (id) => {
+    return request('/cms/category/detail', true, 'get', { id })
+  },
   cmsArticles: (data) => {
     return request('/cms/news/list', true, 'post', data)
   },

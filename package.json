@@ -1,7 +1,7 @@
 {
   "name": "apifm-wxapi",
-  "version": "1.4.0",
-  "description": "增加：提现类接口，申请提现接口参数调整",
+  "version": "1.5.0",
+  "description": "增加：cms无极分类管理",
   "main": "miniprogram_dist/index.js",
   "scripts": {
     "dev": "gulp dev --develop",
