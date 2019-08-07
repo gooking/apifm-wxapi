@@ -1,7 +1,7 @@
 {
   "name": "apifm-wxapi",
-  "version": "1.3.1",
-  "description": "增加：抽奖功能",
+  "version": "1.4.0",
+  "description": "增加：提现类接口，申请提现接口参数调整",
   "main": "miniprogram_dist/index.js",
   "scripts": {
     "dev": "gulp dev --develop",

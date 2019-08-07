@@ -74,9 +74,6 @@
   - [获取默认地址v2.0](#获取默认地址v20)
   - [读取地址详细信息v2.0](#读取地址详细信息v20)
   - [删除](#删除)
-- [在线支付](#在线支付)
-  - [微信支付](#微信支付)
-  - [支付宝支付(半自动)](#支付宝支付半自动)
 - [商品砍价](#商品砍价)
   - [获取可砍价的商品列表](#获取可砍价的商品列表)
   - [获取商品砍价设置](#获取商品砍价设置)
@@ -93,11 +90,18 @@
   - [查看申请审核状态](#查看申请审核状态)
   - [查看我的分销团队成员](#查看我的分销团队成员)
   - [查看我的返佣记录](#查看我的返佣记录)
-- [资金相关](#资金相关)
-  - [获取充值满多少送多少规则](#获取充值满多少送多少规则)
-  - [获取用户资产（余额、可用积分）信息](#获取用户资产余额可用积分信息)
-  - [用户资金流水](#用户资金流水)
-  - [申请提现](#申请提现)
+- [资金 / 财务 相关](#资金--财务-相关)
+  - [获取资产信息（余额、可用积分）](#获取资产信息余额可用积分)
+  - [在线支付(充值)](#在线支付充值)
+    - [获取充值规则（满多少送多少）](#获取充值规则满多少送多少)
+    - [微信支付](#微信支付)
+    - [支付宝支付(半自动)](#支付宝支付半自动)
+    - [充值记录](#充值记录)
+  - [资金流水](#资金流水)
+  - [提现管理](#提现管理)
+    - [申请提现](#申请提现)
+    - [提现记录](#提现记录)
+    - [提现记录详情](#提现记录详情)
   - [发票管理](#发票管理)
     - [申请发票](#申请发票)
     - [申请的发票列表](#申请的发票列表)
@@ -406,16 +410,6 @@ WXAPI.register_username(Object object)
 
 > WXAPI.deleteAddress(id, token)
 
-# 在线支付
-
-## 微信支付
-
-> WXAPI.wxpay(Object object)
-
-## 支付宝支付(半自动)
-
-> WXAPI.alipay(Object object)
-
 # 商品砍价
 
 ## 获取可砍价的商品列表
@@ -469,25 +463,50 @@ WXAPI.register_username(Object object)
 
 > WXAPI.fxCommisionLog(Object object)
 
-# 资金相关
+# 资金 / 财务 相关
 
-## 获取充值满多少送多少规则
-
-> WXAPI.rechargeSendRules()
-
-## 获取用户资产（余额、可用积分）信息
+## 获取资产信息（余额、可用积分）
 
 > WXAPI.userAmount(token)
 
-## 用户资金流水
+## 在线支付(充值)
+
+### 获取充值规则（满多少送多少）
+
+> WXAPI.rechargeSendRules()
+
+### 微信支付
+
+> WXAPI.wxpay(Object object)
+
+### 支付宝支付(半自动)
+
+> WXAPI.alipay(Object object)
+
+### 充值记录
+
+> WXAPI.payLogs(Object object)
+
+## 资金流水
 
 > WXAPI.cashLogs(Object object)
 
-## 申请提现
+## 提现管理
 
-> WXAPI.withDrawApply(money, token)
+### 申请提现
+
+> WXAPI.withDrawApply(token, money)
+
+### 提现记录
+
+> WXAPI.withDrawLogs(Object object)
+
+### 提现记录详情
+
+> WXAPI.withDrawDetail(token, id)
 
 ## 发票管理
+
 ### 申请发票
 > WXAPI.invoiceApply(Object object)
 ### 申请的发票列表

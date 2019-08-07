@@ -319,7 +319,7 @@ module.exports = {
       token
     })
   },
-  withDrawApply: (money, token) => {
+  withDrawApply: (token, money) => {
     return request('/user/withDraw/apply', true, 'post', {
       money,
       token
@@ -344,6 +344,9 @@ module.exports = {
   },
   cashLogs: (data) => {
     return request('/user/cashLog', true, 'post', data)
+  },
+  payLogs: (data) => {
+    return request('/user/payLogs', true, 'post', data)
   },
   rechargeSendRules: () => {
     return request('/user/recharge/send/rule', true, 'get')
