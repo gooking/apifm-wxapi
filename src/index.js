@@ -430,10 +430,23 @@ module.exports = {
   cmsArticles: (data) => {
     return request('/cms/news/list', true, 'post', data)
   },
+  cmsArticleUsefulLogs: (data) => {
+    return request('/cms/news/useful/logs', true, 'post', data)
+  },
   cmsArticleDetail: (id) => {
-    return request('/cms/news/detail', true, 'get', {
-      id
-    })
+    return request('/cms/news/detail', true, 'get', { id })
+  },
+  cmsArticlePreNext: (id) => {
+    return request('/cms/news/preNext', true, 'get', { id })
+  },
+  cmsArticleCreate: (data) => {
+    return request('/cms/news/put', true, 'post', data)
+  },
+  cmsArticleDelete: (token, id) => {
+    return request('/cms/news/del', true, 'post', { token, id })
+  },
+  cmsArticleUseless: (data) => {
+    return request('/cms/news/useful', true, 'post', data)
   },
   invoiceList: (data) => {
     return request('/invoice/list', true, 'post', data)
