@@ -1,6 +1,6 @@
 {
   "name": "apifm-wxapi",
-  "version": "1.6.0",
+  "version": "1.7.0",
   "description": "增加：cms无极分类管理",
   "main": "miniprogram_dist/index.js",
   "scripts": {

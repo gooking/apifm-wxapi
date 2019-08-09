@@ -448,6 +448,9 @@ module.exports = {
   cmsArticleUseless: (data) => {
     return request('/cms/news/useful', true, 'post', data)
   },
+  cmsPage: (key) => {
+    return request('/cms/page/info', true, 'get', { key })
+  },
   invoiceList: (data) => {
     return request('/invoice/list', true, 'post', data)
   },
