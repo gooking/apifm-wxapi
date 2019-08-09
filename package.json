@@ -1,7 +1,7 @@
 {
   "name": "apifm-wxapi",
-  "version": "1.8.0",
-  "description": "增加：tag标签云",
+  "version": "1.9.1",
+  "description": "增加：商品条码查询功能",
   "main": "miniprogram_dist/index.js",
   "scripts": {
     "dev": "gulp dev --develop",

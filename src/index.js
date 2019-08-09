@@ -493,6 +493,9 @@ module.exports = {
   uniqueId: (type = '') => {
     return request('/uniqueId/get', true, 'get', { type })
   },
+  queryBarcode: (barcode = '') => {
+    return request('/barcode/info', true, 'get', { barcode })
+  },
   luckyInfo: (id) => {
     return request('/luckyInfo/info', true, 'get', { id })
   },

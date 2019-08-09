@@ -142,6 +142,7 @@
     - [参与抽奖](#参与抽奖)
     - [我的抽奖信息](#我的抽奖信息)
     - [抽奖项目的所有抽奖记录明细](#抽奖项目的所有抽奖记录明细)
+  - [商品条码查询](#商品条码查询)
 
 <!-- /TOC -->
 
@@ -632,3 +633,7 @@ WXAPI.register_username(Object object)
 ### 抽奖项目的所有抽奖记录明细
 
 > WXAPI.luckyInfoJoinLogs(Object object)
+
+## 商品条码查询
+
+> WXAPI.queryBarcode(barcode)
