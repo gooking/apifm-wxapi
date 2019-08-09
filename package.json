@@ -1,7 +1,7 @@
 {
   "name": "apifm-wxapi",
-  "version": "1.7.0",
-  "description": "增加：cms无极分类管理",
+  "version": "1.8.0",
+  "description": "增加：tag标签云",
   "main": "miniprogram_dist/index.js",
   "scripts": {
     "dev": "gulp dev --develop",

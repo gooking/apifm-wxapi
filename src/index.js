@@ -451,6 +451,9 @@ module.exports = {
   cmsPage: (key) => {
     return request('/cms/page/info', true, 'get', { key })
   },
+  cmsTags: () => {
+    return request('/cms/tags/list', true, 'get', {  })
+  },
   invoiceList: (data) => {
     return request('/invoice/list', true, 'post', data)
   },
