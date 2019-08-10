@@ -14,6 +14,10 @@
     - [读取系统参数](#读取系统参数)
     - [批量读取系统参数](#批量读取系统参数)
   - [获取友情链接/合作伙伴](#获取友情链接合作伙伴)
+  - [JSON数据云存储](#json数据云存储)
+    - [设置 JSON 数据](#设置-json-数据)
+    - [读取设置的 JSON 数据列表](#读取设置的-json-数据列表)
+    - [删除 JSON 数据](#删除-json-数据)
 - [登录 & 注册](#登录--注册)
   - [用户注册](#用户注册)
     - [小程序简单注册](#小程序简单注册)
@@ -138,7 +142,9 @@
   - [读取留言 & 评论列表](#读取留言--评论列表)
 - [活动 & 工具](#活动--工具)
   - [分布式系统唯一ID](#分布式系统唯一id)
-  - [手机号码归属地](#手机号码归属地)
+  - [手机号段服务](#手机号段服务)
+    - [归属地查询](#归属地查询)
+    - [读取下一个号段](#读取下一个号段)
   - [抽奖功能](#抽奖功能)
     - [抽奖项目详情](#抽奖项目详情)
     - [参与抽奖](#参与抽奖)
@@ -194,6 +200,20 @@
 ## 获取友情链接/合作伙伴
 
 > WXAPI.friendlyPartnerList(type)
+
+## JSON数据云存储
+
+### 设置 JSON 数据
+
+> jsonSet(Object object)
+
+### 读取设置的 JSON 数据列表
+
+> jsonList(Object object)
+
+### 删除 JSON 数据
+
+> jsonDelete(token, id)
 
 # 登录 & 注册
 
@@ -622,9 +642,15 @@ WXAPI.register_username(Object object)
 
 > WXAPI.uniqueId(type)
 
-## 手机号码归属地
+## 手机号段服务
+
+### 归属地查询
 
 > WXAPI.queryMobileLocation(Object object)
+
+### 读取下一个号段
+
+> WXAPI.nextMobileSegment(Object object)
 
 ## 抽奖功能
 

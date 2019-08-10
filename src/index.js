@@ -61,6 +61,9 @@ module.exports = {
   queryMobileLocation: (data) => {
     return request('/common/mobile-segment/location', false, 'get', data)
   },
+  nextMobileSegment: (data) => {
+    return request('/common/mobile-segment/next', false, 'post', data)
+  },
   queryConfigValue: (key) => {
     return request('/config/value', true, 'get', { key })
   },
@@ -513,5 +516,14 @@ module.exports = {
   },
   luckyInfoJoinLogs: (data) => {
     return request('/luckyInfo/join/logs', true, 'post', data)
+  },
+  jsonList: (data) => {
+    return request('/json/list', true, 'post', data)
+  },
+  jsonSet: (data) => {
+    return request('/json/set', true, 'post', data)
+  },
+  jsonDelete: (token = '', id) => {
+    return request('/json/delete', true, 'post', { token, id })
   },
 }

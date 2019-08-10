@@ -1,7 +1,7 @@
 {
   "name": "apifm-wxapi",
-  "version": "1.10.0",
-  "description": "增加：分布式文件管理",
+  "version": "1.11.0",
+  "description": "增加：Json数据云存储",
   "main": "miniprogram_dist/index.js",
   "scripts": {
     "dev": "gulp dev --develop",
