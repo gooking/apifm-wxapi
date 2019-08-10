@@ -1,7 +1,7 @@
 {
   "name": "apifm-wxapi",
-  "version": "1.9.1",
-  "description": "增加：商品条码查询功能",
+  "version": "1.10.0",
+  "description": "增加：分布式文件管理",
   "main": "miniprogram_dist/index.js",
   "scripts": {
     "dev": "gulp dev --develop",

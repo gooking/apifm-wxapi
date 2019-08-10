@@ -397,6 +397,12 @@ module.exports = {
       })
     })
   },
+  uploadFileFromUrl: (remoteFileUrl = '', ext = '') => {
+    return request('/dfs/upload/url', true, 'post', { remoteFileUrl, ext })
+  },
+  uploadFileList: (path = '') => {
+    return request('/dfs/upload/list', true, 'post', { path })
+  },
   refundApply: (token, orderId, type, logisticsStatus, reason, amount, remark, pic) => {
     return request('/order/refundApply/apply', true, 'post', {
       token,
