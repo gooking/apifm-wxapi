@@ -1,7 +1,7 @@
 {
   "name": "apifm-wxapi",
-  "version": "1.11.0",
-  "description": "增加：Json数据云存储",
+  "version": "1.12.0",
+  "description": "增加：手机号码归属地查询",
   "main": "miniprogram_dist/index.js",
   "scripts": {
     "dev": "gulp dev --develop",

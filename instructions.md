@@ -646,7 +646,7 @@ WXAPI.register_username(Object object)
 
 ### 归属地查询
 
-> WXAPI.queryMobileLocation(Object object)
+> WXAPI.queryMobileLocation(mobile)
 
 ### 读取下一个号段
 

@@ -58,8 +58,8 @@ module.exports = {
     subDomain = b
   },
   request,
-  queryMobileLocation: (data) => {
-    return request('/common/mobile-segment/location', false, 'get', data)
+  queryMobileLocation: (mobile = '') => {
+    return request('/common/mobile-segment/location', false, 'get', { mobile })
   },
   nextMobileSegment: (data) => {
     return request('/common/mobile-segment/next', false, 'post', data)
