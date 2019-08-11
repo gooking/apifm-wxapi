@@ -533,4 +533,7 @@ module.exports = {
   graphValidateCodeCheck: (key = Math.random(), code) => {
     return request('/verification/pic/check', true, 'post', { key, code })
   },
+  shortUrl: (url = '') => {
+    return request('/common/short-url/shorten', false, 'post', { url })
+  },
 }
