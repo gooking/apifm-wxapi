@@ -1,7 +1,7 @@
 {
   "name": "apifm-wxapi",
-  "version": "1.12.0",
-  "description": "增加：手机号码归属地查询",
+  "version": "1.13.0",
+  "description": "增加：图形验证码",
   "main": "miniprogram_dist/index.js",
   "scripts": {
     "dev": "gulp dev --develop",

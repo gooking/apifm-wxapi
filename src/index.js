@@ -526,4 +526,11 @@ module.exports = {
   jsonDelete: (token = '', id) => {
     return request('/json/delete', true, 'post', { token, id })
   },
+  graphValidateCodeUrl: (key = Math.random()) => {
+    const _url = API_BASE_URL + '/' + subDomain + '/verification/pic/get?key=' + key
+    return _url
+  },
+  graphValidateCodeCheck: (key = Math.random(), code) => {
+    return request('/verification/pic/check', true, 'post', { key, code })
+  },
 }
