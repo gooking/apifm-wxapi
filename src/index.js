@@ -536,4 +536,10 @@ module.exports = {
   shortUrl: (url = '') => {
     return request('/common/short-url/shorten', false, 'post', { url })
   },
+  smsValidateCode: (mobile, key = '', picCode = '') => {
+    return request('/verification/sms/get', true, 'get', { mobile, key, picCode })
+  },
+  smsValidateCodeCheck: (mobile, code) => {
+    return request('/verification/sms/check', true, 'post', { mobile, code })
+  },
 }

@@ -1,7 +1,7 @@
 {
   "name": "apifm-wxapi",
-  "version": "1.14.0",
-  "description": "增加：短链接服务",
+  "version": "1.15.0",
+  "description": "增加：短信验证码功能",
   "main": "miniprogram_dist/index.js",
   "scripts": {
     "dev": "gulp dev --develop",
