@@ -545,4 +545,10 @@ module.exports = {
   smsValidateCodeCheck: (mobile, code) => {
     return request('/verification/sms/check', true, 'post', { mobile, code })
   },
+  mapDistance: (lat1, lng1, lat2, lng2) => {
+    return request('/common/map/distance', false, 'get', { lat1, lng1, lat2, lng2 })
+  },
+  mapQQAddress: (location = '', coord_type = '5') => {
+    return request('/common/map/qq/address', false, 'get', { location, coord_type })
+  },
 }
