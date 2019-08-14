@@ -1,7 +1,7 @@
 {
   "name": "apifm-wxapi",
   "version": "1.19.0",
-  "description": "增加：商城模块： 门店 / 分类 / 商品管理 / 收藏",
+  "description": "增加：砍价模块",
   "main": "miniprogram_dist/index.js",
   "scripts": {
     "dev": "gulp dev --develop",
