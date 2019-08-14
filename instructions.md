@@ -74,6 +74,14 @@
     - [领取优惠券](#领取优惠券)
     - [我的所有优惠券](#我的所有优惠券)
     - [赠送优惠券给他人](#赠送优惠券给他人)
+  - [商品砍价](#商品砍价)
+    - [获取商品砍价设置](#获取商品砍价设置)
+    - [发起[创建]砍价，继而邀请好友来帮自己砍到底价](#发起创建砍价继而邀请好友来帮自己砍到底价)
+    - [我发起[创建]的砍价详情](#我发起创建的砍价详情)
+    - [放弃上一次砍价](#放弃上一次砍价)
+    - [砍价详情](#砍价详情)
+    - [帮好友砍价](#帮好友砍价)
+    - [查询我帮好友砍掉的金额](#查询我帮好友砍掉的金额)
 - [订单管理](#订单管理)
   - [我的订单统计](#我的订单统计)
   - [创建订单](#创建订单)
@@ -106,13 +114,6 @@
   - [获取默认地址v2.0](#获取默认地址v20)
   - [读取地址详细信息v2.0](#读取地址详细信息v20)
   - [删除](#删除)
-- [商品砍价](#商品砍价)
-  - [获取可砍价的商品列表](#获取可砍价的商品列表)
-  - [获取商品砍价设置](#获取商品砍价设置)
-  - [发起一个砍价](#发起一个砍价)
-  - [砍价详情](#砍价详情)
-  - [砍价助力](#砍价助力)
-  - [我的助力信息](#我的助力信息)
 - [拼团功能](#拼团功能)
   - [获取拼团配置](#获取拼团配置)
   - [开团接口](#开团接口)
@@ -1286,6 +1287,206 @@ WXAPI.goodsFavDelete(token, id, goodsId)
 
 > WXAPI.sendCoupons(Object object)
 
+## 商品砍价
+
+### 获取商品砍价设置
+
+```js
+WXAPI.kanjiaSet(goodsId)
+```
+
+> 读取某个商品的砍价设置信息：总份数、底价、每次能砍掉的（随机）金额以及开始结束时间
+> 
+> 具体可前往后台砍价设置界面了解设置栏目
+
+**接口返回示例：**
+
+```json
+{
+  "code": 0,
+  "data": {
+    "dateAdd": "2019-08-14 15:35:29",
+    "dateEnd": "2019-08-31 15:35:24",
+    "helpPriceMax": 56,
+    "helpPriceMin": 12,
+    "id": 1067,
+    "minPrice": 8,
+    "number": 999,
+    "numberBuy": 0,
+    "originalPrice": 888,
+    "status": 0,
+    "statusStr": "正常"
+  },
+  "msg": "success"
+}
+```
+
+**上面示例接口返回数据中的 id 非常关键，下面诸多砍价方法中使用到的 kjid 参数就是这个值 1067**
+
+**为什么下面的砍价方法要以 kjid 为参数，而不用商品id为参数呢？**
+
+*那是因为，同一个商品可能会在后台发布多个砍价项目，有的底价低但是砍价难度大需要更多的人帮忙；有的底价高但是比较容易砍到底价；甚至会根据开始/结束时间不同同一个商品设置好几场同时进行砍价*
+
+### 发起[创建]砍价，继而邀请好友来帮自己砍到底价
+
+```js
+WXAPI.kanjiaJoin(token, kjid)
+```
+
+> 每个用户针对同一个 kjid 只能参与一次，多次调用本方法将返回上一次砍价的信息
+> 
+> 如果用户对上次砍价结果不太满意，可以调用下面的 **clear** 方法，清空上一次砍价记录，重新发起砍价
+
+**接口返回示例：**
+
+```json
+{
+  "code": 0,
+  "data": {
+    "curPrice": 888,
+    "goodsId": 139421,
+    "kjId": 1067,
+    "minPrice": 8,
+    "uid": 979527
+  },
+  "msg": "success"
+}
+```
+
+### 我发起[创建]的砍价详情
+
+```js
+WXAPI.kanjiaMyJoinInfo(token, kjid)
+```
+
+> 查看我发起的砍价目前的进展[进度]情况
+> 
+> 也可以作为判断是否有参与砍价的依据
+
+**接口返回示例：**
+
+```json
+{
+  "code": 0,
+  "data": {
+    "curPrice": 888,
+    "dateAdd": "2019-08-14 15:46:22",
+    "dateUpdate": "2019-08-14 15:46:22",
+    "goodsId": 139421,
+    "helpNumber": 0,
+    "kjId": 1067,
+    "minPrice": 8,
+    "status": 0,
+    "statusStr": "进行中",
+    "uid": 979527
+  },
+  "msg": "success"
+}
+```
+
+### 放弃上一次砍价
+
+```js
+WXAPI.kanjiaClear(token, kjid)
+```
+
+> 因为每个用户针对同一个  kjid  只能参与一次，如果用户希望再次发起砍价，则必须要先放弃前一次砍价才能进行
+> 
+> 本次操作后，你针对当前 kjid 将查不到砍价记录，砍价数据清空，你可重新调用 **kanjiaJoin** 方法创建一个新的砍价
+
+### 砍价详情
+
+```js
+WXAPI.kanjiaDetail(kjid, joiner)
+```
+
+> joiner 参数为发起[创建]砍价的那个用户的 uid，在上述例子中，joiner = 979527
+> 
+> 可查看某人创建的砍价的进度情况，看看多少人参与、目前的价格砍到多少了
+
+**接口返回示例：**
+
+```json
+{
+  "code": 0,
+  "data": {
+    "kanjiaInfo": {
+      "curPrice": 888,
+      "dateAdd": "2019-08-14 15:46:22",
+      "dateUpdate": "2019-08-14 15:46:22",
+      "goodsId": 139421,
+      "helpNumber": 0,
+      "kjId": 1067,
+      "minPrice": 8,
+      "status": 0,
+      "statusStr": "进行中",
+      "uid": 979527
+    },
+    "joiner": {
+      "nick": "gooking",
+      "avatarUrl": "https://wx.qlogo.cn/mmopen/vi_32/DYAIOgq83eriagnYJN3GtiaruhqTFkdpYHtQicwLiaFrwbuSInE7HN7UGw2icxPm3jibWrX9ezXROl7Gn2bHGic4nJbsw/132"
+    },
+    "helps": []
+  },
+  "msg": "success"
+}
+```
+
+### 帮好友砍价
+
+```js
+WXAPI.kanjiaHelp(token, kjid, joiner, remark)
+```
+
+> 帮助好友砍价，调用该方法后，将使得好友的当前价格越来越接近底价
+> 
+> joiner 参数为发起[创建]砍价的那个用户的 uid，在上述例子中，joiner = 979527
+> 
+> 被砍到底价、或者截止时间到期后，你将无法再帮助好友进行砍价
+
+**接口返回示例：**
+
+```json
+{
+  "code": 0,
+  "data": {
+    "cutPrice": 26.39,
+    "goodsId": 139421,
+    "remark": "记得请我吃饭",
+    "uid": 979527
+  },
+  "msg": "success"
+}
+```
+
+*每个用户只能帮忙砍价一次，多次帮忙砍价将返回之前砍价的数据*
+
+### 查询我帮好友砍掉的金额
+
+```js
+WXAPI.kanjiaHelpDetail(token, kjid, joiner)
+```
+
+> 查询针对当前 kjid ，我帮忙砍掉的金额
+> 
+> joiner 参数为发起[创建]砍价的那个用户的 uid，在上述例子中，joiner = 979527
+
+**接口返回示例：**
+
+```json
+{
+  "code": 0,
+  "data": {
+    "cutPrice": 26.39,
+    "dateAdd": "2019-08-14 16:31:45",
+    "goodsId": 139421,
+    "remark": "记得请我吃饭",
+    "uid": 979527
+  },
+  "msg": "success"
+}
+```
+
 # 订单管理
 
 ## 我的订单统计
@@ -1404,31 +1605,6 @@ WXAPI.goodsFavDelete(token, id, goodsId)
 ## 删除
 
 > WXAPI.deleteAddress(id, token)
-
-# 商品砍价
-
-## 获取可砍价的商品列表
-
-> WXAPI.kanjiaList(Object object)
-## 获取商品砍价设置
-
-> WXAPI.kanjiaSet(goodsId)
-
-## 发起一个砍价
-
-> WXAPI.kanjiaJoin(kjid, token)
-
-## 砍价详情
-
-> WXAPI.kanjiaDetail(kjid, joiner)
-
-## 砍价助力
-
-> WXAPI.kanjiaHelp(kjid, joiner, token, remark)
-
-## 我的助力信息
-
-> WXAPI.kanjiaHelpDetail(kjid, joiner, token)
 
 # 拼团功能
 

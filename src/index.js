@@ -102,13 +102,10 @@ module.exports = {
       iv
     })
   },
-  kanjiaList: (data) => {
-    return request('/shop/goods/kanjia/list', true, 'post', data)
-  },
   kanjiaSet: (goodsId) => {
     return request('/shop/goods/kanjia/set', true, 'get', { goodsId })
   },
-  kanjiaJoin: (kjid, token) => {
+  kanjiaJoin: (token, kjid) => {
     return request('/shop/goods/kanjia/join', true, 'post', {
       kjid,
       token
@@ -120,7 +117,7 @@ module.exports = {
       joiner
     })
   },
-  kanjiaHelp: (kjid, joiner, token, remark) => {
+  kanjiaHelp: (token, kjid, joiner, remark = '') => {
     return request('/shop/goods/kanjia/help', true, 'post', {
       kjid,
       joinerUser: joiner,
@@ -128,7 +125,19 @@ module.exports = {
       remark
     })
   },
-  kanjiaHelpDetail: (kjid, joiner, token) => {
+  kanjiaClear: (token, kjid) => {
+    return request('/shop/goods/kanjia/clear', true, 'post', {
+      kjid,
+      token
+    })
+  },
+  kanjiaMyJoinInfo: (token, kjid) => {
+    return request('/shop/goods/kanjia/my', true, 'get', {
+      kjid,
+      token
+    })
+  },
+  kanjiaHelpDetail: (token, kjid, joiner) => {
     return request('/shop/goods/kanjia/myHelp', true, 'get', {
       kjid,
       joinerUser: joiner,
