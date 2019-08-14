@@ -6,6 +6,47 @@
 
 欢迎大家进群交流，文档持续更新中...
 
+# 使用方法
+
+## 安装
+
+```
+npm install apifm-wxapi
+```
+
+*如果你的项目还不支持 npm (检查根目录下有没有 package.json 文件)，请先初始化：*
+
+```
+npm init
+```
+
+## 构建 npm 模块
+
+小程序安装的 npm 模块，还不能直接使用，你需要在开发工具： “工具” --> “构建 npm” ，提示构建成功后，才能使用！
+
+## 小程序调用
+
+1. js文件头部引入插件：
+
+    ```
+    const WXAPI = require('apifm-wxapi')
+    WXAPI.init('gooking')
+    ```
+
+2. js文件直接调用方法：
+
+    ```
+    WXAPI.banners().then(res => {
+      if (res.code == 0) {
+        this.setData({
+          banners: res.data
+        })
+      }
+    })
+    ```
+
+*上述例子完成了读取后台的 banner 轮播图片的数据，后台发布轮播图，小程序端直接这样简单调用即可~*
+
 # 相关资源
 
 [「5分钟使用教程」](https://www.jianshu.com/c/b44a52c3cb44)

@@ -47,12 +47,25 @@
     - [文章详情](#文章详情)
   - [单页信息(关于我们/联系我们/...)](#单页信息关于我们联系我们)
   - [获取文章标签列表(用于展示类似“标签云”)](#获取文章标签列表用于展示类似标签云)
-- [商品管理](#商品管理)
-  - [获取所有的商品分类](#获取所有的商品分类)
-  - [获取商品列表](#获取商品列表)
-  - [获取商品详情信息](#获取商品详情信息)
-  - [获取商品价格（以便用户选择了不同规格尺寸后读取新价格）](#获取商品价格以便用户选择了不同规格尺寸后读取新价格)
-  - [获取商品的评价](#获取商品的评价)
+- [商城模块](#商城模块)
+  - [门店管理](#门店管理)
+    - [读取所有的门店列表](#读取所有的门店列表)
+    - [门店详情](#门店详情)
+  - [商品分类](#商品分类)
+  - [商品管理](#商品管理)
+    - [获取商品列表](#获取商品列表)
+    - [获取商品详情信息](#获取商品详情信息)
+    - [获取商品的限购设置](#获取商品的限购设置)
+    - [获取商品价格「一般用在选择不同规格尺寸后需要实时显示售价」](#获取商品价格一般用在选择不同规格尺寸后需要实时显示售价)
+    - [获取商品的每日价格&每日库存「适用酒店预订、票务预订类」](#获取商品的每日价格每日库存适用酒店预订票务预订类)
+    - [计算物流/快递模板费用计算方法](#计算物流快递模板费用计算方法)
+    - [拉取当前会员可以显示的折扣信息](#拉取当前会员可以显示的折扣信息)
+    - [获取商品的评价](#获取商品的评价)
+  - [商品收藏](#商品收藏)
+    - [收藏某个商品](#收藏某个商品)
+    - [检测当前商品是否已被收藏](#检测当前商品是否已被收藏)
+    - [获取收藏的商品](#获取收藏的商品)
+    - [删除收藏的某个商品](#删除收藏的某个商品)
 - [根据视频编号读取视频详情](#根据视频编号读取视频详情)
 - [营销工具](#营销工具)
   - [优惠券管理](#优惠券管理)
@@ -140,9 +153,6 @@
   - [获取产品详情](#获取产品详情)
   - [购买产品](#购买产品)
   - [读取成交记录](#读取成交记录)
-- [门店[店铺]管理](#门店店铺管理)
-  - [获取门店列表](#获取门店列表)
-  - [获取门店详情](#获取门店详情)
 - [分布式文件系统](#分布式文件系统)
   - [上传本地文件](#上传本地文件)
   - [下载远程文件](#下载远程文件)
@@ -351,27 +361,902 @@ WXAPI.register_username(Object object)
 
 > WXAPI.cmsTags()
 
-# 商品管理
+# 商城模块
 
-## 获取所有的商品分类
+## 门店管理
 
-> WXAPI.goodsCategory()
+### 读取所有的门店列表
 
-## 获取商品列表
+```
+WXAPI.fetchShops(Object object)
+```
 
-> WXAPI.goods(Object object)
+> 参数详见接口文档
+> 
+> 支持根据当前用户所在地进行从近到远排序展示
 
-## 获取商品详情信息
+**接口返回示例：**
 
-> WXAPI.goodsDetail(id)
+```json
+{
+  "code": 0,
+  "data": [
+    {
+      "cityId": "150200000000",
+      "dateAdd": "2019-07-18 17:45:26",
+      "dateUpdate": "2019-07-29 09:37:19",
+      "districtId": "150205000000",
+      "id": 4963,
+      "latitude": 39.916527,
+      "linkPhone": "11",
+      "longitude": 116.397128,
+      "name": "111",
+      "numberGoodReputation": 0,
+      "numberOrder": 0,
+      "paixu": 0,
+      "provinceId": "150000000000",
+      "status": 0,
+      "statusStr": "正常",
+      "userId": 2
+    },
+    {
+      "cityId": "210500000000",
+      "dateAdd": "2019-07-18 17:23:03",
+      "dateUpdate": "2019-07-18 17:45:11",
+      "districtId": "210504000000",
+      "id": 4962,
+      "latitude": 39.916527,
+      "linkPhone": "111",
+      "longitude": 116.397128,
+      "name": "111",
+      "numberGoodReputation": 0,
+      "numberOrder": 0,
+      "paixu": 0,
+      "provinceId": "210000000000",
+      "status": 0,
+      "statusStr": "正常",
+      "userId": 2
+    },
+    {
+      "cityId": "150500000000",
+      "dateAdd": "2019-07-18 15:15:56",
+      "districtId": "150522000000",
+      "expressType": "111",
+      "id": 4961,
+      "latitude": 39.916527,
+      "linkPhone": "111",
+      "longitude": 116.397128,
+      "name": "1111",
+      "number": "222",
+      "numberGoodReputation": 0,
+      "numberOrder": 0,
+      "paixu": 0,
+      "provinceId": "150000000000",
+      "status": 0,
+      "statusStr": "正常",
+      "type": "111",
+      "userId": 2
+    },
+    {
+      "activity": "dsf\nfdg\nfgd\n\nqs",
+      "address": "222",
+      "characteristic": "555safsjfklsdfdsg\ndf",
+      "cityId": "210400000000",
+      "dateAdd": "2018-01-09 00:00:00",
+      "dateUpdate": "2019-06-10 10:02:01",
+      "districtId": "210402000000",
+      "expressType": "dada",
+      "id": 664,
+      "introduce": "\n",
+      "latitude": 39.916527,
+      "linkPhone": "333",
+      "longitude": 116.397128,
+      "name": "111cc",
+      "number": "123456",
+      "numberGoodReputation": 0,
+      "numberOrder": 0,
+      "paixu": 0,
+      "pic": "",
+      "printerSn": "1212324",
+      "provinceId": "210000000000",
+      "status": 0,
+      "statusStr": "正常",
+      "type": "",
+      "userId": 2
+    },
+    {
+      "activity": "",
+      "address": "111",
+      "characteristic": "444",
+      "cityId": "110100000000",
+      "dateAdd": "2017-05-31 00:00:00",
+      "dateUpdate": "2019-03-05 12:27:33",
+      "districtId": "110108000000",
+      "expressType": "",
+      "id": 28,
+      "introduce": "333",
+      "latitude": 39.916527,
+      "linkPhone": "13500000000",
+      "longitude": 116.397128,
+      "name": "test",
+      "number": "",
+      "numberGoodReputation": 0,
+      "numberOrder": 0,
+      "paixu": 0,
+      "pic": "",
+      "provinceId": "110000000000",
+      "status": 0,
+      "statusStr": "正常",
+      "type": "",
+      "userId": 2
+    },
+    {
+      "activity": "",
+      "address": "杭州市拱墅区登云路和赵伍路交叉口",
+      "characteristic": "量贩式水果超市",
+      "cityId": "330100000000",
+      "dateAdd": "2017-03-20 20:27:36",
+      "dateUpdate": "2019-03-05 12:27:25",
+      "districtId": "330105000000",
+      "expressType": "",
+      "id": 1,
+      "introduce": "简单介绍一下吧",
+      "latitude": 30.307559,
+      "linkPhone": "1234",
+      "longitude": 120.130023,
+      "name": "鲜丰水果登云路店",
+      "number": "",
+      "numberGoodReputation": 0,
+      "numberOrder": 0,
+      "paixu": 0,
+      "pic": "https://cdn.it120.cc/apifactory/2017/03/20/0f4b625100de82467f3e193d1bf3577d.png",
+      "provinceId": "330000000000",
+      "status": 0,
+      "statusStr": "正常",
+      "type": "",
+      "userId": 2
+    }
+  ],
+  "msg": "success"
+}
+```
 
-## 获取商品价格（以便用户选择了不同规格尺寸后读取新价格）
+### 门店详情
 
-> WXAPI.goodsPrice(Object object)
+```js
+WXAPI.shopSubdetail(id)
+```
 
-## 获取商品的评价
+> id 参数为门店列表返回数据中的 id 字段
+>  
+> 该方法可以读取到门店后台设置的扩展属性信息
 
-> WXAPI.goodsReputation(Object object)
+**接口返回示例：**
+
+```json
+{
+  "code": 0,
+  "data": {
+    "extJson": {
+      "证书编号": "",
+      "3C产品型号": "",
+      "电压": "",
+      "电源方式": ""
+    },
+    "info": {
+      "activity": "",
+      "address": "杭州市拱墅区登云路和赵伍路交叉口",
+      "characteristic": "量贩式水果超市",
+      "cityId": "330100000000",
+      "dateAdd": "2017-03-20 20:27:36",
+      "dateUpdate": "2019-03-05 12:27:25",
+      "districtId": "330105000000",
+      "expressType": "",
+      "id": 1,
+      "introduce": "简单介绍一下吧",
+      "latitude": 30.307559,
+      "linkPhone": "1234",
+      "longitude": 120.130023,
+      "name": "鲜丰水果登云路店",
+      "number": "",
+      "numberGoodReputation": 0,
+      "numberOrder": 0,
+      "paixu": 0,
+      "pic": "https://cdn.it120.cc/apifactory/2017/03/20/0f4b625100de82467f3e193d1bf3577d.png",
+      "provinceId": "330000000000",
+      "status": 0,
+      "statusStr": "正常",
+      "type": "",
+      "userId": 2
+    }
+  },
+  "msg": "success"
+}
+```
+
+## 商品分类
+
+```
+WXAPI.goodsCategory()
+```
+
+> 读取后台设置的所有分类数据，分类之间的上下级关系请使用 level 和 pid 进行管理
+> 
+> level = 1 表示 1级类目；2 表示 2级类目，以此类推
+> 
+> pid 代表该类目的上级类目ID（一级类目的 pid = 0）
+
+*分类的目录树，可以根据上述2个字段，采用 js 在本地实现*
+
+**接口返回示例：**
+
+```json
+{
+  "code": 0,
+  "data": [
+    {
+      "dateAdd": "2017-09-12 11:07:32",
+      "dateUpdate": "2019-04-10 11:24:32",
+      "icon": "https://cdn.it120.cc/apifactory/2019/04/09/f89753a227d26a3fe9ccc6f975857bb6.png",
+      "id": 1872,
+      "isUse": true,
+      "key": "1",
+      "level": 1,
+      "name": "上装",
+      "paixu": 0,
+      "pid": 0,
+      "type": "",
+      "userId": 951
+    },
+    {
+      "dateAdd": "2017-09-12 11:07:48",
+      "dateUpdate": "2019-04-10 11:25:21",
+      "icon": "https://cdn.it120.cc/apifactory/2019/04/09/5bfffd6ad0d4483870f024a3ed936528.png",
+      "id": 1873,
+      "isUse": true,
+      "key": "2",
+      "level": 1,
+      "name": "裤装",
+      "paixu": 0,
+      "pid": 0,
+      "type": "",
+      "userId": 951
+    },
+    {
+      "dateAdd": "2017-09-12 11:08:14",
+      "dateUpdate": "2019-04-10 11:26:00",
+      "icon": "https://cdn.it120.cc/apifactory/2019/04/09/8d32c254e2cb86d2d42c99b768d136b6.png",
+      "id": 1875,
+      "isUse": true,
+      "key": "4",
+      "level": 1,
+      "name": "特价区",
+      "paixu": 0,
+      "pid": 0,
+      "type": "",
+      "userId": 951
+    },
+    {
+      "dateAdd": "2017-09-13 09:37:53",
+      "dateUpdate": "2019-04-10 11:26:24",
+      "icon": "https://cdn.it120.cc/apifactory/2019/04/09/d800327091f216e2c83db8af7b6be306.png",
+      "id": 1906,
+      "isUse": true,
+      "key": "5",
+      "level": 1,
+      "name": "裙装",
+      "paixu": 0,
+      "pid": 0,
+      "type": "",
+      "userId": 951
+    },
+    {
+      "dateAdd": "2017-09-13 10:06:52",
+      "dateUpdate": "2019-04-10 11:26:48",
+      "icon": "https://cdn.it120.cc/apifactory/2019/04/09/cfee29650d6ae58a4bb1f84a3d899450.png",
+      "id": 1907,
+      "isUse": true,
+      "key": "6",
+      "level": 1,
+      "name": "套装",
+      "paixu": 0,
+      "pid": 0,
+      "type": "",
+      "userId": 951
+    },
+    {
+      "dateAdd": "2017-09-16 14:03:08",
+      "dateUpdate": "2019-04-10 11:27:28",
+      "icon": "https://cdn.it120.cc/apifactory/2019/04/09/6b3136cda73c99453ac93a1c5a9deebf.png",
+      "id": 2016,
+      "isUse": true,
+      "key": "7",
+      "level": 1,
+      "name": "外套",
+      "paixu": 0,
+      "pid": 0,
+      "type": "",
+      "userId": 951
+    },
+    {
+      "dateAdd": "2017-09-17 19:55:09",
+      "dateUpdate": "2019-04-10 11:27:49",
+      "icon": "https://cdn.it120.cc/apifactory/2019/04/09/9a7356187fce687ce568ba7381685299.png",
+      "id": 2054,
+      "isUse": true,
+      "key": "8",
+      "level": 1,
+      "name": "秒杀",
+      "paixu": 0,
+      "pid": 0,
+      "type": "",
+      "userId": 951
+    },
+    {
+      "dateAdd": "2017-09-25 09:07:38",
+      "dateUpdate": "2019-04-10 11:28:06",
+      "icon": "https://cdn.it120.cc/apifactory/2019/04/09/7773b4c204280ba194514594f7070ac9.png",
+      "id": 2245,
+      "isUse": true,
+      "key": "9",
+      "level": 1,
+      "name": "内裤",
+      "paixu": 0,
+      "pid": 0,
+      "type": "",
+      "userId": 951
+    },
+    {
+      "dateAdd": "2017-09-25 09:07:58",
+      "dateUpdate": "2019-04-10 11:28:22",
+      "icon": "https://cdn.it120.cc/apifactory/2019/04/09/60f41bf042d201b48a7115d22344320f.png",
+      "id": 2246,
+      "isUse": true,
+      "key": "10",
+      "level": 1,
+      "name": "袜子",
+      "paixu": 0,
+      "pid": 0,
+      "type": "",
+      "userId": 951
+    },
+    {
+      "dateAdd": "2017-10-18 11:13:56",
+      "dateUpdate": "2019-04-10 11:28:39",
+      "icon": "https://cdn.it120.cc/apifactory/2019/04/09/cdb16ac9c66bc211b82bd947452526f4.png",
+      "id": 2787,
+      "isUse": true,
+      "key": "11",
+      "level": 1,
+      "name": "鞋",
+      "paixu": 0,
+      "pid": 0,
+      "type": "",
+      "userId": 951
+    }
+  ],
+  "msg": "success"
+}
+```
+
+## 商品管理
+
+### 获取商品列表
+
+```js
+WXAPI.goods(Object object)
+```
+
+> 读取所有的商品数据，以分页的形式展示，支持按照多种方式进行排序
+> 
+> 具体参数的说明，请查阅接口文档
+
+**接口返回示例：**
+
+```json
+{
+  "code": 0,
+  "data": [
+    {
+      "categoryId": 1875,
+      "characteristic": "享受vip尊享服务，使用专业版后台，功能更强，体验更好",
+      "commission": 0,
+      "commissionType": 0,
+      "dateAdd": "2019-03-19 09:51:08",
+      "dateUpdate": "2019-08-14 09:49:34",
+      "gotScore": 0,
+      "gotScoreType": 0,
+      "id": 124305,
+      "kanjia": true,
+      "kanjiaPrice": 49,
+      "limitation": false,
+      "logisticsId": 0,
+      "miaosha": false,
+      "minPrice": 198,
+      "minScore": 0,
+      "name": "api工厂1年vip会员",
+      "numberFav": 0,
+      "numberGoodReputation": 1,
+      "numberOrders": 1,
+      "numberSells": 1,
+      "originalPrice": 198,
+      "paixu": 0,
+      "pic": "https://cdn.it120.cc/apifactory/2019/03/19/6828c1ced4a74e11b532c8cbd864245a.png",
+      "pingtuan": false,
+      "pingtuanPrice": 0,
+      "recommendStatus": 1,
+      "recommendStatusStr": "推荐",
+      "shopId": 0,
+      "status": 0,
+      "statusStr": "上架",
+      "stores": 9999998,
+      "userId": 951,
+      "views": 15955,
+      "weight": 0
+    },
+    {
+      "categoryId": 2054,
+      "commission": 0,
+      "commissionType": 0,
+      "dateAdd": "2019-03-11 13:02:39",
+      "dateUpdate": "2019-08-14 09:36:24",
+      "gotScore": 0,
+      "gotScoreType": 0,
+      "id": 122843,
+      "kanjia": false,
+      "kanjiaPrice": 0,
+      "limitation": false,
+      "logisticsId": 386,
+      "miaosha": false,
+      "minPrice": 600,
+      "minScore": 0,
+      "name": "WIFI 58mm 热敏打印机工厂定制版",
+      "numberFav": 0,
+      "numberGoodReputation": 8,
+      "numberOrders": 894,
+      "numberSells": 872,
+      "originalPrice": 800,
+      "paixu": 0,
+      "pic": "https://cdn.it120.cc/apifactory/2019/03/07/133eb6294e3853ebe4eb8551359a26dc.png",
+      "pingtuan": false,
+      "pingtuanPrice": 0,
+      "recommendStatus": 1,
+      "recommendStatusStr": "推荐",
+      "shopId": 0,
+      "status": 0,
+      "statusStr": "上架",
+      "stores": 9999984,
+      "tags": "打印机",
+      "userId": 951,
+      "views": 18044,
+      "weight": 0
+    }
+  ],
+  "msg": "success"
+}
+```
+
+### 获取商品详情信息
+
+```js
+WXAPI.goodsDetail(id)
+```
+
+> id 参数为上面商品列表方法返回数据里的 id 字段
+>
+> 访问该方法会增加商品的浏览量
+> 
+> 该方法获取商品基础信息、商品图文详细介绍、商品图片、可选的规格尺寸、所属分类、快递物流设置信息、商品扩展属性
+
+**接口返回示例：**
+
+```json
+{
+  "code": 0,
+  "data": {
+    "logistics": {
+      "isFree": true,
+      "feeType": 0,
+      "feeTypeStr": "按件数",
+      "details": [
+        {
+          "addAmount": 0,
+          "addNumber": 1,
+          "firstAmount": 8,
+          "firstNumber": 100,
+          "type": 0,
+          "userId": 951
+        }
+      ]
+    },
+    "extJson": {},
+    "category": {
+      "dateAdd": "2017-09-17 19:55:09",
+      "dateUpdate": "2019-04-10 11:27:49",
+      "icon": "https://cdn.it120.cc/apifactory/2019/04/09/9a7356187fce687ce568ba7381685299.png",
+      "id": 2054,
+      "isUse": true,
+      "key": "8",
+      "name": "秒杀",
+      "paixu": 0,
+      "pid": 0,
+      "type": "",
+      "userId": 951
+    },
+    "pics": [
+      {
+        "goodsId": 122843,
+        "id": 899846,
+        "pic": "https://cdn.it120.cc/apifactory/2019/03/07/133eb6294e3853ebe4eb8551359a26dc.png",
+        "userId": 951
+      }
+    ],
+    "content": "<table class=\"table table-bordered table-hover\">\n<thead>\n<tr>\n<th colspan=\"2\">主体&nbsp;</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<th>名称</th>\n<td>WiFi无线打印机</td>\n</tr>\n<tr>\n<th>型号</th>\n<td>FP-V58W(58mm、不带切刀)</td>\n</tr>\n<tr>\n<th>传输方式</th>\n<td>WiFi网络</td>\n</tr>\n<tr>\n<th>下单方式</th>\n<td>Internet网络接口/手机应用</td>\n</tr>\n<tr>\n<th>集成方式</th>\n<td>API/驱动集成</td>\n</tr>\n<tr>\n<th>监控管理</th>\n<td>在线、缺纸状态查询</td>\n</tr>\n</tbody>\n</table>\n<table class=\"table table-bordered table-hover\">\n<thead>\n<tr>\n<th colspan=\"2\">打印&nbsp;</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<th>打印方式</th>\n<td>直接行式热敏</td>\n</tr>\n<tr>\n<th>自动切刀</th>\n<td>否</td>\n</tr>\n<tr>\n<th>图形</th>\n<td>支持二维码,条码,LOGO打印</td>\n</tr>\n<tr>\n<th>打印宽度</th>\n<td>58毫米</td>\n</tr>\n<tr>\n<th>点密度</th>\n<td>384点/行（203&times;203dpi）</td>\n</tr>\n<tr>\n<th>打印速度</th>\n<td>120毫米/秒</td>\n</tr>\n<tr>\n<th>打印纸</th>\n<td>57.5 &plusmn; 0.5毫米</td>\n</tr>\n<tr>\n<th>行间距</th>\n<td>3.75毫米（可用命令调整行间距）</td>\n</tr>\n<tr>\n<th>列数</th>\n<td>58mm纸：Font A 32列/Font B 42列/简繁体16列</td>\n</tr>\n<tr>\n<th>字符大小</th>\n<td>ANK字符，Font A 1.5&times;3.0mm（12&times;24点）Font B 1.1&times;2.1mm（9&times;17点）简繁体 3.0&times;3.0mm（24&times;24点）</td>\n</tr>\n</tbody>\n</table>\n<table class=\"table table-bordered table-hover\">\n<thead>\n<tr>\n<th colspan=\"2\">物理属性&nbsp;</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<th>输入缓冲</th>\n<td>32K Bytes</td>\n</tr>\n<tr>\n<th>NV Flash</th>\n<td>64 K Bytes</td>\n</tr>\n<tr>\n<th>电源</th>\n<td>输入AC 110V/220V，50～60Hz</td>\n</tr>\n<tr>\n<th>电源适配器</th>\n<td>DC12V/2.6A</td>\n</tr>\n<tr>\n<th>重量</th>\n<td>0.66千克</td>\n</tr>\n<tr>\n<th>外观尺寸</th>\n<td>160&times;120&times;100毫米（长&times;宽&times;高）</td>\n</tr>\n<tr>\n<th>工作环境</th>\n<td>温度：0～45℃ 湿度：10～80%</td>\n</tr>\n<tr>\n<th>存储环境</th>\n<td>温度：-10～60℃ 湿度：10～90%（不结露）</td>\n</tr>\n<tr>\n<th>使用寿命</th>\n<td>50公里</td>\n</tr>\n<tr>\n<th>产品认证</th>\n<td>3C</td>\n</tr>\n<tr>\n<th>质量标准</th>\n<td>ISO9001</td>\n</tr>\n</tbody>\n</table>",
+    "basicInfo": {
+      "categoryId": 2054,
+      "commission": 0,
+      "commissionType": 0,
+      "dateAdd": "2019-03-11 13:02:39",
+      "dateUpdate": "2019-08-14 09:17:23",
+      "gotScore": 0,
+      "gotScoreType": 0,
+      "id": 122843,
+      "kanjia": false,
+      "kanjiaPrice": 0,
+      "limitation": false,
+      "logisticsId": 386,
+      "miaosha": false,
+      "minPrice": 600,
+      "minScore": 0,
+      "name": "WIFI 58mm 热敏打印机工厂定制版",
+      "numberFav": 0,
+      "numberGoodReputation": 8,
+      "numberOrders": 894,
+      "numberSells": 872,
+      "originalPrice": 800,
+      "paixu": 0,
+      "pic": "https://cdn.it120.cc/apifactory/2019/03/07/133eb6294e3853ebe4eb8551359a26dc.png",
+      "pingtuan": false,
+      "pingtuanPrice": 0,
+      "recommendStatus": 1,
+      "recommendStatusStr": "推荐",
+      "shopId": 0,
+      "status": 0,
+      "statusStr": "上架",
+      "stores": 9999984,
+      "tags": "打印机",
+      "userId": 951,
+      "views": 18040,
+      "weight": 0
+    }
+  },
+  "msg": "success"
+}
+```
+
+### 获取商品的限购设置
+
+```js
+WXAPI.goodsLimitations(goodsId, priceId)
+```
+
+> 如果商品（列表、详情）信息中 **limitation** 字段为 **true**，说明该商品开启了限购，只有设置中的会员等级用户才可以在约定时间内购买不超过指定数量
+> 
+> 该方法接收2个参数，**goodsId** 参数是必填的，代表商品id； **priceId** 参数非必填，只有在用户购买时候选择了指定的规格尺寸时候才需要传
+> 
+> 你可以根据当前登录用户的会员等级，在商品详情页面进行相应的交互展示
+
+**接口返回示例：**
+
+```json
+{
+  "code": 0,
+  "data": [
+    {
+      "buyNumbers": 22,
+      "duration": 11,
+      "goodsId": 145565,
+      "id": 6,
+      "priceId": 1279085,
+      "unit": 0,
+      "unitStr": "自然日",
+      "userId": 2,
+      "userLevelId": 1,
+      "userLevelName": "黄金会员"
+    },
+    {
+      "buyNumbers": 3,
+      "duration": 1,
+      "goodsId": 145565,
+      "id": 2,
+      "priceId": 1279084,
+      "unit": 2,
+      "unitStr": "自然年",
+      "userId": 2,
+      "userLevelId": 1,
+      "userLevelName": "黄金会员"
+    },
+    {
+      "buyNumbers": 4,
+      "duration": 3,
+      "goodsId": 145565,
+      "id": 1,
+      "priceId": 1279084,
+      "unit": 0,
+      "unitStr": "自然日",
+      "userId": 2,
+      "userLevelId": 0,
+      "userLevelName": "无分组用户"
+    }
+  ],
+  "msg": "success"
+}
+```
+
+### 获取商品价格「一般用在选择不同规格尺寸后需要实时显示售价」
+
+```js
+WXAPI.goodsPrice(goodsId, propertyChildIds)
+```
+
+> goodsId 为商品id
+> 
+> **propertyChildIds** 参数为用户选择的规格尺寸数据，多个规格尺寸数据用因为逗号分隔，该参数的格式为： 规格id:子属性id，比如： 4:15,2:10 （分别对应了 颜色:红色，内存:256G）
+
+**接口返回示例：**
+
+```json
+{
+  "code": 0,
+  "data": {
+    "goodsId": 139421,
+    "id": 1330668,
+    "originalPrice": 566,
+    "pingtuanPrice": 0,
+    "price": 123,
+    "propertyChildIds": "1:1,",
+    "propertyChildNames": "颜色:薄荷绿,",
+    "score": 0,
+    "stores": 99999,
+    "userId": 2
+  },
+  "msg": "success"
+}
+```
+
+### 获取商品的每日价格&每日库存「适用酒店预订、票务预订类」
+
+```js
+WXAPI.goodsPriceDaily(goodsId, priceId)
+```
+
+> goodsId 为商品id
+> 
+> priceId 为选择的商品规格尺寸记录id，无规格尺寸的商品，无需传该参数
+
+**接口返回示例：**
+
+```json
+{
+  "code": 0,
+  "data": [
+    {
+      "day": "2019-08-14",
+      "goodsId": 139421,
+      "id": 255,
+      "price": 1,
+      "stores": 1,
+      "userId": 2
+    },
+    {
+      "day": "2019-08-15",
+      "goodsId": 139421,
+      "id": 256,
+      "price": 1,
+      "stores": 1,
+      "userId": 2
+    }
+  ],
+  "msg": "success"
+}
+```
+
+### 计算物流/快递模板费用计算方法
+
+```js
+WXAPI.goodsPriceFreight(Object object)
+```
+
+> 具体参数请查阅接口文档
+> 
+> 提供快递地址，本方法可计算出本次会计的计费方式
+
+*比如： a 件（重量）内 x 元，之后每增加 b 件（重量）额外加收 y 元*
+
+**接口返回示例：**
+
+```json
+{
+  "code": 0,
+  "data": {
+    "firstNumber": 1,
+    "addAmount": 1,
+    "firstAmount": 1,
+    "addNumber": 1
+  },
+  "msg": "success"
+}
+```
+
+### 拉取当前会员可以显示的折扣信息
+
+```js
+WXAPI.goodsRebate(token, goodsId)
+```
+
+> token 为当前登录用户的登录 token
+> 
+> goodsId 为商品id
+
+**接口返回示例：**
+
+```json
+{
+  "code": 0,
+  "data": 10,
+  "msg": "success"
+}
+```
+*上面的 10 意思就是 10折，也就是不打折的意思；*
+
+### 获取商品的评价
+
+```js
+WXAPI.goodsReputation(Object object)
+```
+
+> 读取当前商品用户的所有评价数据
+> 
+> 具体参数说明请查阅接口文档
+
+**接口返回示例：**
+
+```json
+{
+  "code": 0,
+  "data": [
+    {
+      "goods": {
+        "amount": 600,
+        "dateReputation": "2019-07-23 14:20:00",
+        "goodReputation": 2,
+        "goodReputationRemark": "系统默认好评",
+        "goodReputationStr": "好评",
+        "goodsId": 122843,
+        "goodsName": "WIFI 58mm 热敏打印机工厂定制版",
+        "id": 372497,
+        "number": 1,
+        "orderId": 325214,
+        "pic": "https://cdn.it120.cc/apifactory/2019/03/07/133eb6294e3853ebe4eb8551359a26dc.png",
+        "score": 0,
+        "uid": 762217,
+        "userId": 951
+      },
+      "user": {
+        "avatarUrl": "https://wx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTLJpYuZ0hOPlEzOXUpibibAtELrHnoRNib5tiaicpb1ZfZT8FHWcJulH189UhmaxicKKia22LXnwt8ibLYCVw/132",
+        "city": "",
+        "dateAdd": "2019-03-17 10:12:22",
+        "dateLogin": "2019-07-09 14:40:09",
+        "id": 762217,
+        "ipAdd": "118.114.6.203",
+        "ipLogin": "171.209.166.143",
+        "isIdcardCheck": false,
+        "isSeller": false,
+        "levelRenew": false,
+        "mobile": "13688059703",
+        "nick": "阳大锤",
+        "province": "Dublin",
+        "source": 0,
+        "sourceStr": "小程序",
+        "status": 0,
+        "statusStr": "默认"
+      }
+    }
+  ],
+  "msg": "success"
+}
+```
+
+## 商品收藏
+
+### 收藏某个商品
+
+```js
+WXAPI.goodsFavPut(token, goodsId)
+```
+
+**接口返回示例：**
+
+```json
+{
+  "code": 0,
+  "msg": "success"
+}
+```
+
+### 检测当前商品是否已被收藏
+
+```js
+WXAPI.goodsFavCheck(token, goodsId)
+```
+
+**接口返回示例：**
+
+*已收藏*
+```json
+{
+  "code": 0,
+  "data": "已收藏"
+}
+```
+
+*未收藏*
+```json
+{
+  "code": -1,
+  "data": "未收藏"
+}
+```
+
+### 获取收藏的商品
+
+```js
+WXAPI.goodsFavList(Object object)
+```
+
+> 具体参数说明请查阅接口文档
+> 
+> 支持分页读取、关键词搜索商品
+
+**接口返回示例：**
+
+```json
+{
+  "code": 0,
+  "data": [
+    {
+      "dateAdd": "2019-08-14 10:53:44",
+      "dateUpdate": "2019-08-14 11:01:02",
+      "goodsId": 139421,
+      "goodsName": "111",
+      "id": 12537,
+      "pic": "https://cdn.it120.cc/apifactory/2019/05/10/fa52e312-c8a9-4558-8280-7d67224b6f67.png"
+    }
+  ],
+  "msg": "success"
+}
+```
+
+### 删除收藏的某个商品
+
+```js
+WXAPI.goodsFavDelete(token, id, goodsId)
+```
+
+> id 参数为收藏列表数据中的记录id
+> 
+> goodsId 为商品id
+> 
+> 以上2个参数至少要填写1个
+
+**接口返回示例：**
+
+```json
+{
+  "code": 0,
+  "msg": "success"
+}
+```
 
 # 根据视频编号读取视频详情
 
@@ -668,16 +1553,6 @@ WXAPI.register_username(Object object)
 
 > WXAPI.virtualTraderBuyLogs(Object object)
 
-# 门店[店铺]管理
-
-## 获取门店列表
-
-> WXAPI.fetchShops(Object object)
-
-## 获取门店详情
-
-> WXAPI.shopSubdetail(id)
-
 # 分布式文件系统
 
 ## 上传本地文件
@@ -743,7 +1618,7 @@ WXAPI.register_username(Object object)
 ## 短链接服务
 
 > 将长链接生成短链接
-> 
+> ****
 > url 参数为原始的长链接地址
 
 ```

@@ -184,11 +184,49 @@ module.exports = {
       id
     })
   },
-  goodsPrice: (data) => {
-    return request('/shop/goods/price', true, 'post', data)
+  goodsLimitations: (goodsId, priceId = '') => {
+    return request('/shop/goods/limitation', true, 'get', {
+      goodsId, priceId
+    })
+  },
+  goodsPrice: (goodsId, propertyChildIds) => {
+    return request('/shop/goods/price', true, 'post', {
+      goodsId, propertyChildIds
+    })
+  },
+  goodsPriceDaily: (goodsId, priceId = '') => {
+    return request('/shop/goods/price/day', true, 'get', {
+      goodsId, priceId
+    })
+  },
+  goodsPriceFreight: (data) => {
+    return request('/shop/goods/price/freight', true, 'get', data)
+  },
+  goodsRebate: (token, goodsId) => {
+    return request('/shop/goods/rebate', true, 'get', {
+      token, goodsId
+    })
   },
   goodsReputation: (data) => {
     return request('/shop/goods/reputation', true, 'post', data)
+  },
+  goodsFavList: (data) => {
+    return request('/shop/goods/fav/list', true, 'post', data)
+  },
+  goodsFavPut: (token, goodsId) => {
+    return request('/shop/goods/fav/add', true, 'post', {
+      token, goodsId
+    })
+  },
+  goodsFavCheck: (token, goodsId) => {
+    return request('/shop/goods/fav/check', true, 'get', {
+      token, goodsId
+    })
+  },
+  goodsFavDelete: (token, id = '', goodsId = '') => {
+    return request('/shop/goods/fav/delete', true, 'post', {
+      token, id, goodsId
+    })
   },
   coupons: (data) => {
     return request('/discounts/coupons', true, 'get', data)
