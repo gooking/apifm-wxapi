@@ -1,6 +1,6 @@
 {
   "name": "apifm-wxapi",
-  "version": "1.18.0",
+  "version": "1.19.0",
   "description": "增加：商城模块： 门店 / 分类 / 商品管理 / 收藏",
   "main": "miniprogram_dist/index.js",
   "scripts": {
