@@ -300,16 +300,25 @@ module.exports = {
       goodsId
     })
   },
-  pingtuanOpen: (goodsId, token) => {
+  pingtuanSets: (goodsIdArray) => {
+    return request('/shop/goods/pingtuan/sets', true, 'get', {
+      goodsId: goodsIdArray.join()
+    })
+  },
+  pingtuanOpen: (token, goodsId) => {
     return request('/shop/goods/pingtuan/open', true, 'post', {
       goodsId,
       token
     })
   },
-  pingtuanList: (goodsId) => {
-    return request('/shop/goods/pingtuan/list', true, 'get', {
-      goodsId
-    })
+  pingtuanList: (data) => {
+    return request('/shop/goods/pingtuan/list/v2', true, 'post', data)
+  },
+  pingtuanJoinUsers: (tuanId) => {
+    return request('/shop/goods/pingtuan/joiner', true, 'get', { tuanId })
+  },
+  pingtuanMyJoined: (data) => {
+    return request('/shop/goods/pingtuan/my-join-list', true, 'post', data)
   },
   friendlyPartnerList: (type = '') => {
     return request('/friendly-partner/list', true, 'post', {

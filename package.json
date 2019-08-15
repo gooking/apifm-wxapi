@@ -1,7 +1,7 @@
 {
   "name": "apifm-wxapi",
-  "version": "1.19.0",
-  "description": "增加：砍价模块",
+  "version": "1.20.0",
+  "description": "增加：拼团功能",
   "main": "miniprogram_dist/index.js",
   "scripts": {
     "dev": "gulp dev --develop",
