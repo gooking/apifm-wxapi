@@ -66,6 +66,21 @@
     - [检测当前商品是否已被收藏](#检测当前商品是否已被收藏)
     - [获取收藏的商品](#获取收藏的商品)
     - [删除收藏的某个商品](#删除收藏的某个商品)
+  - [订单管理](#订单管理)
+    - [创建订单](#创建订单)
+    - [关闭订单](#关闭订单)
+    - [删除订单](#删除订单)
+    - [支付订单[使用余额]](#支付订单使用余额)
+    - [确认收货](#确认收货)
+    - [订单核销](#订单核销)
+    - [订单汇总统计](#订单汇总统计)
+    - [获取所有订单](#获取所有订单)
+    - [订单详情](#订单详情)
+    - [评价接口](#评价接口)
+    - [申请退换货[售后]](#申请退换货售后)
+    - [申请退换货详情](#申请退换货详情)
+    - [撤销退换货申请](#撤销退换货申请)
+    - [拉取某订单的所有售后记录](#拉取某订单的所有售后记录)
 - [根据视频编号读取视频详情](#根据视频编号读取视频详情)
 - [营销工具](#营销工具)
   - [优惠券管理](#优惠券管理)
@@ -89,18 +104,6 @@
     - [获取某个商品当前进行中的所有拼团](#获取某个商品当前进行中的所有拼团)
     - [获取某个团购的参与用户列表](#获取某个团购的参与用户列表)
     - [读取我参与过的所有团购记录](#读取我参与过的所有团购记录)
-- [订单管理](#订单管理)
-  - [我的订单统计](#我的订单统计)
-  - [创建订单](#创建订单)
-  - [查询订单列表](#查询订单列表)
-  - [查询订单详情](#查询订单详情)
-  - [确认收货接口](#确认收货接口)
-  - [评价接口](#评价接口)
-  - [关闭订单](#关闭订单)
-  - [使用余额支付订单](#使用余额支付订单)
-  - [申请退换货](#申请退换货)
-  - [申请退换货详情数据获取](#申请退换货详情数据获取)
-  - [申请退换货撤销](#申请退换货撤销)
 - [积分管理](#积分管理)
   - [读取积分赠送规则](#读取积分赠送规则)
   - [签到](#签到)
@@ -1262,6 +1265,144 @@ WXAPI.goodsFavDelete(token, id, goodsId)
 }
 ```
 
+## 订单管理
+
+### 创建订单
+
+```js
+WXAPI.orderCreate(Object object)
+```
+
+> 下单功能，具体参数说明请查看api接口文档
+> 
+> calculate 参数传 true 可以实现预下单，预下单不会真正下单，而是会返回是否允许下单，以及费用[货款、运费]金额的计算
+
+### 关闭订单
+
+```js
+WXAPI.orderClose(token, orderId)
+```
+
+### 删除订单
+
+```js
+WXAPI.orderDelete(token, orderId)
+```
+
+> 用户删除订单，只是用户自己看不到，管理员在后台还是可以看到该订单的
+
+### 支付订单[使用余额]
+
+```js
+WXAPI.orderPay(token, orderId)
+```
+
+> 使用用户的钱包余额完成订单的支付
+> 
+> 如果使用微信在线支付完成订单支付，请回顾 「微信在线支付章节」 ，通过传递 nextAction 参数实现
+
+### 确认收货
+
+```js
+WXAPI.orderDelivery(token, orderId)
+```
+
+> 管理员针对下单进行发货操作，用户在确认收到包裹检查无误后，通过该方法来确认本次订单的收货
+> 
+> 确认收货后，订单将进入评价阶段，用户可实事求是的针对本次购物体验进行评价、买家秀截图等等
+
+### 订单核销
+
+```js
+WXAPI.orderHX(hxNumber)
+```
+
+> hxNumber 为核销码，所以请妥善保管，商家依据核销码进行核销
+> 
+> 订单默认不会生成核销码，如果需要开启核销功能，请在创建订单方法参数中增加 isCanHx=true 
+> 
+> 核销后，订单即交易成功，转为待评价状态
+
+
+### 订单汇总统计
+
+```js
+WXAPI.orderStatistics(token)
+```
+
+> 订单统计，用以显示订单统计或者是订单类型小红点，该方法将会返回一下几个数据：
+
+1. count_id_no_pay: 待支付订单数量
+2. count_id_no_transfer: 已支付等待商家发货订单数量
+3. count_id_no_confirm: 商家已发货，等待确认收货订单数量
+4. count_id_no_reputation: 交易成功，等待评价的订单数量
+5. count_id_success: 交易成功，且已评价的订单数量
+6. count_id_close: 关闭的订单数量
+
+### 获取所有订单
+
+```js
+WXAPI.orderList(Object object)
+```
+
+> 具体参数请查阅api接口文档
+> 
+> 可根据订单状态、好差评等条件筛选进行分页显示
+
+### 订单详情
+
+```js
+WXAPI.orderDetail(token, id)
+```
+
+> 读取订单详情数据：订单信息、购物清单、订单日志记录、物流跟踪信息、库存明细、扩展属性
+> 
+> 根据你自己的需要进行UI设计及合理展示
+
+### 评价接口
+
+```js
+WXAPI.orderReputation(Object object)
+```
+
+> 订单评价，进行 好、中、差评；留言备注；截图买家秀
+> 
+> 具体参数请查阅接口文档说明
+
+### 申请退换货[售后]
+
+```js
+WXAPI.refundApply(Object object)
+```
+
+> 用户维权通道，通过该方法实现订单的退款、退货、换货等售后处理
+> 
+> 具体参数请查阅接口文档说明
+
+### 申请退换货详情
+
+```js
+WXAPI.refundApplyDetail(token, orderId)
+```
+
+> 用以展示退换货详细数据
+
+### 撤销退换货申请
+
+```js
+WXAPI.refundApplyCancel(token, orderId)
+```
+
+> 撤销 / 取消 维权
+
+### 拉取某订单的所有售后记录
+
+```js
+WXAPI.orderRefunds(token, orderId)
+```
+
+> 一个订单允许多次退换货，该方法可以拉取到所有的售后记录
+
 # 根据视频编号读取视频详情
 
 > WXAPI.videoDetail(videoId)
@@ -1627,52 +1768,6 @@ WXAPI.pingtuanMyJoined(Object object)
 > 具体参数请查阅接口文档
 > 
 > 用以展示在个人中心 --> 我参与的所有团购，可分页
-
-# 订单管理
-
-## 我的订单统计
-
-> WXAPI.orderStatistics(token)
-
-## 创建订单
-
-> WXAPI.orderCreate(Object object)
-
-## 查询订单列表
-
-> WXAPI.orderList(Object object)
-
-## 查询订单详情
-
-> WXAPI.orderDetail(id, token)
-
-## 确认收货接口
-
-> WXAPI.orderDelivery(orderId, token)
-
-## 评价接口
-
-> WXAPI.orderReputation(Object object)
-
-## 关闭订单
-
-> WXAPI.orderClose(orderId, token)
-
-## 使用余额支付订单
-
-> WXAPI.orderPay(orderId, token)
-
-## 申请退换货
-
-> WXAPI.refundApply(token, orderId, type, logisticsStatus, reason, amount, remark, pic)
-
-## 申请退换货详情数据获取
-
-> WXAPI.refundApplyDetail(token, orderId)
-
-## 申请退换货撤销
-
-> WXAPI.refundApplyCancel(token, orderId)
 
 # 积分管理
 

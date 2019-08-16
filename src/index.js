@@ -349,13 +349,13 @@ module.exports = {
   orderList: (data) => {
     return request('/order/list', true, 'post', data)
   },
-  orderDetail: (id, token) => {
+  orderDetail: (token, id) => {
     return request('/order/detail', true, 'get', {
       id,
       token
     })
   },
-  orderDelivery: (orderId, token) => {
+  orderDelivery: (token, orderId) => {
     return request('/order/delivery', true, 'post', {
       orderId,
       token
@@ -364,21 +364,38 @@ module.exports = {
   orderReputation: (data) => {
     return request('/order/reputation', true, 'post', data)
   },
-  orderClose: (orderId, token) => {
+  orderClose: (token, orderId) => {
     return request('/order/close', true, 'post', {
       orderId,
       token
     })
   },
-  orderPay: (orderId, token) => {
+  orderDelete: (token, orderId) => {
+    return request('/order/delete', true, 'post', {
+      orderId,
+      token
+    })
+  },
+  orderPay: (token, orderId) => {
     return request('/order/pay', true, 'post', {
       orderId,
       token
     })
   },
+  orderHX: (hxNumber) => {
+    return request('/order/hx', true, 'post', {
+      hxNumber
+    })
+  },
   orderStatistics: (token) => {
     return request('/order/statistics', true, 'get', {
       token
+    })
+  },
+  orderRefunds: (token, orderId) => {
+    return request('/order/refund', true, 'get', {
+      token,
+      orderId
     })
   },
   withDrawApply: (token, money) => {
@@ -465,17 +482,8 @@ module.exports = {
   uploadFileList: (path = '') => {
     return request('/dfs/upload/list', true, 'post', { path })
   },
-  refundApply: (token, orderId, type, logisticsStatus, reason, amount, remark, pic) => {
-    return request('/order/refundApply/apply', true, 'post', {
-      token,
-      orderId,
-      type,
-      logisticsStatus,
-      reason,
-      amount,
-      remark,
-      pic
-    })
+  refundApply: (data) => {
+    return request('/order/refundApply/apply', true, 'post', data)
   },
   refundApplyDetail: (token, orderId) => {
     return request('/order/refundApply/info', true, 'get', {
