@@ -615,4 +615,16 @@ module.exports = {
   mapQQAddress: (location = '', coord_type = '5') => {
     return request('/common/map/qq/address', false, 'get', { location, coord_type })
   },
+  virtualTraderList: (data) => {
+    return request('/virtualTrader/list', true, 'post', data)
+  },
+  virtualTraderDetail: (token, id) => {
+    return request('/virtualTrader/info', true, 'get', { token, id })
+  },
+  virtualTraderBuy: (token, id) => {
+    return request('/virtualTrader/buy', true, 'post', { token, id })
+  },
+  virtualTraderMyBuyLogs: (data) => {
+    return request('/virtualTrader/buy/logs', true, 'post', data)
+  },
 }
