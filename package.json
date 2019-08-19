@@ -1,7 +1,7 @@
 {
   "name": "apifm-wxapi",
-  "version": "1.23.0",
-  "description": "增加：排队叫号模块",
+  "version": "1.23.1",
+  "description": "增加：地图上增加搜索功能",
   "main": "miniprogram_dist/index.js",
   "scripts": {
     "dev": "gulp dev --develop",
