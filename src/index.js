@@ -433,8 +433,8 @@ module.exports = {
   payBillDiscounts: () => {
     return request('/payBill/discounts', true, 'get')
   },
-  payBill: (data) => {
-    return request('/payBill/pay', true, 'post', data)
+  payBill: (token, money) => {
+    return request('/payBill/pay', true, 'post', { token, money })
   },
   vipLevel: () => {
     return request('/config/vipLevel', true, 'get')
@@ -626,5 +626,14 @@ module.exports = {
   },
   virtualTraderMyBuyLogs: (data) => {
     return request('/virtualTrader/buy/logs', true, 'post', data)
+  },
+  queuingTypes: (status = '') => {
+    return request('/queuing/types', true, 'get', { status })
+  },
+  queuingGet: (token, typeId, mobile = '') => {
+    return request('/queuing/get', true, 'post', { token, typeId, mobile })
+  },
+  queuingMy: (token, typeId = '', status = '') => {
+    return request('/queuing/my', true, 'get', { token, typeId, status })
   },
 }

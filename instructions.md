@@ -47,6 +47,9 @@
     - [文章详情](#文章详情)
   - [单页信息(关于我们/联系我们/...)](#单页信息关于我们联系我们)
   - [获取文章标签列表(用于展示类似“标签云”)](#获取文章标签列表用于展示类似标签云)
+  - [留言 & 反馈](#留言--反馈)
+    - [提交留言反馈](#提交留言反馈)
+    - [读取留言 & 评论列表](#读取留言--评论列表)
 - [商城模块](#商城模块)
   - [门店管理](#门店管理)
     - [读取所有的门店列表](#读取所有的门店列表)
@@ -141,6 +144,9 @@
     - [微信支付](#微信支付)
     - [支付宝支付(半自动)](#支付宝支付半自动)
     - [充值记录](#充值记录)
+  - [优惠买单](#优惠买单)
+    - [获取买单优惠](#获取买单优惠)
+    - [买单](#买单)
   - [资金流水](#资金流水)
   - [提现管理](#提现管理)
     - [申请提现](#申请提现)
@@ -155,9 +161,6 @@
     - [读取押金列表](#读取押金列表)
     - [押金详情](#押金详情)
     - [申请退回押金](#申请退回押金)
-- [优惠买单](#优惠买单)
-  - [获取买单优惠信息](#获取买单优惠信息)
-  - [买单接口](#买单接口)
 - [微信小程序](#微信小程序)
   - [无限获取二维码](#无限获取二维码)
 - [知识付费【虚拟交易】](#知识付费虚拟交易)
@@ -169,9 +172,6 @@
   - [上传本地文件](#上传本地文件)
   - [下载远程文件](#下载远程文件)
   - [获取文件列表](#获取文件列表)
-- [留言 & 反馈](#留言--反馈)
-  - [提交留言反馈](#提交留言反馈)
-  - [读取留言 & 评论列表](#读取留言--评论列表)
 - [活动 & 工具](#活动--工具)
   - [分布式系统唯一ID](#分布式系统唯一id)
   - [手机号段服务](#手机号段服务)
@@ -187,6 +187,10 @@
   - [地图工具](#地图工具)
     - [计算2个坐标之间的距离](#计算2个坐标之间的距离)
     - [将坐标地址转换为详细地址](#将坐标地址转换为详细地址)
+  - [排队叫号](#排队叫号)
+    - [获取所有的队列](#获取所有的队列)
+    - [取号](#取号)
+    - [我的取号情况](#我的取号情况)
 
 <!-- /TOC -->
 
@@ -372,6 +376,20 @@ WXAPI.register_username(Object object)
 ## 获取文章标签列表(用于展示类似“标签云”)
 
 > WXAPI.cmsTags()
+
+## 留言 & 反馈
+
+### 提交留言反馈
+
+```js
+WXAPI.addComment(Object object)
+```
+
+### 读取留言 & 评论列表
+
+```js
+WXAPI.commentList(Object object)
+```
 
 # 商城模块
 
@@ -1920,7 +1938,44 @@ WXAPI.pingtuanMyJoined(Object object)
 
 ### 微信支付
 
-> WXAPI.wxpay(Object object)
+```js
+WXAPI.wxpay(Object object)
+```
+
+> 调用该方法后，可获得用于发起微信支付的所有数据，请将返回值根据小程序的微信支付文档唤起支付功能即可，参考代码如下：
+
+```js
+WXAPI.wxpay({
+  token: '登录token',
+  money: 100,
+  payName: '支付测试',
+  nextAction: '{"type": 0, "id": 1}'
+}).then(function (res) {
+  if (res.code == 0) {
+    // 小程序代码发起支付
+    wx.requestPayment({
+      timeStamp: res.data.timeStamp,
+      nonceStr: res.data.nonceStr,
+      package: 'prepay_id=' + res.data.prepayId,
+      signType: 'MD5',
+      paySign: res.data.sign,
+      fail: function (aaa) {
+        wx.showToast({
+          title: '支付失败:' + aaa
+        })
+      },
+      success: function () {
+        // 提示支付成功
+        wx.showToast({
+          title: '支付成功'
+        })
+      }
+    })
+  }
+})
+```
+
+> 具体参数请查阅接口文档说明，尤其要注意 **nextAction** 参数的使用
 
 ### 支付宝支付(半自动)
 
@@ -1929,6 +1984,26 @@ WXAPI.pingtuanMyJoined(Object object)
 ### 充值记录
 
 > WXAPI.payLogs(Object object)
+
+## 优惠买单
+
+到店消费后，使用该功能完成现场消费；询问服务员消费金额后，用户自主输入消费金额后完成在线消费；系统自动按照后台设置的优惠买单规则进行满减
+
+### 获取买单优惠
+
+```js
+WXAPI.payBillDiscounts()
+```
+
+> 读取后台设置的满减设置列表
+
+### 买单
+
+```js
+WXAPI.payBill(token, money)
+```
+
+> money 参数请传实际的消费金额，系统自动会根据后台设置的满减规则计算实际需要支付的金额的
 
 ## 资金流水
 
@@ -1967,16 +2042,6 @@ WXAPI.pingtuanMyJoined(Object object)
 ### 申请退回押金
 > WXAPI.depositBackApply(token, id)
 
-# 优惠买单
-
-## 获取买单优惠信息
-
-> WXAPI.payBillDiscounts()
-
-## 买单接口
-
-> WXAPI.payBill(Object object)
-
 # 微信小程序
 
 ## 无限获取二维码
@@ -2014,16 +2079,6 @@ WXAPI.pingtuanMyJoined(Object object)
 ## 获取文件列表
 
 > WXAPI.uploadFileList(path)
-
-# 留言 & 反馈
-
-## 提交留言反馈
-
-> WXAPI.addComment(Object object)
-
-## 读取留言 & 评论列表
-
-> WXAPI.commentList(Object object)
 
 # 活动 & 工具
 
@@ -2089,3 +2144,41 @@ WXAPI.mapDistance(lat1, lng1, lat2, lng2)
 ```
 WXAPI.mapQQAddress(location, coord_type)
 ```
+
+## 排队叫号
+
+### 获取所有的队列
+
+```js
+WXAPI.queuingTypes(status)
+```
+
+> 获取所有的叫号队列
+> 
+> status 参数代表（0 正常 1 关闭 2 名额已满），不传该参数则获取所有的队列
+
+*比如餐饮里面的: 2人桌、4人桌、大圆桌；这3个队列是独立叫号的，用户根据自己的实际情况到对应的队列里面去取号排队；*
+
+*还比如银行办事大厅的队列：个人业务、对公业务、现金业务；这3个队列也是独立叫号的；*
+
+### 取号
+
+```js
+WXAPI.queuingGet(token, typeId, mobile)
+```
+
+> 用户需要登录后才能取号，所以请提供正确的 token
+> 
+> typeId 为你要取号的队列的id，请根据上面的方法获取
+> 
+> mobile 为取号手机号码，非必填，后续你可以向这个手机号码推送队列进度情况及排队提醒
+
+### 我的取号情况
+
+```js
+WXAPI.queuingMy(token, typeId, status)
+```
+
+> typeId 为你要取号的队列的id，如果不传则获取所有队列的取号信息
+> 
+> status 代表（0 排队中 1 受理中 2 已处理 3 已过号）不传该参数则读取所有的取号记录
