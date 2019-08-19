@@ -1,7 +1,7 @@
 {
   "name": "apifm-wxapi",
-  "version": "1.23.2",
-  "description": "增加：地图上增加搜索功能",
+  "version": "1.24.0",
+  "description": "增加：手机号码注册、登录、找回密码、绑定手机号码",
   "main": "miniprogram_dist/index.js",
   "scripts": {
     "dev": "gulp dev --develop",

@@ -33,13 +33,17 @@
   - [用户注册](#用户注册)
     - [小程序简单注册](#小程序简单注册)
     - [小程序详细注册](#小程序详细注册)
-    - [使用用户名进行注册](#使用用户名进行注册)
+    - [用户名注册](#用户名注册)
+    - [手机号注册](#手机号注册)
   - [用户登录](#用户登录)
     - [小程序登录](#小程序登录)
     - [用户名登录](#用户名登录)
+    - [手机号码登录](#手机号码登录)
   - [检测登录 token 是否有效](#检测登录-token-是否有效)
+  - [重置登录密码](#重置登录密码)
 - [用户信息](#用户信息)
-  - [绑定手机号码](#绑定手机号码)
+  - [绑定手机号码[小程序]](#绑定手机号码小程序)
+  - [绑定手机号码[短信验证码认证]](#绑定手机号码短信验证码认证)
   - [获取用户信息](#获取用户信息)
   - [修改用户资料](#修改用户资料)
 - [CMS模块](#cms模块)
@@ -319,40 +323,96 @@ WXAPI.smsValidateCodeCheck(mobile, code)
 ### 小程序简单注册
 
 > 只要提供 code 即可完成注册，但是无法读取昵称、头像等敏感数据
-```
+```js
 WXAPI.register_simple(Object object)
 ```
 ### 小程序详细注册
 
 > 除了 code 外，该注册方法还需要提供 encryptedData 和 iv 参数，注册后将可以读取到用户的昵称和头像等敏感数据
-```
+```js
 WXAPI.register_complex(Object object)
 ```
-### 使用用户名进行注册
+
+### 用户名注册
 
 > 最简单的注册模式，只要提供用户名和密码即可完成注册
-```
+```js
 WXAPI.register_username(Object object)
 ```
+
+### 手机号注册
+
+```js
+WXAPI.register_mobile(Object object)
+```
+
+> 最常用的一种注册方式，输入手机号码，获取短信验证码，回填校验通过后即可完成注册
+> 
+> 具体参数说明请查阅接口文档说明
 
 ## 用户登录
 
 ### 小程序登录
 
-> WXAPI.login_wx(code)
+```js
+WXAPI.login_wx(code)
+```
+
 ### 用户名登录
 
-> WXAPI.login_username(Object object)
+```js
+WXAPI.login_username(Object object)
+```
+
+### 手机号码登录
+
+```js
+WXAPI.login_mobile(mobile, pwd, deviceId, deviceName)
+```
+
+> deviceId、deviceName 参数用来表示登录的设备信息比如手机序列号、手机型号，小程序调用该方法，可随便传参即可；
 
 ## 检测登录 token 是否有效
 
-> WXAPI.checkToken(token)
+```js
+WXAPI.checkToken(token)
+```
+
+## 重置登录密码
+
+```js
+WXAPI.resetPwd(mobile, pwd, code)
+```
+
+> 用于忘记密码找回，重置密码时候使用
+> 
+> 填写手机号码，系统下发短信验证码，回填正确的验证码后完成新密码的设置
 
 # 用户信息
 
-## 绑定手机号码
+## 绑定手机号码[小程序]
 
-> WXAPI.bindMobile(Object object)
+```js
+WXAPI.bindMobileWxa(token, encryptedData, iv, pwd)
+```
+
+> 结合小程序获取用户手机号码接口实现用户绑定手机号码
+> 
+> pwd 为可选参数，如果传了该参数，当前的登录密码将会被重置成传入的新密码
+> 
+> 小程序规定，只有通过认证的企业身份的小程序，才能使用获取手机号码接口
+
+*如果你没法使用小程序绑定手机号码接口，你可以使用下面的短信验证码认证方式绑定手机号码*
+
+## 绑定手机号码[短信验证码认证]
+
+```js
+WXAPI.bindMobileSms(token, mobile, code, pwd)
+```
+
+> 请结合本文档中的短信验证码安全认证相关方法实现该功能
+> 
+> pwd 为可选参数，如果传了该参数，当前的登录密码将会被重置成传入的新密码
 
 ## 获取用户信息
 

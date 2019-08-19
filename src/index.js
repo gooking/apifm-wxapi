@@ -170,6 +170,16 @@ module.exports = {
   login_username: (data) => {
     return request('/user/username/login', true, 'post', data)
   },
+  login_mobile: (mobile, pwd, deviceId = '', deviceName = '') => {
+    return request('/user/m/login', true, 'post', {
+      mobile, pwd, deviceId, deviceName
+    })
+  },
+  resetPwd: (mobile, pwd, code) => {
+    return request('/user/m/reset-pwd', true, 'post', {
+      mobile, pwd, code
+    })
+  },
   register_complex: (data) => {
     return request('/user/wxapp/register/complex', true, 'post', data)
   },
@@ -178,6 +188,9 @@ module.exports = {
   },
   register_username: (data) => {
     return request('/user/username/register', true, 'post', data)
+  },
+  register_mobile: (data) => {
+    return request('/user/m/register', true, 'post', data)
   },
   banners: (data) => {
     return request('/banner/list', true, 'get', data)
@@ -330,8 +343,15 @@ module.exports = {
       videoId
     })
   },
-  bindMobile: (data) => {
-    return request('/user/wxapp/bindMobile', true, 'post', data)
+  bindMobileWxa: (token, encryptedData, iv, pwd = '') => {
+    return request('/user/wxapp/bindMobile', true, 'post', {
+      token, encryptedData, iv, pwd
+    })
+  },
+  bindMobileSms: (token, mobile, code, pwd = '') => {
+    return request('/user/m/bind-mobile', true, 'post', {
+      token, mobile, code, pwd
+    })
   },
   userDetail: (token) => {
     return request('/user/detail', true, 'get', {
