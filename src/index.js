@@ -616,7 +616,7 @@ module.exports = {
     return request('/common/map/qq/address', false, 'get', { location, coord_type })
   },
   mapQQSearch: (data) => {
-    return request('/common/map/qq/address', false, 'post', data)
+    return request('/common/map/qq/search', false, 'post', data)
   },
   virtualTraderList: (data) => {
     return request('/virtualTrader/list', true, 'post', data)
