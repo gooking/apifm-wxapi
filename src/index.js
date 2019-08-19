@@ -358,6 +358,11 @@ module.exports = {
       token
     })
   },
+  userWxinfo: (token) => {
+    return request('/user/wxinfo', true, 'get', {
+      token
+    })
+  },
   userAmount: (token) => {
     return request('/user/amount', true, 'get', {
       token
@@ -658,5 +663,11 @@ module.exports = {
   },
   queuingMy: (token, typeId = '', status = '') => {
     return request('/queuing/my', true, 'get', { token, typeId, status })
+  },
+  idcardCheck: (token, name, idCardNo) => {
+    return request('/user/idcard', true, 'post', { token, name, idCardNo })
+  },
+  loginout: (token) => {
+    return request('/user/loginout', true, 'get', { token })
   },
 }

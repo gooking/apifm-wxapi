@@ -1,7 +1,7 @@
 {
   "name": "apifm-wxapi",
-  "version": "1.24.0",
-  "description": "增加：手机号码注册、登录、找回密码、绑定手机号码",
+  "version": "1.25.0",
+  "description": "增加：实名认证、退出登录、获取openid、修改用户资料",
   "main": "miniprogram_dist/index.js",
   "scripts": {
     "dev": "gulp dev --develop",

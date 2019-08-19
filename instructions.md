@@ -41,11 +41,14 @@
     - [手机号码登录](#手机号码登录)
   - [检测登录 token 是否有效](#检测登录-token-是否有效)
   - [重置登录密码](#重置登录密码)
+  - [退出登录](#退出登录)
 - [用户信息](#用户信息)
   - [绑定手机号码[小程序]](#绑定手机号码小程序)
   - [绑定手机号码[短信验证码认证]](#绑定手机号码短信验证码认证)
   - [获取用户信息](#获取用户信息)
+  - [获取用户id、openid、unionid](#获取用户idopenidunionid)
   - [修改用户资料](#修改用户资料)
+  - [实名认证](#实名认证)
 - [CMS模块](#cms模块)
   - [分类管理](#分类管理)
     - [获取所有分类](#获取所有分类)
@@ -388,6 +391,14 @@ WXAPI.resetPwd(mobile, pwd, code)
 > 
 > 填写手机号码，系统下发短信验证码，回填正确的验证码后完成新密码的设置
 
+## 退出登录
+
+```js
+WXAPI.loginout(token)
+```
+
+> 退出后，当前token将立刻失效
+
 # 用户信息
 
 ## 绑定手机号码[小程序]
@@ -416,11 +427,33 @@ WXAPI.bindMobileSms(token, mobile, code, pwd)
 
 ## 获取用户信息
 
-> WXAPI.userDetail(token)
+```js
+WXAPI.userDetail(token)
+```
+
+## 获取用户id、openid、unionid
+
+```js
+WXAPI.userWxinfo(token)
+```
+
+> 获取当前登录用户的用户id、openid、unionid
 
 ## 修改用户资料
 
-> WXAPI.modifyUserInfo(Object object)
+```js
+WXAPI.modifyUserInfo(Object object)
+```
+
+## 实名认证
+
+```js
+WXAPI.idcardCheck(token, name, idCardNo)
+```
+
+> 身份证实名认证方法，校验姓名和身份证号码是否匹配
+> 
+> name 为真实姓名；idCardNo 为身份证号码
 
 # CMS模块
 
@@ -2024,13 +2057,17 @@ WXAPI.fxCommisionLog(Object object)
 
 ## 获取资产信息（余额、可用积分）
 
-> WXAPI.userAmount(token)
+```js
+WXAPI.userAmount(token)
+```
 
 ## 在线支付(充值)
 
 ### 获取充值规则（满多少送多少）
 
-> WXAPI.rechargeSendRules()
+```js
+WXAPI.rechargeSendRules()
+```
 
 ### 微信支付
 
@@ -2075,11 +2112,15 @@ WXAPI.wxpay({
 
 ### 支付宝支付(半自动)
 
-> WXAPI.alipay(Object object)
+```js
+WXAPI.alipay(Object object)`
+```
 
 ### 充值记录
 
-> WXAPI.payLogs(Object object)
+```js
+WXAPI.payLogs(Object object)
+```
 
 ## 优惠买单
 
@@ -2103,7 +2144,9 @@ WXAPI.payBill(token, money)
 
 ## 资金流水
 
-> WXAPI.cashLogs(Object object)
+```js
+WXAPI.cashLogs(Object object)
+```
 
 ## 提现管理
 
