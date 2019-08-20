@@ -43,12 +43,19 @@
   - [重置登录密码](#重置登录密码)
   - [退出登录](#退出登录)
 - [用户信息](#用户信息)
-  - [绑定手机号码[小程序]](#绑定手机号码小程序)
-  - [绑定手机号码[短信验证码认证]](#绑定手机号码短信验证码认证)
+  - [绑定手机号码](#绑定手机号码)
+    - [小程序](#小程序)
+    - [短信验证码认证](#短信验证码认证)
   - [获取用户信息](#获取用户信息)
   - [获取用户id、openid、unionid](#获取用户idopenidunionid)
   - [修改用户资料](#修改用户资料)
   - [实名认证](#实名认证)
+  - [会员体系](#会员体系)
+    - [获取所有的会员等级](#获取所有的会员等级)
+    - [查看会员等级详情](#查看会员等级详情)
+    - [会员等级收费列表](#会员等级收费列表)
+    - [购买会员](#购买会员)
+    - [获取我的购买 / 续费记录](#获取我的购买--续费记录)
 - [CMS模块](#cms模块)
   - [分类管理](#分类管理)
     - [获取所有分类](#获取所有分类)
@@ -204,6 +211,10 @@
     - [读取好友列表](#读取好友列表)
     - [添加好友](#添加好友)
     - [查看好友详情](#查看好友详情)
+  - [站内信管理](#站内信管理)
+    - [站内消息列表](#站内消息列表)
+    - [设置为已读](#设置为已读)
+    - [删除站内信](#删除站内信)
 
 <!-- /TOC -->
 
@@ -406,7 +417,9 @@ WXAPI.loginout(token)
 
 # 用户信息
 
-## 绑定手机号码[小程序]
+## 绑定手机号码
+
+### 小程序
 
 ```js
 WXAPI.bindMobileWxa(token, encryptedData, iv, pwd)
@@ -420,7 +433,7 @@ WXAPI.bindMobileWxa(token, encryptedData, iv, pwd)
 
 *如果你没法使用小程序绑定手机号码接口，你可以使用下面的短信验证码认证方式绑定手机号码*
 
-## 绑定手机号码[短信验证码认证]
+### 短信验证码认证
 
 ```js
 WXAPI.bindMobileSms(token, mobile, code, pwd)
@@ -466,6 +479,56 @@ WXAPI.idcardCheck(token, name, idCardNo)
 > 
 > name 为真实姓名；idCardNo 为身份证号码
 
+## 会员体系
+
+### 获取所有的会员等级
+
+```js
+WXAPI.userLevelList(Object object)
+```
+
+> 读取后台设置的所有的会员等级；具体参数请查阅接口文档
+
+### 查看会员等级详情
+
+```js
+WXAPI.userLevelDetail(levelId)
+```
+
+> levelId 为会员等级的id
+
+### 会员等级收费列表
+
+```js
+WXAPI.userLevelPrices(levelId)
+```
+
+> levelId 为会员等级的id，该方法可获得指定的某一个会员等级（比如：钻石会员）的收费列表
+
+*比如：免费使用7天、30元一个月、70元买一个季度、200元买一年*
+
+用户根据自己的需要，使用下面的方法购买会员，购买后，当前用户立即现有对应的会员等级，直到有效期截止
+
+### 购买会员
+
+```js
+WXAPI.userLevelBuy(token, priceId, isAutoRenew, remark)
+```
+
+> priceId 为上面获取的收费列表的id
+> 
+> isAutoRenew = true / false ；用来标识会员到期后是否自动续费，开通自动续费后将会在到期日自动用可用余额完成续费
+> 
+> remark 为购买时候提交的备注信息
+
+### 获取我的购买 / 续费记录
+
+```js
+WXAPI.userLevelBuyLogs(Object object)
+```
+
+> 具体参数请查阅接口文档
+
 # CMS模块
 
 ## 分类管理
@@ -482,7 +545,9 @@ WXAPI.idcardCheck(token, name, idCardNo)
 
 ### 文章列表
 
-> WXAPI.cmsArticles(Object object)
+```js
+WXAPI.cmsArticles(Object object)
+```
 
 ### 文章详情
 
@@ -2379,3 +2444,25 @@ WXAPI.friendUserDetail(token, uid)
 > 查看 uid 指定用户编号的好友用户资料
 > 
 > 需要系统参数中开启 ALLOW_VIEW_FRIEND 参数才可查看
+
+## 站内信管理
+
+### 站内消息列表
+
+```js
+WXAPI.messageList(Object object)
+```
+
+> 具体参数请查阅接口文档
+
+### 设置为已读
+
+```js
+WXAPI.messageRead(token, id)
+```
+
+### 删除站内信
+
+```js
+WXAPI.messageDelete(token, id)
+```

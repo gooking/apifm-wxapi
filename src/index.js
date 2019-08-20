@@ -679,4 +679,33 @@ module.exports = {
   loginout: (token) => {
     return request('/user/loginout', true, 'get', { token })
   },
+  userLevelList: (data) => {
+    return request('/user/level/list', true, 'post', data)
+  },
+  userLevelDetail: (levelId) => {
+    return request('/user/level/info', true, 'get', { id: levelId })
+  },
+  userLevelPrices: (levelId) => {
+    return request('/user/level/prices', true, 'get', { levelId })
+  },
+  userLevelBuy: (token, priceId, isAutoRenew = false, remark = '') => {
+    return request('/user/level/buy', true, 'post', {
+      token,
+      userLevelPriceId: priceId,
+      isAutoRenew,
+      remark
+    })
+  },
+  userLevelBuyLogs: (data) => {
+    return request('/user/level/buyLogs', true, 'post', data)
+  },
+  messageList: (data) => {
+    return request('/user/message/list', true, 'post', data)
+  },
+  messageRead: (token, id) => {
+    return request('/user/message/read', true, 'post', { token, id })
+  },
+  messageDelete: (token, id) => {
+    return request('/user/message/del', true, 'post', { token, id })
+  },
 }
