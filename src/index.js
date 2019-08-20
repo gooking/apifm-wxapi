@@ -170,6 +170,11 @@ module.exports = {
   login_username: (data) => {
     return request('/user/username/login', true, 'post', data)
   },
+  bindUsername: (token, username, pwd = '') => {
+    return request('/user/username/bindUsername', true, 'post', {
+      token, username, pwd
+    })
+  },
   login_mobile: (mobile, pwd, deviceId = '', deviceName = '') => {
     return request('/user/m/login', true, 'post', {
       mobile, pwd, deviceId, deviceName
