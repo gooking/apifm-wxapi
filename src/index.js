@@ -713,4 +713,10 @@ module.exports = {
   messageDelete: (token, id) => {
     return request('/user/message/del', true, 'post', { token, id })
   },
+  bindOpenid: (token, code) => {
+    return request('/user/wxapp/bindOpenid', true, 'post', {
+      token, code,
+      type: 2
+    })
+  },
 }
