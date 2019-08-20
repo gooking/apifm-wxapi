@@ -1,7 +1,7 @@
 {
   "name": "apifm-wxapi",
-  "version": "1.25.0",
-  "description": "增加：实名认证、退出登录、获取openid、修改用户资料",
+  "version": "1.25.1",
+  "description": "增加：好友管理",
   "main": "miniprogram_dist/index.js",
   "scripts": {
     "dev": "gulp dev --develop",

@@ -199,6 +199,11 @@
     - [获取所有的队列](#获取所有的队列)
     - [取号](#取号)
     - [我的取号情况](#我的取号情况)
+- [社交通讯](#社交通讯)
+  - [好友管理](#好友管理)
+    - [读取好友列表](#读取好友列表)
+    - [添加好友](#添加好友)
+    - [查看好友详情](#查看好友详情)
 
 <!-- /TOC -->
 
@@ -430,6 +435,12 @@ WXAPI.bindMobileSms(token, mobile, code, pwd)
 ```js
 WXAPI.userDetail(token)
 ```
+
+> base 数据存放了用户的基础信息；
+> 
+> idcard 数据存放了用户的实名认证信息[如果用户有通过实名认证的话]
+> 
+> ext 数据存放了用户的扩展属性
 
 ## 获取用户id、openid、unionid
 
@@ -2336,3 +2347,35 @@ WXAPI.queuingMy(token, typeId, status)
 > typeId 为你要取号的队列的id，如果不传则获取所有队列的取号信息
 > 
 > status 代表（0 排队中 1 受理中 2 已处理 3 已过号）不传该参数则读取所有的取号记录
+
+# 社交通讯
+
+## 好友管理
+
+### 读取好友列表
+
+```js
+WXAPI.friendList(Object object)
+```
+
+> 拉取我的好友列表，分页展示
+> 
+> 具体参数请查阅接口文档
+
+### 添加好友
+
+```js
+WXAPI.addFriend(token, uid)
+```
+
+> 添加 uid 指定用户编号的用户为好友
+
+### 查看好友详情
+
+```js
+WXAPI.friendUserDetail(token, uid)
+```
+
+> 查看 uid 指定用户编号的好友用户资料
+> 
+> 需要系统参数中开启 ALLOW_VIEW_FRIEND 参数才可查看

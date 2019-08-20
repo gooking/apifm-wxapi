@@ -338,6 +338,15 @@ module.exports = {
       type
     })
   },
+  friendList: (data) => {
+    return request('/user/friend/list', true, 'post', data)
+  },
+  addFriend: (token, uid) => {
+    return request('/user/friend/add', true, 'post', { token, uid })
+  },
+  friendUserDetail: (token, uid) => {
+    return request('/user/friend/detail', true, 'get', { token, uid })
+  },
   videoDetail: (videoId) => {
     return request('/media/video/detail', true, 'get', {
       videoId
