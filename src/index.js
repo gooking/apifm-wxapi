@@ -719,4 +719,9 @@ module.exports = {
       type: 2
     })
   },
+  encryptedData: (code, encryptedData, iv) => {
+    return request('/user/wxapp/decode/encryptedData', true, 'post', {
+      code, encryptedData, iv
+    })
+  },
 }
