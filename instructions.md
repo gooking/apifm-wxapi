@@ -151,7 +151,7 @@
   - [签到记录](#签到记录)
   - [读取今日签到信息](#读取今日签到信息)
   - [使用积分券兑换积分](#使用积分券兑换积分)
-  - [小程序转发微信群赠送分享人积分](#小程序转发微信群赠送分享人积分)
+  - [转发微信群获得积分奖励](#转发微信群获得积分奖励)
   - [积分明细记录](#积分明细记录)
 - [模板消息](#模板消息)
   - [记录 formid/预支付 id 用以后期发送消息](#记录-formid预支付-id-用以后期发送消息)
@@ -2139,7 +2139,11 @@ WXAPI.scoreDeductionRules()
 
 ## 读取积分赠送规则
 
-> WXAPI.scoreRules(Object object)
+```js
+WXAPI.scoreRules(Object object)
+```
+
+> 具体参数请查阅接口文档，一般不传参数使用
 
 ## 签到
 
@@ -2156,9 +2160,24 @@ WXAPI.scoreDeductionRules()
 ## 使用积分券兑换积分
 
 > WXAPI.scoreExchange(number, token)
-## 小程序转发微信群赠送分享人积分
 
-> WXAPI.shareGroupGetScore(referrer, encryptedData, iv)
+## 转发微信群获得积分奖励
+
+```js
+WXAPI.shareGroupGetScore(referrer, encryptedData, iv)
+```
+
+**referrer**
+
+*分享人的用户id*
+
+**encryptedData**
+
+*小程序api:wx.getShareInfo 获得*
+
+**iv**
+
+*小程序api:wx.getShareInfo 获得*
 
 ## 积分明细记录
 
