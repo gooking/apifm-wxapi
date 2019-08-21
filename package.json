@@ -1,7 +1,7 @@
 {
   "name": "apifm-wxapi",
-  "version": "1.25.2",
-  "description": "增加：站内信",
+  "version": "1.26.0",
+  "description": "增加：收货地址管理",
   "main": "miniprogram_dist/index.js",
   "scripts": {
     "dev": "gulp dev --develop",

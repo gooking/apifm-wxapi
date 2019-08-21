@@ -58,6 +58,13 @@
     - [会员等级收费列表](#会员等级收费列表)
     - [购买会员](#购买会员)
     - [获取我的购买 / 续费记录](#获取我的购买--续费记录)
+  - [收货地址管理](#收货地址管理)
+    - [获取所有的收货地址](#获取所有的收货地址)
+    - [添加收货地址](#添加收货地址)
+    - [更新收货地址](#更新收货地址)
+    - [获取默认的地址](#获取默认的地址)
+    - [读取地址详细](#读取地址详细)
+    - [删除收货地址](#删除收货地址)
 - [CMS模块](#cms模块)
   - [分类管理](#分类管理)
     - [获取所有分类](#获取所有分类)
@@ -148,15 +155,6 @@
 - [模板消息](#模板消息)
   - [记录 formid/预支付 id 用以后期发送消息](#记录-formid预支付-id-用以后期发送消息)
   - [给用户发送模板消息](#给用户发送模板消息)
-- [收货地址管理](#收货地址管理)
-  - [获取收货地址列表](#获取收货地址列表)
-  - [添加收货地址](#添加收货地址)
-  - [更新收货地址](#更新收货地址)
-  - [获取默认地址](#获取默认地址)
-  - [读取地址详细信息](#读取地址详细信息)
-  - [获取默认地址v2.0](#获取默认地址v20)
-  - [读取地址详细信息v2.0](#读取地址详细信息v20)
-  - [删除](#删除)
 - [资金 / 财务 相关](#资金--财务-相关)
   - [获取资产信息（余额、可用积分）](#获取资产信息余额可用积分)
   - [在线支付(充值)](#在线支付充值)
@@ -551,6 +549,47 @@ WXAPI.userLevelBuyLogs(Object object)
 ```
 
 > 具体参数请查阅接口文档
+
+
+## 收货地址管理
+
+### 获取所有的收货地址
+
+```js
+WXAPI.queryAddress(token)
+```
+
+### 添加收货地址
+
+```js
+WXAPI.addAddress(Object object)
+```
+
+> 你也可以结合小程序自带的读取收货地址接口，实现快速添加收货地址功能
+
+### 更新收货地址
+
+```js
+WXAPI.updateAddress(Object object)
+```
+
+### 获取默认的地址
+
+```js
+WXAPI.defaultAddress(token)
+```
+
+### 读取地址详细
+
+```js
+WXAPI.addressDetail(token, id)
+```
+
+### 删除收货地址
+
+```js
+WXAPI.deleteAddress(token, id)
+```
 
 # CMS模块
 
@@ -2117,40 +2156,6 @@ WXAPI.fxCommisionLog(Object object)
 ## 给用户发送模板消息
 
 > WXAPI.sendTempleMsg(Object object)
-
-# 收货地址管理
-
-## 获取收货地址列表
-
-> WXAPI.queryAddress(token)
-
-## 添加收货地址
-
-> WXAPI.addAddress(Object object)
-
-## 更新收货地址
-
-> WXAPI.updateAddress(Object object)
-
-## 获取默认地址
-
-> WXAPI.defaultAddress(token)
-
-## 读取地址详细信息
-
-> WXAPI.addressDetail(id, token)
-
-## 获取默认地址v2.0
-
-> WXAPI.defaultAddress_v2(token)
-
-## 读取地址详细信息v2.0
-
-> WXAPI.addressDetail_v2(id, token)
-
-## 删除
-
-> WXAPI.deleteAddress(id, token)
 
 # 资金 / 财务 相关
 

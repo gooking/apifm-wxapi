@@ -291,7 +291,7 @@ module.exports = {
   updateAddress: (data) => {
     return request('/user/shipping-address/update', true, 'post', data)
   },
-  deleteAddress: (id, token) => {
+  deleteAddress: (token, id) => {
     return request('/user/shipping-address/delete', true, 'post', {
       id,
       token
@@ -303,12 +303,12 @@ module.exports = {
     })
   },
   defaultAddress: (token) => {
-    return request('/user/shipping-address/default', true, 'get', {
+    return request('/user/shipping-address/default/v2', true, 'get', {
       token
     })
   },
-  addressDetail: (id, token) => {
-    return request('/user/shipping-address/detail', true, 'get', {
+  addressDetail: (token, id) => {
+    return request('/user/shipping-address/detail/v2', true, 'get', {
       id,
       token
     })
