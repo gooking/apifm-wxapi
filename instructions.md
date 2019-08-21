@@ -147,12 +147,14 @@
 - [积分模块](#积分模块)
   - [读取订单积分抵扣规则](#读取订单积分抵扣规则)
   - [读取积分赠送规则](#读取积分赠送规则)
-  - [签到](#签到)
-  - [签到记录](#签到记录)
-  - [读取今日签到信息](#读取今日签到信息)
+  - [签到送积分](#签到送积分)
+    - [签到规则](#签到规则)
+    - [签到](#签到)
+    - [读取今日签到信息](#读取今日签到信息)
+    - [签到记录](#签到记录)
   - [使用积分券兑换积分](#使用积分券兑换积分)
   - [转发微信群获得积分奖励](#转发微信群获得积分奖励)
-  - [积分明细记录](#积分明细记录)
+  - [积分明细](#积分明细)
 - [模板消息](#模板消息)
   - [记录 formid/预支付 id 用以后期发送消息](#记录-formid预支付-id-用以后期发送消息)
   - [给用户发送模板消息](#给用户发送模板消息)
@@ -2145,17 +2147,41 @@ WXAPI.scoreRules(Object object)
 
 > 具体参数请查阅接口文档，一般不传参数使用
 
-## 签到
+## 签到送积分
 
-> WXAPI.scoreSign(token)
+### 签到规则
 
-## 签到记录
+```js
+WXAPI.scoreSignRules()
+```
 
-> WXAPI.scoreSignLogs(Object object)
+> 读取签到一次送多少积分；连续签到x天赠送y积分
 
-## 读取今日签到信息
+### 签到
 
-> WXAPI.scoreTodaySignedInfo(token)
+```js
+WXAPI.scoreSign(token)
+```
+
+### 读取今日签到信息
+
+```js
+WXAPI.scoreTodaySignedInfo(token)
+```
+
+> 判断今天有没有签到
+> 
+> 错误码返回 700 表示未签到；错误码返回 0 表示已经签到
+
+### 签到记录
+
+```js
+WXAPI.scoreSignLogs(Object object)
+```
+
+> 读取历史签到记录
+> 
+> 分页展示，具体参数详见接口文档说明
 
 ## 使用积分券兑换积分
 
@@ -2179,9 +2205,13 @@ WXAPI.shareGroupGetScore(referrer, encryptedData, iv)
 
 *小程序api:wx.getShareInfo 获得*
 
-## 积分明细记录
+## 积分明细
 
-> WXAPI.scoreLogs(Object object)
+```js
+WXAPI.scoreLogs(Object object)
+```
+
+> 详细记录你的每一次积分变动
 
 # 模板消息
 

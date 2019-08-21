@@ -73,6 +73,9 @@ module.exports = {
   scoreRules: (data) => {
     return request('/score/send/rule', true, 'post', data)
   },
+  scoreSignRules: () => {
+    return request('/score/sign/rules', true, 'get', {})
+  },
   scoreSign: (token) => {
     return request('/score/sign', true, 'post', {
       token
