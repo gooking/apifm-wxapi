@@ -724,4 +724,7 @@ module.exports = {
       code, encryptedData, iv
     })
   },
+  scoreDeductionRules: () => {
+    return request('/score/deduction/rules', true, 'get', {})
+  },
 }
