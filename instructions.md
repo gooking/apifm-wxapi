@@ -2185,7 +2185,11 @@ WXAPI.scoreSignLogs(Object object)
 
 ## 使用积分券兑换积分
 
-> WXAPI.scoreExchange(number, token)
+```js
+WXAPI.scoreExchange(token, number)
+```
+
+> 使用积分券的券号，兑换积分
 
 ## 转发微信群获得积分奖励
 

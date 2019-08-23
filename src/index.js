@@ -89,7 +89,7 @@ module.exports = {
       token
     })
   },
-  scoreExchange: (number, token) => {
+  scoreExchange: (token, number) => {
     return request('/score/exchange', true, 'post', {
       number,
       token

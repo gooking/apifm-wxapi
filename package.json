@@ -1,7 +1,7 @@
 {
   "name": "apifm-wxapi",
-  "version": "1.27.1",
-  "description": "增加：签到送积分功能",
+  "version": "1.27.2",
+  "description": "增加：使用积分券兑换积分",
   "main": "miniprogram_dist/index.js",
   "scripts": {
     "dev": "gulp dev --develop",
