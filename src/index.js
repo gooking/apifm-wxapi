@@ -275,6 +275,11 @@ module.exports = {
   sendCoupons: (data) => {
     return request('/discounts/send', true, 'post', data)
   },
+  exchangeCoupons: (token, number, pwd) => {
+    return request('/discounts/exchange', true, 'post', {
+      token, number, pwd
+    })
+  },
   noticeList: (data) => {
     return request('/notice/list', true, 'post', data)
   },

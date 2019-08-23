@@ -124,6 +124,7 @@
     - [领取优惠券](#领取优惠券)
     - [我的所有优惠券](#我的所有优惠券)
     - [赠送优惠券给他人](#赠送优惠券给他人)
+    - [兑换优惠券](#兑换优惠券)
   - [商品砍价](#商品砍价)
     - [获取商品砍价设置](#获取商品砍价设置)
     - [发起[创建]砍价，继而邀请好友来帮自己砍到底价](#发起创建砍价继而邀请好友来帮自己砍到底价)
@@ -1737,23 +1738,43 @@ WXAPI.virtualTraderMyBuyLogs(Object object)
 
 ### 获取系统所有优惠券列表
 
-> WXAPI.coupons(Object object)
+```js
+WXAPI.coupons(Object object)
+```
 
 ### 查看优惠券详情
 
-> WXAPI.couponDetail(id)
+```js
+WXAPI.couponDetail(id)
+```
 
 ### 领取优惠券
 
-> WXAPI.fetchCoupons(Object object)
+```js
+WXAPI.fetchCoupons(Object object)
+```
 
 ### 我的所有优惠券
 
-> WXAPI.myCoupons(Object object)
+```js
+WXAPI.myCoupons(Object object)
+```
 
 ### 赠送优惠券给他人
 
-> WXAPI.sendCoupons(Object object)
+```js
+WXAPI.sendCoupons(Object object)
+```
+
+### 兑换优惠券
+
+```js
+WXAPI.exchangeCoupons(token, number, pwd)
+```
+
+> 使用动态口令兑换优惠券，兑换后卡密失效，请妥善保管
+
+
 
 ## 商品砍价
 
