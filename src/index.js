@@ -735,4 +735,25 @@ module.exports = {
   scoreDeductionRules: () => {
     return request('/score/deduction/rules', true, 'get', {})
   },
+  voteItems: (data) => {
+    return request('/vote/items', true, 'post', data)
+  },
+  voteItemDetail: (id) => {
+    return request('/vote/info', true, 'get', { id })
+  },
+  vote: (token, voteId, items, remark) => {
+    return request('/vote/vote', true, 'post', {
+      token, voteId,
+      items: items.join(),
+      remark
+    })
+  },
+  myVote: (token, voteId) => {
+    return request('/vote/vote/info', true, 'get', {
+      token, voteId,
+    })
+  },
+  voteLogs: (data) => {
+    return request('/vote/vote/list', true, 'post', data)
+  },
 }

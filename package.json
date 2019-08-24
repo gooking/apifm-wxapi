@@ -1,7 +1,7 @@
 {
   "name": "apifm-wxapi",
-  "version": "1.27.3",
-  "description": "增加：卡密兑换优惠券功能支持",
+  "version": "1.28.0",
+  "description": "增加：投票功能",
   "main": "miniprogram_dist/index.js",
   "scripts": {
     "dev": "gulp dev --develop",
