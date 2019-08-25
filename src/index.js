@@ -152,8 +152,10 @@ module.exports = {
       token
     })
   },
-  addTempleMsgFormid: (data) => {
-    return request('/template-msg/wxa/formId', true, 'post', data)
+  addTempleMsgFormid: (token, type, formId) => {
+    return request('/template-msg/wxa/formId', true, 'post', {
+      token, type, formId
+    })
   },
   sendTempleMsg: (data) => {
     return request('/template-msg/put', true, 'post', data)

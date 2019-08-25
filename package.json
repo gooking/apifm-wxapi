@@ -1,7 +1,7 @@
 {
   "name": "apifm-wxapi",
-  "version": "1.28.0",
-  "description": "增加：投票功能",
+  "version": "1.28.1",
+  "description": "增加：模板消息",
   "main": "miniprogram_dist/index.js",
   "scripts": {
     "dev": "gulp dev --develop",
