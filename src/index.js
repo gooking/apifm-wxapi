@@ -758,4 +758,43 @@ module.exports = {
   voteLogs: (data) => {
     return request('/vote/vote/list', true, 'post', data)
   },
+  yuyueItems: (data) => {
+    return request('/yuyue/items', true, 'post', data)
+  },
+  yuyueItemDetail: (id) => {
+    return request('/yuyue/info', true, 'get', { id })
+  },
+  yuyueJoin: (data) => {
+    return request('/yuyue/join', true, 'post', data)
+  },
+  yuyueJoinPay: (token, joinId) => {
+    return request('/yuyue/pay', true, 'post', {
+      token, joinId
+    })
+  },
+  yuyueJoinUpdate: (token, joinId, extJsonStr) => {
+    return request('/yuyue/join/update', true, 'post', {
+      token, joinId, extJsonStr
+    })
+  },
+  yuyueMyJoinInfo: (token, joinId) => {
+    return request('/yuyue/join/info', true, 'post', {
+      token, joinId
+    })
+  },
+  yuyueMyJoinLogs: (data) => {
+    return request('/yuyue/join/list', true, 'post', data)
+  },
+  yuyueTeams: (data) => {
+    return request('/yuyue/info/teams', true, 'post', data)
+  },
+  yuyueTeamDetail: (teamId) => {
+    return request('/yuyue/info/team', true, 'get', { teamId })
+  },
+  yuyueTeamMembers: (data) => {
+    return request('/yuyue/info/team/members', true, 'post', data)
+  },
+  yuyueTeamDeleteMember: (token, joinId) => {
+    return request('/yuyue/info/team/members/del', true, 'post', data)
+  },
 }

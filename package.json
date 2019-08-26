@@ -1,7 +1,7 @@
 {
   "name": "apifm-wxapi",
-  "version": "1.28.1",
-  "description": "增加：模板消息",
+  "version": "1.29.0",
+  "description": "增加：预约报名模块",
   "main": "miniprogram_dist/index.js",
   "scripts": {
     "dev": "gulp dev --develop",
