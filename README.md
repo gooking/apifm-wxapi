@@ -6,6 +6,12 @@
 
 欢迎大家进群交流，文档持续更新中...
 
+# 平台支持
+
+* [微信小程序开发](https://github.com/gooking/apifm-wxapi)
+* [web/h5 网站开发](https://github.com/gooking/apifm-webapi)
+* [Flutter 开发](https://github.com/gooking/apifm-flutter)
+
 # 使用方法
 
 ## 安装
