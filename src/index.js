@@ -658,6 +658,12 @@ module.exports = {
   smsValidateCodeCheck: (mobile, code) => {
     return request('/verification/sms/check', true, 'post', { mobile, code })
   },
+  mailValidateCode: (mail) => {
+    return request('/verification/mail/get', true, 'get', { mail })
+  },
+  mailValidateCodeCheck: (mail, code) => {
+    return request('/verification/mail/check', true, 'post', { mail, code })
+  },
   mapDistance: (lat1, lng1, lat2, lng2) => {
     return request('/common/map/distance', false, 'get', { lat1, lng1, lat2, lng2 })
   },
@@ -796,5 +802,16 @@ module.exports = {
   },
   yuyueTeamDeleteMember: (token, joinId) => {
     return request('/yuyue/info/team/members/del', true, 'post', data)
+  },
+  register_email: (data) => {
+    return request('/user/email/register', true, 'post', data)
+  },
+  login_email: (data) => {
+    return request('/user/email/login', true, 'post', data)
+  },
+  bindEmail: (token, email, pwd = '') => {
+    return request('/user/email/bindUsername', true, 'post', {
+      token, email, pwd
+    })
   },
 }
