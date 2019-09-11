@@ -45,7 +45,9 @@
     - [邮箱登录](#邮箱登录)
     - [手机号码登录](#手机号码登录)
   - [检测登录 token 是否有效](#检测登录-token-是否有效)
-  - [重置登录密码](#重置登录密码)
+  - [重置密码](#重置密码)
+    - [用手机找回密码](#用手机找回密码)
+    - [用邮箱找回密码](#用邮箱找回密码)
   - [退出登录](#退出登录)
 - [用户信息](#用户信息)
   - [绑定手机号码](#绑定手机号码)
@@ -451,15 +453,27 @@ WXAPI.login_mobile(mobile, pwd, deviceId, deviceName)
 WXAPI.checkToken(token)
 ```
 
-## 重置登录密码
+## 重置密码
+
+### 用手机找回密码
 
 ```js
-WXAPI.resetPwd(mobile, pwd, code)
+WXAPI.resetPwdUseMobileCode(mobile, pwd, code)
 ```
 
-> 用于忘记密码找回，重置密码时候使用
-> 
-> 填写手机号码，系统下发短信验证码，回填正确的验证码后完成新密码的设置
+用于忘记密码找回，重置密码时候使用
+
+填写手机号码，系统下发短信验证码，回填正确的验证码后完成新密码的设置
+
+### 用邮箱找回密码
+
+```js
+WXAPI.resetPwdUseEmailCode(email, pwd, code)
+```
+
+用于忘记密码找回，重置密码时候使用
+
+填写邮箱地址，系统下发邮件验证码，回填正确的验证码后完成新密码的设置
 
 ## 退出登录
 
@@ -510,8 +524,10 @@ WXAPI.bindUsername(token, username, pwd)
 ## 设置邮箱地址
 
 ```js
-WXAPI.bindEmail(token, email, pwd)
+WXAPI.bindEmail(token, email, code, pwd)
 ```
+
+通过邮箱验证码校验后，绑定用户的邮箱地址
 
 ## 绑定小程序
 

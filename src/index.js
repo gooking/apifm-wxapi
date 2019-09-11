@@ -185,9 +185,14 @@ module.exports = {
       mobile, pwd, deviceId, deviceName
     })
   },
-  resetPwd: (mobile, pwd, code) => {
+  resetPwdUseMobileCode: (mobile, pwd, code) => {
     return request('/user/m/reset-pwd', true, 'post', {
       mobile, pwd, code
+    })
+  },
+  resetPwdUseEmailCode: (email, pwd, code) => {
+    return request('/user/email/reset-pwd', true, 'post', {
+      email, pwd, code
     })
   },
   register_complex: (data) => {
@@ -809,9 +814,9 @@ module.exports = {
   login_email: (data) => {
     return request('/user/email/login', true, 'post', data)
   },
-  bindEmail: (token, email, pwd = '') => {
+  bindEmail: (token, email, code, pwd = '') => {
     return request('/user/email/bindUsername', true, 'post', {
-      token, email, pwd
+      token, email, code, pwd
     })
   },
 }

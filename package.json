@@ -1,7 +1,7 @@
 {
   "name": "apifm-wxapi",
-  "version": "1.30.0",
-  "description": "增加：邮箱验证码、邮箱注册登录",
+  "version": "1.30.1",
+  "description": "修复邮箱地址账户类接口",
   "main": "miniprogram_dist/index.js",
   "scripts": {
     "dev": "gulp dev --develop",
