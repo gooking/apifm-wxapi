@@ -163,6 +163,12 @@ module.exports = {
   wxpay: (data) => {
     return request('/pay/wx/wxapp', true, 'post', data)
   },
+  wxpaySaobei: (data) => {
+    return request('/pay/lcsw/wxapp', true, 'post', data)
+  },
+  wxpayWepayez: (data) => {
+    return request('/pay/wepayez/wxapp', true, 'post', data)
+  },
   alipay: (data) => {
     return request('/pay/alipay/semiAutomatic/payurl', true, 'post', data)
   },
