@@ -1,7 +1,7 @@
 {
   "name": "apifm-wxapi",
-  "version": "1.31.0",
-  "description": "增加扫呗支付、wepayez境外支付",
+  "version": "2.0.0",
+  "description": "CMS的单页信息接口调整，现可获取单页信息 + 扩展属性",
   "main": "miniprogram_dist/index.js",
   "scripts": {
     "dev": "gulp dev --develop",

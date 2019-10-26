@@ -585,7 +585,7 @@ module.exports = {
     return request('/cms/news/useful', true, 'post', data)
   },
   cmsPage: (key) => {
-    return request('/cms/page/info', true, 'get', { key })
+    return request('/cms/page/info/v2', true, 'get', { key })
   },
   cmsTags: () => {
     return request('/cms/tags/list', true, 'get', {  })

@@ -694,7 +694,11 @@ WXAPI.cmsArticles(Object object)
 
 ## 单页信息(关于我们/联系我们/...)
 
-> WXAPI.cmsPage(key)
+```js
+WXAPI.cmsPage(key)
+```
+
+key 为后台发布的单页信息的编号
 
 ## 获取文章标签列表(用于展示类似“标签云”)
 
