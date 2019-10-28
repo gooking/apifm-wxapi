@@ -246,7 +246,7 @@ module.exports = {
     return request('/shop/goods/price/freight', true, 'get', data)
   },
   goodsRebate: (token, goodsId) => {
-    return request('/shop/goods/rebate', true, 'get', {
+    return request('/shop/goods/rebate/v2', true, 'get', {
       token, goodsId
     })
   },
@@ -824,5 +824,8 @@ module.exports = {
     return request('/user/email/bindUsername', true, 'post', {
       token, email, code, pwd
     })
+  },
+  siteStatistics: () => {
+    return request('/site/statistics', true, 'get')
   },
 }

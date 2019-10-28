@@ -1,7 +1,7 @@
 {
   "name": "apifm-wxapi",
-  "version": "2.0.0",
-  "description": "CMS的单页信息接口调整，现可获取单页信息 + 扩展属性",
+  "version": "2.1.0",
+  "description": "增加站点统计方法；升级优化商品读取会员折扣方法；",
   "main": "miniprogram_dist/index.js",
   "scripts": {
     "dev": "gulp dev --develop",
