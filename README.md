@@ -63,7 +63,7 @@ WXAPI 方法返回数据主要包含 3 个内容：
 
 # 相关资源
 
-[「5分钟使用教程」](https://www.jianshu.com/c/b44a52c3cb44)
+[「5分钟使用教程」](https://www.yuque.com/apifm/doc/mdldsd)
 [「Demo程序下载」](https://github.com/gooking/apifm-wxapi-demo)
 [「功能说明文档」](instructions.md)
 [「api接口文档」](https://api.it120.cc/doc.html)
