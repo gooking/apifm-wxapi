@@ -1,7 +1,7 @@
 {
   "name": "apifm-wxapi",
-  "version": "2.1.0",
-  "description": "增加站点统计方法；升级优化商品读取会员折扣方法；",
+  "version": "2.2.0",
+  "description": "增加cms文件收藏相关接口",
   "main": "miniprogram_dist/index.js",
   "scripts": {
     "dev": "gulp dev --develop",

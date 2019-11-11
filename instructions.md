@@ -82,6 +82,12 @@
   - [文章管理](#文章管理)
     - [文章列表](#文章列表)
     - [文章详情](#文章详情)
+    - [文章收藏](#文章收藏)
+      - [收藏](#收藏)
+      - [检测当前用户是否已收藏](#检测当前用户是否已收藏)
+      - [读取收藏列表数据](#读取收藏列表数据)
+      - [根据收藏记录的ID删除收藏](#根据收藏记录的id删除收藏)
+      - [根据文章的ID删除收藏](#根据文章的id删除收藏)
   - [单页信息(关于我们/联系我们/...)](#单页信息关于我们联系我们)
   - [获取文章标签列表(用于展示类似“标签云”)](#获取文章标签列表用于展示类似标签云)
   - [留言 & 反馈](#留言--反馈)
@@ -726,7 +732,41 @@ WXAPI.cmsArticles(Object object)
 
 ### 文章详情
 
-> WXAPI.cmsArticleDetail(id)
+```js
+WXAPI.cmsArticleDetail(id)
+```
+
+### 文章收藏
+
+#### 收藏
+
+```js
+WXAPI.cmsArticleFavPut(token, newsId)
+```
+
+#### 检测当前用户是否已收藏
+
+```js
+WXAPI.cmsArticleFavCheck(token, newsId)
+```
+
+#### 读取收藏列表数据
+
+```js
+WXAPI.cmsArticleFavList(Object object)
+```
+
+#### 根据收藏记录的ID删除收藏
+
+```js
+WXAPI.cmsArticleFavDeleteById(token, id)
+```
+
+#### 根据文章的ID删除收藏
+
+```js
+WXAPI.cmsArticleFavDeleteByNewsId(token, newsId)
+```
 
 ## 单页信息(关于我们/联系我们/...)
 

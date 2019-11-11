@@ -828,4 +828,19 @@ module.exports = {
   siteStatistics: () => {
     return request('/site/statistics', true, 'get')
   },
+  cmsArticleFavPut: (token, newsId) => {
+    return request('/cms/news/fav/add', true, 'post', { token, newsId })
+  },
+  cmsArticleFavCheck: (token, newsId) => {
+    return request('/cms/news/fav/check', true, 'get', { token, newsId })
+  },
+  cmsArticleFavList: (data) => {
+    return request('/cms/news/fav/list', true, 'post', data)
+  },
+  cmsArticleFavDeleteById: (token, id) => {
+    return request('/cms/news/fav/delete', true, 'post', { token, id })
+  },
+  cmsArticleFavDeleteByNewsId: (token, newsId) => {
+    return request('/cms/news/fav/delete', true, 'post', { token, newsId })
+  },
 }
