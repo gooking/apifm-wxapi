@@ -88,6 +88,9 @@
       - [读取收藏列表数据](#读取收藏列表数据)
       - [根据收藏记录的ID删除收藏](#根据收藏记录的id删除收藏)
       - [根据文章的ID删除收藏](#根据文章的id删除收藏)
+    - [点赞/踩一下](#点赞踩一下)
+      - [发表态度](#发表态度)
+      - [读取点赞记录](#读取点赞记录)
   - [单页信息(关于我们/联系我们/...)](#单页信息关于我们联系我们)
   - [获取文章标签列表(用于展示类似“标签云”)](#获取文章标签列表用于展示类似标签云)
   - [留言 & 反馈](#留言--反馈)
@@ -750,6 +753,10 @@ WXAPI.cmsArticleFavPut(token, newsId)
 WXAPI.cmsArticleFavCheck(token, newsId)
 ```
 
+根据返回码（code）判断是否已收藏：
+- 0 代表已收藏
+- -1 代表未收藏
+
 #### 读取收藏列表数据
 
 ```js
@@ -766,6 +773,26 @@ WXAPI.cmsArticleFavDeleteById(token, id)
 
 ```js
 WXAPI.cmsArticleFavDeleteByNewsId(token, newsId)
+```
+
+### 点赞/踩一下
+
+#### 发表态度
+
+```js
+WXAPI.cmsArticleUseless(Object object)
+```
+
+参数说明：
+- token 用户登录凭证，登录后才可以表态，防止作弊
+- id 文章id
+- isUseful 传入 true / false ，分别代表2种态度
+- isCheck 传入 true ，进行模拟点赞，并不会生效
+
+#### 读取点赞记录
+
+```js
+WXAPI.cmsArticleUsefulLogs(Object object)
 ```
 
 ## 单页信息(关于我们/联系我们/...)
