@@ -100,6 +100,8 @@
   - [门店管理](#门店管理)
     - [读取所有的门店列表](#读取所有的门店列表)
     - [门店详情](#门店详情)
+    - [门店申请入驻](#门店申请入驻)
+    - [获取我的门店列表](#获取我的门店列表)
   - [商品分类](#商品分类)
   - [商品管理](#商品管理)
     - [获取商品列表](#获取商品列表)
@@ -827,13 +829,9 @@ WXAPI.commentList(Object object)
 
 ### 读取所有的门店列表
 
-```
+```js
 WXAPI.fetchShops(Object object)
 ```
-
-> 参数详见接口文档
-> 
-> 支持根据当前用户所在地进行从近到远排序展示
 
 **接口返回示例：**
 
@@ -858,123 +856,6 @@ WXAPI.fetchShops(Object object)
       "status": 0,
       "statusStr": "正常",
       "userId": 2
-    },
-    {
-      "cityId": "210500000000",
-      "dateAdd": "2019-07-18 17:23:03",
-      "dateUpdate": "2019-07-18 17:45:11",
-      "districtId": "210504000000",
-      "id": 4962,
-      "latitude": 39.916527,
-      "linkPhone": "111",
-      "longitude": 116.397128,
-      "name": "111",
-      "numberGoodReputation": 0,
-      "numberOrder": 0,
-      "paixu": 0,
-      "provinceId": "210000000000",
-      "status": 0,
-      "statusStr": "正常",
-      "userId": 2
-    },
-    {
-      "cityId": "150500000000",
-      "dateAdd": "2019-07-18 15:15:56",
-      "districtId": "150522000000",
-      "expressType": "111",
-      "id": 4961,
-      "latitude": 39.916527,
-      "linkPhone": "111",
-      "longitude": 116.397128,
-      "name": "1111",
-      "number": "222",
-      "numberGoodReputation": 0,
-      "numberOrder": 0,
-      "paixu": 0,
-      "provinceId": "150000000000",
-      "status": 0,
-      "statusStr": "正常",
-      "type": "111",
-      "userId": 2
-    },
-    {
-      "activity": "dsf\nfdg\nfgd\n\nqs",
-      "address": "222",
-      "characteristic": "555safsjfklsdfdsg\ndf",
-      "cityId": "210400000000",
-      "dateAdd": "2018-01-09 00:00:00",
-      "dateUpdate": "2019-06-10 10:02:01",
-      "districtId": "210402000000",
-      "expressType": "dada",
-      "id": 664,
-      "introduce": "\n",
-      "latitude": 39.916527,
-      "linkPhone": "333",
-      "longitude": 116.397128,
-      "name": "111cc",
-      "number": "123456",
-      "numberGoodReputation": 0,
-      "numberOrder": 0,
-      "paixu": 0,
-      "pic": "",
-      "printerSn": "1212324",
-      "provinceId": "210000000000",
-      "status": 0,
-      "statusStr": "正常",
-      "type": "",
-      "userId": 2
-    },
-    {
-      "activity": "",
-      "address": "111",
-      "characteristic": "444",
-      "cityId": "110100000000",
-      "dateAdd": "2017-05-31 00:00:00",
-      "dateUpdate": "2019-03-05 12:27:33",
-      "districtId": "110108000000",
-      "expressType": "",
-      "id": 28,
-      "introduce": "333",
-      "latitude": 39.916527,
-      "linkPhone": "13500000000",
-      "longitude": 116.397128,
-      "name": "test",
-      "number": "",
-      "numberGoodReputation": 0,
-      "numberOrder": 0,
-      "paixu": 0,
-      "pic": "",
-      "provinceId": "110000000000",
-      "status": 0,
-      "statusStr": "正常",
-      "type": "",
-      "userId": 2
-    },
-    {
-      "activity": "",
-      "address": "杭州市拱墅区登云路和赵伍路交叉口",
-      "characteristic": "量贩式水果超市",
-      "cityId": "330100000000",
-      "dateAdd": "2017-03-20 20:27:36",
-      "dateUpdate": "2019-03-05 12:27:25",
-      "districtId": "330105000000",
-      "expressType": "",
-      "id": 1,
-      "introduce": "简单介绍一下吧",
-      "latitude": 30.307559,
-      "linkPhone": "1234",
-      "longitude": 120.130023,
-      "name": "鲜丰水果登云路店",
-      "number": "",
-      "numberGoodReputation": 0,
-      "numberOrder": 0,
-      "paixu": 0,
-      "pic": "https://cdn.it120.cc/apifactory/2017/03/20/0f4b625100de82467f3e193d1bf3577d.png",
-      "provinceId": "330000000000",
-      "status": 0,
-      "statusStr": "正常",
-      "type": "",
-      "userId": 2
     }
   ],
   "msg": "success"
@@ -987,9 +868,9 @@ WXAPI.fetchShops(Object object)
 WXAPI.shopSubdetail(id)
 ```
 
-> id 参数为门店列表返回数据中的 id 字段
->  
-> 该方法可以读取到门店后台设置的扩展属性信息
+id 参数为门店列表返回数据中的 id 字段
+
+该方法可以读取到门店后台设置的扩展属性信息
 
 **接口返回示例：**
 
@@ -1033,6 +914,22 @@ WXAPI.shopSubdetail(id)
   "msg": "success"
 }
 ```
+
+### 门店申请入驻
+
+```js
+WXAPI.shopSubApply(Object object)
+```
+
+具体参数请查阅接口文档说明
+
+### 获取我的门店列表
+
+```js
+WXAPI.fetchMyShops(token)
+```
+
+读取我申请入驻的所有门店的列表数据
 
 ## 商品分类
 

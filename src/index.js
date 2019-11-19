@@ -614,9 +614,15 @@ module.exports = {
   fetchShops: (data) => {
     return request('/shop/subshop/list', true, 'post', data)
   },
+  fetchMyShops: (token) => {
+    return request('/shop/subshop/my', true, 'get', { token })
+  },
   shopSubdetail: (id) => {
     return request('/shop/subshop/detail/v2', true, 'get', { id })
   },
+  shopSubApply: (data) => {
+    return request('/shop/subshop/apply', true, 'post', data)
+  },  
   addComment: (data) => {
     return request('/comment/add', true, 'post', data)
   },

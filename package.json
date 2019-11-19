@@ -1,7 +1,7 @@
 {
   "name": "apifm-wxapi",
-  "version": "2.2.0",
-  "description": "增加cms文件收藏相关接口",
+  "version": "2.3.0",
+  "description": "增加门店申请入驻、读取我的门店列表2个接口",
   "main": "miniprogram_dist/index.js",
   "scripts": {
     "dev": "gulp dev --develop",
