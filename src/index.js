@@ -219,6 +219,9 @@ module.exports = {
   goodsCategory: () => {
     return request('/shop/goods/category/all', true, 'get')
   },
+  goodsCategoryDetail: (id) => {
+    return request('/shop/goods/category/info', true, 'get', { id })
+  },
   goods: (data) => {
     return request('/shop/goods/list', true, 'post', data)
   },
@@ -561,7 +564,7 @@ module.exports = {
     return request('/cms/category/list', true, 'get', {})
   },
   cmsCategoryDetail: (id) => {
-    return request('/cms/category/detail', true, 'get', { id })
+    return request('/cms/category/info', true, 'get', { id })
   },
   cmsArticles: (data) => {
     return request('/cms/news/list', true, 'post', data)

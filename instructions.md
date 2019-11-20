@@ -103,6 +103,8 @@
     - [门店申请入驻](#门店申请入驻)
     - [获取我的门店列表](#获取我的门店列表)
   - [商品分类](#商品分类)
+    - [获取所有的分类](#获取所有的分类)
+    - [获取分类详情](#获取分类详情-1)
   - [商品管理](#商品管理)
     - [获取商品列表](#获取商品列表)
     - [获取商品详情信息](#获取商品详情信息)
@@ -200,7 +202,7 @@
     - [发票详情](#发票详情)
   - [押金管理](#押金管理)
     - [支付押金](#支付押金)
-    - [读取押金列表](#读取押金列表)
+    - [获取押金记录](#获取押金记录)
     - [押金详情](#押金详情)
     - [申请退回押金](#申请退回押金)
 - [小程序工具类](#小程序工具类)
@@ -721,11 +723,18 @@ WXAPI.deleteAddress(token, id)
 
 ### 获取所有分类
 
-> WXAPI.cmsCategories()
-> 
+```js
+WXAPI.cmsCategories()
+```
+
 ### 获取分类详情
 
-> WXAPI.cmsCategoryDetail(id)
+```js
+WXAPI.cmsCategoryDetail(id)
+```
+
+- info 中返回分类的基础信息
+- extJson 中返回后台设置的扩展属性
 
 ## 文章管理
 
@@ -933,15 +942,17 @@ WXAPI.fetchMyShops(token)
 
 ## 商品分类
 
-```
+### 获取所有的分类
+
+```js
 WXAPI.goodsCategory()
 ```
 
-> 读取后台设置的所有分类数据，分类之间的上下级关系请使用 level 和 pid 进行管理
-> 
-> level = 1 表示 1级类目；2 表示 2级类目，以此类推
-> 
-> pid 代表该类目的上级类目ID（一级类目的 pid = 0）
+读取后台设置的所有分类数据，分类之间的上下级关系请使用 level 和 pid 进行管理
+
+level = 1 表示 1级类目；2 表示 2级类目，以此类推
+
+pid 代表该类目的上级类目ID（一级类目的 pid = 0）
 
 *分类的目录树，可以根据上述2个字段，采用 js 在本地实现*
 
@@ -964,137 +975,20 @@ WXAPI.goodsCategory()
       "pid": 0,
       "type": "",
       "userId": 951
-    },
-    {
-      "dateAdd": "2017-09-12 11:07:48",
-      "dateUpdate": "2019-04-10 11:25:21",
-      "icon": "https://cdn.it120.cc/apifactory/2019/04/09/5bfffd6ad0d4483870f024a3ed936528.png",
-      "id": 1873,
-      "isUse": true,
-      "key": "2",
-      "level": 1,
-      "name": "裤装",
-      "paixu": 0,
-      "pid": 0,
-      "type": "",
-      "userId": 951
-    },
-    {
-      "dateAdd": "2017-09-12 11:08:14",
-      "dateUpdate": "2019-04-10 11:26:00",
-      "icon": "https://cdn.it120.cc/apifactory/2019/04/09/8d32c254e2cb86d2d42c99b768d136b6.png",
-      "id": 1875,
-      "isUse": true,
-      "key": "4",
-      "level": 1,
-      "name": "特价区",
-      "paixu": 0,
-      "pid": 0,
-      "type": "",
-      "userId": 951
-    },
-    {
-      "dateAdd": "2017-09-13 09:37:53",
-      "dateUpdate": "2019-04-10 11:26:24",
-      "icon": "https://cdn.it120.cc/apifactory/2019/04/09/d800327091f216e2c83db8af7b6be306.png",
-      "id": 1906,
-      "isUse": true,
-      "key": "5",
-      "level": 1,
-      "name": "裙装",
-      "paixu": 0,
-      "pid": 0,
-      "type": "",
-      "userId": 951
-    },
-    {
-      "dateAdd": "2017-09-13 10:06:52",
-      "dateUpdate": "2019-04-10 11:26:48",
-      "icon": "https://cdn.it120.cc/apifactory/2019/04/09/cfee29650d6ae58a4bb1f84a3d899450.png",
-      "id": 1907,
-      "isUse": true,
-      "key": "6",
-      "level": 1,
-      "name": "套装",
-      "paixu": 0,
-      "pid": 0,
-      "type": "",
-      "userId": 951
-    },
-    {
-      "dateAdd": "2017-09-16 14:03:08",
-      "dateUpdate": "2019-04-10 11:27:28",
-      "icon": "https://cdn.it120.cc/apifactory/2019/04/09/6b3136cda73c99453ac93a1c5a9deebf.png",
-      "id": 2016,
-      "isUse": true,
-      "key": "7",
-      "level": 1,
-      "name": "外套",
-      "paixu": 0,
-      "pid": 0,
-      "type": "",
-      "userId": 951
-    },
-    {
-      "dateAdd": "2017-09-17 19:55:09",
-      "dateUpdate": "2019-04-10 11:27:49",
-      "icon": "https://cdn.it120.cc/apifactory/2019/04/09/9a7356187fce687ce568ba7381685299.png",
-      "id": 2054,
-      "isUse": true,
-      "key": "8",
-      "level": 1,
-      "name": "秒杀",
-      "paixu": 0,
-      "pid": 0,
-      "type": "",
-      "userId": 951
-    },
-    {
-      "dateAdd": "2017-09-25 09:07:38",
-      "dateUpdate": "2019-04-10 11:28:06",
-      "icon": "https://cdn.it120.cc/apifactory/2019/04/09/7773b4c204280ba194514594f7070ac9.png",
-      "id": 2245,
-      "isUse": true,
-      "key": "9",
-      "level": 1,
-      "name": "内裤",
-      "paixu": 0,
-      "pid": 0,
-      "type": "",
-      "userId": 951
-    },
-    {
-      "dateAdd": "2017-09-25 09:07:58",
-      "dateUpdate": "2019-04-10 11:28:22",
-      "icon": "https://cdn.it120.cc/apifactory/2019/04/09/60f41bf042d201b48a7115d22344320f.png",
-      "id": 2246,
-      "isUse": true,
-      "key": "10",
-      "level": 1,
-      "name": "袜子",
-      "paixu": 0,
-      "pid": 0,
-      "type": "",
-      "userId": 951
-    },
-    {
-      "dateAdd": "2017-10-18 11:13:56",
-      "dateUpdate": "2019-04-10 11:28:39",
-      "icon": "https://cdn.it120.cc/apifactory/2019/04/09/cdb16ac9c66bc211b82bd947452526f4.png",
-      "id": 2787,
-      "isUse": true,
-      "key": "11",
-      "level": 1,
-      "name": "鞋",
-      "paixu": 0,
-      "pid": 0,
-      "type": "",
-      "userId": 951
     }
   ],
   "msg": "success"
 }
 ```
+
+### 获取分类详情
+
+```js
+WXAPI.goodsCategoryDetail(id)
+```
+
+- info 中返回分类的基础信息
+- extJson 中返回后台设置的扩展属性
 
 ## 商品管理
 
@@ -2450,14 +2344,30 @@ WXAPI.cashLogs(Object object)
 > WXAPI.invoiceDetail(token, id)
 
 ## 押金管理
+
 ### 支付押金
-> WXAPI.payDeposit(Object object)
-### 读取押金列表
-> WXAPI.depositList(Object object)
+
+```js
+WXAPI.payDeposit(Object object)
+```
+
+### 获取押金记录
+
+```js
+WXAPI.depositList(Object object)
+```
+
 ### 押金详情
-> WXAPI.depositInfo(token, id)
+
+```js
+WXAPI.depositInfo(token, id)
+```
+
 ### 申请退回押金
-> WXAPI.depositBackApply(token, id)
+
+```js
+WXAPI.depositBackApply(token, id)
+```
 
 # 小程序工具类
 
