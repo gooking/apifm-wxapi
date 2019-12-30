@@ -1,7 +1,7 @@
 {
   "name": "apifm-wxapi",
-  "version": "2.4.0",
-  "description": "调整CMS分类详情接口；增加商品分类详情接口；",
+  "version": "2.5.0",
+  "description": "增加购物车相关接口",
   "main": "miniprogram_dist/index.js",
   "scripts": {
     "dev": "gulp dev --develop",

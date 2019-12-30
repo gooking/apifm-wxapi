@@ -119,6 +119,12 @@
     - [检测当前商品是否已被收藏](#检测当前商品是否已被收藏)
     - [获取收藏的商品](#获取收藏的商品)
     - [删除收藏的某个商品](#删除收藏的某个商品)
+  - [购物车](#购物车)
+    - [读取购物车数据](#读取购物车数据)
+    - [添加商品到购物车](#添加商品到购物车)
+    - [修改购物车商品数量](#修改购物车商品数量)
+    - [删除购物车中某条记录](#删除购物车中某条记录)
+    - [一键清空购物车](#一键清空购物车)
   - [订单管理](#订单管理)
     - [创建订单](#创建订单)
     - [关闭订单](#关闭订单)
@@ -186,6 +192,7 @@
     - [微信官网支付](#微信官网支付)
     - [扫呗在线支付](#扫呗在线支付)
     - [wepayez境外支付](#wepayez境外支付)
+    - [intelsalon云美集付](#intelsalon云美集付)
     - [支付宝支付(半自动)](#支付宝支付半自动)
     - [充值记录](#充值记录)
   - [优惠买单](#优惠买单)
@@ -338,10 +345,17 @@ WXAPI.siteStatistics()
 
 ### 读取系统参数
 
-> WXAPI.queryConfig(Object object)
+```js
+WXAPI.queryConfigValue(key)
+```
+
 ### 批量读取系统参数
 
-> WXAPI.queryConfigBatch(keys)
+```js
+WXAPI.queryConfigBatch(keys)
+```
+
+多个key用英文的逗号分隔开
 
 ## 获取友情链接/合作伙伴
 
@@ -1509,6 +1523,135 @@ WXAPI.goodsFavDelete(token, id, goodsId)
 }
 ```
 
+## 购物车
+
+### 读取购物车数据
+
+```js
+WXAPI.shippingCarInfo(token)
+```
+
+获取当前购物车的数据，数据结构如下：
+
+```json
+{
+  "code": 0,
+  "data": {
+    "number": 6,
+    "score": 0,
+    "price": 700,
+    "items": [
+      {
+        "key": "e65eb6ba3701c107cdd1eb43da31f6e2",
+        "goodsId": 122843,
+        "number": 1,
+        "price": 600,
+        "score": 0,
+        "pic": "https://cdn.it120.cc/apifactory/2019/03/07/133eb6294e3853ebe4eb8551359a26dc.png",
+        "name": "WIFI 58mm 热敏打印机工厂定制版",
+        "logisticsId": 386
+      },
+      {
+        "key": "2131619ef0f15d1991ad95e7bd158de8",
+        "goodsId": 235853,
+        "number": 2,
+        "sku": [
+          {
+            "optionId": 869,
+            "optionValueId": 1698,
+            "optionName": "花色",
+            "optionValueName": "粉色叶子"
+          },
+          {
+            "optionId": 871,
+            "optionValueId": 1589,
+            "optionName": "颜色",
+            "optionValueName": "黄色"
+          }
+        ],
+        "price": 50,
+        "score": 0,
+        "pic": "https://dcdn.it120.cc/2019/12/06/ebf49ac6-4521-4bcc-92fd-8bbbd4131167.jpg",
+        "name": "3分钟沙漏「儿童刷牙计时器」",
+        "logisticsId": 386
+      },
+      {
+        "key": "c1212386b114f05e62bf2441d03e4440",
+        "goodsId": 235853,
+        "number": 3,
+        "sku": [
+          {
+            "optionId": 869,
+            "optionValueId": 1699,
+            "optionName": "花色",
+            "optionValueName": "淡灰小船"
+          },
+          {
+            "optionId": 871,
+            "optionValueId": 1588,
+            "optionName": "颜色",
+            "optionValueName": "红色"
+          }
+        ],
+        "price": 50,
+        "score": 0,
+        "pic": "https://dcdn.it120.cc/2019/12/06/ebf49ac6-4521-4bcc-92fd-8bbbd4131167.jpg",
+        "name": "3分钟沙漏「儿童刷牙计时器」",
+        "logisticsId": 386
+      }
+    ]
+  },
+  "msg": "success"
+}
+```
+
+### 添加商品到购物车
+
+```js
+WXAPI.shippingCarInfoAddItem(token, goodsId, number, sku)
+```
+
+> goodsId 商品编号，数字类型
+
+> number 购买数量
+
+> sku 商品的规格尺寸信息，json数组，示例如下：
+
+```json
+[
+  {
+    "optionId": 869,
+    "optionValueId": 1699
+  },
+  {
+    "optionId": 871,
+    "optionValueId": 1588
+  }
+]
+```
+
+### 修改购物车商品数量
+
+```js
+WXAPI.shippingCarInfoModifyNumber(token, key, number)
+```
+
+修改购物车中key对应的那条记录的商品数量为number指定的数值
+
+### 删除购物车中某条记录
+
+```js
+WXAPI.shippingCarInfoRemoveItem(token, key)
+```
+
+删除购物车中key对应的那条记录
+
+### 一键清空购物车
+
+```js
+WXAPI.shippingCarInfoRemoveAll(token)
+```
+
 ## 订单管理
 
 ### 创建订单
@@ -2282,6 +2425,14 @@ WXAPI.wxpayWepayez(Object object)
 
 参数以及如何调用发起小程序支付方法同上
 
+### intelsalon云美集付
+
+```js
+WXAPI.wxpayIntelsalon(Object object)
+```
+
+参数以及如何调用发起小程序支付方法同上
+
 ### 支付宝支付(半自动)
 
 ```js
@@ -2777,9 +2928,13 @@ WXAPI.addFriend(token, uid)
 WXAPI.friendUserDetail(token, uid)
 ```
 
-> 查看 uid 指定用户编号的好友用户资料
-> 
-> 需要系统参数中开启 ALLOW_VIEW_FRIEND 参数才可查看
+**后台系统参数中的开关参数ALLOW_VIEW_FRIEND设置为打开状态才能调用该接口**
+
+token 为非必填参数，允许游客调用该接口
+
+uid 指定用户编号的好友用户资料
+
+游客可以查看用户分组为 **aicard** 的用户的信息，以便兼容AI名片应用，其他分组的用户只能登录用户才能查看
 
 ## 站内信管理
 
