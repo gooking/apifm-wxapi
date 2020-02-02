@@ -760,8 +760,8 @@ module.exports = {
       code, encryptedData, iv
     })
   },
-  scoreDeductionRules: () => {
-    return request('/score/deduction/rules', true, 'get', {})
+  scoreDeductionRules: (type = '') => {
+    return request('/score/deduction/rules', true, 'get', { type })
   },
   voteItems: (data) => {
     return request('/vote/items', true, 'post', data)
@@ -875,6 +875,14 @@ module.exports = {
   shippingCarInfoRemoveAll: (token) => {
     return request('/shopping-cart/empty', true, 'post', {
       token
+    })
+  },
+  growthLogs: (data) => {
+    return request('/growth/logs', true, 'post', data)
+  },
+  exchangeScoreToGrowth: (token, deductionScore) => {
+    return request('/growth/exchange', true, 'post', {
+      token, deductionScore
     })
   },
 }

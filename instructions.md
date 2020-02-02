@@ -175,8 +175,8 @@
     - [团队管理](#团队管理)
     - [佣金记录[返佣明细]](#佣金记录返佣明细)
 - [积分模块](#积分模块)
-  - [读取订单积分抵扣规则](#读取订单积分抵扣规则)
-  - [读取积分赠送规则](#读取积分赠送规则)
+  - [积分抵扣规则](#积分抵扣规则)
+  - [积分赠送规则](#积分赠送规则)
   - [签到送积分](#签到送积分)
     - [签到规则](#签到规则)
     - [签到](#签到)
@@ -185,6 +185,9 @@
   - [使用积分券兑换积分](#使用积分券兑换积分)
   - [转发微信群获得积分奖励](#转发微信群获得积分奖励)
   - [积分明细](#积分明细)
+  - [成长值](#成长值)
+    - [用积分兑换成长值](#用积分兑换成长值)
+    - [成长值变动明细](#成长值变动明细)
 - [资金 / 财务 相关](#资金--财务-相关)
   - [获取资产信息（余额、可用积分）](#获取资产信息余额可用积分)
   - [在线支付(充值)](#在线支付充值)
@@ -296,6 +299,7 @@ WXAPI.siteStatistics()
       "id": 7709,
       "isFixed": true
     },
+    "wxAppid": "wxa46b09d413fbcaff", // 当前后台配置的微信公众号的Appid
     "cmsArticle": {
       "comments": 0,  // 评论数
       "numbers": 10,  // 文章数量
@@ -2266,21 +2270,27 @@ WXAPI.fxCommisionLog(Object object)
 
 # 积分模块
 
-## 读取订单积分抵扣规则
+## 积分抵扣规则
 
 ```js
-WXAPI.scoreDeductionRules()
+WXAPI.scoreDeductionRules(type)
 ```
 
-> 通过该方法读取后台设置的积分抵扣规则
+积分可用于抵扣金额，用于商城购物消费；也可以用来兑换成长值；
 
-## 读取积分赠送规则
+**type参数：**
+
+传0，获取所有的积分抵扣金额的规则；
+
+传1，获取所有的积分抵扣成长值的规则；
+
+不传type参数，着获取所有的抵扣规则
+
+## 积分赠送规则
 
 ```js
 WXAPI.scoreRules(Object object)
 ```
-
-> 具体参数请查阅接口文档，一般不传参数使用
 
 ## 签到送积分
 
@@ -2350,7 +2360,25 @@ WXAPI.shareGroupGetScore(referrer, encryptedData, iv)
 WXAPI.scoreLogs(Object object)
 ```
 
-> 详细记录你的每一次积分变动
+详细记录你的每一次积分变动
+
+## 成长值
+
+### 用积分兑换成长值
+
+```js
+WXAPI.exchangeScoreToGrowth(token, deductionScore)
+```
+
+deductionScore 参数为你希望消耗多少积分用来兑换成长值，请根据积分兑换规则，自行计算你打算消耗的积分数量
+
+### 成长值变动明细
+
+```js
+WXAPI.growthLogs(Object object)
+```
+
+详细记录每一次成长值的变化情况
 
 # 资金 / 财务 相关
 
@@ -2359,6 +2387,19 @@ WXAPI.scoreLogs(Object object)
 ```js
 WXAPI.userAmount(token)
 ```
+
+**返回字段说明：**
+
+balance 可用余额
+
+freeze 冻结金额
+
+score 可用积分
+
+growth 当前成长值
+
+totleConsumed 累计消费金额
+
 
 ## 在线支付(充值)
 

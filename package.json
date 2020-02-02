@@ -1,7 +1,7 @@
 {
   "name": "apifm-wxapi",
-  "version": "2.5.0",
-  "description": "增加购物车相关接口",
+  "version": "2.6.0",
+  "description": "增加成长值相关接口功能",
   "main": "miniprogram_dist/index.js",
   "scripts": {
     "dev": "gulp dev --develop",
