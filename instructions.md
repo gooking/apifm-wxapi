@@ -198,6 +198,7 @@
     - [intelsalon云美集付](#intelsalon云美集付)
     - [支付宝支付(半自动)](#支付宝支付半自动)
     - [充值记录](#充值记录)
+    - [查询支付结果](#查询支付结果)
   - [优惠买单](#优惠买单)
     - [获取买单优惠](#获取买单优惠)
     - [买单](#买单)
@@ -1902,16 +1903,15 @@ WXAPI.exchangeCoupons(token, number, pwd)
 WXAPI.kanjiaSet(goodsId)
 ```
 
-> 读取某个商品的砍价设置信息：总份数、底价、每次能砍掉的（随机）金额以及开始结束时间
-> 
-> 具体可前往后台砍价设置界面了解设置栏目
+读取某个商品的砍价设置信息：总份数、底价、每次能砍掉的（随机）金额以及开始结束时间
+同时读取多个商品的设置，请用英文逗号分隔开就行
 
 **接口返回示例：**
 
 ```json
 {
   "code": 0,
-  "data": {
+  "data": [{
     "dateAdd": "2019-08-14 15:35:29",
     "dateEnd": "2019-08-31 15:35:24",
     "helpPriceMax": 56,
@@ -1923,7 +1923,7 @@ WXAPI.kanjiaSet(goodsId)
     "originalPrice": 888,
     "status": 0,
     "statusStr": "正常"
-  },
+  }],
   "msg": "success"
 }
 ```
@@ -2339,7 +2339,7 @@ WXAPI.scoreExchange(token, number)
 ## 转发微信群获得积分奖励
 
 ```js
-WXAPI.shareGroupGetScore(referrer, encryptedData, iv)
+WXAPI.shareGroupGetScore(code, referrer, encryptedData, iv)
 ```
 
 **referrer**
@@ -2485,6 +2485,14 @@ WXAPI.alipay(Object object)`
 ```js
 WXAPI.payLogs(Object object)
 ```
+
+### 查询支付结果
+
+```js
+WXAPI.payQuery(token, outTradeId)
+```
+
+查询 outTradeId 这笔在线支付的状态，有的时候，客户端会有这个需求，定期轮询检测在线支付状态
 
 ## 优惠买单
 

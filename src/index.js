@@ -98,15 +98,16 @@ module.exports = {
   scoreLogs: (data) => {
     return request('/score/logs', true, 'post', data)
   },
-  shareGroupGetScore: (referrer, encryptedData, iv) => {
+  shareGroupGetScore: (code, referrer, encryptedData, iv) => {
     return request('/score/share/wxa/group', true, 'post', {
+      code,
       referrer,
       encryptedData,
       iv
     })
   },
   kanjiaSet: (goodsId) => {
-    return request('/shop/goods/kanjia/set', true, 'get', { goodsId })
+    return request('/shop/goods/kanjia/set/v2', true, 'get', { goodsId })
   },
   kanjiaJoin: (token, kjid) => {
     return request('/shop/goods/kanjia/join', true, 'post', {
@@ -162,6 +163,12 @@ module.exports = {
   },
   wxpay: (data) => {
     return request('/pay/wx/wxapp', true, 'post', data)
+  },
+  ttpay: (data) => {
+    return request('/pay/tt/microapp', true, 'post', data)
+  },
+  payQuery: (token, outTradeId) => {
+    return request('/pay/query', true, 'get', { token, outTradeId })
   },
   wxpaySaobei: (data) => {
     return request('/pay/lcsw/wxapp', true, 'post', data)
@@ -642,7 +649,7 @@ module.exports = {
     return request('/barcode/info', true, 'get', { barcode })
   },
   luckyInfo: (id) => {
-    return request('/luckyInfo/info', true, 'get', { id })
+    return request('/luckyInfo/info/v2', true, 'get', { id })
   },
   luckyInfoJoin: (id, token) => {
     return request('/luckyInfo/join', true, 'post', { id, token })
