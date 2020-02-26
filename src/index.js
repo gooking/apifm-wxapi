@@ -95,6 +95,12 @@ module.exports = {
       token
     })
   },
+  scoreExchangeCash: (token, deductionScore) => {
+    return request('/score/exchange/cash', true, 'post', {
+      deductionScore,
+      token
+    })
+  },
   scoreLogs: (data) => {
     return request('/score/logs', true, 'post', data)
   },

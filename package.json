@@ -1,7 +1,7 @@
 {
   "name": "apifm-wxapi",
-  "version": "3.0.0",
-  "description": "读取商品砍价设置接口升级至V2",
+  "version": "3.1.0",
+  "description": "增加积分兑换余额方法 scoreExchangeCash",
   "main": "miniprogram_dist/index.js",
   "scripts": {
     "dev": "gulp dev --develop",
