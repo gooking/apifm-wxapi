@@ -898,4 +898,12 @@ module.exports = {
       token, deductionScore
     })
   },
+  wxaMpLiveRooms: () => {
+    return request('/wx/live/rooms', true, 'get')
+  },
+  wxaMpLiveRoomHisVedios: (roomId) => {
+    return request('/wx/live/his', true, 'get', {
+      roomId
+    })
+  },
 }

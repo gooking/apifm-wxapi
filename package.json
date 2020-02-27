@@ -1,7 +1,7 @@
 {
   "name": "apifm-wxapi",
-  "version": "3.1.0",
-  "description": "增加积分兑换余额方法 scoreExchangeCash",
+  "version": "3.2.0",
+  "description": "增加小程序直播带货接口",
   "main": "miniprogram_dist/index.js",
   "scripts": {
     "dev": "gulp dev --develop",
