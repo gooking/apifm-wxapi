@@ -191,6 +191,13 @@ module.exports = {
       type: 2
     })
   },
+  loginWxaMobile: (code, encryptedData, iv) => {
+    return request('/user/wxapp/login/mobile', true, 'post', {
+      code,
+      encryptedData,
+      iv
+    })
+  },
   login_username: (data) => {
     return request('/user/username/login', true, 'post', data)
   },
