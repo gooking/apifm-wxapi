@@ -1,7 +1,7 @@
 {
   "name": "apifm-wxapi",
   "version": "3.3.2",
-  "description": "订单详情方法，增加核销码参数",
+  "description": "订单详情方法，增加核销码参数", 
   "main": "miniprogram_dist/index.js",
   "scripts": {
     "dev": "gulp dev --develop",
