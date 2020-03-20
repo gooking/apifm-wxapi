@@ -1762,12 +1762,14 @@ WXAPI.orderList(Object object)
 ### 订单详情
 
 ```js
-WXAPI.orderDetail(token, id)
+WXAPI.orderDetail(token, id, hxNumber)
 ```
 
-> 读取订单详情数据：订单信息、购物清单、订单日志记录、物流跟踪信息、库存明细、扩展属性
-> 
-> 根据你自己的需要进行UI设计及合理展示
+读取订单详情数据：订单信息、购物清单、订单日志记录、物流跟踪信息、库存明细、扩展属性
+
+根据你自己的需要进行UI设计及合理展示
+
+订单id 和 核销码同时传的话，核销码优先
 
 ### 评价接口
 

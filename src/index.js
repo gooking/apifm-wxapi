@@ -432,10 +432,11 @@ module.exports = {
   orderList: (data) => {
     return request('/order/list', true, 'post', data)
   },
-  orderDetail: (token, id) => {
+  orderDetail: (token, id, hxNumber) => {
     return request('/order/detail', true, 'get', {
       id,
-      token
+      token,
+      hxNumber
     })
   },
   orderDelivery: (token, orderId) => {
