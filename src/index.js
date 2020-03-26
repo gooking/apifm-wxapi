@@ -159,6 +159,11 @@ module.exports = {
       token
     })
   },
+  checkReferrer: (referrer) => {
+    return request('/user/check-referrer', true, 'get', {
+      referrer
+    })
+  },
   addTempleMsgFormid: (token, type, formId) => {
     return request('/template-msg/wxa/formId', true, 'post', {
       token, type, formId
@@ -507,6 +512,9 @@ module.exports = {
   },
   cashLogs: (data) => {
     return request('/user/cashLog', true, 'post', data)
+  },
+  cashLogsV2: (data) => {
+    return request('/user/cashLog/v2', true, 'post', data)
   },
   payLogs: (data) => {
     return request('/user/payLogs', true, 'post', data)

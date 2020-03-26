@@ -36,6 +36,7 @@
     - [校验输入验证码是否正确](#校验输入验证码是否正确-2)
 - [登录 & 注册](#登录--注册)
   - [用户注册](#用户注册)
+    - [检测 referrer 邀请码是否正确](#检测-referrer-邀请码是否正确)
     - [小程序简单注册](#小程序简单注册)
     - [小程序详细注册](#小程序详细注册)
     - [用户名注册](#用户名注册)
@@ -455,6 +456,16 @@ WXAPI.mailValidateCodeCheck(mail, code)
 # 登录 & 注册
 
 ## 用户注册
+
+### 检测 referrer 邀请码是否正确
+
+```js
+WXAPI.checkReferrer(referrer)
+```
+
+注册的时候，让用户填写邀请码，通过该接口，检测邀请码是否填写正确
+- code == 0 ，邀请码正确
+- code == 700 ，邀请码错误
 
 ### 小程序简单注册
 
@@ -2539,7 +2550,7 @@ WXAPI.payBill(token, money)
 ## 资金流水
 
 ```js
-WXAPI.cashLogs(Object object)
+WXAPI.cashLogsV2(Object object)
 ```
 
 ## 提现管理
