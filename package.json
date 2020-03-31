@@ -1,7 +1,7 @@
 {
   "name": "apifm-wxapi",
-  "version": "3.4.0",
-  "description": "增加 checkReferrer、cashLogsV2 方法", 
+  "version": "3.5.0",
+  "description": "增加 fetchSubDomainByWxappAppid 方法", 
   "main": "miniprogram_dist/index.js",
   "scripts": {
     "dev": "gulp dev --develop",
