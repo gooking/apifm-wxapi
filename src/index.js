@@ -1,7 +1,7 @@
 /* eslint-disable */
 // 小程序开发api接口工具包，https://github.com/gooking/wxapi
 var API_BASE_URL = 'https://api.it120.cc'
-var subDomain = 'tz'
+var subDomain = '-'
 
 const request = (url, needSubDomain, method, data) => {
   const _url = API_BASE_URL + (needSubDomain ? '/' + subDomain : '') + url
@@ -665,6 +665,9 @@ module.exports = {
   modifyUserInfo: (data) => {
     return request('/user/modify', true, 'post', data)
   },
+  modifyUserPassword: (token, pwdOld, pwdNew) => {
+    return request('/user/modify/password', true, 'post', { token, pwdOld, pwdNew })
+  },
   uniqueId: (type = '') => {
     return request('/uniqueId/get', true, 'get', { type })
   },
@@ -866,6 +869,9 @@ module.exports = {
   },
   siteStatistics: () => {
     return request('/site/statistics', true, 'get')
+  },
+  goodsDynamic: (type) => {
+    return request('/site/goods/dynamic', true, 'get', { type })
   },
   fetchSubDomainByWxappAppid: (appid) => {
     return request('/subdomain/appid/wxapp', false, 'get', { appid })
