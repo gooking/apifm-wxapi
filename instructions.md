@@ -156,6 +156,8 @@
     - [查看优惠券详情](#查看优惠券详情)
     - [领取优惠券](#领取优惠券)
     - [我的所有优惠券](#我的所有优惠券)
+    - [拉取优惠券合成规则](#拉取优惠券合成规则)
+    - [优惠券合成](#优惠券合成)
     - [赠送优惠券给他人](#赠送优惠券给他人)
     - [兑换优惠券](#兑换优惠券)
   - [商品砍价](#商品砍价)
@@ -1918,6 +1920,18 @@ WXAPI.fetchCoupons(Object object)
 
 ```js
 WXAPI.myCoupons(Object object)
+```
+
+### 拉取优惠券合成规则
+
+```js
+WXAPI.mergeCouponsRules()
+```
+
+### 优惠券合成
+
+```js
+WXAPI.mergeCoupons(Object object)
 ```
 
 ### 赠送优惠券给他人

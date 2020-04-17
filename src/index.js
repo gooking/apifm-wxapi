@@ -310,6 +310,12 @@ module.exports = {
   myCoupons: (data) => {
     return request('/discounts/my', true, 'get', data)
   },
+  mergeCouponsRules: () => {
+    return request('/discounts/merge/list', true, 'get')
+  },
+  mergeCoupons: (data) => {
+    return request('/discounts/merge', true, 'post', data)
+  },
   fetchCoupons: (data) => {
     return request('/discounts/fetch', true, 'post', data)
   },

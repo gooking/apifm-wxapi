@@ -1,7 +1,7 @@
 {
   "name": "apifm-wxapi",
-  "version": "3.6.0",
-  "description": "增加 goodsDynamic 方法", 
+  "version": "3.7.0",
+  "description": "增加 mergeCouponsRules、mergeCoupons 方法", 
   "main": "miniprogram_dist/index.js",
   "scripts": {
     "dev": "gulp dev --develop",
