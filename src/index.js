@@ -284,6 +284,14 @@ module.exports = {
   goodsFavList: (data) => {
     return request('/shop/goods/fav/list', true, 'post', data)
   },
+  myBuyGoodsHis: (data) => {
+    return request('/shop/goods/his/list', true, 'post', data)
+  },
+  myBuyGoodsHisDelete: (token, id = '', goodsId = '') => {
+    return request('/shop/goods/his/delete', true, 'post', {
+      token, id, goodsId
+    })
+  },
   goodsFavPut: (token, goodsId) => {
     return request('/shop/goods/fav/add', true, 'post', {
       token, goodsId
