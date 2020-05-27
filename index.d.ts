@@ -4,8 +4,6 @@ type Request = (url: string, needSubDomain: boolean, method: 'OPTIONS' | 'GET' |
     [key: string]: any
 }>
 
-type RequestResult = ReturnType<Request>
-
 type Token = {
     token: string,
 }
@@ -30,7 +28,7 @@ type DateQuery = {
     dateAddEnd?: string,
 }
 
-declare interface WXAPI {
+declare interface WXAPI<RequestResult = ReturnType<Request>> {
     /**
      *
      * 初始化
@@ -45,6 +43,18 @@ declare interface WXAPI {
      * @param {string} subDomain 子域名
      */
     init2: (API_BASE_URL: string, subDomain: string) => void
+
+    /**
+     *
+     * 初始化
+     * @param {string} apiBaseUrl 主域名
+     * @param {string} subDomain 子域名
+     */
+    init3: (options: {
+        apiBaseUrl?: string,
+        subDomain: string,
+        request?: (...args: Parameters<Request>) => RequestResult,
+    }) => void
 
     /**
      *
