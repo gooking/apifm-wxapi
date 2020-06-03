@@ -1,7 +1,7 @@
 {
   "name": "apifm-wxapi",
   "version": "3.8.0",
-  "description": "增加 myBuyGoodsHis myBuyGoodsHisDelete 方法", 
+  "description": "增加 myBuyGoodsHis myBuyGoodsHisDelete 方法",
   "main": "miniprogram_dist/index.js",
   "scripts": {
     "dev": "gulp dev --develop",
@@ -16,6 +16,7 @@
     "lint": "eslint \"src/**/*.js\" --fix",
     "lint-tools": "eslint \"tools/**/*.js\" --rule \"import/no-extraneous-dependencies: false\" --fix"
   },
+  "types": "index.d.ts",
   "miniprogram": "miniprogram_dist",
   "jest": {
     "testEnvironment": "jsdom",
