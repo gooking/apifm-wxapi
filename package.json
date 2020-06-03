@@ -1,7 +1,7 @@
 {
   "name": "apifm-wxapi",
   "version": "3.9.0",
-  "description": "小程序绑定手机号码优化", 
+  "description": "小程序绑定手机号码优化",
   "main": "miniprogram_dist/index.js",
   "scripts": {
     "dev": "gulp dev --develop",
@@ -16,6 +16,7 @@
     "lint": "eslint \"src/**/*.js\" --fix",
     "lint-tools": "eslint \"tools/**/*.js\" --rule \"import/no-extraneous-dependencies: false\" --fix"
   },
+  "types": "index.d.ts",
   "miniprogram": "miniprogram_dist",
   "jest": {
     "testEnvironment": "jsdom",

@@ -3,7 +3,7 @@
 var API_BASE_URL = 'https://api.it120.cc'
 var subDomain = '-'
 
-const request = (url, needSubDomain, method, data) => {
+let request = (url, needSubDomain, method, data) => {
   const _url = API_BASE_URL + (needSubDomain ? '/' + subDomain : '') + url
   return new Promise((resolve, reject) => {
     wx.request({
@@ -56,6 +56,18 @@ module.exports = {
   },
   init: (b) => {
     subDomain = b
+  },
+  init3: ({
+    apiBaseUrl = API_BASE_URL,
+    subDomain: subD,
+    request: req,
+  }) => {
+    // 某些需求需要定制化 request，需要保证传入自定义 reuqest 与默认 request 参数一致
+    if (req) {
+      request = req
+    }
+    API_BASE_URL = apiBaseUrl
+    subDomain = subD
   },
   request,
   queryMobileLocation: (mobile = '') => {
@@ -674,7 +686,7 @@ module.exports = {
   },
   shopSubApply: (data) => {
     return request('/shop/subshop/apply', true, 'post', data)
-  },  
+  },
   addComment: (data) => {
     return request('/comment/add', true, 'post', data)
   },
