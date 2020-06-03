@@ -425,6 +425,11 @@ module.exports = {
       token, encryptedData, iv, pwd
     })
   },
+  bindMobileWxapp: (token, code, encryptedData, iv, pwd = '') => {
+    return request('/user/wxapp/bindMobile', true, 'post', {
+      token, code, encryptedData, iv, pwd
+    })
+  },
   bindMobileSms: (token, mobile, code, pwd = '') => {
     return request('/user/m/bind-mobile', true, 'post', {
       token, mobile, code, pwd
