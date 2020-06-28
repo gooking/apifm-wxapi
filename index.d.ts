@@ -28,7 +28,7 @@ type DateQuery = {
     dateAddEnd?: string,
 }
 
-declare interface WXAPI<RequestResult = ReturnType<Request>> {
+declare interface WXAPI<RequestResult extends ReturnType<Request>> {
     /**
      *
      * 初始化
