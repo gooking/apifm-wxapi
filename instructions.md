@@ -3,6 +3,8 @@
 - [站点信息](#站点信息)
     - [站点信息统计](#站点信息统计)
     - [通过微信小程序appid获取专属域名](#通过微信小程序appid获取专属域名)
+    - [订单统计](#订单统计)
+    - [获取每日销售额](#获取每日销售额)
 - [基础运维](#基础运维)
     - [省市区/行政区数据](#省市区行政区数据)
         - [读取所有省份](#读取所有省份)
@@ -54,7 +56,7 @@
         - [用手机找回密码](#用手机找回密码)
         - [用邮箱找回密码](#用邮箱找回密码)
     - [退出登录](#退出登录)
-- [用户信息](#用户信息)
+- [用户管理](#用户管理)
     - [绑定手机号码](#绑定手机号码)
         - [小程序](#小程序)
         - [短信验证码认证](#短信验证码认证)
@@ -139,7 +141,6 @@
         - [支付订单[使用余额]](#支付订单使用余额)
         - [确认收货](#确认收货)
         - [订单核销](#订单核销)
-        - [订单汇总统计](#订单汇总统计)
         - [获取所有订单](#获取所有订单)
         - [订单详情](#订单详情)
         - [评价接口](#评价接口)
@@ -174,6 +175,8 @@
     - [拼团功能](#拼团功能)
         - [获取某一个商品的拼团配置](#获取某一个商品的拼团配置)
         - [批量获取一组商品的拼团配置](#批量获取一组商品的拼团配置)
+        - [读取商品的默认团信息](#读取商品的默认团信息)
+        - [拉取商品多级拼团价格信息](#拉取商品多级拼团价格信息)
         - [开团[我发起一个团购，我是团长，让别人来参加]](#开团我发起一个团购我是团长让别人来参加)
         - [获取某个商品当前进行中的所有拼团](#获取某个商品当前进行中的所有拼团)
         - [获取某个团购的参与用户列表](#获取某个团购的参与用户列表)
@@ -183,6 +186,8 @@
         - [申请进度查询](#申请进度查询)
         - [团队管理](#团队管理)
         - [佣金记录[返佣明细]](#佣金记录返佣明细)
+        - [分销商累计销售额排行榜](#分销商累计销售额排行榜)
+        - [分销商某天的销售额排行榜](#分销商某天的销售额排行榜)
 - [积分模块](#积分模块)
     - [积分抵扣规则](#积分抵扣规则)
     - [积分赠送规则](#积分赠送规则)
@@ -232,11 +237,6 @@
     - [模板消息](#模板消息)
         - [保存 formid/预支付Id](#保存-formid预支付id)
         - [给用户发送模板消息](#给用户发送模板消息)
-- [知识付费【虚拟交易】](#知识付费虚拟交易)
-    - [获取产品列表](#获取产品列表)
-    - [获取产品详情](#获取产品详情)
-    - [购买产品](#购买产品)
-    - [读取成交记录](#读取成交记录)
 - [活动 & 工具](#活动--工具)
     - [分布式系统唯一ID](#分布式系统唯一id)
     - [手机号段服务](#手机号段服务)
@@ -284,6 +284,14 @@
         - [站内消息列表](#站内消息列表)
         - [设置为已读](#设置为已读)
         - [删除站内信](#删除站内信)
+    - [用户关注](#用户关注)
+        - [判断是否关注某人](#判断是否关注某人)
+        - [关注某人](#关注某人)
+        - [取消关注某人](#取消关注某人)
+        - [读取用户详情](#读取用户详情)
+        - [我关注的用户列表](#我关注的用户列表)
+        - [我的粉丝列表](#我的粉丝列表)
+        - [关注统计](#关注统计)
 
 <!-- /TOC -->
 
@@ -327,6 +335,34 @@ WXAPI.siteStatistics()
 ```js
 WXAPI.fetchSubDomainByWxappAppid(appid)
 ```
+
+## 订单统计
+
+```js
+WXAPI.orderStatistics(token)
+```
+
+订单统计，用以显示订单统计或者是订单类型小红点，该方法将会返回一下几个数据：
+
+1. count_id_no_pay: 待支付订单数量
+2. count_id_no_transfer: 已支付等待商家发货订单数量
+3. count_id_no_confirm: 商家已发货，等待确认收货订单数量
+4. count_id_no_reputation: 交易成功，等待评价的订单数量
+5. count_id_success: 交易成功，且已评价的订单数量
+6. count_id_close: 关闭的订单数量
+
+## 获取每日销售额
+
+```js
+WXAPI.siteStatisticsSaleroom(Object object)
+```
+
+当前接口，必须在系统参数中开启 statistics_saleroom_open 开关类型的参数，才能正常使用
+
+需要如下参数:
+1. token 用户对登陆token
+2. dateBegin 开始日期，如：2020-06-29
+3. dateEnd 开始日期，如：2020-06-29
 
 # 基础运维
 
@@ -587,7 +623,7 @@ WXAPI.loginout(token)
 
 > 退出后，当前token将立刻失效
 
-# 用户信息
+# 用户管理
 
 ## 绑定手机号码
 
@@ -1787,22 +1823,6 @@ WXAPI.orderHX(hxNumber)
 > 
 > 核销后，订单即交易成功，转为待评价状态
 
-
-### 订单汇总统计
-
-```js
-WXAPI.orderStatistics(token)
-```
-
-> 订单统计，用以显示订单统计或者是订单类型小红点，该方法将会返回一下几个数据：
-
-1. count_id_no_pay: 待支付订单数量
-2. count_id_no_transfer: 已支付等待商家发货订单数量
-3. count_id_no_confirm: 商家已发货，等待确认收货订单数量
-4. count_id_no_reputation: 交易成功，等待评价的订单数量
-5. count_id_success: 交易成功，且已评价的订单数量
-6. count_id_close: 关闭的订单数量
-
 ### 获取所有订单
 
 ```js
@@ -1877,9 +1897,7 @@ WXAPI.orderRefunds(token, orderId)
 WXAPI.virtualTraderList(Object object)
 ```
 
-> 具体参数详见接口文档
-> 
-> 建议该功能结合 CMS 系统一起使用，这样可以实现更好的购买前的信息展示，给用户足够的参考继而考虑购买
+建议该功能结合 CMS 系统一起使用，这样可以实现更好的购买前的信息展示，给用户足够的参考继而考虑购买
 
 ### 商品详情
 
@@ -1887,11 +1905,11 @@ WXAPI.virtualTraderList(Object object)
 WXAPI.virtualTraderDetail(token, id)
 ```
 
-> 读取商品详情数据
-> 
-> 购买后，才会返回付费属性、付费详情说明
-> 
-> 所以你可以使用该功能来实现购后阅读、购后播放的应用
+读取商品详情数据
+
+购买后，才会返回付费属性、付费详情说明
+
+所以你可以使用该功能来实现购后阅读、购后播放的应用
 
 ### 购买商品
 
@@ -1899,9 +1917,9 @@ WXAPI.virtualTraderDetail(token, id)
 WXAPI.virtualTraderBuy(token, id)
 ```
 
-> 使用用户余额购买知识付费商品
-> 
-> 如何使用在线支付，请查看在线支付功能中 nextAction 的使用说明
+使用用户余额购买知识付费商品
+
+如何使用在线支付，请查看在线支付功能中 nextAction 的使用说明
 
 ### 我的购买记录
 
@@ -1909,9 +1927,7 @@ WXAPI.virtualTraderBuy(token, id)
 WXAPI.virtualTraderMyBuyLogs(Object object)
 ```
 
-> 具体参数详见接口文档
-> 
-> 我购买过的所有知识付费记录
+我购买过的所有知识付费记录
 
 # 根据视频编号读取视频详情
 
@@ -2253,6 +2269,22 @@ WXAPI.pingtuanSets(goodsIdArray)
 }
 ```
 
+### 读取商品的默认团信息
+
+```js
+WXAPI.goodsDefaultPingtuan(goodsId)
+```
+
+商品设置团购信息以后，系统会开一个默认团，用户可以去参与这个默认团
+
+### 拉取商品多级拼团价格信息
+
+```js
+WXAPI.pingtuanMultilevel(goodsId)
+```
+
+如果设置了多级拼团价格，通过该方法，可以拉取到所有到阶段、销量、价格信息
+
 ### 开团[我发起一个团购，我是团长，让别人来参加]
 
 ```js
@@ -2342,9 +2374,21 @@ WXAPI.fxMembers(Object object)
 WXAPI.fxCommisionLog(Object object)
 ```
 
-> 详细记录你的每一笔返佣佣金收录记录
-> 
-> 具体参数说明请查阅接口文档
+### 分销商累计销售额排行榜
+
+```js
+WXAPI.fxSaleroomRankTotal(page, pageSize)
+```
+
+系统参数中添加开关类型参数 statistics_saleroom_open 才有效
+
+### 分销商某天的销售额排行榜
+
+```js
+WXAPI.fxSaleroomRankDaily(page, pageSize, day)
+```
+
+系统参数中添加开关类型参数 statistics_saleroom_open 才有效
 
 # 积分模块
 
@@ -2713,24 +2757,6 @@ WXAPI.sendTempleMsg(Object object)
 
 本方法可以指定一个 formid/预支付Id ，也可以不传该参数，那么系统将自动从上面的方法存储的 formid/预支付Id 里面获取一个用来发送模板消息
 
-# 知识付费【虚拟交易】
-
-## 获取产品列表
-
-> WXAPI.virtualTraderList(Object object)
-
-## 获取产品详情
-
-> WXAPI.virtualTraderInfo(token, id)
-
-## 购买产品
-
-> WXAPI.virtualTraderBuy(token, id)
-> 
-## 读取成交记录
-
-> WXAPI.virtualTraderBuyLogs(Object object)
-
 # 活动 & 工具
 
 ## 分布式系统唯一ID
@@ -3093,4 +3119,57 @@ WXAPI.messageRead(token, id)
 
 ```js
 WXAPI.messageDelete(token, id)
+```
+
+## 用户关注
+
+### 判断是否关注某人
+
+```js
+WXAPI.userAttentioncheck(token, uid)
+```
+
+### 关注某人
+
+```js
+WXAPI.userAttentionAdd(token, uid)
+```
+
+### 取消关注某人
+
+```js
+WXAPI.userAttentionRemove(token, uid)
+```
+
+### 读取用户详情
+
+```js
+WXAPI.userAttentionDetail(token, uid)
+```
+
+### 我关注的用户列表
+
+```js
+WXAPI.userMyAttentionList(Object object)
+```
+
+### 我的粉丝列表
+
+```js
+WXAPI.userAttentionMeList(Object object)
+```
+
+### 关注统计
+
+```js
+WXAPI.userAttentionStatistics(token)
+```
+
+该接口返回关注和被关注的数据统计：
+
+```json
+{
+  myAttentionCount: 10,
+  attentionMeCount: 100
+}
 ```

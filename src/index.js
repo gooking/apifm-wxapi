@@ -327,6 +327,9 @@ module.exports = {
       id
     })
   },
+  couponStatistics: (token) => {
+    return request('/discounts/statistics', true, 'get', { token});
+  },
   myCoupons: (data) => {
     return request('/discounts/my', true, 'get', data)
   },
@@ -398,6 +401,16 @@ module.exports = {
       goodsId: goodsIdArray.join()
     })
   },
+  goodsDefaultPingtuan: (goodsId) => {
+    return request('/shop/goods/pingtuan/default', true, 'get', {
+      goodsId
+    });
+  },
+  pingtuanMultilevel: (goodsId) => {
+    return request('/shop/goods/pingtuanMultilevel', true, 'get', {
+      goodsId
+    });
+  },
   pingtuanOpen: (token, goodsId) => {
     return request('/shop/goods/pingtuan/open', true, 'post', {
       goodsId,
@@ -442,6 +455,11 @@ module.exports = {
       token, code, encryptedData, iv, pwd
     })
   },
+  bindMobileTta: (token, encryptedData, iv, pwd = '') => {
+    return request('/user/tt/microapp/bindMobile', true, 'post', {
+      token, encryptedData, iv, pwd
+    })
+  },
   bindMobileSms: (token, mobile, code, pwd = '') => {
     return request('/user/m/bind-mobile', true, 'post', {
       token, mobile, code, pwd
@@ -468,11 +486,12 @@ module.exports = {
   orderList: (data) => {
     return request('/order/list', true, 'post', data)
   },
-  orderDetail: (token, id, hxNumber = '') => {
+  orderDetail: (token, id, hxNumber = '', peisongOrderId = '') => {
     return request('/order/detail', true, 'get', {
       id,
       token,
-      hxNumber
+      hxNumber,
+      peisongOrderId
     })
   },
   orderDelivery: (token, orderId) => {
@@ -502,15 +521,20 @@ module.exports = {
       token
     })
   },
+  jdjlOrderPay: (token, _token, couponId = '') => {
+    return request('/jdjl/payOrder', true, 'post', {
+      _token,
+      token,
+      couponId
+    })
+  },
   orderHX: (hxNumber) => {
     return request('/order/hx', true, 'post', {
       hxNumber
     })
   },
-  orderStatistics: (token) => {
-    return request('/order/statistics', true, 'get', {
-      token
-    })
+  orderSet: () => {
+    return request('/order/set', true, 'get')
   },
   orderRefunds: (token, orderId) => {
     return request('/order/refund', true, 'get', {
@@ -568,11 +592,32 @@ module.exports = {
   fxApplyProgress: (token) => {
     return request('/saleDistribution/apply/progress', true, 'get', { token })
   },
+  fxApplyProgressV2: (token) => {
+    return request('/saleDistribution/apply/progress/v2', true, 'get', { token: token });
+  },
   fxMembers: (data) => {
     return request('/saleDistribution/members', true, 'post', data)
   },
   fxCommisionLog: (data) => {
     return request('/saleDistribution/commision/log', true, 'post', data)
+  },
+  fxCommisionFreezeAmount: (token) => {
+    return request('/saleDistribution/commission/freeze', true, 'get', { token })
+  },
+  fxSaleroomRankTotal: (page, pageSize) => {
+    return request('/saleDistribution/sale-room-rank/total', true, 'get', {
+      page, pageSize
+    })
+  },
+  goodsSellNumberStatistics: (page, pageSize, goodsId = '') => {
+    return request('/site/goods/statistics', true, 'get', {
+      page, pageSize, goodsId
+    })
+  },
+  fxSaleroomRankDaily: (page, pageSize, day) => {
+    return request('/saleDistribution/sale-room-rank/daily', true, 'get', {
+      page, pageSize, day
+    })
   },
   wxaQrcode: (data) => {
     return request('/qrcode/wxa/unlimit', true, 'post', data)
@@ -609,16 +654,18 @@ module.exports = {
   refundApply: (data) => {
     return request('/order/refundApply/apply', true, 'post', data)
   },
-  refundApplyDetail: (token, orderId) => {
+  refundApplyDetail: (token, orderId, orderGoodsId = '') => {
     return request('/order/refundApply/info', true, 'get', {
       token,
-      orderId
+      orderId,
+      orderGoodsId
     })
   },
-  refundApplyCancel: (token, orderId) => {
+  refundApplyCancel: (token, orderId, orderGoodsId = '') => {
     return request('/order/refundApply/cancel', true, 'post', {
       token,
-      orderId
+      orderId,
+      orderGoodsId
     })
   },
   cmsCategories: () => {
@@ -897,10 +944,7 @@ module.exports = {
     return request('/user/email/bindUsername', true, 'post', {
       token, email, code, pwd
     })
-  },
-  siteStatistics: () => {
-    return request('/site/statistics', true, 'get')
-  },
+  },  
   goodsDynamic: (type) => {
     return request('/site/goods/dynamic', true, 'get', { type })
   },
@@ -961,6 +1005,118 @@ module.exports = {
   wxaMpLiveRoomHisVedios: (roomId) => {
     return request('/wx/live/his', true, 'get', {
       roomId
+    })
+  },
+  peisongMembers: (data) => {
+    return request('/peisong/member/list', true, 'post', data)
+  },
+  peisongMemberInfo: (token) => {
+    return request('/peisong/member/info', true, 'get', {
+      token
+    })
+  },
+  peisongMemberChangeWorkStatus: (token) => {
+    return request('/peisong/member/change-work-status', true, 'post', {
+      token
+    })
+  },
+  peisongOrdersGrabbing: (token) => {
+    return request('/peisong/order/grabbing', true, 'get', { token })
+  },
+  peisongOrders: (data) => {
+    return request('/peisong/order/list', true, 'post', data)
+  },
+  peisongOrderGrab: (data) => {
+    return request('/peisong/order/grab', true, 'post', data)
+  },
+  peisongOrderDetail: (token, id) => {
+    return request('/peisong/order/detail', true, 'get', { token, id })
+  },
+  peisongOrderEstimatedCompletionTime: (data) => {
+    return request('/peisong/order/estimatedCompletionTime', true, 'post', data)
+  },
+  peisongStartService: (data) => {
+    return request('/peisong/order/start-service', true, 'post', data)
+  },
+  peisongEndService: (data) => {
+    return request('/peisong/order/end-service', true, 'post', data)
+  },
+  peisongOrderAllocation: (token, id, uid) => {
+    return request('/peisong/order/allocation', true, 'post', {
+      token, id, uid
+    })
+  },
+  siteStatistics: () => {
+    return request('/site/statistics', true, 'get')
+  },
+  orderStatistics: (token) => {
+    return request('/order/statistics', true, 'get', {
+      token
+    })
+  },
+  siteStatisticsSaleroom: (data) => {
+    return request('/site/statistics/saleroom', true, 'get', data)
+  },
+  siteStatisticsSaleroomYear: (year = '') => {
+    return request('/site/statistics/saleroom/year', true, 'get', { year })
+  },
+  bonusLog: (data) => {
+    return request('/bonusLog/list', true, 'post', data)
+  },
+  mtjAsset: (token) => {
+    return request('/mtj/asset', true, 'get', { token })
+  },
+  mtjLogs: (data) => {
+    return request('/mtj/logs', true, 'post', data)
+  },
+  mtjStatistics: () => {
+    return request('/site/statistics/mjt', true, 'get')
+  },
+  register_tt: (data) => {
+    return request('/user/tt/microapp/register', true, 'post', data)
+  },
+  login_tt: (code) => {
+    return request('/user/tt/microapp/login', true, 'post', {
+      code
+    })
+  },
+  login_tt: (code) => {
+    return request('/user/tt/microapp/login', true, 'post', {
+      code
+    })
+  },
+  wxOpenAuthorization: (data) => {
+    return request('/user/wxsns/authorization', true, 'post', data)
+  },
+  userAttentioncheck: (token, uid) => {
+    return request('/user/attention/check', true, 'get', {
+      token, uid
+    })
+  },
+  userAttentionAdd: (token, uid) => {
+    return request('/user/attention/add', true, 'post', {
+      token, uid
+    })
+  },
+  userAttentionRemove: (token, uid) => {
+    return request('/user/attention/remove', true, 'post', {
+      token, uid
+    })
+  },
+  userAttentionMeList: (data) => {
+    return request('/user/attention/attention-me', true, 'post', data)
+  },
+  userMyAttentionList: (data) => {
+    return request('/user/attention/my-attention', true, 'post', data)
+  },
+  userAttentionDetail: (token, uid) => {
+    return request('/user/attention/detail', true, 'get', {
+      token, uid
+    })
+  },
+  userAttentionStatistics: (token) => {
+    return request('/user/attention/statistics', true, 'get', {
+      token
     })
   },
 }

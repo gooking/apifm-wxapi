@@ -1,7 +1,7 @@
 {
   "name": "apifm-wxapi",
-  "version": "3.9.0",
-  "description": "小程序绑定手机号码优化",
+  "version": "3.13.0",
+  "description": "新增用户关注类方法",
   "main": "miniprogram_dist/index.js",
   "scripts": {
     "dev": "gulp dev --develop",
