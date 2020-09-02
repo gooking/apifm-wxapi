@@ -734,6 +734,9 @@ module.exports = {
   shopSubApply: (data) => {
     return request('/shop/subshop/apply', true, 'post', data)
   },
+  pickPoints: (data) => {
+    return request('/shop/subshop/pickPoints', true, 'post', data)
+  },
   addComment: (data) => {
     return request('/comment/add', true, 'post', data)
   },
