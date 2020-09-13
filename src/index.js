@@ -29,25 +29,25 @@ let request = (url, needSubDomain, method, data) => {
 /**
  * 小程序的promise没有finally方法，自己扩展下
  */
-Promise.prototype.finally = function (callback) {
-  var Promise = this.constructor;
-  return this.then(
-    function (value) {
-      Promise.resolve(callback()).then(
-        function () {
-          return value;
-        }
-      );
-    },
-    function (reason) {
-      Promise.resolve(callback()).then(
-        function () {
-          throw reason;
-        }
-      );
-    }
-  );
-}
+// Promise.prototype.finally = function (callback) {
+//   var Promise = this.constructor;
+//   return this.then(
+//     function (value) {
+//       Promise.resolve(callback()).then(
+//         function () {
+//           return value;
+//         }
+//       );
+//     },
+//     function (reason) {
+//       Promise.resolve(callback()).then(
+//         function () {
+//           throw reason;
+//         }
+//       );
+//     }
+//   );
+// }
 
 module.exports = {
   init2: (a, b) => {
@@ -270,6 +270,11 @@ module.exports = {
   goodsLimitations: (goodsId, priceId = '') => {
     return request('/shop/goods/limitation', true, 'get', {
       goodsId, priceId
+    })
+  },
+  goodsAddition: (goodsId) => {
+    return request('/shop/goods/goodsAddition', true, 'get', {
+      goodsId
     })
   },
   goodsPrice: (goodsId, propertyChildIds) => {
@@ -974,9 +979,13 @@ module.exports = {
       token
     })
   },
-  shippingCarInfoAddItem: (token, goodsId, number, sku) => {
+  shippingCarInfoAddItem: (token, goodsId, number, sku, addition) => {
     return request('/shopping-cart/add', true, 'post', {
-      token, goodsId, number, sku:JSON.stringify(sku)
+      token,
+      goodsId,
+      number,
+      sku: sku ? JSON.stringify(sku) : '',
+      addition: addition ? JSON.stringify(addition) : ''
     })
   },
   shippingCarInfoModifyNumber: (token, key, number) => {

@@ -1,7 +1,7 @@
 {
   "name": "apifm-wxapi",
-  "version": "3.14.0",
-  "description": "新增取货点接口",
+  "version": "3.16.0",
+  "description": "新增可选配件相关方法",
   "main": "miniprogram_dist/index.js",
   "scripts": {
     "dev": "gulp dev --develop",

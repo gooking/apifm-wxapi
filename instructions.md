@@ -115,6 +115,7 @@
         - [获取商品列表](#获取商品列表)
         - [获取商品详情信息](#获取商品详情信息)
         - [获取商品的限购设置](#获取商品的限购设置)
+        - [读取商品可选配件列表](#读取商品可选配件列表)
         - [获取商品价格「一般用在选择不同规格尺寸后需要实时显示售价」](#获取商品价格一般用在选择不同规格尺寸后需要实时显示售价)
         - [获取商品的每日价格&每日库存「适用酒店预订、票务预订类」](#获取商品的每日价格每日库存适用酒店预订票务预订类)
         - [计算物流/快递模板费用计算方法](#计算物流快递模板费用计算方法)
@@ -1289,11 +1290,11 @@ WXAPI.goodsDetail(id)
 WXAPI.goodsLimitations(goodsId, priceId)
 ```
 
-> 如果商品（列表、详情）信息中 **limitation** 字段为 **true**，说明该商品开启了限购，只有设置中的会员等级用户才可以在约定时间内购买不超过指定数量
-> 
-> 该方法接收2个参数，**goodsId** 参数是必填的，代表商品id； **priceId** 参数非必填，只有在用户购买时候选择了指定的规格尺寸时候才需要传
-> 
-> 你可以根据当前登录用户的会员等级，在商品详情页面进行相应的交互展示
+如果商品（列表、详情）信息中 **limitation** 字段为 **true**，说明该商品开启了限购，只有设置中的会员等级用户才可以在约定时间内购买不超过指定数量
+
+该方法接收2个参数，**goodsId** 参数是必填的，代表商品id； **priceId** 参数非必填，只有在用户购买时候选择了指定的规格尺寸时候才需要传
+
+你可以根据当前登录用户的会员等级，在商品详情页面进行相应的交互展示
 
 **接口返回示例：**
 
@@ -1341,6 +1342,92 @@ WXAPI.goodsLimitations(goodsId, priceId)
   "msg": "success"
 }
 ```
+
+### 读取商品可选配件列表
+
+```js
+WXAPI.goodsAddition(goodsId)
+```
+
+返回数据示例：
+
+```json
+{
+  "code": 0,
+  "data": [
+    {
+      "id": 7,
+      "items": [
+        {
+          "id": 3,
+          "name": "不辣",
+          "pid": 7,
+          "price": 0
+        },
+        {
+          "id": 4,
+          "name": "微辣",
+          "pid": 7,
+          "price": 0
+        },
+        {
+          "id": 5,
+          "name": "多辣",
+          "pid": 7,
+          "price": 0
+        },
+        {
+          "id": 6,
+          "name": "特辣",
+          "pid": 7,
+          "price": 0
+        }
+      ],
+      "name": "口味",
+      "required": true,
+      "type": 0
+    },
+    {
+      "id": 9,
+      "items": [
+        {
+          "id": 7,
+          "name": "青菜",
+          "pid": 9,
+          "price": 3
+        },
+        {
+          "id": 8,
+          "name": "土豆",
+          "pid": 9,
+          "price": 3
+        },
+        {
+          "id": 9,
+          "name": "鸡蛋",
+          "pid": 9,
+          "price": 5
+        },
+        {
+          "id": 10,
+          "name": "大排",
+          "pid": 9,
+          "price": 12
+        }
+      ],
+      "name": "加料",
+      "required": false,
+      "type": 1
+    }
+  ],
+  "msg": "success"
+}
+```
+
+简单说明一下几个参数：
+- required 说明这个配件是否是必选项
+- type 0 代表是单选的；1 代表是可以多选的
+- price 代表选择了该配件以后，需要增加多少费用
 
 ### 获取商品价格「一般用在选择不同规格尺寸后需要实时显示售价」
 
@@ -1722,27 +1809,40 @@ WXAPI.shippingCarInfo(token)
 ### 添加商品到购物车
 
 ```js
-WXAPI.shippingCarInfoAddItem(token, goodsId, number, sku)
+WXAPI.shippingCarInfoAddItem(token, goodsId, number, sku, addition)
 ```
 
-> goodsId 商品编号，数字类型
+- goodsId 商品编号，数字类型
+- number 购买数量
+- sku 商品的规格尺寸信息，json数组，示例如下：
 
-> number 购买数量
+  ```json
+  [
+    {
+      "optionId": 869,
+      "optionValueId": 1699
+    },
+    {
+      "optionId": 871,
+      "optionValueId": 1588
+    }
+  ]
+  ```
 
-> sku 商品的规格尺寸信息，json数组，示例如下：
+- addition商品的可选配件信息，json数组，示例如下：
 
-```json
-[
-  {
-    "optionId": 869,
-    "optionValueId": 1699
-  },
-  {
-    "optionId": 871,
-    "optionValueId": 1588
-  }
-]
-```
+  ```json
+  [
+    {
+      "id": 869,
+      "pid": 1699
+    },
+    {
+      "id": 871,
+      "pid": 1588
+    }
+  ]
+  ```
 
 ### 修改购物车商品数量
 
