@@ -984,8 +984,8 @@ module.exports = {
       token,
       goodsId,
       number,
-      sku: sku ? JSON.stringify(sku) : '',
-      addition: addition ? JSON.stringify(addition) : ''
+      sku: sku && sku.length > 0 ? JSON.stringify(sku) : '',
+      addition: addition && addition.length > 0 ? JSON.stringify(addition) : ''
     })
   },
   shippingCarInfoModifyNumber: (token, key, number) => {

@@ -1,6 +1,6 @@
 {
   "name": "apifm-wxapi",
-  "version": "3.16.0",
+  "version": "3.16.1",
   "description": "新增可选配件相关方法",
   "main": "miniprogram_dist/index.js",
   "scripts": {
