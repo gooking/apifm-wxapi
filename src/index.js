@@ -5,14 +5,15 @@ var subDomain = '-'
 
 let request = (url, needSubDomain, method, data) => {
   const _url = API_BASE_URL + (needSubDomain ? '/' + subDomain : '') + url
+  const header = {
+    'Content-Type': 'application/x-www-form-urlencoded'
+  }
   return new Promise((resolve, reject) => {
     wx.request({
       url: _url,
       method: method,
       data: data,
-      header: {
-        'Content-Type': 'application/x-www-form-urlencoded'
-      },
+      header,
       success(request) {
         resolve(request.data)
       },
@@ -276,6 +277,9 @@ module.exports = {
     return request('/shop/goods/goodsAddition', true, 'get', {
       goodsId
     })
+  },
+  pushNewGoods: data => {
+    return request('/shop/goods/putOrUpdate', true, 'post', data)
   },
   goodsPrice: (goodsId, propertyChildIds) => {
     return request('/shop/goods/price', true, 'post', {
@@ -1083,6 +1087,12 @@ module.exports = {
   },
   mtjStatistics: () => {
     return request('/site/statistics/mjt', true, 'get')
+  },
+  mtjTransfer: (data) => {
+    return request('/mtj/transfer', true, 'post', data)
+  },
+  mtjTransferLogs: (data) => {
+    return request('/mtj/transfer/logs', true, 'post', data)
   },
   register_tt: (data) => {
     return request('/user/tt/microapp/register', true, 'post', data)
