@@ -40,6 +40,7 @@
 - [登录 & 注册](#登录--注册)
     - [用户注册](#用户注册)
         - [检测 referrer 邀请码是否正确](#检测-referrer-邀请码是否正确)
+        - [小程序静默授权](#小程序静默授权)
         - [小程序简单注册](#小程序简单注册)
         - [小程序详细注册](#小程序详细注册)
         - [用户名注册](#用户名注册)
@@ -295,6 +296,9 @@
         - [我关注的用户列表](#我关注的用户列表)
         - [我的粉丝列表](#我的粉丝列表)
         - [关注统计](#关注统计)
+- [扫码点餐](#扫码点餐)
+    - [扫桌码获取token](#扫桌码获取token)
+    - [下单（厨） / 加菜](#下单厨--加菜)
 
 <!-- /TOC -->
 
@@ -519,9 +523,24 @@ WXAPI.checkReferrer(referrer)
 - code == 0 ，邀请码正确
 - code == 700 ，邀请码错误
 
+### 小程序静默授权
+
+用户无感知授权，可实现自动登陆、注册。所以使用该接口，就无需再使用注册、登陆接口了
+
+```js
+WXAPI.authorize(Object object)
+```
+
+参数说明：
+
+- code 临时凭证，请通过小程序官方接口 wx.login 获取
+- postJsonString 如果需要添加注册用户的扩展信息，可以将 json 数据放在该字段，否则不需要传该参数
+- referrer 邀请用户id，如果没有可不传
+
 ### 小程序简单注册
 
-> 只要提供 code 即可完成注册，但是无法读取昵称、头像等敏感数据
+只要提供 code 即可完成注册，但是无法读取昵称、头像等敏感数据
+
 ```js
 WXAPI.register_simple(Object object)
 ```
@@ -3290,4 +3309,49 @@ WXAPI.userAttentionStatistics(token)
   myAttentionCount: 10,
   attentionMeCount: 100
 }
+```
+
+# 扫码点餐
+
+## 扫桌码获取token
+
+```js
+WXAPI.cyTableToken(tableId, key)
+```
+
+参数说明：
+
+- tableId 后台餐桌管理，每个桌子的id
+- key 桌子密钥，后台管理
+
+功能介绍：
+
+适用于餐饮领域扫码点餐，针对同一个桌码，不同的用户扫码后可共享同一个购物车、可以看到同一份订单数据、任意一个用户均可发起买单。
+
+接口返回 token，后续购物车以及查看订单信息时候需要使用该token
+
+## 下单（厨） / 加菜
+
+```js
+WXAPI.cyTableAddOrder(Object object)
+```
+
+参数说明：
+
+- token 扫桌码接口返回的token
+- goodsJsonStr 本次下单的菜品数据，如下：
+
+```json
+[
+    {
+        "goodsId": 11, // 商品id
+        "number": 2, // 数量
+        "propertyChildIds": "" // sku 信息
+    },
+    {
+        "goodsId": 8,
+        "number": 3,
+        "propertyChildIds": "2:9"
+    }
+]
 ```

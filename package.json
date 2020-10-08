@@ -1,7 +1,7 @@
 {
   "name": "apifm-wxapi",
-  "version": "3.17.0",
-  "description": "新增用户发布商品接口",
+  "version": "3.18.0",
+  "description": "新增扫码点餐接口",
   "main": "miniprogram_dist/index.js",
   "scripts": {
     "dev": "gulp dev --develop",

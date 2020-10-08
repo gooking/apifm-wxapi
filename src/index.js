@@ -245,6 +245,9 @@ module.exports = {
   register_simple: (data) => {
     return request('/user/wxapp/register/simple', true, 'post', data)
   },
+  authorize: (data) => {
+    return request('/user/wxapp/authorize', true, 'post', data)
+  },
   register_username: (data) => {
     return request('/user/username/register', true, 'post', data)
   },
@@ -1082,6 +1085,9 @@ module.exports = {
   mtjAsset: (token) => {
     return request('/mtj/asset', true, 'get', { token })
   },
+  mtjSetting: () => {
+    return request('/mtj/setting', true, 'get')
+  },
   mtjLogs: (data) => {
     return request('/mtj/logs', true, 'post', data)
   },
@@ -1140,5 +1146,17 @@ module.exports = {
     return request('/user/attention/statistics', true, 'get', {
       token
     })
+  },
+  cyTableToken: (tableId, key) => {
+    return request('/cyTable/token', true, 'post', {
+      id: tableId,
+      k: key
+    })
+  },
+  cyTableAddOrder: data => {
+    return request('/cyTable/add-order', true, 'post', data)
+  },
+  cyTablePayOrder: data => {
+    return request('/cyTable/pay-order', true, 'post', data)
   },
 }
