@@ -10,6 +10,11 @@
 
 欢迎大家进群交流，文档持续更新中...
 
+# 其他镜像
+
+- [Github](https://github.com/gooking/apifm-wxapi)
+- [码云](https://gitee.com/javazj/apifm-wxapi)
+
 # 平台支持
 
 * [微信小程序开发](https://github.com/gooking/apifm-wxapi)
