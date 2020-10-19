@@ -1159,4 +1159,10 @@ module.exports = {
   cyTablePayOrder: data => {
     return request('/cyTable/pay-order', true, 'post', data)
   },
+  goodsTimesDays: (goodsId, propertyChildIds = '') => {
+    return request('/shop/goods/times/days', true, 'post', { goodsId, propertyChildIds })
+  },
+  goodsTimesDayItems: (day, goodsId, propertyChildIds = '') => {
+    return request('/shop/goods/times/items', true, 'post', { day, goodsId, propertyChildIds })
+  },
 }
