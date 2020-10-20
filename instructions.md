@@ -41,14 +41,19 @@
     - [用户注册](#用户注册)
         - [检测 referrer 邀请码是否正确](#检测-referrer-邀请码是否正确)
         - [小程序静默授权](#小程序静默授权)
+        - [小程序静默授权[服务商模式]](#小程序静默授权服务商模式)
         - [小程序简单注册](#小程序简单注册)
+        - [小程序简单注册[服务商模式]](#小程序简单注册服务商模式)
         - [小程序详细注册](#小程序详细注册)
+        - [小程序详细注册[服务商模式]](#小程序详细注册服务商模式)
         - [用户名注册](#用户名注册)
         - [邮箱注册](#邮箱注册)
         - [手机号注册](#手机号注册)
     - [用户登录](#用户登录)
-        - [微信小程序code登录](#微信小程序code登录)
-        - [微信小程序绑定的手机号码登录](#微信小程序绑定的手机号码登录)
+        - [微信小程序登陆](#微信小程序登陆)
+        - [微信小程序登陆[服务商模式]](#微信小程序登陆服务商模式)
+        - [微信小程序一键手机号登录](#微信小程序一键手机号登录)
+        - [微信小程序一键手机号登录[服务商模式]](#微信小程序一键手机号登录服务商模式)
         - [用户名登录](#用户名登录)
         - [邮箱登录](#邮箱登录)
         - [手机号码登录](#手机号码登录)
@@ -60,10 +65,12 @@
 - [用户管理](#用户管理)
     - [绑定手机号码](#绑定手机号码)
         - [小程序](#小程序)
+        - [小程序[服务商]](#小程序服务商)
         - [短信验证码认证](#短信验证码认证)
     - [设置用户名](#设置用户名)
     - [设置邮箱地址](#设置邮箱地址)
     - [绑定小程序](#绑定小程序)
+    - [绑定小程序[服务商模式]](#绑定小程序服务商模式)
     - [获取用户信息](#获取用户信息)
     - [获取用户id、openid、unionid](#获取用户idopenidunionid)
     - [修改用户资料](#修改用户资料)
@@ -240,6 +247,7 @@
 - [小程序工具类](#小程序工具类)
     - [无限获取二维码](#无限获取二维码)
     - [小程序数据解密](#小程序数据解密)
+    - [小程序数据解密[服务商模式]](#小程序数据解密服务商模式)
     - [模板消息](#模板消息)
         - [保存 formid/预支付Id](#保存-formid预支付id)
         - [给用户发送模板消息](#给用户发送模板消息)
@@ -536,22 +544,76 @@ WXAPI.authorize(Object object)
 参数说明：
 
 - code 临时凭证，请通过小程序官方接口 wx.login 获取
-- postJsonString 如果需要添加注册用户的扩展信息，可以将 json 数据放在该字段，否则不需要传该参数
-- referrer 邀请用户id，如果没有可不传
+- referrer [可选] 邀请人用户id
+- postJsonString [可选] Json格式的用户扩展数据
+
+### 小程序静默授权[服务商模式]
+
+用户无感知授权，可实现自动登陆、注册。所以使用该接口，就无需再使用注册、登陆接口了
+
+```js
+WXAPI.wxappServiceAuthorize(Object object)
+```
+
+参数说明：
+
+- appid 当前小程序的appid
+- componentAppid 第三方平台 appid
+- code 临时凭证，请通过小程序官方接口 wx.login 获取
+- referrer [可选] 邀请人用户id
+- postJsonString [可选] Json格式的用户扩展数据
 
 ### 小程序简单注册
-
-只要提供 code 即可完成注册，但是无法读取昵称、头像等敏感数据
 
 ```js
 WXAPI.register_simple(Object object)
 ```
+
+参数说明：
+- code wx.login 获取的 code
+- referrer [可选] 邀请人用户id
+- postJsonString [可选] Json格式的用户扩展数据
+
+### 小程序简单注册[服务商模式]
+
+```js
+WXAPI.wxappServiceRegisterSimple(Object object)
+```
+
+参数说明：
+- appid 当前小程序的appid
+- componentAppid 第三方平台 appid
+- code wx.login 获取的 code
+- referrer [可选] 邀请人用户id
+- postJsonString [可选] Json格式的用户扩展数据
+
 ### 小程序详细注册
 
-> 除了 code 外，该注册方法还需要提供 encryptedData 和 iv 参数，注册后将可以读取到用户的昵称和头像等敏感数据
 ```js
 WXAPI.register_complex(Object object)
 ```
+
+参数说明：
+- code wx.login 获取的 code
+- encryptedData 微信登录接口返回的 加密用户信息
+- iv 微信登录接口返回的加密偏移数据
+- referrer [可选] 邀请人用户id
+- postJsonString [可选] Json格式的用户扩展数据
+
+### 小程序详细注册[服务商模式]
+
+```js
+WXAPI.wxappServiceRegisterComplex(Object object)
+```
+
+参数说明：
+- appid 当前小程序的appid
+- componentAppid 第三方平台 appid
+- code wx.login 获取的 code
+- encryptedData 微信登录接口返回的 加密用户信息
+- iv 微信登录接口返回的加密偏移数据
+- referrer [可选] 邀请人用户id
+- postJsonString [可选] Json格式的用户扩展数据
 
 ### 用户名注册
 
@@ -577,19 +639,47 @@ WXAPI.register_mobile(Object object)
 
 ## 用户登录
 
-### 微信小程序code登录
+### 微信小程序登陆
 
 ```js
 WXAPI.login_wx(code)
 ```
 
-### 微信小程序绑定的手机号码登录
+
+### 微信小程序登陆[服务商模式]
+
+```js
+WXAPI.wxappServiceLogin(Object object)
+```
+
+参数说明：
+- appid 当前小程序的appid
+- componentAppid 第三方平台 appid
+- code wx.login 获取的 code
+- autoReg 设置为true，会自动完成新用户注册后再登陆，默认为 false
+- referrer [可选] 邀请人用户id
+- postJsonString [可选] Json格式的用户扩展数据
+
+### 微信小程序一键手机号登录
 
 ```js
 WXAPI.loginWxaMobile(code, encryptedData, iv)
 ```
 
 该方法会匹配系统中该手机号码的用户，继而实现登录
+
+### 微信小程序一键手机号登录[服务商模式]
+
+```js
+WXAPI.wxappServiceLoginWxaMobile(Object object)
+```
+
+参数说明：
+- appid 当前小程序的appid
+- componentAppid 第三方平台 appid
+- code wx.login 获取的 code
+- encryptedData 微信登录接口返回的 加密用户信息
+- iv 微信登录接口返回的加密偏移数据
 
 ### 用户名登录
 
@@ -665,6 +755,20 @@ WXAPI.bindMobileWxapp(token, code, encryptedData, iv, pwd)
 
 *如果你没法使用小程序绑定手机号码接口，你可以使用下面的短信验证码认证方式绑定手机号码*
 
+### 小程序[服务商]
+
+```js
+WXAPI.wxappServiceBindMobile(Object object)
+```
+
+参数说明：
+- appid 当前小程序的appid
+- componentAppid 第三方平台 appid
+- code wx.login 获取的 code
+- encryptedData 微信登录接口返回的 加密用户信息
+- iv 微信登录接口返回的加密偏移数据
+- pwd [选填] 传了该参数以后将会重置登陆密码
+
 ### 短信验证码认证
 
 ```js
@@ -702,6 +806,17 @@ WXAPI.bindOpenid(token, code)
 > 手机号码、用户名等方式注册的用户，通过该方法绑定小程序，后期将可以使用小程序登录
 > 
 > code 为小程序登录的临时凭证
+
+## 绑定小程序[服务商模式]
+
+```js
+WXAPI.wxappServiceBindOpenid(Object object)
+```
+
+参数说明：
+- appid 当前小程序的appid
+- componentAppid 第三方平台 appid
+- code wx.login 获取的 code
 
 ## 获取用户信息
 
@@ -2888,6 +3003,19 @@ WXAPI.encryptedData(code, encryptedData, iv)
 > 类似微信运动之类的数据，都可以通过该方法解密成明文
 > 
 > code 为登录临时凭证
+
+## 小程序数据解密[服务商模式]
+
+```js
+WXAPI.wxappServiceEncryptedData(Object object)
+```
+
+参数说明：
+- appid 当前小程序的appid
+- componentAppid 第三方平台 appid
+- code wx.login 获取的 code
+- encryptedData 微信登录接口返回的 加密用户信息
+- iv 微信登录接口返回的加密偏移数据
 
 ## 模板消息
 

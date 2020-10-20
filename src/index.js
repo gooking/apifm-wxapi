@@ -1165,4 +1165,28 @@ module.exports = {
   goodsTimesDayItems: (day, goodsId, propertyChildIds = '') => {
     return request('/shop/goods/times/items', true, 'post', { day, goodsId, propertyChildIds })
   },
+  wxappServiceLogin: data => {
+    return request('/user/wxappService/login', true, 'post', data)
+  },
+  wxappServiceLoginWxaMobile: data => {
+    return request('/user/wxappService/login/mobile', true, 'post', data)
+  },
+  wxappServiceRegisterComplex: data => {
+    return request('/user/wxappService/register/complex', true, 'post', data)
+  },
+  wxappServiceRegisterSimple: data => {
+    return request('/user/wxappService/register/simple', true, 'post', data)
+  },
+  wxappServiceAuthorize: data => {
+    return request('/user/wxappService/authorize', true, 'post', data)
+  },
+  wxappServiceBindMobile: data => {
+    return request('/user/wxappService/bindMobile', true, 'post', data)
+  },
+  wxappServiceBindOpenid: data => {
+    return request('/user/wxappService/bindOpenid', true, 'post', data)
+  },
+  wxappServiceEncryptedData: data => {
+    return request('/user/wxappService/decode/encryptedData', true, 'post', data)
+  },
 }

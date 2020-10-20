@@ -1,7 +1,7 @@
 {
   "name": "apifm-wxapi",
   "version": "3.19.0",
-  "description": "新增商品时段定价设置",
+  "description": "新增商品时段定价设置，服务商登陆",
   "main": "miniprogram_dist/index.js",
   "scripts": {
     "dev": "gulp dev --develop",
