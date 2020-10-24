@@ -176,7 +176,7 @@
         - [拉取优惠券合成规则](#拉取优惠券合成规则)
         - [优惠券合成](#优惠券合成)
         - [赠送优惠券给他人](#赠送优惠券给他人)
-        - [兑换优惠券](#兑换优惠券)
+        - [使用动态口令领取优惠券](#使用动态口令领取优惠券)
     - [商品砍价](#商品砍价)
         - [获取商品砍价设置](#获取商品砍价设置)
         - [发起[创建]砍价，继而邀请好友来帮自己砍到底价](#发起创建砍价继而邀请好友来帮自己砍到底价)
@@ -220,7 +220,8 @@
     - [获取资产信息（余额、可用积分）](#获取资产信息余额可用积分)
     - [在线支付(充值)](#在线支付充值)
         - [获取充值规则（满多少送多少）](#获取充值规则满多少送多少)
-        - [微信官网支付](#微信官网支付)
+        - [微信小程序支付](#微信小程序支付)
+        - [微信小程序支付[服务商版本]](#微信小程序支付服务商版本)
         - [扫呗在线支付](#扫呗在线支付)
         - [wepayez境外支付](#wepayez境外支付)
         - [intelsalon云美集付](#intelsalon云美集付)
@@ -557,8 +558,6 @@ WXAPI.wxappServiceAuthorize(Object object)
 
 参数说明：
 
-- appid 当前小程序的appid
-- componentAppid 第三方平台 appid
 - code 临时凭证，请通过小程序官方接口 wx.login 获取
 - referrer [可选] 邀请人用户id
 - postJsonString [可选] Json格式的用户扩展数据
@@ -581,8 +580,6 @@ WXAPI.wxappServiceRegisterSimple(Object object)
 ```
 
 参数说明：
-- appid 当前小程序的appid
-- componentAppid 第三方平台 appid
 - code wx.login 获取的 code
 - referrer [可选] 邀请人用户id
 - postJsonString [可选] Json格式的用户扩展数据
@@ -607,8 +604,6 @@ WXAPI.wxappServiceRegisterComplex(Object object)
 ```
 
 参数说明：
-- appid 当前小程序的appid
-- componentAppid 第三方平台 appid
 - code wx.login 获取的 code
 - encryptedData 微信登录接口返回的 加密用户信息
 - iv 微信登录接口返回的加密偏移数据
@@ -653,8 +648,6 @@ WXAPI.wxappServiceLogin(Object object)
 ```
 
 参数说明：
-- appid 当前小程序的appid
-- componentAppid 第三方平台 appid
 - code wx.login 获取的 code
 - autoReg 设置为true，会自动完成新用户注册后再登陆，默认为 false
 - referrer [可选] 邀请人用户id
@@ -675,8 +668,6 @@ WXAPI.wxappServiceLoginWxaMobile(Object object)
 ```
 
 参数说明：
-- appid 当前小程序的appid
-- componentAppid 第三方平台 appid
 - code wx.login 获取的 code
 - encryptedData 微信登录接口返回的 加密用户信息
 - iv 微信登录接口返回的加密偏移数据
@@ -762,8 +753,6 @@ WXAPI.wxappServiceBindMobile(Object object)
 ```
 
 参数说明：
-- appid 当前小程序的appid
-- componentAppid 第三方平台 appid
 - code wx.login 获取的 code
 - encryptedData 微信登录接口返回的 加密用户信息
 - iv 微信登录接口返回的加密偏移数据
@@ -814,8 +803,6 @@ WXAPI.wxappServiceBindOpenid(Object object)
 ```
 
 参数说明：
-- appid 当前小程序的appid
-- componentAppid 第三方平台 appid
 - code wx.login 获取的 code
 
 ## 获取用户信息
@@ -2260,13 +2247,19 @@ WXAPI.mergeCoupons(Object object)
 WXAPI.sendCoupons(Object object)
 ```
 
-### 兑换优惠券
+### 使用动态口令领取优惠券
 
 ```js
-WXAPI.exchangeCoupons(token, number, pwd)
+WXAPI.exchangeCoupons(token, number, pwd, extJsonStr)
 ```
 
-> 使用动态口令兑换优惠券，兑换后卡密失效，请妥善保管
+使用动态口令兑换优惠券，兑换后卡密失效，请妥善保管
+
+参数说明：
+- token 当前登陆用户的token
+- number 动态口令的号码
+- pwd 动态口令的密码
+- extJsonStr [选填] 扩展属性，必须是 Json 格式的数据
 
 
 
@@ -2822,7 +2815,7 @@ totleConsumed 累计消费金额
 WXAPI.rechargeSendRules()
 ```
 
-### 微信官网支付
+### 微信小程序支付
 
 ```js
 WXAPI.wxpay(Object object)
@@ -2861,7 +2854,48 @@ WXAPI.wxpay({
 })
 ```
 
-> 具体参数请查阅接口文档说明，尤其要注意 **nextAction** 参数的使用
+具体参数请查阅接口文档说明，尤其要注意 **nextAction** 参数的使用
+
+### 微信小程序支付[服务商版本]
+
+```js
+WXAPI.wxpayFWS(Object object)
+```
+
+调用该方法后，可获得用于发起微信支付的所有数据，请将返回值根据小程序的微信支付文档唤起支付功能即可，参考代码如下：
+
+```js
+WXAPI.wxpayFWS({
+  token: '登录token',
+  money: 100,
+  payName: '支付测试',
+  nextAction: '{"type": 0, "id": 1}'
+}).then(function (res) {
+  if (res.code == 0) {
+    // 小程序代码发起支付
+    wx.requestPayment({
+      timeStamp: res.data.timeStamp,
+      nonceStr: res.data.nonceStr,
+      package: 'prepay_id=' + res.data.prepayId,
+      signType: 'MD5',
+      paySign: res.data.sign,
+      fail: function (aaa) {
+        wx.showToast({
+          title: '支付失败:' + aaa
+        })
+      },
+      success: function () {
+        // 提示支付成功
+        wx.showToast({
+          title: '支付成功'
+        })
+      }
+    })
+  }
+})
+```
+
+具体参数请查阅接口文档说明，尤其要注意 **nextAction** 参数的使用
 
 ### 扫呗在线支付
 
@@ -3011,8 +3045,6 @@ WXAPI.wxappServiceEncryptedData(Object object)
 ```
 
 参数说明：
-- appid 当前小程序的appid
-- componentAppid 第三方平台 appid
 - code wx.login 获取的 code
 - encryptedData 微信登录接口返回的 加密用户信息
 - iv 微信登录接口返回的加密偏移数据

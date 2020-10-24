@@ -188,6 +188,9 @@ module.exports = {
   wxpay: (data) => {
     return request('/pay/wx/wxapp', true, 'post', data)
   },
+  wxpayFWS: (data) => {
+    return request('/pay/wxfws/wxapp', true, 'post', data)
+  },
   ttpay: (data) => {
     return request('/pay/tt/microapp', true, 'post', data)
   },
@@ -357,9 +360,9 @@ module.exports = {
   sendCoupons: (data) => {
     return request('/discounts/send', true, 'post', data)
   },
-  exchangeCoupons: (token, number, pwd) => {
+  exchangeCoupons: (token, number, pwd, extJsonStr = '') => {
     return request('/discounts/exchange', true, 'post', {
-      token, number, pwd
+      token, number, pwd, extJsonStr
     })
   },
   noticeList: (data) => {

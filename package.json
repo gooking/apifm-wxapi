@@ -1,7 +1,7 @@
 {
   "name": "apifm-wxapi",
-  "version": "3.19.0",
-  "description": "新增商品时段定价设置，服务商登陆",
+  "version": "3.20.0",
+  "description": "新增微信支付服务商版本支付",
   "main": "miniprogram_dist/index.js",
   "scripts": {
     "dev": "gulp dev --develop",
