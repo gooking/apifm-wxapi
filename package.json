@@ -1,7 +1,7 @@
 {
   "name": "apifm-wxapi",
-  "version": "3.20.0",
-  "description": "新增微信支付服务商版本支付",
+  "version": "3.21.0",
+  "description": "增加paynow支付，fomo网关支付",
   "main": "miniprogram_dist/index.js",
   "scripts": {
     "dev": "gulp dev --develop",

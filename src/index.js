@@ -188,6 +188,15 @@ module.exports = {
   wxpay: (data) => {
     return request('/pay/wx/wxapp', true, 'post', data)
   },
+  wxpayFOMO: (data) => {
+    return request('/pay/fomo/wxapp', true, 'post', data)
+  },
+  payNow: (data) => {
+    return request('/pay/fomo/payNow', true, 'post', data)
+  },
+  fomoCheckout: (data) => {
+    return request('/pay/fomo/checkout', true, 'post', data)
+  },
   wxpayFWS: (data) => {
     return request('/pay/wxfws/wxapp', true, 'post', data)
   },

@@ -221,6 +221,9 @@
     - [在线支付(充值)](#在线支付充值)
         - [获取充值规则（满多少送多少）](#获取充值规则满多少送多少)
         - [微信小程序支付](#微信小程序支付)
+        - [微信小程序支付[FOMO跨境支付]](#微信小程序支付fomo跨境支付)
+        - [payNow跨境支付](#paynow跨境支付)
+        - [FOMO网关支付](#fomo网关支付)
         - [微信小程序支付[服务商版本]](#微信小程序支付服务商版本)
         - [扫呗在线支付](#扫呗在线支付)
         - [wepayez境外支付](#wepayez境外支付)
@@ -2835,9 +2838,9 @@ WXAPI.wxpay({
     wx.requestPayment({
       timeStamp: res.data.timeStamp,
       nonceStr: res.data.nonceStr,
-      package: 'prepay_id=' + res.data.prepayId,
-      signType: 'MD5',
-      paySign: res.data.sign,
+      package: res.data.package,
+      signType: res.data.signType,
+      paySign: res.data.paySign,
       fail: function (aaa) {
         wx.showToast({
           title: '支付失败:' + aaa
@@ -2854,7 +2857,102 @@ WXAPI.wxpay({
 })
 ```
 
-具体参数请查阅接口文档说明，尤其要注意 **nextAction** 参数的使用
+### 微信小程序支付[FOMO跨境支付]
+
+```js
+WXAPI.wxpayFOMO(Object object)
+```
+
+调用该方法后，可获得用于发起微信支付的所有数据，请将返回值根据小程序的微信支付文档唤起支付功能即可，参考代码如下：
+
+```js
+WXAPI.wxpay({
+  token: '登录token',
+  money: 100,
+  payName: '支付测试',
+  nextAction: '{"type": 0, "id": 1}'
+}).then(function (res) {
+  if (res.code == 0) {
+    // 小程序代码发起支付
+    wx.requestPayment({
+      timeStamp: res.data.timeStamp,
+      nonceStr: res.data.nonceStr,
+      package: res.data.package,
+      signType: res.data.signType,
+      paySign: res.data.paySign,
+      fail: function (aaa) {
+        wx.showToast({
+          title: '支付失败:' + aaa
+        })
+      },
+      success: function () {
+        // 提示支付成功
+        wx.showToast({
+          title: '支付成功'
+        })
+      }
+    })
+  }
+})
+```
+
+### payNow跨境支付
+
+```js
+WXAPI.payNow(Object object)
+```
+
+该接口返回：
+
+```json
+{
+    "code": 0,
+    "data": {
+        "createdAt": 1605784207,
+        "codeUrl": "00020101021226580009SG.PAYNOW010120213201543956D0020301004142020111919400752045999530370254041.005802SG5918FOMO PAY PTE. LTD.6009SINGAPORE62260122QY03022020111940207560630422F3",
+        "outTradeId": "ZF2011191756701253",
+        "amount": "1.00",
+        "orderNo": "ZF2011191756701253",
+        "subject": "在线支付",
+        "id": "100500220201119402077271",
+        "primaryTransactionId": "100510120201119402078121",
+        "currencyCode": "SGD",
+        "status": "CREATED"
+    },
+    "msg": "success"
+}
+```
+
+然后你只需要将 codeUrl 的内容生成二维码即可
+
+### FOMO网关支付
+
+```js
+WXAPI.fomoCheckout(Object object)
+```
+
+该接口返回：
+
+```json
+{
+    "code": 0,
+    "data": {
+        "createdAt": 1605862553,
+        "outTradeId": "ZF2011200763243499",
+        "amount": "0.10",
+        "orderNo": "ZF2011200763243499",
+        "subject": "在线支付",
+        "id": "100500120201120321535852",
+        "returnUrl": "https://www.fomopay.com/",
+        "currencyCode": "SGD",
+        "url": "https://ipg.fomopay.net/web/100500120201120321535852?p=e....",
+        "status": "CREATED"
+    },
+    "msg": "success"
+}
+```
+
+然后你只需要让用户复制 url 字段的地址，在浏览器中打开这个地址完成支付即可
 
 ### 微信小程序支付[服务商版本]
 
