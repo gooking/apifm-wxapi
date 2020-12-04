@@ -242,7 +242,7 @@ module.exports = {
     })
   },
   loginMobileSmsCode: data => {
-    return request('user/m/loginMobile', true, 'post', data)
+    return request('/user/m/loginMobile', true, 'post', data)
   },
   resetPwdUseMobileCode: (mobile, pwd, code) => {
     return request('/user/m/reset-pwd', true, 'post', {
