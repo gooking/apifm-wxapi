@@ -57,6 +57,7 @@
         - [用户名登录](#用户名登录)
         - [邮箱登录](#邮箱登录)
         - [手机号码登录](#手机号码登录)
+        - [短信验证码登录](#短信验证码登录)
     - [检测登录 token 是否有效](#检测登录-token-是否有效)
     - [重置密码](#重置密码)
         - [用手机找回密码](#用手机找回密码)
@@ -693,7 +694,15 @@ WXAPI.login_email(Object object)
 WXAPI.login_mobile(mobile, pwd, deviceId, deviceName)
 ```
 
-> deviceId、deviceName 参数用来表示登录的设备信息比如手机序列号、手机型号，小程序调用该方法，可随便传参即可；
+deviceId、deviceName 参数用来表示登录的设备信息比如手机序列号、手机型号，小程序调用该方法，可随便传参即可；
+
+### 短信验证码登录
+
+```js
+WXAPI.loginMobileSmsCode(Object object)
+```
+
+autoReg 参数，可传 true，实现用户不存在时候自动注册
 
 ## 检测登录 token 是否有效
 

@@ -241,6 +241,9 @@ module.exports = {
       mobile, pwd, deviceId, deviceName
     })
   },
+  loginMobileSmsCode: data => {
+    return request('user/m/loginMobile', true, 'post', data)
+  },
   resetPwdUseMobileCode: (mobile, pwd, code) => {
     return request('/user/m/reset-pwd', true, 'post', {
       mobile, pwd, code
@@ -1114,11 +1117,6 @@ module.exports = {
   },
   register_tt: (data) => {
     return request('/user/tt/microapp/register', true, 'post', data)
-  },
-  login_tt: (code) => {
-    return request('/user/tt/microapp/login', true, 'post', {
-      code
-    })
   },
   login_tt: (code) => {
     return request('/user/tt/microapp/login', true, 'post', {
