@@ -279,6 +279,13 @@ module.exports = {
     return request('/shop/goods/category/info', true, 'get', { id })
   },
   goods: (data) => {
+    if (!data) {
+      data = {}
+    }
+    const shopIds = wx.getStorageSync('shopIds')
+    if (shopIds) {
+      data.shopId = shopIds
+    }
     return request('/shop/goods/list', true, 'post', data)
   },
   goodsDetail: (id) => {
@@ -828,6 +835,9 @@ module.exports = {
   mapDistance: (lat1, lng1, lat2, lng2) => {
     return request('/common/map/distance', false, 'get', { lat1, lng1, lat2, lng2 })
   },
+  mapDistanceNavigation: (key, mode, from, to) => {
+    return request('/common/map/qq/distance', false, 'post', { key, mode, from, to })
+  },
   mapQQAddress: (location = '', coord_type = '5') => {
     return request('/common/map/qq/address', false, 'get', { location, coord_type })
   },
@@ -1198,5 +1208,8 @@ module.exports = {
   },
   wxappServiceEncryptedData: data => {
     return request('/user/wxappService/decode/encryptedData', true, 'post', data)
+  },
+  trtcUserSig: token => {
+    return request('/trtc/userSig', true, 'get', { token })
   },
 }

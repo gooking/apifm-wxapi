@@ -1,7 +1,7 @@
 {
   "name": "apifm-wxapi",
-  "version": "3.22.0",
-  "description": "增加 WXAPI.loginMobileSmsCode(Object object) 接口",
+  "version": "3.23.0",
+  "description": "增加 mapDistanceFromAPI 接口",
   "main": "miniprogram_dist/index.js",
   "scripts": {
     "dev": "gulp dev --develop",
