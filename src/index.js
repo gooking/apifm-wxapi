@@ -1051,6 +1051,9 @@ module.exports = {
       roomId
     })
   },
+  peisonFeeList: () => {
+    return request('/fee/peisong/list', true, 'get')
+  },
   peisongMembers: (data) => {
     return request('/peisong/member/list', true, 'post', data)
   },
@@ -1211,5 +1214,14 @@ module.exports = {
   },
   trtcUserSig: token => {
     return request('/trtc/userSig', true, 'get', { token })
+  },
+  setPayPassword: (token, pwd) => {
+    return request('/user/paypwd/set', true, 'post', { token, pwd })
+  },
+  modifyPayPassword: (token, pwdOld, pwdNew) => {
+    return request('/user/paypwd/modify', true, 'post', { token, pwdOld, pwdNew })
+  },
+  resetPayPassword: (mobile, code, pwd) => {
+    return request('/user/paypwd/reset', true, 'post', { mobile, code, pwd })
   },
 }

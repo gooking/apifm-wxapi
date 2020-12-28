@@ -1,7 +1,7 @@
 {
   "name": "apifm-wxapi",
-  "version": "3.23.0",
-  "description": "增加 mapDistanceFromAPI 接口",
+  "version": "3.25.0",
+  "description": "增加 交易密码 相关接口",
   "main": "miniprogram_dist/index.js",
   "scripts": {
     "dev": "gulp dev --develop",

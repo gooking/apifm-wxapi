@@ -96,6 +96,8 @@
     - [文章管理](#文章管理)
         - [文章列表](#文章列表)
         - [文章详情](#文章详情)
+        - [读取上一篇和下一篇文章](#读取上一篇和下一篇文章)
+        - [用户发布文章](#用户发布文章)
         - [文章收藏](#文章收藏)
             - [收藏](#收藏)
             - [检测当前用户是否已收藏](#检测当前用户是否已收藏)
@@ -218,6 +220,10 @@
         - [用积分兑换成长值](#用积分兑换成长值)
         - [成长值变动明细](#成长值变动明细)
 - [资金 / 财务 相关](#资金--财务-相关)
+    - [交易密码](#交易密码)
+        - [设置交易密码](#设置交易密码)
+        - [修改交易密码](#修改交易密码)
+        - [重置交易密码](#重置交易密码)
     - [获取资产信息（余额、可用积分）](#获取资产信息余额可用积分)
     - [在线支付(充值)](#在线支付充值)
         - [获取充值规则（满多少送多少）](#获取充值规则满多少送多少)
@@ -977,6 +983,20 @@ WXAPI.cmsArticles(Object object)
 ```js
 WXAPI.cmsArticleDetail(id)
 ```
+
+### 读取上一篇和下一篇文章
+
+```js
+WXAPI.cmsArticlePreNext(id)
+```
+
+### 用户发布文章
+
+```js
+WXAPI.cmsArticleCreate(Object object)
+```
+
+具体参数请参阅接口文档说明
 
 ### 文章收藏
 
@@ -2801,6 +2821,42 @@ WXAPI.growthLogs(Object object)
 
 # 资金 / 财务 相关
 
+
+## 交易密码
+
+### 设置交易密码
+
+适用于用户第一次设置交易密码，如果用户已经设置过交易密码，该接口无效，请使用修改交易密码接口或者用短信验证码重置交易密码接口
+
+```js
+WXAPI.setPayPassword(token, pwd)
+```
+
+- token 用户登陆的token
+- pwd 交易密码
+
+### 修改交易密码
+
+```js
+WXAPI.modifyPayPassword(token, pwdOld, pwdNew)
+```
+
+- token 用户登陆的token
+- pwdOld 原来的交易密码
+- pwdNew 新的交易密码
+
+### 重置交易密码
+
+配合短信验证码接口，利用当前手机号码急短信验证码，重置交易密码
+
+```js
+WXAPI.resetPayPassword(mobile, code, pwd)
+```
+
+- mobile 当前账户绑定的手机号码
+- code 手机收到的短信验证码
+- pwd 新的交易密码
+
 ## 获取资产信息（余额、可用积分）
 
 ```js
@@ -3427,7 +3483,7 @@ WXAPI.mapDistance(lat1, lng1, lat2, lng2)
 WXAPI.mapDistanceNavigation(key, mode, from, to)
 ```
 
-- key 请登陆 https://lbs.qq.com/ 后，左侧菜单的“key管理”自行创建一个key即可
+- key 请登陆 https://lbs.qq.com/ 后，左侧菜单的“key管理”自行创建一个key即可；此key需要设置启用WebserviceAPI
 - mode 计算方式：driving（驾车）、walking（步行）、bicycling（自行车）
 - from 起点坐标，39.071510,117.190091
 - to 终点坐标，39.071510,117.190091
