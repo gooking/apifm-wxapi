@@ -582,6 +582,9 @@ module.exports = {
       token
     })
   },
+  withDrawApplyV2: data => {
+    return request('/user/withDraw/apply', true, 'post', data)
+  },
   withDrawDetail: (token, id) => {
     return request('/user/withDraw/detail', true, 'get', {
       token,
@@ -614,8 +617,11 @@ module.exports = {
   payBillDiscounts: () => {
     return request('/payBill/discounts', true, 'get')
   },
-  payBill: (token, money) => {
-    return request('/payBill/pay', true, 'post', { token, money })
+  payBill: (token, money, pwd = '') => {
+    return request('/payBill/pay', true, 'post', { token, money, pwd })
+  },
+  payBillV2: (data) => {
+    return request('/payBill/pay', true, 'post', data)
   },
   vipLevel: () => {
     return request('/config/vipLevel', true, 'get')
@@ -822,6 +828,9 @@ module.exports = {
   },
   smsValidateCode: (mobile, key = '', picCode = '') => {
     return request('/verification/sms/get', true, 'get', { mobile, key, picCode })
+  },
+  smsValidateCodeByToken: (token) => {
+    return request('/verification/sms/get-by-token', true, 'get', { token })
   },
   smsValidateCodeCheck: (mobile, code) => {
     return request('/verification/sms/check', true, 'post', { mobile, code })

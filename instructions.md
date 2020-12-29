@@ -3120,10 +3120,8 @@ WXAPI.payBillDiscounts()
 ### 买单
 
 ```js
-WXAPI.payBill(token, money)
+WXAPI.payBillV2(Object object)
 ```
-
-> money 参数请传实际的消费金额，系统自动会根据后台设置的满减规则计算实际需要支付的金额的
 
 ## 资金流水
 
@@ -3135,7 +3133,7 @@ WXAPI.cashLogsV2(Object object)
 
 ### 申请提现
 
-> WXAPI.withDrawApply(token, money)
+WXAPI.withDrawApplyV2(Object object)
 
 ### 提现记录
 
