@@ -149,6 +149,7 @@
         - [添加商品到购物车](#添加商品到购物车)
         - [修改购物车商品数量](#修改购物车商品数量)
         - [删除购物车中某条记录](#删除购物车中某条记录)
+        - [购物车中某条记录选中/取消选中](#购物车中某条记录选中取消选中)
         - [一键清空购物车](#一键清空购物车)
     - [订单管理](#订单管理)
         - [创建订单](#创建订单)
@@ -2050,7 +2051,17 @@ WXAPI.shippingCarInfoModifyNumber(token, key, number)
 WXAPI.shippingCarInfoRemoveItem(token, key)
 ```
 
-删除购物车中key对应的那条记录
+删除购物车中key对应的那条记录,多个key，请使用英文多逗号隔开即可实现批量删除
+
+### 购物车中某条记录选中/取消选中
+
+```js
+WXAPI.shippingCartSelected(token, key, selected)
+```
+
+- 多个key，请使用英文多逗号隔开即可实现批量操作
+- selected 为 true / false，代表选中或者不选中
+
 
 ### 一键清空购物车
 

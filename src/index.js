@@ -1039,6 +1039,11 @@ module.exports = {
       token, key
     })
   },
+  shippingCartSelected: (token, key, selected) => {
+    return request('/shopping-cart/select', true, 'post', {
+      token, key, selected
+    })
+  },
   shippingCarInfoRemoveAll: (token) => {
     return request('/shopping-cart/empty', true, 'post', {
       token
