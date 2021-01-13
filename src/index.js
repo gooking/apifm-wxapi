@@ -288,9 +288,9 @@ module.exports = {
     }
     return request('/shop/goods/list', true, 'post', data)
   },
-  goodsDetail: (id) => {
+  goodsDetail: (id, token = '') => {
     return request('/shop/goods/detail', true, 'get', {
-      id
+      id, token
     })
   },
   goodsLimitations: (goodsId, priceId = '') => {
@@ -305,6 +305,9 @@ module.exports = {
   },
   pushNewGoods: data => {
     return request('/shop/goods/putOrUpdate', true, 'post', data)
+  },
+  deleteMyGoods: (token, id) => {
+    return request('/shop/goods/del', true, 'post', { token, id })
   },
   goodsPrice: (goodsId, propertyChildIds) => {
     return request('/shop/goods/price', true, 'post', {
@@ -327,9 +330,6 @@ module.exports = {
   goodsReputation: (data) => {
     return request('/shop/goods/reputation', true, 'post', data)
   },
-  goodsFavList: (data) => {
-    return request('/shop/goods/fav/list', true, 'post', data)
-  },
   myBuyGoodsHis: (data) => {
     return request('/shop/goods/his/list', true, 'post', data)
   },
@@ -338,10 +338,16 @@ module.exports = {
       token, id, goodsId
     })
   },
+  goodsFavList: data => {
+    return request('/shop/goods/fav/list', true, 'post', data)
+  },
   goodsFavPut: (token, goodsId) => {
     return request('/shop/goods/fav/add', true, 'post', {
       token, goodsId
     })
+  },
+  goodsFavAdd: data => {
+    return request('/shop/goods/fav/add', true, 'post', data)
   },
   goodsFavCheck: (token, goodsId) => {
     return request('/shop/goods/fav/check', true, 'get', {
@@ -352,6 +358,9 @@ module.exports = {
     return request('/shop/goods/fav/delete', true, 'post', {
       token, id, goodsId
     })
+  },
+  goodsFavDeleteV2: data => {
+    return request('/shop/goods/fav/delete', true, 'post', data)
   },
   coupons: (data) => {
     return request('/discounts/coupons', true, 'get', data)
@@ -629,6 +638,12 @@ module.exports = {
   fxApply: (token, name, mobile) => {
     return request('/saleDistribution/apply', true, 'post', { token, name, mobile })
   },
+  fxSetting: () => {
+    return request('/saleDistribution/setting', true, 'get')
+  },
+  fxBuy: token => {
+    return request('/saleDistribution/buy', true, 'post', { token })
+  },
   fxApplyProgress: (token) => {
     return request('/saleDistribution/apply/progress', true, 'get', { token })
   },
@@ -649,14 +664,17 @@ module.exports = {
       page, pageSize
     })
   },
-  goodsSellNumberStatistics: (page, pageSize, goodsId = '') => {
-    return request('/site/goods/statistics', true, 'get', {
-      page, pageSize, goodsId
-    })
-  },
   fxSaleroomRankDaily: (page, pageSize, day) => {
     return request('/saleDistribution/sale-room-rank/daily', true, 'get', {
       page, pageSize, day
+    })
+  },
+  fxMembersStatistics: token => {
+    return request('/saleDistribution/members/statistics', true, 'get', { token })
+  },
+  goodsSellNumberStatistics: (page, pageSize, goodsId = '') => {
+    return request('/site/goods/statistics', true, 'get', {
+      page, pageSize, goodsId
     })
   },
   wxaQrcode: (data) => {
@@ -723,6 +741,9 @@ module.exports = {
   cmsArticleDetail: (id) => {
     return request('/cms/news/detail', true, 'get', { id })
   },
+  cmsArticleDetailV2: (id) => {
+    return request('/cms/news/detail/v2', true, 'get', { id })
+  },
   cmsArticlePreNext: (id) => {
     return request('/cms/news/preNext', true, 'get', { id })
   },
@@ -785,6 +806,9 @@ module.exports = {
   },
   modifyUserInfo: (data) => {
     return request('/user/modify', true, 'post', data)
+  },
+  bindSaleman: (token, uid) => {
+    return request('/user/bindSaleman', true, 'post', data)
   },
   modifyUserPassword: (token, pwdOld, pwdNew) => {
     return request('/user/modify/password', true, 'post', { token, pwdOld, pwdNew })
@@ -1237,5 +1261,26 @@ module.exports = {
   },
   resetPayPassword: (mobile, code, pwd) => {
     return request('/user/paypwd/reset', true, 'post', { mobile, code, pwd })
+  },
+  adPosition: key => {
+    return request('/site/adPosition/info', true, 'get', { key })
+  },
+  momentsCategory: () => {
+    return request('/momentsCategory/list', true, 'get')
+  },
+  momentsList: data => {
+    return request('/moments/list', true, 'post', data)
+  },
+  momentsdetail: id => {
+    return request('/moments/detail', true, 'get', { id })
+  },
+  goodsVisitLog: data => {
+    return request('/goods/visitLog', true, 'post', data)
+  },
+  goodsVisitLogAdd: data => {
+    return request('/goods/visitLog/add', true, 'post', data)
+  },
+  goodsVisitLogDelete: data => {
+    return request('/goods/visitLog/delete', true, 'post', data)
   },
 }
