@@ -1594,12 +1594,12 @@ WXAPI.goodsAddition(goodsId)
 ### 获取商品价格「一般用在选择不同规格尺寸后需要实时显示售价」
 
 ```js
-WXAPI.goodsPrice(goodsId, propertyChildIds)
+WXAPI.goodsPriceV2(Object object)
 ```
 
-> goodsId 为商品id
-> 
-> **propertyChildIds** 参数为用户选择的规格尺寸数据，多个规格尺寸数据用因为逗号分隔，该参数的格式为： 规格id:子属性id，比如： 4:15,2:10 （分别对应了 颜色:红色，内存:256G）
+- token 可选项目，如果传入，将会返回给用户所属会员等级的会员价
+- goodsId 商品id
+- propertyChildIds 参数为用户选择的规格尺寸数据，多个规格尺寸数据用因为逗号分隔，该参数的格式为： 规格id:子属性id，比如： 4:15,2:10 （分别对应了 颜色:红色，内存:256G）
 
 **接口返回示例：**
 

@@ -212,6 +212,9 @@ module.exports = {
   wxpayWepayez: (data) => {
     return request('/pay/wepayez/wxapp', true, 'post', data)
   },
+  wxpayxpert: (data) => {
+    return request('/pay/payxpert/wxapp', true, 'post', data)
+  },
   alipay: (data) => {
     return request('/pay/alipay/semiAutomatic/payurl', true, 'post', data)
   },
@@ -313,6 +316,9 @@ module.exports = {
     return request('/shop/goods/price', true, 'post', {
       goodsId, propertyChildIds
     })
+  },
+  goodsPriceV2: data => {
+    return request('/shop/goods/price', true, 'post', data)
   },
   goodsPriceDaily: (goodsId, priceId = '') => {
     return request('/shop/goods/price/day', true, 'get', {
@@ -1282,5 +1288,14 @@ module.exports = {
   },
   goodsVisitLogDelete: data => {
     return request('/goods/visitLog/delete', true, 'post', data)
+  },
+  channelDataPush: (key, content) => {
+    return request('/channelData/push', true, 'post', { key, content })
+  },
+  channelDataPull: (key) => {
+    return request('/channelData/pull', true, 'get', { key })
+  },
+  bindPartner: (token, partnerId) => {
+    return request('/user/bindPartner', true, 'post', { token, uid: partnerId })
   },
 }
