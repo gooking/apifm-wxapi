@@ -209,6 +209,12 @@
         - [分销商累计销售额排行榜](#分销商累计销售额排行榜)
         - [分销商某天的销售额排行榜](#分销商某天的销售额排行榜)
         - [名下团队成员人数统计](#名下团队成员人数统计)
+    - [合伙人/团队长/ 二级分销](#合伙人团队长-二级分销)
+        - [读取合伙人分销设置](#读取合伙人分销设置)
+        - [用户绑定团队长成为团队成员](#用户绑定团队长成为团队成员)
+        - [团队成员购买升级为团队长](#团队成员购买升级为团队长)
+        - [团队成员统计](#团队成员统计)
+        - [团队成员列表接口](#团队成员列表接口)
 - [积分模块](#积分模块)
     - [积分抵扣规则](#积分抵扣规则)
     - [积分赠送规则](#积分赠送规则)
@@ -672,10 +678,16 @@ WXAPI.wxappServiceLogin(Object object)
 ### 微信小程序一键手机号登录
 
 ```js
-WXAPI.loginWxaMobile(code, encryptedData, iv)
+WXAPI.loginWxaMobileV2(code, encryptedData, iv)
 ```
 
 该方法会匹配系统中该手机号码的用户，继而实现登录
+
+- code 小程序 wx.login 方法返回的临时凭证
+- encryptedData iv 是小程序读取手机号码授权返回的加密数据
+- autoReg 如果传true，用户不存在的情况下，会自动注册新用户
+- referrer 邀请人用户编号，注册时候会奖励邀请关系[登陆无效]
+- postJsonString 用户扩展属性，注册时候使用[登陆无效]
 
 ### 微信小程序一键手机号登录[服务商模式]
 
@@ -2748,6 +2760,57 @@ WXAPI.fxMembersStatistics(token)
 - totleChildFxs 全部分销商数量
 - totleChildFxsLevel1 全部直属分销商数量
 - totleChildFxsLevel2 全部间接分销商数量
+
+## 合伙人/团队长/ 二级分销
+
+### 读取合伙人分销设置
+
+```js
+WXAPI.partnerSetting()
+```
+
+- isOpen 功能是否开启
+- pPartner 合伙人返佣比例
+- pLeader 团队长返佣比例
+- priceLeader 团队长购买费用，可购买升级
+- leaderUserLevelId 升级为团队长自动绑定会员等级
+- memberUserLevelId 升级为团队成员自动绑定会员等级
+
+### 用户绑定团队长成为团队成员
+
+```js
+WXAPI.partnerBindTeamLeader(token, uid)
+```
+
+- uid 为团队长的用户编号
+
+绑定后即可加入团队长所在的团队
+
+### 团队成员购买升级为团队长
+
+```js
+WXAPI.partnerBuyTeamLeader(token)
+```
+
+购买成功后，立即成为团队长；
+
+本接口是使用用户余额购买团队长，如果希望使用微信支付方式购买，请参考微信支付接口，通过设置 nextAction 实现在线支付购买团队长。
+
+### 团队成员统计
+
+```js
+WXAPI.partnerMembersStatistics(token)
+```
+
+该接口会返回：
+- leaders 名下名下团队长的数量（针对合伙人身份）
+- members 名下团队成员的数量
+
+### 团队成员列表接口
+
+```js
+WXAPI.partnerMembers(Object object)
+```
 
 # 积分模块
 

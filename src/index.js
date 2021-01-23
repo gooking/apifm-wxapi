@@ -231,6 +231,9 @@ module.exports = {
       iv
     })
   },
+  loginWxaMobileV2: data => {
+    return request('/user/wxapp/login/mobile', true, 'post', data)
+  },
   login_username: (data) => {
     return request('/user/username/login', true, 'post', data)
   },
@@ -1297,5 +1300,20 @@ module.exports = {
   },
   bindPartner: (token, partnerId) => {
     return request('/user/bindPartner', true, 'post', { token, uid: partnerId })
+  },
+  partnerSetting: () => {
+    return request('/partner/setting', true, 'get')
+  },
+  partnerBindTeamLeader: (token, uid) => {
+    return request('/partner/bindTeamLeader', true, 'post', { token, uid })
+  },
+  partnerBuyTeamLeader: token => {
+    return request('/partner/buy', true, 'post', { token })
+  },
+  partnerMembersStatistics: token => {
+    return request('/partner/members/statistics', true, 'get', { token })
+  },
+  partnerMembers: data => {
+    return request('/partner/members', true, 'post', data)
   },
 }
