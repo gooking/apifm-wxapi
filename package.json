@@ -1,7 +1,7 @@
 {
   "name": "apifm-wxapi",
-  "version": "3.32.0",
-  "description": "增加合伙人/团队长/团员相关接口",
+  "version": "3.33.0",
+  "description": "增加jdvop相关接口",
   "main": "miniprogram_dist/index.js",
   "scripts": {
     "dev": "gulp dev --develop",

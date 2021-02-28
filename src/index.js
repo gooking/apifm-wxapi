@@ -2,6 +2,7 @@
 // 小程序开发api接口工具包，https://github.com/gooking/wxapi
 var API_BASE_URL = 'https://api.it120.cc'
 var subDomain = '-'
+var merchantId = '0'
 
 let request = (url, needSubDomain, method, data) => {
   const _url = API_BASE_URL + (needSubDomain ? '/' + subDomain : '') + url
@@ -57,6 +58,9 @@ module.exports = {
   },
   init: (b) => {
     subDomain = b
+  },
+  setMerchantId: (mchid) => {
+    merchantId = mchid
   },
   init3: ({
     apiBaseUrl = API_BASE_URL,
@@ -339,6 +343,9 @@ module.exports = {
   goodsReputation: (data) => {
     return request('/shop/goods/reputation', true, 'post', data)
   },
+  goodsReputationV2: (data) => {
+    return request('/shop/goods/reputation/v2', true, 'post', data)
+  },
   myBuyGoodsHis: (data) => {
     return request('/shop/goods/his/list', true, 'post', data)
   },
@@ -522,6 +529,11 @@ module.exports = {
       token
     })
   },
+  userDetailSpreadUser: (token, uid) => {
+    return request('/user/detail/spreadUser', true, 'get', {
+      token, uid
+    })
+  },
   userWxinfo: (token) => {
     return request('/user/wxinfo', true, 'get', {
       token
@@ -615,6 +627,15 @@ module.exports = {
   province: () => {
     return request('/common/region/v2/province', false, 'get')
   },
+  city: () => {
+    return request('/common/region/v2/city', false, 'get')
+  },
+  districts: () => {
+    return request('/common/region/v2/districts', false, 'get')
+  },
+  streets: () => {
+    return request('/common/region/v2/streets', false, 'get')
+  },
   nextRegion: (pid) => {
     return request('/common/region/v2/child', false, 'get', {
       pid
@@ -680,6 +701,18 @@ module.exports = {
   },
   fxMembersStatistics: token => {
     return request('/saleDistribution/members/statistics', true, 'get', { token })
+  },
+  fxGoods: data => {
+    return request('/saleDistribution/goods', true, 'post', data)
+  },
+  fxTeamReport: data => {
+    return request('/saleDistribution/team/report', true, 'post', data)
+  },
+  fxCities: token => {
+    return request('/saleDistribution/city/list', true, 'get', { token })
+  },
+  fxCityReport: data => {
+    return request('/saleDistribution/city/report', true, 'post', data)
   },
   goodsSellNumberStatistics: (page, pageSize, goodsId = '') => {
     return request('/site/goods/statistics', true, 'get', {
@@ -971,6 +1004,11 @@ module.exports = {
   },
   myVote: (token, voteId) => {
     return request('/vote/vote/info', true, 'get', {
+      token, voteId,
+    })
+  },
+  myVoteV2: (token, voteId) => {
+    return request('/vote/vote/info/v2', true, 'get', {
       token, voteId,
     })
   },
@@ -1315,5 +1353,51 @@ module.exports = {
   },
   partnerMembers: data => {
     return request('/partner/members', true, 'post', data)
+  },
+  // 京东VOP相关接口
+  jdvopGoodsList: data => {
+    return request(`/jdvop/${merchantId}/goods/list`, false, 'post', data)
+  },
+  jdvopGoodsCheckCanBuy: data => {
+    return request(`/jdvop/${merchantId}/goods/checkCanBuy`, false, 'post', data)
+  },
+  jdvopGoodsDetail: goodsId => {
+    return request(`/jdvop/${merchantId}/goods/detail`, false, 'get', {
+      skuId: goodsId,
+      queryExts: 'wxintroduction'
+    })
+  },
+  jdvopGoodsSkuImages: goodsId => {
+    return request(`/jdvop/${merchantId}/goods/skuImages`, false, 'get', {
+      skuId: goodsId
+    })
+  },
+  jdvopCartInfo: token => {
+    return request(`/jdvop/${merchantId}/shopping-cart/info`, false, 'get', {
+      token
+    })
+  },
+  jdvopCartAdd: data => {
+    return request(`/jdvop/${merchantId}/shopping-cart/add`, false, 'post', data)
+  },
+  jdvopCartModifyNumber: (token, key, number) => {
+    return request(`/jdvop/${merchantId}/shopping-cart/modifyNumber`, false, 'post', {
+      token, key, number
+    })
+  },
+  jdvopCartSelect: (token, key, selected) => {
+    return request(`/jdvop/${merchantId}/shopping-cart/select`, false, 'post', {
+      token, key, selected
+    })
+  },
+  jdvopCartRemove: (token, key) => {
+    return request(`/jdvop/${merchantId}/shopping-cart/remove`, false, 'post', {
+      token, key
+    })
+  },
+  jdvopCartEmpty: token => {
+    return request(`/jdvop/${merchantId}/shopping-cart/empty`, false, 'post', {
+      token
+    })
   },
 }

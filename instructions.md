@@ -462,15 +462,22 @@ WXAPI.queryConfigBatch(keys)
 
 ### 设置 JSON 数据
 
-> jsonSet(Object object)
+```js
+WXAPI.jsonSet(Object object)
+```
+
 
 ### 读取设置的 JSON 数据列表
 
-> jsonList(Object object)
+```js
+WXAPI.jsonList(Object object)
+```
 
 ### 删除 JSON 数据
 
-> jsonDelete(token, id)
+```js
+WXAPI.jsonDelete(token, id)
+```
 
 ## 分布式文件管理
 
