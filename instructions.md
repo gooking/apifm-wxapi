@@ -2158,14 +2158,17 @@ WXAPI.orderDelivery(token, orderId)
 ### 订单核销
 
 ```js
-WXAPI.orderHX(hxNumber)
+WXAPI.orderHXV2(Object object)
 ```
 
-> hxNumber 为核销码，所以请妥善保管，商家依据核销码进行核销
-> 
-> 订单默认不会生成核销码，如果需要开启核销功能，请在创建订单方法参数中增加 isCanHx=true 
-> 
-> 核销后，订单即交易成功，转为待评价状态
+支持以下参数：
+- token 传当前核销人员的登陆token
+- hxNumber 核销码，商家依据核销码进行核销
+- extJsonStr 扩展属性，会出现在订单详情的扩展属性信息中
+
+订单默认不会生成核销码，如果需要开启核销功能，请在创建订单方法参数中增加 isCanHx=true 
+
+核销后，订单即交易成功，转为待评价状态
 
 ### 获取所有订单
 

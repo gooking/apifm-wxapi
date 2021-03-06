@@ -1,7 +1,7 @@
 {
   "name": "apifm-wxapi",
-  "version": "3.33.0",
-  "description": "增加jdvop相关接口",
+  "version": "3.34.0",
+  "description": "核销接口升级到orderHXV2",
   "main": "miniprogram_dist/index.js",
   "scripts": {
     "dev": "gulp dev --develop",

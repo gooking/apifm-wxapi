@@ -597,6 +597,9 @@ module.exports = {
       hxNumber
     })
   },
+  orderHXV2: data => {
+    return request('/order/hx', true, 'post', data)
+  },
   orderSet: () => {
     return request('/order/set', true, 'get')
   },
