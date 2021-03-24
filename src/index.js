@@ -946,6 +946,9 @@ module.exports = {
   idcardCheck: (token, name, idCardNo) => {
     return request('/user/idcard', true, 'post', { token, name, idCardNo })
   },
+  bindSeller: data => {
+    return request('/user/bindSeller', true, 'post', data)
+  },
   loginout: (token) => {
     return request('/user/loginout', true, 'get', { token })
   },
@@ -1356,6 +1359,15 @@ module.exports = {
   },
   partnerMembers: data => {
     return request('/partner/members', true, 'post', data)
+  },
+  myLiveRooms: data => {
+    return request('/liveRooms/my', true, 'post', data)
+  },
+  myLiveRoomsInfo: (token, id) => {
+    return request('/liveRooms/my/info', true, 'get', { token, id })
+  },
+  stopLiveRoom: (token, id) => {
+    return request('/liveRooms/my/stop', true, 'post', { token, id })
   },
   // 京东VOP相关接口
   jdvopGoodsList: data => {
