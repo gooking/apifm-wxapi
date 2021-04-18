@@ -228,6 +228,12 @@ module.exports = {
       type: 2
     })
   },
+  login_q: (code) => {
+    return request('/user/q/login', true, 'post', {
+      code,
+      type: 2
+    })
+  },
   loginWxaMobile: (code, encryptedData, iv) => {
     return request('/user/wxapp/login/mobile', true, 'post', {
       code,
@@ -266,6 +272,9 @@ module.exports = {
   },
   register_complex: (data) => {
     return request('/user/wxapp/register/complex', true, 'post', data)
+  },
+  registerQ: (data) => {
+    return request('/user/q/register', true, 'post', data)
   },
   register_simple: (data) => {
     return request('/user/wxapp/register/simple', true, 'post', data)
@@ -1279,6 +1288,12 @@ module.exports = {
   goodsTimesDayItems: (day, goodsId, propertyChildIds = '') => {
     return request('/shop/goods/times/items', true, 'post', { day, goodsId, propertyChildIds })
   },
+  goodsBrandList: data => {
+    return request('/shop/goods/brand/list', true, 'post', data)
+  },
+  goodsBrandDetail: id => {
+    return request('/shop/goods/brand/detail', true, 'get', { id })
+  },
   wxappServiceLogin: data => {
     return request('/user/wxappService/login', true, 'post', data)
   },
@@ -1363,11 +1378,29 @@ module.exports = {
   myLiveRooms: data => {
     return request('/liveRooms/my', true, 'post', data)
   },
+  liveRooms: data => {
+    return request('/liveRooms/list', true, 'post', data)
+  },
   myLiveRoomsInfo: (token, id) => {
     return request('/liveRooms/my/info', true, 'get', { token, id })
   },
+  liveRoomsInfo: (token, id) => {
+    return request('/liveRooms/info', true, 'get', { token, id })
+  },
+  liveRoomGoodsMainly: data => {
+    return request('/liveRooms/goods/mainly', true, 'post', data)
+  },
   stopLiveRoom: (token, id) => {
     return request('/liveRooms/my/stop', true, 'post', { token, id })
+  },
+  likeLiveRoom: (token, id) => {
+    return request('/liveRooms/like', true, 'post', { token, id })
+  },
+  liveRoomOnlineUsers: (token, roomId) => {
+    return request('/websocket/rest/liveRoom/onlines', false, 'get', { token, roomId })
+  },
+  liveRoomKickOutUser: (token, roomId, uid) => {
+    return request('/websocket/rest/liveRoom/kickOut', false, 'post', { token, roomId, uid })
   },
   // 京东VOP相关接口
   jdvopGoodsList: data => {
@@ -1414,5 +1447,52 @@ module.exports = {
     return request(`/jdvop/${merchantId}/shopping-cart/empty`, false, 'post', {
       token
     })
+  },
+  // cps
+  cpsJdGoodsDetail: data => {
+    return request('/cpsJdGoods/detail', true, 'get', data)
+  },
+  cpsJdGoodsShotUrl: (token, skuId) => {
+    return request('/cpsJdGoods/shotUrl', true, 'get', { token, skuId })
+  },
+  cpsJdOrders: data => {
+    return request('/cpsJdOrder/list', true, 'post', data)
+  },
+  cpsJdOrderDetail: (token, id) => {
+    return request('/cpsJdOrder/detail', true, 'get', { token, id })
+  },
+  cpsPddBeian: token => {
+    return request('/cpsPddGoods/beian', true, 'get', { token })
+  },
+  cpsPddGoodsDetail: data => {
+    return request('/cpsPddGoods/detail', true, 'get', data)
+  },
+  cpsPddGoodsShotUrl: (token, goodsSign) => {
+    return request('/cpsPddGoods/shotUrl', true, 'get', { token, goodsSign })
+  },
+  cpsPddOrders: data => {
+    return request('/cpsPddOrder/list', true, 'post', data)
+  },
+  cpsPddOrderDetail: (token, id) => {
+    return request('/cpsPddOrder/detail', true, 'get', { token, id })
+  },
+  // 回收
+  recycleOrders: data => {
+    return request('/recycleOrder/list', true, 'post', data)
+  },
+  recycleOrderApply: data => {
+    return request('/recycleOrder/apply', true, 'post', data)
+  },
+  recycleOrderDetail: (token, id) => {
+    return request('/recycleOrder/detail', true, 'get', { token, id })
+  },
+  recycleOrderFahuo: data => {
+    return request('/recycleOrder/fahuo', true, 'post', data)
+  },
+  recycleOrderClose: (token, id) => {
+    return request('/recycleOrder/close', true, 'post', { token, id })
+  },
+  recycleOrderDelete: (token, id) => {
+    return request('/recycleOrder/del', true, 'post', { token, id })
   },
 }
