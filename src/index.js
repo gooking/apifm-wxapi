@@ -192,6 +192,9 @@ module.exports = {
   wxpay: (data) => {
     return request('/pay/wx/wxapp', true, 'post', data)
   },
+  wxpayQH5: data => {
+    return request('/pay/wx/qh5', true, 'post', data);
+  },
   wxpayFOMO: (data) => {
     return request('/pay/fomo/wxapp', true, 'post', data)
   },
@@ -321,6 +324,12 @@ module.exports = {
     return request('/shop/goods/goodsAddition', true, 'get', {
       goodsId
     })
+  },
+  goodsStatistics: data => {
+    return request('/shop/goods/statistics/days', true, 'post', data)
+  },
+  goodsUseless: (data) => {
+    return request('/shop/goods/useful', true, 'post', data)
   },
   pushNewGoods: data => {
     return request('/shop/goods/putOrUpdate', true, 'post', data)
@@ -861,7 +870,7 @@ module.exports = {
   modifyUserInfo: (data) => {
     return request('/user/modify', true, 'post', data)
   },
-  bindSaleman: (token, uid) => {
+  bindSaleman: data => {
     return request('/user/bindSaleman', true, 'post', data)
   },
   modifyUserPassword: (token, pwdOld, pwdNew) => {
@@ -1402,6 +1411,12 @@ module.exports = {
   liveRoomKickOutUser: (token, roomId, uid) => {
     return request('/websocket/rest/liveRoom/kickOut', false, 'post', { token, roomId, uid })
   },
+  mockApi: (groupName, apiName, method) => {
+    return request(`/mock/${groupName}/${apiName}`, true, method)
+  },
+  tourJourneyList: (type, refId) => {
+    return request('/tourJourney/list', true, 'get', { type, refId })
+  },
   // 京东VOP相关接口
   jdvopGoodsList: data => {
     return request(`/jdvop/${merchantId}/goods/list`, false, 'post', data)
@@ -1476,6 +1491,15 @@ module.exports = {
   cpsPddOrderDetail: (token, id) => {
     return request('/cpsPddOrder/detail', true, 'get', { token, id })
   },
+  cpsTaobaoGoodsDetail: data => {
+    return request('/cpsTaobaoGoods/detail', true, 'get', data)
+  },
+  cpsTaobaoGoodsShotUrl: (token, content) => {
+    return request('/cpsTaobaoGoods/shotUrl', true, 'post', { token, content })
+  },
+  cpsTaobaoGoodsKouling: (token, content) => {
+    return request('/cpsTaobaoGoods/kouling', true, 'post', { token, content })
+  },
   // 回收
   recycleOrders: data => {
     return request('/recycleOrder/list', true, 'post', data)
@@ -1494,5 +1518,28 @@ module.exports = {
   },
   recycleOrderDelete: (token, id) => {
     return request('/recycleOrder/del', true, 'post', { token, id })
+  },
+  // 收藏卡片
+  collectCardHis: data => {
+    return request('/collectCard/del', true, 'post', data)
+  },
+  collectCardInfo: (number) => {
+    return request('/collectCard/cardInfo', true, 'get', { number })
+  },
+  collectCardHisInfo: (token, id) => {
+    return request('/collectCard/hisInfo', true, 'get', { token, id })
+  },
+  collectCardBind: data => {
+    return request('/collectCard/bind', true, 'post', data)
+  },
+  collectCardUnBind: (token, id, smsCode) => {
+    return request('/collectCard/bind', true, 'post', { token, id, smsCode })
+  },
+  // 其他
+  bengenSaleTongjiList: data => {
+    return request('/bengenSaleTongji/list', true, 'post', data)
+  },
+  bengenSaleTongjiRank: data => {
+    return request('/bengenSaleTongji/rank', true, 'get', data)
   },
 }

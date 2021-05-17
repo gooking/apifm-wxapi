@@ -1,7 +1,7 @@
 {
   "name": "apifm-wxapi",
-  "version": "3.36.0",
-  "description": "增加 bindSeller 方法，用户自主绑定分销商",
+  "version": "3.37.0",
+  "description": "增加旅游旅行相关接口",
   "main": "miniprogram_dist/index.js",
   "scripts": {
     "dev": "gulp dev --develop",
