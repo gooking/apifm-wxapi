@@ -1,7 +1,7 @@
 {
   "name": "apifm-wxapi",
-  "version": "3.37.0",
-  "description": "增加旅游旅行相关接口",
+  "version": "3.38.0",
+  "description": "升级收货地址列表接口",
   "main": "miniprogram_dist/index.js",
   "scripts": {
     "dev": "gulp dev --develop",

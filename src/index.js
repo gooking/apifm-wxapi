@@ -310,6 +310,16 @@ module.exports = {
     }
     return request('/shop/goods/list', true, 'post', data)
   },
+  goodsv2: (data) => {
+    if (!data) {
+      data = {}
+    }
+    const shopIds = wx.getStorageSync('shopIds')
+    if (shopIds) {
+      data.shopId = shopIds
+    }
+    return request('/shop/goods/list/v2', true, 'post', data)
+  },
   goodsDetail: (id, token = '') => {
     return request('/shop/goods/detail', true, 'get', {
       id, token
@@ -456,6 +466,9 @@ module.exports = {
     return request('/user/shipping-address/list', true, 'get', {
       token
     })
+  },
+  queryAddressV2: data => {
+    return request('/user/shipping-address/list/v2', true, 'post', data)
   },
   defaultAddress: (token) => {
     return request('/user/shipping-address/default/v2', true, 'get', {
@@ -1039,11 +1052,17 @@ module.exports = {
   voteLogs: (data) => {
     return request('/vote/vote/list', true, 'post', data)
   },
+  yuyueItemPublish: (data) => {
+    return request('/yuyue/publish', true, 'post', data)
+  },
   yuyueItems: (data) => {
     return request('/yuyue/items', true, 'post', data)
   },
   yuyueItemDetail: (id) => {
     return request('/yuyue/info', true, 'get', { id })
+  },
+  yuyueItemDelete: (token, id) => {
+    return request('/yuyue/del', true, 'post', { token, id })
   },
   yuyueJoin: (data) => {
     return request('/yuyue/join', true, 'post', data)
@@ -1290,6 +1309,9 @@ module.exports = {
   },
   cyTablePayOrder: data => {
     return request('/cyTable/pay-order', true, 'post', data)
+  },
+  goodsTimesSchedule: (goodsId = '', propertyChildIds = '') => {
+    return request('/shop/goods/times/schedule', true, 'post', { goodsId, propertyChildIds })
   },
   goodsTimesDays: (goodsId, propertyChildIds = '') => {
     return request('/shop/goods/times/days', true, 'post', { goodsId, propertyChildIds })

@@ -941,8 +941,15 @@ WXAPI.userLevelBuyLogs(Object object)
 ### 获取所有的收货地址
 
 ```js
-WXAPI.queryAddress(token)
+WXAPI.queryAddressV2(Object object)
 ```
+
+参数说明：
+- token 当前登陆用户的token
+- page 获取第几页数据
+- pageSize 每页显示多少数据
+- nameLike 收货人姓名模糊搜索
+- mobileLike 手机号码模糊搜索
 
 ### 添加收货地址
 
