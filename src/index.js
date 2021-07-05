@@ -231,6 +231,11 @@ module.exports = {
       type: 2
     })
   },
+  login_tt: (code) => {
+    return request('/user/tt/microapp/login', true, 'post', {
+      code
+    })
+  },
   login_q: (code) => {
     return request('/user/q/login', true, 'post', {
       code,
@@ -276,6 +281,9 @@ module.exports = {
   register_complex: (data) => {
     return request('/user/wxapp/register/complex', true, 'post', data)
   },
+  register_tt: (data) => {
+    return request('/user/tt/microapp/register', true, 'post', data)
+  },
   registerQ: (data) => {
     return request('/user/q/register', true, 'post', data)
   },
@@ -284,6 +292,9 @@ module.exports = {
   },
   authorize: (data) => {
     return request('/user/wxapp/authorize', true, 'post', data)
+  },
+  ttAuthorize: (data) => {
+    return request('/user/tt/microapp/authorize', true, 'post', data)
   },
   register_username: (data) => {
     return request('/user/username/register', true, 'post', data)
@@ -756,6 +767,12 @@ module.exports = {
   wxaQrcode: (data) => {
     return request('/qrcode/wxa/unlimit', true, 'post', data)
   },
+  ttaQrcode: (paramsJson, expireHours) => {
+    return request('/user/tt/microapp/qrcode', true, 'post', {
+      content: JSON.stringify(paramsJson),
+      expireHours
+    })
+  },
   uploadFile: (token, tempFilePath, expireHours = '') => {
     const uploadUrl = API_BASE_URL + '/' + subDomain + '/dfs/upload/file'
     return new Promise((resolve, reject) => {
@@ -1129,38 +1146,39 @@ module.exports = {
   cmsArticleFavDeleteByNewsId: (token, newsId) => {
     return request('/cms/news/fav/delete', true, 'post', { token, newsId })
   },
-  shippingCarInfo: (token) => {
+  shippingCarInfo: (token, type = '') => {
     return request('/shopping-cart/info', true, 'get', {
-      token
+      token, type
     })
   },
-  shippingCarInfoAddItem: (token, goodsId, number, sku, addition) => {
+  shippingCarInfoAddItem: (token, goodsId, number, sku, addition, type = '') => {
     return request('/shopping-cart/add', true, 'post', {
       token,
       goodsId,
       number,
       sku: sku && sku.length > 0 ? JSON.stringify(sku) : '',
-      addition: addition && addition.length > 0 ? JSON.stringify(addition) : ''
+      addition: addition && addition.length > 0 ? JSON.stringify(addition) : '',
+      type
     })
   },
-  shippingCarInfoModifyNumber: (token, key, number) => {
+  shippingCarInfoModifyNumber: (token, key, number, type = '') => {
     return request('/shopping-cart/modifyNumber', true, 'post', {
-      token, key, number
+      token, key, number, type
     })
   },
-  shippingCarInfoRemoveItem: (token, key) => {
+  shippingCarInfoRemoveItem: (token, key, type = '') => {
     return request('/shopping-cart/remove', true, 'post', {
-      token, key
+      token, key, type
     })
   },
-  shippingCartSelected: (token, key, selected) => {
+  shippingCartSelected: (token, key, selected, type = '') => {
     return request('/shopping-cart/select', true, 'post', {
-      token, key, selected
+      token, key, selected, type
     })
   },
-  shippingCarInfoRemoveAll: (token) => {
+  shippingCarInfoRemoveAll: (token, type = '') => {
     return request('/shopping-cart/empty', true, 'post', {
-      token
+      token, type
     })
   },
   growthLogs: (data) => {
@@ -1255,14 +1273,6 @@ module.exports = {
   },
   mtjTransferLogs: (data) => {
     return request('/mtj/transfer/logs', true, 'post', data)
-  },
-  register_tt: (data) => {
-    return request('/user/tt/microapp/register', true, 'post', data)
-  },
-  login_tt: (code) => {
-    return request('/user/tt/microapp/login', true, 'post', {
-      code
-    })
   },
   wxOpenAuthorization: (data) => {
     return request('/user/wxsns/authorization', true, 'post', data)
@@ -1363,6 +1373,9 @@ module.exports = {
   },
   adPosition: key => {
     return request('/site/adPosition/info', true, 'get', { key })
+  },
+  adPositionBatch: keys => {
+    return request('/site/adPosition/batch', true, 'get', { keys })
   },
   momentsCategory: () => {
     return request('/momentsCategory/list', true, 'get')

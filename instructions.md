@@ -1962,8 +1962,10 @@ WXAPI.goodsFavDelete(token, id, goodsId)
 ### 读取购物车数据
 
 ```js
-WXAPI.shippingCarInfo(token)
+WXAPI.shippingCarInfo(token, type)
 ```
+
+- type 自定义购物车类型，可用来区分多个购物车
 
 获取当前购物车的数据，数据结构如下：
 
@@ -2042,7 +2044,7 @@ WXAPI.shippingCarInfo(token)
 ### 添加商品到购物车
 
 ```js
-WXAPI.shippingCarInfoAddItem(token, goodsId, number, sku, addition)
+WXAPI.shippingCarInfoAddItem(token, goodsId, number, sku, addition, type)
 ```
 
 - goodsId 商品编号，数字类型
@@ -2077,37 +2079,50 @@ WXAPI.shippingCarInfoAddItem(token, goodsId, number, sku, addition)
   ]
   ```
 
+- type 自定义购物车类型，可用来区分多个购物车
+
 ### 修改购物车商品数量
 
 ```js
-WXAPI.shippingCarInfoModifyNumber(token, key, number)
+WXAPI.shippingCarInfoModifyNumber(token, key, number, type)
 ```
 
 修改购物车中key对应的那条记录的商品数量为number指定的数值
+- token 用户登陆凭证
+- key 购物车中记录条目的key编号
+- number 商品数量
+- type 自定义购物车类型，可用来区分多个购物车
 
 ### 删除购物车中某条记录
 
 ```js
-WXAPI.shippingCarInfoRemoveItem(token, key)
+WXAPI.shippingCarInfoRemoveItem(token, key, type)
 ```
 
 删除购物车中key对应的那条记录,多个key，请使用英文多逗号隔开即可实现批量删除
+- token 用户登陆凭证
+- key 购物车中记录条目的key编号
+- type 自定义购物车类型，可用来区分多个购物车
 
 ### 购物车中某条记录选中/取消选中
 
 ```js
-WXAPI.shippingCartSelected(token, key, selected)
+WXAPI.shippingCartSelected(token, key, selected, type)
 ```
 
 - 多个key，请使用英文多逗号隔开即可实现批量操作
 - selected 为 true / false，代表选中或者不选中
+- type 自定义购物车类型，可用来区分多个购物车
 
 
 ### 一键清空购物车
 
 ```js
-WXAPI.shippingCarInfoRemoveAll(token)
+WXAPI.shippingCarInfoRemoveAll(token, type)
 ```
+
+- token 用户登陆凭证
+- type 自定义购物车类型，可用来区分多个购物车
 
 ## 订单管理
 

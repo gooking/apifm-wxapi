@@ -1,7 +1,7 @@
 {
   "name": "apifm-wxapi",
-  "version": "3.38.0",
-  "description": "升级收货地址列表接口",
+  "version": "3.39.0",
+  "description": "升级购物车接口，支持多购物车",
   "main": "miniprogram_dist/index.js",
   "scripts": {
     "dev": "gulp dev --develop",
