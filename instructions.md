@@ -209,6 +209,7 @@
         - [分销商累计销售额排行榜](#分销商累计销售额排行榜)
         - [分销商某天的销售额排行榜](#分销商某天的销售额排行榜)
         - [名下团队成员人数统计](#名下团队成员人数统计)
+        - [我的佣金统计](#我的佣金统计)
         - [用户绑定分销商](#用户绑定分销商)
     - [合伙人/团队长/ 二级分销](#合伙人团队长-二级分销)
         - [读取合伙人分销设置](#读取合伙人分销设置)
@@ -333,6 +334,15 @@
 - [扫码点餐](#扫码点餐)
     - [扫桌码获取token](#扫桌码获取token)
     - [下单（厨） / 加菜](#下单厨--加菜)
+- [购买课程模块](#购买课程模块)
+    - [获取课程列表](#获取课程列表)
+    - [获取课程详情](#获取课程详情)
+    - [获取某个课程的报名用户信息](#获取某个课程的报名用户信息)
+    - [获取我的报名记录](#获取我的报名记录)
+    - [购买课程](#购买课程)
+    - [用余额支付购买课程订单](#用余额支付购买课程订单)
+    - [关闭课程订单](#关闭课程订单)
+    - [删除课程订单](#删除课程订单)
 
 <!-- /TOC -->
 
@@ -2794,6 +2804,17 @@ WXAPI.fxMembersStatistics(token)
 - totleChildFxsLevel1 全部直属分销商数量
 - totleChildFxsLevel2 全部间接分销商数量
 
+### 我的佣金统计
+
+```js
+WXAPI.fxMyCommisionStatistics(token, days)
+```
+参数说明：
+- token 当前用户的登陆token
+- days 统计的日期，多个日期用英文逗号分割，0 代表全部，日期格式如：
+
+0,2021,202107,20210707 分别可以统计全部、某年、某月、某天
+
 ### 用户绑定分销商
 
 ```js
@@ -3877,3 +3898,100 @@ WXAPI.cyTableAddOrder(Object object)
     }
 ]
 ```
+
+# 购买课程模块
+
+## 获取课程列表
+
+```js
+WXAPI.courseInfoList(Object object)
+```
+
+参数说明：
+
+- page 获取第几页数据，初始1
+- pageSize 每页显示多少条数据
+
+## 获取课程详情
+
+```js
+WXAPI.courseInfo(id)
+```
+
+参数说明：
+
+- id 课程ID
+
+## 获取某个课程的报名用户信息
+
+```js
+WXAPI.courseBuyLogPublic(Object object)
+```
+
+参数说明：
+
+- page 获取第几页数据，初始1
+- pageSize 每页显示多少条数据
+- courseId 课程ID
+
+## 获取我的报名记录
+
+```js
+WXAPI.courseBuyLogMy(Object object)
+```
+
+参数说明：
+
+- token 用户登陆token
+- page 获取第几页数据，初始1
+- pageSize 每页显示多少条数据
+- courseId 课程ID, 不传则获取所有的课程报名记录
+
+## 购买课程
+
+```js
+WXAPI.courseInfoBuy(Object object)
+```
+
+参数说明：
+
+- token 用户登陆token
+- courseId 课程ID
+- shopId 门店ID
+- sessionId 场次ID
+- name 姓名
+- mobile 手机号码
+- number 购买数量
+
+## 用余额支付购买课程订单
+
+```js
+WXAPI.courseInfoBuyLogPay(token, orderId)
+```
+
+参数说明：
+
+- token 用户登陆token
+- orderId 课程购买记录的ID，并非课程ID
+
+## 关闭课程订单
+
+```js
+WXAPI.courseInfoBuyLogClose(token, orderId)
+```
+
+参数说明：
+
+- token 用户登陆token
+- orderId 课程购买记录的ID，并非课程ID
+
+## 删除课程订单
+
+```js
+WXAPI.courseInfoBuyLogDelete(token, orderId)
+```
+
+参数说明：
+
+- token 用户登陆token
+- orderId 课程购买记录的ID，并非课程ID

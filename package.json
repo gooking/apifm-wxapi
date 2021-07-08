@@ -1,7 +1,7 @@
 {
   "name": "apifm-wxapi",
-  "version": "3.39.0",
-  "description": "升级购物车接口，支持多购物车",
+  "version": "3.40.0",
+  "description": "增加购买课程模块接口",
   "main": "miniprogram_dist/index.js",
   "scripts": {
     "dev": "gulp dev --develop",

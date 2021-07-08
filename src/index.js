@@ -747,6 +747,9 @@ module.exports = {
   fxMembersStatistics: token => {
     return request('/saleDistribution/members/statistics', true, 'get', { token })
   },
+  fxMyCommisionStatistics: (token, days) => {
+    return request('/saleDistribution/my/commision', true, 'get', { token, days })
+  },
   fxGoods: data => {
     return request('/saleDistribution/goods', true, 'post', data)
   },
@@ -1576,5 +1579,30 @@ module.exports = {
   },
   bengenSaleTongjiRank: data => {
     return request('/bengenSaleTongji/rank', true, 'get', data)
+  },
+  // 购买课程
+  courseInfoList: data => {
+    return request('/courseInfo/list', true, 'post', data)
+  },
+  courseInfo: id => {
+    return request('/courseInfo/info', true, 'get', { id })
+  },
+  courseBuyLogPublic: data => {
+    return request('/courseBuyLog/public', true, 'post', data)
+  },
+  courseBuyLogMy: data => {
+    return request('/courseBuyLog/my', true, 'post', data)
+  },
+  courseInfoBuy: data => {
+    return request('/courseBuyLog/buy', true, 'post', data)
+  },
+  courseInfoBuyLogPay: (token, orderId) => {
+    return request('/courseBuyLog/buy', true, 'post', { token, orderId })
+  },
+  courseInfoBuyLogClose: (token, orderId) => {
+    return request('/courseBuyLog/close', true, 'post', { token, orderId })
+  },
+  courseInfoBuyLogDelete: (token, orderId) => {
+    return request('/courseBuyLog/del', true, 'post', { token, orderId })
   },
 }
