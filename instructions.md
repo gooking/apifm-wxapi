@@ -276,6 +276,7 @@
         - [保存 formid/预支付Id](#保存-formid预支付id)
         - [给用户发送模板消息](#给用户发送模板消息)
 - [活动 & 工具](#活动--工具)
+    - [在线获取二维码](#在线获取二维码)
     - [分布式系统唯一ID](#分布式系统唯一id)
     - [手机号段服务](#手机号段服务)
         - [归属地查询](#归属地查询)
@@ -339,6 +340,7 @@
     - [获取课程详情](#获取课程详情)
     - [获取某个课程的报名用户信息](#获取某个课程的报名用户信息)
     - [获取我的报名记录](#获取我的报名记录)
+    - [课程购买订单详情](#课程购买订单详情)
     - [购买课程](#购买课程)
     - [用余额支付购买课程订单](#用余额支付购买课程订单)
     - [关闭课程订单](#关闭课程订单)
@@ -390,8 +392,11 @@ WXAPI.fetchSubDomainByWxappAppid(appid)
 ## 订单统计
 
 ```js
-WXAPI.orderStatistics(token)
+WXAPI.orderStatisticsv2(Object object)
 ```
+参数：
+- token 用户登陆token
+- isNeedLogistics ： true / false ，是否需要快递
 
 订单统计，用以显示订单统计或者是订单类型小红点，该方法将会返回一下几个数据：
 
@@ -3427,6 +3432,17 @@ WXAPI.sendTempleMsg(Object object)
 
 # 活动 & 工具
 
+## 在线获取二维码
+
+```js
+WXAPI.commonQrcode(Object object)
+```
+
+参数说明：
+- content 二维码的内容
+- width 二维码的宽度，不传默认为 300
+- expireHours 图片几小时后自动删除，不传则不会删除图片
+
 ## 分布式系统唯一ID
 
 > WXAPI.uniqueId(type)
@@ -3435,11 +3451,15 @@ WXAPI.sendTempleMsg(Object object)
 
 ### 归属地查询
 
-> WXAPI.queryMobileLocation(mobile)
+```js
+WXAPI.queryMobileLocation(mobile)
+```
 
 ### 读取下一个号段
 
-> WXAPI.nextMobileSegment(Object object)
+```js
+WXAPI.nextMobileSegment(Object object)
+```
 
 ## 抽奖功能
 
@@ -3946,6 +3966,18 @@ WXAPI.courseBuyLogMy(Object object)
 - page 获取第几页数据，初始1
 - pageSize 每页显示多少条数据
 - courseId 课程ID, 不传则获取所有的课程报名记录
+
+## 课程购买订单详情
+
+```js
+WXAPI.courseInfoBuyLogDetail(token, id, hxNumber)
+```
+
+参数说明：
+
+- token 用户登陆token
+- id 订单id，并非课程id
+- hxNumber 核销码
 
 ## 购买课程
 

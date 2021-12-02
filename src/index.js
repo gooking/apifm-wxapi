@@ -81,6 +81,9 @@ module.exports = {
   nextMobileSegment: (data) => {
     return request('/common/mobile-segment/next', false, 'post', data)
   },
+  gpsDistance: (data) => {
+    return request('/common/map/qq/distance', false, 'post', data)
+  },
   queryConfigValue: (key) => {
     return request('/config/value', true, 'get', { key })
   },
@@ -189,11 +192,20 @@ module.exports = {
   sendTempleMsg: (data) => {
     return request('/template-msg/put', true, 'post', data)
   },
+  payVariableUrl: (url, data) => {
+    return request(url, true, 'post', data)
+  },
   wxpay: (data) => {
     return request('/pay/wx/wxapp', true, 'post', data)
   },
-  wxpayQH5: data => {
-    return request('/pay/wx/qh5', true, 'post', data);
+  wxpayH5: data => {
+    return request('/pay/wx/h5', true, 'post', data);
+  },
+  wxpayJsapi: (data) => {
+    return request('/pay/wx/jsapi', true, 'post', data)
+  },
+  wxpayQrcode: data => {
+    return request('/pay/wx/qrcode', true, 'post', data);
   },
   wxpayFOMO: (data) => {
     return request('/pay/fomo/wxapp', true, 'post', data)
@@ -221,6 +233,15 @@ module.exports = {
   },
   wxpayxpert: (data) => {
     return request('/pay/payxpert/wxapp', true, 'post', data)
+  },
+  wxpayIPaynow: (data) => {
+    return request('/pay/ipaynow/wxapp', true, 'post', data)
+  },
+  wxpayAirwallex: (data) => {
+    return request('/pay/airwallex/wxapp', true, 'post', data)
+  },
+  paypalCheckout: (data) => {
+    return request('/pay/paypal/checkout', true, 'post', data)
   },
   alipay: (data) => {
     return request('/pay/alipay/semiAutomatic/payurl', true, 'post', data)
@@ -417,6 +438,9 @@ module.exports = {
   goodsFavDeleteV2: data => {
     return request('/shop/goods/fav/delete', true, 'post', data)
   },
+  goodsSeckillGrab: (goodsId, seconds) => {
+    return request('/goods/seckill/grab', false, 'post', { goodsId, seconds })
+  },
   coupons: (data) => {
     return request('/discounts/coupons', true, 'get', data)
   },
@@ -538,9 +562,22 @@ module.exports = {
   addFriend: (token, uid) => {
     return request('/user/friend/add', true, 'post', { token, uid })
   },
+  deleteFriend: (token, uid) => {
+    return request('/user/friend/delete', true, 'post', { token, uid })
+  },
   friendUserDetail: (token, uid) => {
     return request('/user/friend/detail', true, 'get', { token, uid })
   },
+  userImList: data => {
+    return request('/userIm/list', true, 'post', data)
+  },
+  userImSendmessage: (token, uid, content) => {
+    return request('/userIm/sendmessage', true, 'post', { token, uid, content })
+  },
+  userImEmpty: (token, uid) => {
+    return request('/userIm/empty', true, 'post', { token, uid })
+  },
+
   videoDetail: (videoId) => {
     return request('/media/video/detail', true, 'get', {
       videoId
@@ -598,6 +635,11 @@ module.exports = {
       token,
       hxNumber,
       peisongOrderId
+    })
+  },
+  orderMtLocation: id => {
+    return request('/order/mtlocation', true, 'get', {
+      id
     })
   },
   orderDelivery: (token, orderId) => {
@@ -692,6 +734,9 @@ module.exports = {
   cashLogsV2: (data) => {
     return request('/user/cashLog/v2', true, 'post', data)
   },
+  statisticsComingOut: (data) => {
+    return request('/user/statisticsComingOut', true, 'post', data)
+  },
   payLogs: (data) => {
     return request('/user/payLogs', true, 'post', data)
   },
@@ -776,6 +821,9 @@ module.exports = {
       expireHours
     })
   },
+  commonQrcode: (data) => {
+    return request('/qrcode/content', true, 'post', data)
+  },
   uploadFile: (token, tempFilePath, expireHours = '') => {
     const uploadUrl = API_BASE_URL + '/' + subDomain + '/dfs/upload/file'
     return new Promise((resolve, reject) => {
@@ -830,6 +878,9 @@ module.exports = {
   },
   cmsArticles: (data) => {
     return request('/cms/news/list', true, 'post', data)
+  },
+  cmsArticlesV2: (data) => {
+    return request('/cms/news/list/v2', true, 'post', data)
   },
   cmsArticleUsefulLogs: (data) => {
     return request('/cms/news/useful/logs', true, 'post', data)
@@ -930,11 +981,20 @@ module.exports = {
   jsonList: (data) => {
     return request('/json/list', true, 'post', data)
   },
+  jsonListV2: (data) => {
+    return request('/json/list/v2', true, 'post', data)
+  },
   jsonSet: (data) => {
     return request('/json/set', true, 'post', data)
   },
-  jsonDelete: (token = '', id) => {
+  jsonDelete: (token, id) => {
     return request('/json/delete', true, 'post', { token, id })
+  },
+  jsonTop: (token, id, isTop) => {
+    return request('/json/top', true, 'post', { token, id, isTop })
+  },
+  jsonHighlight: (token, id, isHighlight) => {
+    return request('/json/highlight', true, 'post', { token, id, isHighlight })
   },
   graphValidateCodeUrl: (key = Math.random()) => {
     const _url = API_BASE_URL + '/' + subDomain + '/verification/pic/get?key=' + key
@@ -1078,8 +1138,8 @@ module.exports = {
   yuyueItems: (data) => {
     return request('/yuyue/items', true, 'post', data)
   },
-  yuyueItemDetail: (id) => {
-    return request('/yuyue/info', true, 'get', { id })
+  yuyueItemDetail: (id, token = '') => {
+    return request('/yuyue/info', true, 'get', { id, token })
   },
   yuyueItemDelete: (token, id) => {
     return request('/yuyue/del', true, 'post', { token, id })
@@ -1130,6 +1190,9 @@ module.exports = {
   },  
   goodsDynamic: (type) => {
     return request('/site/goods/dynamic', true, 'get', { type })
+  },
+  usersDynamic: (type) => {
+    return request('/site/user/dynamic', true, 'get', { type })
   },
   fetchSubDomainByWxappAppid: (appid) => {
     return request('/subdomain/appid/wxapp', false, 'get', { appid })
@@ -1250,6 +1313,9 @@ module.exports = {
       token
     })
   },
+  orderStatisticsv2: data => {
+    return request('/order/statistics', true, 'get', data)
+  },
   siteStatisticsSaleroom: (data) => {
     return request('/site/statistics/saleroom', true, 'get', data)
   },
@@ -1323,8 +1389,8 @@ module.exports = {
   cyTablePayOrder: data => {
     return request('/cyTable/pay-order', true, 'post', data)
   },
-  goodsTimesSchedule: (goodsId = '', propertyChildIds = '') => {
-    return request('/shop/goods/times/schedule', true, 'post', { goodsId, propertyChildIds })
+  goodsTimesSchedule: (goodsId = '', propertyChildIds = '', brandId = '', categoryId = '') => {
+    return request('/shop/goods/times/schedule', true, 'post', { goodsId, propertyChildIds, brandId, categoryId })
   },
   goodsTimesDays: (goodsId, propertyChildIds = '') => {
     return request('/shop/goods/times/days', true, 'post', { goodsId, propertyChildIds })
@@ -1455,6 +1521,18 @@ module.exports = {
   tourJourneyList: (type, refId) => {
     return request('/tourJourney/list', true, 'get', { type, refId })
   },
+  userBankSelectBanks: () => {
+    return request('/userBank/banks', true, 'get')
+  },
+  userBankInfo: token => {
+    return request('/userBank/info', true, 'get', { token })
+  },
+  userBankBind: data => {
+    return request('/userBank/bind', true, 'post', data)
+  },
+  userBankUnBind: token => {
+    return request('/userBank/unbind', true, 'post', { token })
+  },
   // 京东VOP相关接口
   jdvopGoodsList: data => {
     return request(`/jdvop/${merchantId}/goods/list`, false, 'post', data)
@@ -1501,12 +1579,33 @@ module.exports = {
       token
     })
   },
+  jdvopJinhuoGoods: data => {
+    return request('/vop/goods/list', true, 'post', data)
+  },
+  jdvopJinhuoGoodsDetail: (token, skuId) => {
+    return request('/vop/goods/detail', true, 'get', { token, skuId })
+  },
   // cps
+  cpsJdGoodsCategory: (parentId, grade) => {
+    return request('/cpsJdGoods/category', true, 'get', { parentId, grade })
+  },
+  cpsJdGoodsSearch: data => {
+    return request('/cpsJdGoods/search', true, 'post', data)
+  },
   cpsJdGoodsDetail: data => {
     return request('/cpsJdGoods/detail', true, 'get', data)
   },
+  cpsJdGoodsSetExt: data => {
+    return request('/cpsJdGoods/ext/set', true, 'post', data)
+  },
+  cpsJdGoodsQueryExt: skuId => {
+    return request('/cpsJdGoods/ext/query', true, 'get', { skuId })
+  },
   cpsJdGoodsShotUrl: (token, skuId) => {
     return request('/cpsJdGoods/shotUrl', true, 'get', { token, skuId })
+  },
+  cpsJdGoodsShotUrlSite: (token, materialUrl, couponUrl) => {
+    return request('/cpsJdGoods/shotUrl/site', true, 'post', { token, materialUrl, couponUrl })
   },
   cpsJdOrders: data => {
     return request('/cpsJdOrder/list', true, 'post', data)
@@ -1557,6 +1656,22 @@ module.exports = {
   recycleOrderDelete: (token, id) => {
     return request('/recycleOrder/del', true, 'post', { token, id })
   },
+  // 会员卡
+  cardList: data => {
+    return request('/card/list', true, 'post', data)
+  },
+  cardInfo: id => {
+    return request('/card/info', true, 'get', { id })
+  },
+  cardBuy: (token, id) => {
+    return request('/card/buy', true, 'post', { token, id })
+  },
+  cardMyList: token => {
+    return request('/card/my', true, 'get', { token })
+  },
+  cardMyLogs: data => {
+    return request('/card/logs', true, 'post', data)
+  },
   // 收藏卡片
   collectCardHis: data => {
     return request('/collectCard/del', true, 'post', data)
@@ -1597,12 +1712,82 @@ module.exports = {
     return request('/courseBuyLog/buy', true, 'post', data)
   },
   courseInfoBuyLogPay: (token, orderId) => {
-    return request('/courseBuyLog/buy', true, 'post', { token, orderId })
+    return request('/courseBuyLog/pay', true, 'post', { token, orderId })
+  },
+  courseInfoBuyLogDetail: (token, id, hxNumber = '') => {
+    return request('/courseBuyLog/detail', true, 'get', { token, id, hxNumber })
   },
   courseInfoBuyLogClose: (token, orderId) => {
     return request('/courseBuyLog/close', true, 'post', { token, orderId })
   },
   courseInfoBuyLogDelete: (token, orderId) => {
     return request('/courseBuyLog/del', true, 'post', { token, orderId })
+  },
+  // 橱窗
+  chuchuanSettingInfo: uid => {
+    return request('/chuchuan/info', true, 'get', { uid })
+  },
+  chuchuanSettingModify: data => {
+    return request('/chuchuan/modify', true, 'post', data)
+  },
+  chuchuanGoodsList: data => {
+    return request('/chuchuanGoods/list', true, 'post', data)
+  },
+  chuchuanGoodsAdd: data => {
+    return request('/chuchuanGoods/add', true, 'post', data)
+  },
+  chuchuanGoodsRemove: (token, goodsId) => {
+    return request('/chuchuanGoods/remove', true, 'post', { token, goodsId })
+  },
+  chuchuanGoodsCheck: (token, goodsId) => {
+    return request('/chuchuanGoods/check', true, 'get', { token, goodsId })
+  },
+  // 寄存
+  jicunGoodsList: data => {
+    return request('/jicunGoods/list', true, 'post', data)
+  },
+  jicunGoodsDetail: data => {
+    return request('/jicunGoods/detail', true, 'get', data)
+  },
+  // ocr
+  ocrBusinessLicense: imageUrl => {
+    return request('/ocr/businessLicense', true, 'post', { imageUrl })
+  },
+  ocrIdcard: imageUrl => {
+    return request('/ocr/idcard', true, 'post', { imageUrl })
+  },
+  ocrBankcard: imageUrl => {
+    return request('/ocr/bankcard', true, 'post', { imageUrl })
+  },
+  ocrDriverLicense: imageUrl => {
+    return request('/ocr/driverLicense', true, 'post', { imageUrl })
+  },
+  // 朋友圈
+  momentsPublish: data => {
+    return request('/user/moments/publish', true, 'post', data)
+  },
+  momentsList: data => {
+    return request('/user/moments/list', true, 'get', data)
+  },
+  momentsDetail: (token, momentsId) => {
+    return request('/user/moments/detail', true, 'get', { token, momentsId })
+  },
+  momentsDelete: (token, momentsId) => {
+    return request('/user/moments/del', true, 'post', { token, momentsId })
+  },
+  momentsDeleteComment: (token, commentId) => {
+    return request('/user/moments/delCommon', true, 'post', { token, commentId })
+  },
+  momentsLike: (token, momentsId) => {
+    return request('/user/moments/like', true, 'post', { token, momentsId })
+  },
+  momentsComment: (token, momentsId, uid = '', content) => {
+    return request('/user/moments/comment', true, 'post', { token, momentsId, uid, content })
+  },
+  momentsCommentLogs: data => {
+    return request('/user/moments/logs', true, 'get', data)
+  },
+  momentsLogsRead: (token, logsIds) => {
+    return request('/user/moments/logRead', true, 'post', { token, logsIds })
   },
 }

@@ -1,7 +1,7 @@
 {
   "name": "apifm-wxapi",
-  "version": "3.40.0",
-  "description": "增加购买课程模块接口",
+  "version": "3.41.0",
+  "description": "增加秒杀占位方法",
   "main": "miniprogram_dist/index.js",
   "scripts": {
     "dev": "gulp dev --develop",
@@ -31,7 +31,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/gooking/wxapi"
+    "url": "https://github.com/gooking/apifm-wxapi"
   },
   "author": "gooking",
   "license": "MIT",
