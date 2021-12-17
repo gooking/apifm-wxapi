@@ -1797,4 +1797,10 @@ module.exports = {
   momentsLogsRead: (token, logsIds) => {
     return request('/user/moments/logRead', true, 'post', { token, logsIds })
   },
+  bottleMsgPublish: data => {
+    return request('/bottleMsg/publish', true, 'post', data)
+  },
+  bottleMsgSalvage: token => {
+    return request('/bottleMsg/salvage', true, 'get', { token })
+  },
 }
