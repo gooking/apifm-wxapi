@@ -763,6 +763,9 @@ module.exports = {
   fxApply: (token, name, mobile) => {
     return request('/saleDistribution/apply', true, 'post', { token, name, mobile })
   },
+  fxApplyV2: data => {
+    return request('/saleDistribution/apply/v2', true, 'post', data)
+  },
   fxSetting: () => {
     return request('/saleDistribution/setting', true, 'get')
   },
