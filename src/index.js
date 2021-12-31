@@ -84,6 +84,9 @@ module.exports = {
   gpsDistance: (data) => {
     return request('/common/map/qq/distance', false, 'post', data)
   },
+  forexRate: (fromCode, toCode) => {
+    return request('/forex/rate', true, 'get', { fromCode, toCode })
+  },
   queryConfigValue: (key) => {
     return request('/config/value', true, 'get', { key })
   },
