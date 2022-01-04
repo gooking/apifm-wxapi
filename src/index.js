@@ -368,6 +368,11 @@ module.exports = {
       goodsId, priceId
     })
   },
+  goodsLimitationsV2: (goodsId, propertyChildIds = '') => {
+    return request('/shop/goods/limitation', true, 'get', {
+      goodsId, propertyChildIds
+    })
+  },
   goodsAddition: (goodsId) => {
     return request('/shop/goods/goodsAddition', true, 'get', {
       goodsId
