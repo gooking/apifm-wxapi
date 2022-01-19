@@ -946,6 +946,15 @@ module.exports = {
   depositBackApply: (token, id) => {
     return request('/deposit/back/apply', true, 'post', { token, id })
   },
+  shopAreaCities: () => {
+    return request('/shopArea/cities', true, 'get')
+  },
+  shopAreaList: (data) => {
+    return request('/shopArea/list', true, 'post', data)
+  },
+  shopAreaDetail: (id) => {
+    return request('/shopArea/detail', true, 'get', { id })
+  },
   fetchShopsCities: () => {
     return request('/shop/subshop/cities', true, 'get')
   },
