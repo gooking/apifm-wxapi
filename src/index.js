@@ -305,6 +305,9 @@ module.exports = {
       email, pwd, code
     })
   },
+  wxmpAuth: data => {
+    return request('/user/wxmp/auth', true, 'post', data)
+  },
   register_complex: (data) => {
     return request('/user/wxapp/register/complex', true, 'post', data)
   },
@@ -334,6 +337,9 @@ module.exports = {
   },
   goodsCategory: () => {
     return request('/shop/goods/category/all', true, 'get')
+  },
+  goodsCategoryV2: (shopId = '') => {
+    return request('/shop/goods/category/all', true, 'get', { shopId })
   },
   goodsCategoryDetail: (id) => {
     return request('/shop/goods/category/info', true, 'get', { id })
@@ -800,6 +806,11 @@ module.exports = {
       page, pageSize
     })
   },
+  fxSaleroomRankTotalTeam: (page, pageSize) => {
+    return request('/saleDistribution/sale-room-rank/team/total', true, 'get', {
+      page, pageSize
+    })
+  },
   fxSaleroomRankDaily: (page, pageSize, day) => {
     return request('/saleDistribution/sale-room-rank/daily', true, 'get', {
       page, pageSize, day
@@ -1218,6 +1229,9 @@ module.exports = {
   },  
   goodsDynamic: (type) => {
     return request('/site/goods/dynamic', true, 'get', { type })
+  },
+  goodsDynamicV2: data => {
+    return request('/site/goods/dynamic', true, 'get', data)
   },
   usersDynamic: (type) => {
     return request('/site/user/dynamic', true, 'get', { type })
@@ -1824,5 +1838,14 @@ module.exports = {
   },
   bottleMsgSalvage: token => {
     return request('/bottleMsg/salvage', true, 'get', { token })
+  },
+  userInvoiceInfo: token => {
+    return request('/userInvoice/info', true, 'get', { token })
+  },
+  userInvoiceUnbind: token => {
+    return request('/userInvoice/unbind', true, 'post', { token })
+  },
+  userInvoiceBind: data => {
+    return request('/userInvoice/bind', true, 'post', data)
   },
 }
