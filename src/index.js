@@ -252,6 +252,9 @@ module.exports = {
   alipay: (data) => {
     return request('/pay/alipay/semiAutomatic/payurl', true, 'post', data)
   },
+  alipayAPP: (data) => {
+    return request('/pay/alipay/gate/app', true, 'post', data)
+  },
   login_wx: (code) => {
     return request('/user/wxapp/login', true, 'post', {
       code,
@@ -491,6 +494,15 @@ module.exports = {
     return request('/discounts/exchange', true, 'post', {
       token, number, pwd, extJsonStr
     })
+  },
+  couponsShareOpen: (token, id) => {
+    return request('/discounts/share/open', true, 'post', { token, id })
+  },
+  couponsShareClose: (token, id) => {
+    return request('/discounts/share/close', true, 'post', { token, id })
+  },
+  couponsShareFetch: (token, id, shareToken) => {
+    return request('/discounts/share/fetch', true, 'post', { token, id, shareToken })
   },
   noticeList: (data) => {
     return request('/notice/list', true, 'post', data)
