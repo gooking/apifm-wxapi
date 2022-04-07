@@ -467,8 +467,8 @@ module.exports = {
   goodsFavDeleteV2: data => {
     return request('/shop/goods/fav/delete', true, 'post', data)
   },
-  goodsSeckillGrab: (goodsId, seconds) => {
-    return request('/goods/seckill/grab', true, 'post', { goodsId, seconds })
+  goodsSeckillGrab: (token, goodsId, seconds) => {
+    return request('/goods/seckill/grab', true, 'post', { token, goodsId, seconds })
   },
   coupons: (data) => {
     return request('/discounts/coupons', true, 'get', data)

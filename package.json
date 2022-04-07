@@ -1,6 +1,6 @@
 {
   "name": "apifm-wxapi",
-  "version": "3.54.1",
+  "version": "3.54.2",
   "description": "优化秒杀抢名额方法",
   "main": "miniprogram_dist/index.js",
   "scripts": {
