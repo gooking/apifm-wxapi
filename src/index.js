@@ -307,6 +307,9 @@ module.exports = {
       mobile, pwd, deviceId, deviceName
     })
   },
+  loginMobileV2: data => {
+    return request('/user/m/login', true, 'post', data)
+  },
   loginMobileSmsCode: data => {
     return request('/user/m/loginMobile', true, 'post', data)
   },
@@ -882,7 +885,7 @@ module.exports = {
   fxGoods: data => {
     return request('/saleDistribution/goods', true, 'post', data)
   },
-  fxTeamReport: data => { // SDK文档到这里
+  fxTeamReport: data => {
     return request('/saleDistribution/team/report', true, 'post', data)
   },
   fxCities: token => {
@@ -1035,7 +1038,7 @@ module.exports = {
   shopAreaDetail: (id) => {
     return request('/shopArea/detail', true, 'get', { id })
   },
-  fetchShopsCities: () => {
+  fetchShopsCities: () => { // SDK文档到这里
     return request('/shop/subshop/cities', true, 'get')
   },
   fetchShops: (data) => {
@@ -1085,6 +1088,12 @@ module.exports = {
   },
   commentList: (data) => {
     return request('/comment/list', true, 'post', data)
+  },
+  commentListV2: (data) => {
+    return request('/comment/list/v2', true, 'post', data)
+  },
+  delComment: (data) => {
+    return request('/comment/del', true, 'post', data)
   },
   modifyUserInfo: (data) => {
     return request('/user/modify', true, 'post', data)
@@ -1201,6 +1210,9 @@ module.exports = {
   loginout: (token) => {
     return request('/user/loginout', true, 'get', { token })
   },
+  userDelete: (token) => {
+    return request('/user/delete', true, 'post', { token })
+  },
   userLevelList: (data) => {
     return request('/user/level/list', true, 'post', data)
   },
@@ -1257,6 +1269,9 @@ module.exports = {
       remark
     })
   },
+  voteCategory: (data) => {
+    return request('/vote/vote/category', true, 'post', data)
+  },
   myVote: (token, voteId) => {
     return request('/vote/vote/info', true, 'get', {
       token, voteId,
@@ -1269,6 +1284,12 @@ module.exports = {
   },
   voteLogs: (data) => {
     return request('/vote/vote/list', true, 'post', data)
+  },
+  voteGroups: (data) => {
+    return request('/vote/vote/groups', true, 'post', data)
+  },
+  voteGroupsDetail: (data) => {
+    return request('/vote/vote/groups/detail', true, 'get', data)
   },
   myInviteVoteJoinList: (data) => {
     return request('/vote/myInviteLoinList', true, 'post', data)
@@ -1296,6 +1317,11 @@ module.exports = {
   yuyueJoinUpdate: (token, joinId, extJsonStr) => {
     return request('/yuyue/join/update', true, 'post', {
       token, joinId, extJsonStr
+    })
+  },
+  yuyueJoinDelete: (token, joinId) => {
+    return request('/yuyue/delJoin', true, 'post', {
+      token, id: joinId
     })
   },
   yuyueMyJoinInfo: (token, joinId) => {
@@ -1917,7 +1943,7 @@ module.exports = {
   momentsPublish: data => {
     return request('/user/moments/publish', true, 'post', data)
   },
-  momentsList: data => {
+  userMomentsList: data => {
     return request('/user/moments/list', true, 'get', data)
   },
   momentsDetail: (token, momentsId) => {
@@ -1978,6 +2004,12 @@ module.exports = {
   aliappQrcode: content => {
     return request('/user/aliapp/qrcode', true, 'post', { content })
   },
+  aliappBindMobile: data => {
+    return request('/user/aliapp/bindMobile', true, 'post', data)
+  },
+  aliappGetMobile: (encryptedData) => {
+    return request('/user/aliapp/getMobile', true, 'post', { encryptedData })
+  },
   tempDataSet: (key, content) => {
     return request('/tempData/set', true, 'post', { key, content })
   },
@@ -1997,8 +2029,8 @@ module.exports = {
   userAttendantList: data => {
     return request('/user/attendant/list', true, 'post', data)
   },
-  userAttendantDetail: (id) => {
-    return request('/user/attendant/detail', true, 'get', { id })
+  userAttendantDetail: (id, token = '') => {
+    return request('/user/attendant/detail', true, 'get', { id, token })
   },
   userAttendantGoods: (id) => {
     return request('/user/attendant/goods', true, 'get', { id })
