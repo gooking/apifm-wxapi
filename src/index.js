@@ -135,6 +135,15 @@ module.exports = {
       iv
     })
   },
+  scoreDeductionRules: (type = '') => {
+    return request('/score/deduction/rules', true, 'get', { type })
+  },
+  scoreTaskList: token => {
+    return request('/score/taskList', true, 'get', { token })
+  },
+  scoreTaskSuccess: (token, type) => {
+    return request('/score/taskSuccess', true, 'post', { token, type })
+  },
   kanjiaSet: (goodsId) => {
     return request('/shop/goods/kanjia/set/v2', true, 'get', { goodsId })
   },
@@ -291,6 +300,9 @@ module.exports = {
   loginWxaMobileV2: data => {
     return request('/user/wxapp/login/mobile', true, 'post', data)
   },
+  loginWxaMobileV3: data => {
+    return request('/user/wxapp/login/mobile/v2', true, 'post', data)
+  },
   fetchWxaMobile: (code) => {
     return request('/user/wxapp/getMobile', true, 'get', { code })
   },
@@ -406,6 +418,16 @@ module.exports = {
   goodsAddition: (goodsId) => {
     return request('/shop/goods/goodsAddition', true, 'get', {
       goodsId
+    })
+  },
+  goodsVideoEpisodesList: (goodsId, token = '') => {
+    return request('/goodsVideoEpisodes/list', true, 'get', {
+      goodsId, token
+    })
+  },
+  goodsVideoEpisodesBuy: (goodsId, number, token) => {
+    return request('/goodsVideoEpisodes/buy', true, 'post', {
+      goodsId, number, token
     })
   },
   goodsStatistics: data => {
@@ -940,6 +962,9 @@ module.exports = {
   uploadFileList: (path = '') => {
     return request('/dfs/upload/list', true, 'post', { path })
   },
+  galleryList: data => {
+    return request('/dfs/gallery', true, 'post', data)
+  },
   refundApply: (data) => {
     return request('/order/refundApply/apply', true, 'post', data)
   },
@@ -1038,7 +1063,7 @@ module.exports = {
   shopAreaDetail: (id) => {
     return request('/shopArea/detail', true, 'get', { id })
   },
-  fetchShopsCities: () => { // SDK文档到这里
+  fetchShopsCities: () => {
     return request('/shop/subshop/cities', true, 'get')
   },
   fetchShops: (data) => {
@@ -1053,7 +1078,7 @@ module.exports = {
   shopSubApply: (data) => {
     return request('/shop/subshop/apply', true, 'post', data)
   },
-  pickPoints: (data) => {
+  pickPoints: (data) => { // SDK文档到这里
     return request('/shop/subshop/pickPoints', true, 'post', data)
   },
   shopReputationList: (data) => {
@@ -1252,9 +1277,6 @@ module.exports = {
     return request('/user/wxapp/decode/encryptedData', true, 'post', {
       code, encryptedData, iv
     })
-  },
-  scoreDeductionRules: (type = '') => {
-    return request('/score/deduction/rules', true, 'get', { type })
   },
   voteItems: (data) => {
     return request('/vote/items', true, 'post', data)
@@ -1639,6 +1661,9 @@ module.exports = {
   },
   goodsVisitLogDelete: data => {
     return request('/goods/visitLog/delete', true, 'post', data)
+  },
+  goodsVisitLogClear: token => {
+    return request('/goods/visitLog/clear', true, 'post', { token })
   },
   channelDataPush: (key, content) => {
     return request('/channelData/push', true, 'post', { key, content })
@@ -2035,10 +2060,58 @@ module.exports = {
   userAttendantGoods: (id) => {
     return request('/user/attendant/goods', true, 'get', { id })
   },
+  userAttendantGoodsSet: (token, ids) => {
+    return request('/user/attendant/goodsSet', true, 'post', { token, ids })
+  },
+  userAttendantBindShop: (token, shopId) => {
+    return request('/user/attendant/bindShop', true, 'post', { shopId, token })
+  },
+  userAttendantUnBindShop: (token) => {
+    return request('/user/attendant/unbindShop', true, 'post', { token })
+  },
+  userAttendantChangeStatus: data => {
+    return request('/user/attendant/changeStatus', true, 'post', data)
+  },
+  userAttendantDaysTimesAttendant: (goodsId, day) => {
+    return request('/user/attendant/daysTimesAttendant', true, 'get', { goodsId, day })
+  },
+  userAttendantDaysTimesAttendantSetQuery: (token, day) => {
+    return request('/user/attendant/daysTimesAttendant/set/query', true, 'get', { token, day })
+  },
+  userAttendantDaysTimesAttendantSet: data => {
+    return request('/user/attendant/daysTimesAttendant/set', true, 'post', data)
+  },
+  userAttendantListReputation: data => {
+    return request('/user/attendant/listReputation', true, 'post', data)
+  },
+  userAttendantShowPics: id => {
+    return request('/user/attendant/showPics', true, 'get', { id })
+  },
+  userAttendantShowPicsAdd: (token, url) => {
+    return request('/user/attendant/showPicsAdd', true, 'post', { token, url })
+  },
+  userAttendantShowPicsDel: (token, id) => {
+    return request('/user/attendant/showPicsDel', true, 'post', { token, id })
+  },
+  userAttendantUpdate: data => {
+    return request('/user/attendant/update', true, 'post', data)
+  },
+  userAttendantOrderServing: (token, orderId) => {
+    return request('/order/serving', true, 'post', { token, orderId })
+  },
+  userAttendantOrderRejectOrder: (token, orderId) => {
+    return request('/order/rejectOrder', true, 'post', { token, orderId })
+  },
+  userAttendantOrderSuccess: (token, orderId) => {
+    return request('/order/success', true, 'post', { token, orderId })
+  },
   shopCategory: () => {
     return request('/shopCategory/all', true, 'get')
   },
   shopCategoryDetail: (id) => {
     return request('/shopCategory/info', true, 'get', { id })
   },
+  yudingStatistics: function yudingStatistics(day) {
+    return request('/shop/goods/yudingStatistics', true, 'get', { day });
+  }
 }
