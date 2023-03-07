@@ -1,7 +1,7 @@
 {
   "name": "apifm-wxapi",
-  "version": "3.61.0",
-  "description": "增加loginWxaMobileV3方法",
+  "version": "3.62.0",
+  "description": "增加组织相关功能",
   "main": "miniprogram_dist/index.js",
   "scripts": {
     "dev": "gulp dev --develop",
