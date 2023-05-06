@@ -1,6 +1,6 @@
 {
   "name": "apifm-wxapi",
-  "version": "3.62.0",
+  "version": "3.63.0",
   "description": "增加组织相关功能",
   "main": "miniprogram_dist/index.js",
   "scripts": {

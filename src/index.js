@@ -288,6 +288,12 @@ module.exports = {
       type: 2
     })
   },
+  loginWxV2: (code, appid) => {
+    return request('/user/wxapp/login/v2', true, 'post', {
+      code,
+      appid
+    })
+  },
   login_tt: (code) => {
     return request('/user/tt/microapp/login', true, 'post', {
       code
@@ -1288,6 +1294,11 @@ module.exports = {
       type: 2
     })
   },
+  bindOpenidV2: (token, code, appid) => {
+    return request('/user/wxapp/bindOpenid/v2', true, 'post', {
+      token, code, appid
+    })
+  },
   encryptedData: (code, encryptedData, iv) => {
     return request('/user/wxapp/decode/encryptedData', true, 'post', {
       code, encryptedData, iv
@@ -1878,7 +1889,7 @@ module.exports = {
   },
   // 会员卡
   cardList: data => {
-    return request('/card/list', true, 'post', data)
+    return request('/card/list', true, 'get', data)
   },
   cardInfo: id => {
     return request('/card/info', true, 'get', { id })
