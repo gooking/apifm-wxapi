@@ -420,6 +420,9 @@ module.exports = {
       id, token
     })
   },
+  goodsDetailV2: data => {
+    return request('/shop/goods/detail', true, 'get', data)
+  },
   goodsLimitations: (goodsId, priceId = '') => {
     return request('/shop/goods/limitation', true, 'get', {
       goodsId, priceId
@@ -1147,6 +1150,9 @@ module.exports = {
   modifyUserPassword: (token, pwdOld, pwdNew) => {
     return request('/user/modify/password', true, 'post', { token, pwdOld, pwdNew })
   },
+  modifyUserPasswordByUserName: (data) => {
+    return request('/user/username/modifyPassword', true, 'post', data)
+  },
   uniqueId: (type = '') => {
     return request('/uniqueId/get', true, 'get', { type })
   },
@@ -1399,7 +1405,7 @@ module.exports = {
     return request('/user/email/login', true, 'post', data)
   },
   bindEmail: (token, email, code, pwd = '') => {
-    return request('/user/email/bindUsername', true, 'post', {
+    return request('/user/email/bindEmail', true, 'post', {
       token, email, code, pwd
     })
   },  
@@ -1569,6 +1575,15 @@ module.exports = {
   },
   wxOpenAuthorization: (data) => {
     return request('/user/wxsns/authorization', true, 'post', data)
+  },
+  wxOpenRegister: (data) => {
+    return request('/user/wxsns/register', true, 'post', data)
+  },
+  wxOpenBindOpenid: (data) => {
+    return request('/user/wxsns/bindOpenid/v2', true, 'post', data)
+  },
+  wxOpenLogin: (data) => {
+    return request('/user/wxsns/login', true, 'post', data)
   },
   userAttentioncheck: (token, uid) => {
     return request('/user/attention/check', true, 'get', {

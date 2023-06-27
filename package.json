@@ -1,7 +1,7 @@
 {
   "name": "apifm-wxapi",
-  "version": "3.63.0",
-  "description": "增加组织相关功能",
+  "version": "3.64.0",
+  "description": "goodsDetailV2",
   "main": "miniprogram_dist/index.js",
   "scripts": {
     "dev": "gulp dev --develop",
