@@ -383,6 +383,9 @@ module.exports = {
   register_mobile: (data) => {
     return request('/user/m/register', true, 'post', data)
   },
+  bannerTypes: () => {
+    return request('/banner/types', true, 'get')
+  },
   banners: (data) => {
     return request('/banner/list', true, 'get', data)
   },
@@ -824,6 +827,9 @@ module.exports = {
   },
   withDrawLogs: (data) => {
     return request('/user/withDraw/list', true, 'post', data)
+  },
+  withDrawSetting: () => {
+    return request('/user/withDraw/setting', true, 'get')
   },
   province: () => {
     return request('/common/region/v2/province', false, 'get')
@@ -2211,5 +2217,8 @@ module.exports = {
   },
   yudingStatistics: function yudingStatistics(day) {
     return request('/shop/goods/yudingStatistics', true, 'get', { day });
+  },
+  contactList: () => {
+    return request('/contact/list', true, 'get')
   }
 }
