@@ -1042,6 +1042,12 @@ module.exports = {
   cmsArticleUseless: (data) => {
     return request('/cms/news/useful', true, 'post', data)
   },
+  cmsArticleModifyExtNumber: (data) => {
+    return request('/cms/news/modifyExtNumber', true, 'post', data)
+  },
+  newsOwnerUserViewStatistics: (data) => {
+    return request('/newsOwnerUserViewStatistics/list', true, 'post', data)
+  },
   cmsPage: (key) => {
     return request('/cms/page/info/v2', true, 'get', { key })
   },
@@ -1926,6 +1932,9 @@ module.exports = {
   },
   cardMyLogs: data => {
     return request('/card/logs', true, 'post', data)
+  },
+  cardExchangeFromPwd: data => {
+    return request('/card/exchange', true, 'post', data)
   },
   // 收藏卡片
   collectCardHis: data => {
