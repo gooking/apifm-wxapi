@@ -84,6 +84,9 @@ module.exports = {
   gpsDistance: (data) => {
     return request('/common/map/qq/distance', false, 'post', data)
   },
+  commonIP: (ip) => {
+    return request('/common/ip', false, 'get', { ip })
+  },
   forexRate: (fromCode, toCode) => {
     return request('/forex/rate', true, 'get', { fromCode, toCode })
   },
@@ -988,6 +991,9 @@ module.exports = {
   },
   uploadFileList: (path = '') => {
     return request('/dfs/upload/list', true, 'post', { path })
+  },
+  uploadFileListV2: data => {
+    return request('/dfs/upload/list/v2', true, 'post', data)
   },
   galleryList: data => {
     return request('/dfs/gallery', true, 'post', data)
@@ -2109,6 +2115,9 @@ module.exports = {
   commonDays: (startDay = '', days = '') => {
     return request('/common/days', false, 'get', { startDay, days })
   },
+  commonDiffMillis: (d1 = '', d2 = '') => {
+    return request('/common/diffMillis', false, 'get', { d1, d2 })
+  },
   // 企业应用 组织/成员/网盘
   organizePrices: () => {
     return request('/organizeInfo/prices', true, 'get')
@@ -2229,5 +2238,11 @@ module.exports = {
   },
   contactList: () => {
     return request('/contact/list', true, 'get')
-  }
+  },
+  distributedLock: (key, seconds) => {
+    return request('/distributedLock/lock', true, 'get', { key, seconds })
+  },
+  distributedLockRelease: (key) => {
+    return request('/distributedLock/lock', true, 'get', { key })
+  },
 }
