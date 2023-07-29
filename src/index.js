@@ -285,6 +285,12 @@ module.exports = {
   alipayQrcode2: (data) => {
     return request('/pay/alipay/gate/paymentCode', true, 'post', data)
   },
+  kasipayH5: (data) => {
+    return request('/pay/kasipay/h5', true, 'post', data)
+  },
+  hmpayJsapi: (data) => {
+    return request('/pay/sandpay/hmpay/jsapi', true, 'post', data)
+  },
   login_wx: (code) => {
     return request('/user/wxapp/login', true, 'post', {
       code,
@@ -2265,5 +2271,8 @@ module.exports = {
   },
   communityOrderFahuo: data => {
     return request('/communityOrder/fahuo', true, 'post', data)
+  },
+  wxmpOpenid: code => {
+    return request('/user/wxmp/openid', true, 'get', { code })
   },
 }
