@@ -777,6 +777,12 @@ module.exports = {
   orderReputationList: (data) => {
     return request('/order/listReputation', true, 'post', data)
   },
+  orderReputationDelete: (data) => {
+    return request('/order/reputation/delete', true, 'post', data)
+  },
+  orderReputationModify: (data) => {
+    return request('/order/reputation/modify', true, 'post', data)
+  },
   orderClose: (token, orderId) => {
     return request('/order/close', true, 'post', {
       orderId,
@@ -2310,5 +2316,29 @@ module.exports = {
   },
   listingJoinList: data => {
     return request('/listingInfo/joinList', true, 'post', data)
+  },
+  attendantAcceptOrder: data => {
+    return request('/order/acceptOrder', true, 'post', data)
+  },
+  orderCancelOrderPeriod: data => {
+    return request('/order/cancelOrderPeriod', true, 'post', data)
+  },
+  orderStartOrderPeriod: data => {
+    return request('/order/startOrderPeriod', true, 'post', data)
+  },
+  shansongCourierInfo: data => {
+    return request('/order/shansongCourierInfo', true, 'get', data)
+  },
+  shansongOrderInfo: data => {
+    return request('/order/shansongOrderInfo', true, 'get', data)
+  },
+  userAttendantOrderStatistics: data => {
+    return request('/order/statisticsJishi', true, 'get', data)
+  },
+  keloopOrderLogs: data => {
+    return request('/order/keloop/orderLogs', true, 'get', data)
+  },
+  keloopCourierTag: data => {
+    return request('/order/keloop/courierTag', true, 'get', data)
   },
 }
