@@ -141,6 +141,9 @@ module.exports = {
   scoreDeductionRules: (type = '') => {
     return request('/score/deduction/rules', true, 'get', { type })
   },
+  scoreDailyFixedNum: token => {
+    return request('/score/dailyFixedNum', true, 'post', { token })
+  },
   scoreTaskList: token => {
     return request('/score/taskList', true, 'get', { token })
   },
