@@ -2191,6 +2191,33 @@ module.exports = {
   organizeMembers: data => {
     return request('/organizeInfo/members', true, 'post', data)
   },
+  organizeNoticeList: data => {
+    return request('/organizeNotice/list', true, 'post', data)
+  },
+  organizeNoticeDetail: data => {
+    return request('/organizeNotice/detail', true, 'get', data)
+  },
+  organizeNoticeSave: data => {
+    return request('/organizeNotice/save', true, 'post', data)
+  },
+  organizeNoticeDelete: data => {
+    return request('/organizeNotice/del', true, 'post', data)
+  },
+  organizePanUpload: data => {
+    return request('/organizePan/upload', true, 'post', data)
+  },
+  organizePanDownload: data => {
+    return request('/organizePan/download', true, 'get', data)
+  },
+  organizePanFiles: data => {
+    return request('/organizePan/files', true, 'post', data)
+  },
+  organizePanModify: data => {
+    return request('/organizePan/modify', true, 'post', data)
+  },
+  organizePanDelete: data => {
+    return request('/organizePan/del', true, 'post', data)
+  },
   newsExtFieldList: (token, organizeId, newsId) => {
     return request('/newsExtField/extFields', true, 'get', { token, organizeId, newsId })
   },
@@ -2343,5 +2370,14 @@ module.exports = {
   },
   keloopCourierTag: data => {
     return request('/order/keloop/courierTag', true, 'get', data)
+  },
+  workingHoursMySubmitLogs: data => {
+    return request('/workingHours/mySubmitLogs', true, 'post', data)
+  },
+  workingHoursSubmit: data => {
+    return request('/workingHours/submit', true, 'post', data)
+  },
+  workingHoursBossReport: data => {
+    return request('/workingHours/bossReport', true, 'post', data)
   },
 }
