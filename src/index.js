@@ -288,6 +288,12 @@ module.exports = {
   alipayQrcode2: (data) => {
     return request('/pay/alipay/gate/paymentCode', true, 'post', data)
   },
+  alipayH5: (data) => {
+    return request('/pay/alipay/gate/h5', true, 'post', data)
+  },
+  alipayPC: (data) => {
+    return request('/pay/alipay/gate/pc', true, 'post', data)
+  },
   kasipayH5: (data) => {
     return request('/pay/kasipay/h5', true, 'post', data)
   },
@@ -2379,5 +2385,26 @@ module.exports = {
   },
   workingHoursBossReport: data => {
     return request('/workingHours/bossReport', true, 'post', data)
+  },
+  workingHoursMyProject: data => {
+    return request('/workingHours/myProject', true, 'post', data)
+  },
+  workingHoursProjectInfo: code => {
+    return request('/workingHours/project', true, 'get', { code })
+  },
+  bestpayProCreateOrder: data => {
+    return request('/pay/bestpay/proCreateOrder', true, 'post', data)
+  },
+  bestpayH5: data => {
+    return request('/pay/bestpay/h5', true, 'get', data)
+  },
+  shopIotDevices: data => {
+    return request('/shopIot/devices', true, 'get', data)
+  },
+  shopIotCmds: data => {
+    return request('/shopIot/cmds', true, 'get', data)
+  },
+  shopIotExecute: data => {
+    return request('/shopIot/execute', true, 'post', data)
   },
 }
