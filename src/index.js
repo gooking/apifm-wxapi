@@ -810,6 +810,9 @@ module.exports = {
       token
     })
   },
+  orderPayV2: data => {
+    return request('/order/pay', true, 'post', data)
+  },
   jdjlOrderPay: (token, _token, couponId = '') => {
     return request('/jdjl/payOrder', true, 'post', {
       _token,
@@ -1144,6 +1147,9 @@ module.exports = {
   shopReputationList: (data) => {
     return request('/shop/subshop/listReputation', true, 'post', data)
   },
+  shopPicList: (data) => {
+    return request('/shop/subshop/shopPics', true, 'post', data)
+  },
   shopFavPut: (token, shopId) => {
     return request('/shop/fav/add', true, 'post', { token, shopId })
   },
@@ -1330,7 +1336,7 @@ module.exports = {
   userLevelBuyLogs: (data) => {
     return request('/user/level/buyLogs', true, 'post', data)
   },
-  messageList: (data) => { // SDK文档到这里
+  messageList: (data) => {
     return request('/user/message/list', true, 'post', data)
   },
   messageRead: (token, id) => {
@@ -1339,7 +1345,7 @@ module.exports = {
   messageDelete: (token, id) => {
     return request('/user/message/del', true, 'post', { token, id })
   },
-  bindOpenid: (token, code) => {
+  bindOpenid: (token, code) => { // SDK文档到这里
     return request('/user/wxapp/bindOpenid', true, 'post', {
       token, code,
       type: 2
