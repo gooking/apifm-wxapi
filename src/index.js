@@ -1002,6 +1002,29 @@ module.exports = {
     return request('/qrcode/content', true, 'post', data)
   },
   uploadFile: (token, tempFilePath, expireHours = '') => {
+    const uploadUrl = API_BASE_URL + '/' + subDomain + '/dfs/upload/file'
+    return new Promise((resolve, reject) => {
+      wx.uploadFile({
+        url: uploadUrl,
+        filePath: tempFilePath,
+        name: 'upfile',
+        formData: {
+          'token': token,
+          expireHours
+        },
+        success(res) {
+          resolve(JSON.parse(res.data))
+        },
+        fail(error) {
+          reject(error)
+        },
+        complete(aaa) {
+          // 加载完成
+        }
+      })
+    })
+  },
+  uploadFileV2: (token, tempFilePath, expireHours = '') => {
     return new Promise((resolve, reject) => {
       wx.uploadFile({
         url: 'https://oss.apifm.com/upload2',
