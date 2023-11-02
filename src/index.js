@@ -144,6 +144,12 @@ module.exports = {
   scoreDailyFixedNum: token => {
     return request('/score/dailyFixedNum', true, 'post', { token })
   },
+  scoreRank: (data) => {
+    return request('/score/rank', true, 'get', data)
+  },
+  scoreRankBydate: (data) => {
+    return request('/score/rankBydate', true, 'get', data)
+  },
   scoreTaskList: token => {
     return request('/score/taskList', true, 'get', { token })
   },
@@ -263,6 +269,9 @@ module.exports = {
   },
   wxpayIPaynow: (data) => {
     return request('/pay/ipaynow/wxapp', true, 'post', data)
+  },
+  ccvvPayWxapp: (data) => {
+    return request('/pay/ccvv/wxapp', true, 'post', data)
   },
   wxpayAirwallex: (data) => {
     return request('/pay/airwallex/wxapp', true, 'post', data)
@@ -880,6 +889,11 @@ module.exports = {
       id
     })
   },
+  regionInfoBatch: (ids) => {
+    return request('/common/region/v2/infoBatch', false, 'get', {
+      ids
+    })
+  },
   regionSearch: data => {
     return request('/common/region/v2/search', false, 'post', data)
   },
@@ -988,14 +1002,14 @@ module.exports = {
     return request('/qrcode/content', true, 'post', data)
   },
   uploadFile: (token, tempFilePath, expireHours = '') => {
-    const uploadUrl = API_BASE_URL + '/' + subDomain + '/dfs/upload/file'
     return new Promise((resolve, reject) => {
       wx.uploadFile({
-        url: uploadUrl,
+        url: 'https://oss.apifm.com/upload2',
         filePath: tempFilePath,
         name: 'upfile',
         formData: {
-          'token': token,
+          token,
+          subDomain,
           expireHours
         },
         success(res) {
