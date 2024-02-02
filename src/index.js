@@ -130,6 +130,9 @@ module.exports = {
   scoreLogs: (data) => {
     return request('/score/logs', true, 'post', data)
   },
+  scoreDynamics: () => {
+    return request('/score/dynamics', true, 'get')
+  },
   shareGroupGetScore: (code, referrer, encryptedData, iv) => {
     return request('/score/share/wxa/group', true, 'post', {
       code,
@@ -744,6 +747,11 @@ module.exports = {
       token
     })
   },
+  randomNick: (len = '') => {
+    return request('/user/randomNick', true, 'get', {
+      len
+    })
+  },
   userDetailSpreadUser: (token, uid) => {
     return request('/user/detail/spreadUser', true, 'get', {
       token, uid
@@ -1235,6 +1243,9 @@ module.exports = {
   modifyUserPasswordByUserName: (data) => {
     return request('/user/username/modifyPassword', true, 'post', data)
   },
+  anonymousUserInfo: (id) => {
+    return request('/user/anonymous/info', true, 'get', { id })
+  },
   uniqueId: (type = '') => {
     return request('/uniqueId/get', true, 'get', { type })
   },
@@ -1340,6 +1351,12 @@ module.exports = {
   },
   idcardCheck: (token, name, idCardNo) => {
     return request('/user/idcard', true, 'post', { token, name, idCardNo })
+  },
+  idcardCheckManualReview: (data) => {
+    return request('/user/idcard/manualReview', true, 'post', data)
+  },
+  idcardCheckManualReviewInfo: (token) => {
+    return request('/user/idcard/manualReview/info', true, 'get', { token })
   },
   bindSeller: data => {
     return request('/user/bindSeller', true, 'post', data)
@@ -2449,5 +2466,98 @@ module.exports = {
   },
   shopIotExecute: data => {
     return request('/shopIot/execute', true, 'post', data)
+  },
+  wxTemplateNumberList: (token) => {
+    return request('/wxTemplateNumber/list', true, 'get', { token })
+  },
+  wxTemplateNumberSubscribe: (data) => {
+    return request('/wxTemplateNumber/subscribe', true, 'post', data)
+  },
+  errandsTaskPublish: (data) => {
+    return request('/errandsTask/publish', true, 'post', data)
+  },
+  errandsTaskPay: (data) => {
+    return request('/errandsTask/pay', true, 'post', data)
+  },
+  errandsTaskAccept: (data) => {
+    return request('/errandsTask/accept', true, 'post', data)
+  },
+  errandsTaskFinish: (data) => {
+    return request('/errandsTask/finish', true, 'post', data)
+  },
+  errandsTaskSuccess: (data) => {
+    return request('/errandsTask/success', true, 'post', data)
+  },
+  activityVoteInfoList: (data) => {
+    return request('/activityVoteInfo/list', true, 'post', data)
+  },
+  activityVoteInfoJoinList: (data) => {
+    return request('/activityVoteInfo/joinList', true, 'post', data)
+  },
+  activityVoteInfoDetail: (id) => {
+    return request('/activityVoteInfo/detail', true, 'get', { id })
+  },
+  activityVoteInfoJoinDetail: (joinId) => {
+    return request('/activityVoteInfo/joinDetail', true, 'get', { joinId })
+  },
+  activityVoteInfoScoreToVotes: (activityId) => {
+    return request('/activityVoteInfo/scoreToVotes', true, 'get', { activityId })
+  },
+  activityVoteInfoFetchVoteNumber: (data) => {
+    return request('/activityVoteInfo/fetchVoteNumber', true, 'post', data)
+  },
+  activityVoteInfoJoin: (data) => {
+    return request('/activityVoteInfo/join', true, 'post', data)
+  },
+  activityVoteInfoVote: (data) => {
+    return request('/activityVoteInfo/vote', true, 'post', data)
+  },
+  activityVoteBlance: (token, activityId) => {
+    return request('/activityVoteInfo/balance', true, 'get', { token, activityId })
+  },
+  stringsToPlainText: (content, len = '') => {
+    return request('/common/strings/plainText', true, 'post', { content, len })
+  },
+  blindBoxFriendsMatch: (data) => {
+    return request('/blindBoxFriends/match', true, 'post', data)
+  },
+  blindBoxFriendsPush: (data) => {
+    return request('/blindBoxFriends/push', true, 'post', data)
+  },
+  blindBoxFriendsPay: (data) => {
+    return request('/blindBoxFriends/pay', true, 'post', data)
+  },
+  blindBoxFriendsChangeStatus: (data) => {
+    return request('/blindBoxFriends/changeStatus', true, 'post', data)
+  },
+  blindBoxFriendsDelete: (data) => {
+    return request('/blindBoxFriends/delete', true, 'post', data)
+  },
+  blindBoxFriendsPullLogs: (data) => {
+    return request('/blindBoxFriends/pullLogs', true, 'post', data)
+  },
+  blindBoxFriendsPushLogs: (data) => {
+    return request('/blindBoxFriends/pushLogs', true, 'post', data)
+  },
+  blindBoxFriendsRechargeRule: () => {
+    return request('/blindBoxFriends/rechargeRule', true, 'get')
+  },
+  blindBoxFriendsBuyPullTimes: (data) => {
+    return request('/blindBoxFriends/buyPullTimes', true, 'post', data)
+  },
+  blindBoxFriendsUnlock: (data) => {
+    return request('/blindBoxFriends/unlock', true, 'post', data)
+  },
+  blindBoxFriendsBalance: (token) => {
+    return request('/blindBoxFriends/balance', true, 'get', { token })
+  },
+  cpactivityInfoDetail: (id) => {
+    return request('/cpactivityInfo/detail', true, 'get', { id })
+  },
+  cpactivityUpdateUserInfo: (data) => {
+    return request('/cpactivityInfo/updateUserInfo', true, 'post', data)
+  },
+  cpactivityJoin: (data) => {
+    return request('/cpactivityInfo/join', true, 'post', data)
   },
 }
