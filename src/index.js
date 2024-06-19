@@ -1104,7 +1104,7 @@ module.exports = {
     return request('/cms/news/list/v2', true, 'post', data)
   },
   cmsArticlesV3: (data) => {
-    return request('https://cms.apifm.com/{merchantId}/cms/news/list/v2', true, 'post', data)
+    return request('https://cms.apifm.com/' + merchantId + '/cms/news/list/v2', true, 'post', data)
   },
   cmsArticleUsefulLogs: (data) => {
     return request('/cms/news/useful/logs', true, 'post', data)
@@ -1116,25 +1116,25 @@ module.exports = {
     return request('/cms/news/detail/v2', true, 'get', { id, token })
   },
   cmsArticleDetailV3: data => {
-    return request('https://cms.apifm.com/{merchantId}/cms/news/detail/v2', true, 'get', data)
+    return request('https://cms.apifm.com/' + merchantId + '/cms/news/detail/v2', true, 'get', data)
   },
   cmsArticlePreNext: (id) => {
     return request('/cms/news/preNext', true, 'get', { id })
   },
   cmsArticlePreNextV2: (id) => {
-    return request('https://cms.apifm.com/{merchantId}/cms/news/preNext', true, 'get', { id })
+    return request('https://cms.apifm.com/' + merchantId + '/cms/news/preNext', true, 'get', { id })
   },
   cmsArticleCreate: (data) => {
     return request('/cms/news/put', true, 'post', data)
   },
   cmsArticleCreateV2: (data) => {
-    return request('https://cms.apifm.com/{merchantId}/cms/news/put', true, 'post', data)
+    return request('https://cms.apifm.com/' + merchantId + '/cms/news/put', true, 'post', data)
   },
   cmsArticleDelete: (token, id) => {
     return request('/cms/news/del', true, 'post', { token, id })
   },
   cmsArticleDeleteV2: (token, id) => {
-    return request('https://cms.apifm.com/{merchantId}/cms/news/del', true, 'post', { token, id })
+    return request('https://cms.apifm.com/' + merchantId + '/cms/news/del', true, 'post', { token, id })
   },
   cmsArticleUseless: (data) => {
     return request('/cms/news/useful', true, 'post', data)
@@ -1143,7 +1143,7 @@ module.exports = {
     return request('/cms/news/modifyExtNumber', true, 'post', data)
   },
   cmsArticleModifyExtNumberV2: (data) => {
-    return request('https://cms.apifm.com/{merchantId}/cms/news/modifyExtNumber', true, 'post', data)
+    return request('https://cms.apifm.com/' + merchantId + '/cms/news/modifyExtNumber', true, 'post', data)
   },
   newsOwnerUserViewStatistics: (data) => {
     return request('/newsOwnerUserViewStatistics/list', true, 'post', data)

@@ -1,6 +1,6 @@
 {
   "name": "apifm-wxapi",
-  "version": "24.06.18",
+  "version": "24.06.19",
   "description": "cms接口升级",
   "main": "miniprogram_dist/index.js",
   "scripts": {
