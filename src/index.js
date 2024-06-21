@@ -2230,6 +2230,12 @@ module.exports = {
   tempDataGet: key => {
     return request('/tempData/get', true, 'get', { key })
   },
+  tempDataSetV2: (key, content) => {
+    return request('https://common.apifm.com/' + merchantId + '/tempData/set', true, 'post', { key, content })
+  },
+  tempDataGetV2: key => {
+    return request('https://common.apifm.com/' + merchantId + '/tempData/get', true, 'get', { key })
+  },
   commonDatetime: () => {
     return request('/common/datetime', true, 'get')
   },
