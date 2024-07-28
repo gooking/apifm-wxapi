@@ -1,7 +1,7 @@
 {
   "name": "apifm-wxapi",
-  "version": "24.06.21",
-  "description": "临时数据存放接口升级",
+  "version": "24.07.28",
+  "description": "cms标签云接口升级",
   "main": "miniprogram_dist/index.js",
   "scripts": {
     "dev": "gulp dev --develop",
