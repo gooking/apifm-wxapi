@@ -1,7 +1,7 @@
 {
   "name": "apifm-wxapi",
-  "version": "24.07.28",
-  "description": "cms标签云接口升级",
+  "version": "24.08.05",
+  "description": "增加行政区V2接口",
   "main": "miniprogram_dist/index.js",
   "scripts": {
     "dev": "gulp dev --develop",
