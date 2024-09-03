@@ -1957,8 +1957,14 @@ module.exports = {
   jdvopGoodsList: data => {
     return request(`/jdvop/${merchantId}/goods/list`, false, 'post', data)
   },
+  jdvopGoodsListV2: data => {
+    return request(`https://jdvop.apifm.com/jdvop/${merchantId}/goods/list`, false, 'post', data)
+  },
   jdvopGoodsCheckCanBuy: data => {
     return request(`/jdvop/${merchantId}/goods/checkCanBuy`, false, 'post', data)
+  },
+  jdvopGoodsCheckCanBuyV2: data => {
+    return request(`https://jdvop.apifm.com/jdvop/${merchantId}/goods/checkCanBuy`, false, 'post', data)
   },
   jdvopGoodsDetail: goodsId => {
     return request(`/jdvop/${merchantId}/goods/detail`, false, 'get', {
@@ -1966,8 +1972,19 @@ module.exports = {
       queryExts: 'wxintroduction'
     })
   },
+  jdvopGoodsDetailV2: goodsId => {
+    return request(`https://jdvop.apifm.com/jdvop/${merchantId}/goods/detail`, false, 'get', {
+      skuId: goodsId,
+      queryExts: 'wxintroduction'
+    })
+  },
   jdvopGoodsSkuImages: goodsId => {
     return request(`/jdvop/${merchantId}/goods/skuImages`, false, 'get', {
+      skuId: goodsId
+    })
+  },
+  jdvopGoodsSkuImagesV2: goodsId => {
+    return request(`https://jdvop.apifm.com/jdvop/${merchantId}/goods/skuImages`, false, 'get', {
       skuId: goodsId
     })
   },
@@ -1997,6 +2014,44 @@ module.exports = {
   jdvopCartEmpty: token => {
     return request(`/jdvop/${merchantId}/shopping-cart/empty`, false, 'post', {
       token
+    })
+  },
+  jdvopCartInfoV2: token => {
+    return request(`https://jdvop.apifm.com/jdvop/${merchantId}/shopping-cart/info`, false, 'get', {
+      token
+    })
+  },
+  jdvopCartAddV2: data => {
+    return request(`https://jdvop.apifm.com/jdvop/${merchantId}/shopping-cart/add`, false, 'post', data)
+  },
+  jdvopCartModifyNumberV2: (token, key, number) => {
+    return request(`https://jdvop.apifm.com/jdvop/${merchantId}/shopping-cart/modifyNumber`, false, 'post', {
+      token, key, number
+    })
+  },
+  jdvopCartSelectV2: (token, key, selected) => {
+    return request(`https://jdvop.apifm.com/jdvop/${merchantId}/shopping-cart/select`, false, 'post', {
+      token, key, selected
+    })
+  },
+  jdvopCartRemoveV2: (token, key) => {
+    return request(`https://jdvop.apifm.com/jdvop/${merchantId}/shopping-cart/remove`, false, 'post', {
+      token, key
+    })
+  },
+  jdvopCartEmptyV2: token => {
+    return request(`https://jdvop.apifm.com/jdvop/${merchantId}/shopping-cart/empty`, false, 'post', {
+      token
+    })
+  },
+  jdvopCategory: pid => {
+    return request(`https://jdvop.apifm.com/jdvop/${merchantId}/category/list`, false, 'get', {
+      pid
+    })
+  },
+  jdvopCategory46: pid => {
+    return request(`https://jdvop.apifm.com/jdvop/46/category/list`, false, 'get', {
+      pid
     })
   },
   // 商家从区管进货
