@@ -1539,10 +1539,16 @@ module.exports = {
       token, joinId, extJsonStr
     })
   },
+  yuyueLike: data => {
+    return request('/yuyue/like', true, 'post', data)
+  },
   yuyueJoinDelete: (token, joinId) => {
     return request('/yuyue/delJoin', true, 'post', {
       token, id: joinId
     })
+  },
+  yuyueServered: data => {
+    return request('/yuyue/servered', true, 'post', data)
   },
   yuyueMyJoinInfo: (token, joinId) => {
     return request('/yuyue/join/info', true, 'post', {
@@ -1561,7 +1567,7 @@ module.exports = {
   yuyueTeamMembers: (data) => {
     return request('/yuyue/info/team/members', true, 'post', data)
   },
-  yuyueTeamDeleteMember: (token, joinId) => {
+  yuyueTeamDeleteMember: data => {
     return request('/yuyue/info/team/members/del', true, 'post', data)
   },
   register_email: (data) => {
