@@ -1,7 +1,7 @@
 {
   "name": "apifm-wxapi",
-  "version": "24.08.05",
-  "description": "增加行政区V2接口",
+  "version": "24.09.22",
+  "description": "增加stripe支付接口",
   "main": "miniprogram_dist/index.js",
   "scripts": {
     "dev": "gulp dev --develop",
