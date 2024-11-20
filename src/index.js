@@ -1034,7 +1034,7 @@ module.exports = {
     })
   },
   wxaQrcode: (data) => {
-    return request('/qrcode/wxa/unlimit', true, 'post', data)
+    return request('https://oss.apifm.com/' + subDomain + '/qrcode/wxa/unlimit', true, 'post', data)
   },
   ttaQrcode: (paramsJson, expireHours) => {
     return request('/user/tt/microapp/qrcode', true, 'post', {
@@ -1043,7 +1043,7 @@ module.exports = {
     })
   },
   commonQrcode: (data) => {
-    return request('/qrcode/content', true, 'post', data)
+    return request('https://oss.apifm.com/' + subDomain + '/qrcode/content', true, 'post', data)
   },
   uploadFile: (token, tempFilePath, expireHours = '') => {
     const uploadUrl = API_BASE_URL + '/' + subDomain + '/dfs/upload/file'
