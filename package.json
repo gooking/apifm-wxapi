@@ -1,7 +1,7 @@
 {
   "name": "apifm-wxapi",
-  "version": "24.11.20",
-  "description": "二维码、小程序码获取接口地址更换",
+  "version": "24.12.19",
+  "description": "newsExtField 接口升级",
   "main": "miniprogram_dist/index.js",
   "scripts": {
     "dev": "gulp dev --develop",
