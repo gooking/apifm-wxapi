@@ -1,7 +1,7 @@
 {
   "name": "apifm-wxapi",
-  "version": "24.12.19",
-  "description": "newsExtField 接口升级",
+  "version": "25.01.10",
+  "description": "获取IP归属地新接口",
   "main": "miniprogram_dist/index.js",
   "scripts": {
     "dev": "gulp dev --develop",

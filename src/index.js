@@ -90,6 +90,9 @@ module.exports = {
   commonIP: (ip) => {
     return request('/common/ip', false, 'get', { ip })
   },
+  commonIPV2: (ip = '') => {
+    return request('https://common.apifm.com/' + subDomain + '/common/ip', false, 'get', { ip })
+  },
   forexRate: (fromCode, toCode) => {
     return request('/forex/rate', true, 'get', { fromCode, toCode })
   },
