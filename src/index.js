@@ -249,6 +249,9 @@ module.exports = {
   wxpayApp: data => {
     return request('/pay/wx/app', true, 'post', data);
   },
+  wxpayRequestMerchantTransfer: data => {
+    return request('/pay/wx/requestMerchantTransfer', true, 'get', data);
+  },
   wxpayFOMO: (data) => {
     return request('/pay/fomo/wxapp', true, 'post', data)
   },
@@ -2733,5 +2736,11 @@ module.exports = {
   },
   cpactivityPay: (data) => {
     return request('/cpactivityInfo/pay', true, 'post', data)
+  },
+  volcesArkCreateChatCompletion: (message) => {
+    return request('https://common.apifm.com/' + subDomain + '/volcesArk/createChatCompletion', false, 'post', { message })
+  },
+  volcesArkChatCompletionResult: (key) => {
+    return request('https://common.apifm.com/' + subDomain + '/volcesArk/result', false, 'get', { key })
   },
 }
