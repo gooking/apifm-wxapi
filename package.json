@@ -1,7 +1,7 @@
 {
   "name": "apifm-wxapi",
-  "version": "25.01.10",
-  "description": "获取IP归属地新接口",
+  "version": "25.04.13",
+  "description": "上传文件接口速度优化",
   "main": "miniprogram_dist/index.js",
   "scripts": {
     "dev": "gulp dev --develop",

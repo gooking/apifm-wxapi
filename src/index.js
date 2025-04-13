@@ -483,6 +483,11 @@ module.exports = {
       goodsId
     })
   },
+  goodsShopStores: (goodsId) => {
+    return request('/shop/goods/goodsShopStores', true, 'get', {
+      goodsId
+    })
+  },
   goodsVideoEpisodesList: (goodsId, token = '') => {
     return request('/goodsVideoEpisodes/list', true, 'get', {
       goodsId, token
@@ -523,6 +528,9 @@ module.exports = {
   },
   goodsPriceFreight: (data) => {
     return request('/shop/goods/price/freight', true, 'get', data)
+  },
+  goodsPriceMultilevels: (data) => {
+    return request('/shop/goods/priceMultilevels', true, 'get', data)
   },
   goodsRebate: (token, goodsId) => {
     return request('/shop/goods/rebate/v2', true, 'get', {
@@ -1100,12 +1108,39 @@ module.exports = {
       })
     })
   },
+  uploadFileV22: (token, tempFilePath, expireHours = '') => {
+    return new Promise((resolve, reject) => {
+      tt.uploadFile({
+        url: 'https://dfs.apifm.com/upload2',
+        filePath: tempFilePath,
+        name: 'upfile',
+        formData: {
+          token,
+          subDomain,
+          expireHours
+        },
+        success(res) {
+          resolve(JSON.parse(res.data))
+        },
+        fail(error) {
+          reject(error)
+        },
+        complete(aaa) {
+          // 加载完成
+        }
+      })
+    })
+  },
   uploadFileFromUrl: (remoteFileUrl = '', ext = '') => {
     return request('/dfs/upload/url', true, 'post', { remoteFileUrl, ext })
   },
   uploadFileFromUrlV2: data => {
     const _data = Object.assign(data, { subDomain })
     return request('https://oss.apifm.com/uploadByUrl', false, 'post', _data)
+  },
+  uploadFileFromUrlV22: data => {
+    const _data = Object.assign(data, { subDomain })
+    return request('https://dfs.apifm.com/uploadByUrl', false, 'post', _data)
   },
   uploadFileList: (path = '') => {
     return request('/dfs/upload/list', true, 'post', { path })
