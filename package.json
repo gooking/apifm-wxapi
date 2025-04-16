@@ -1,7 +1,7 @@
 {
   "name": "apifm-wxapi",
-  "version": "25.04.13",
-  "description": "上传文件接口速度优化",
+  "version": "25.04.16",
+  "description": "手机号码归属地查询，号段接口升级",
   "main": "miniprogram_dist/index.js",
   "scripts": {
     "dev": "gulp dev --develop",
