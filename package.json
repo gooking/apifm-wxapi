@@ -1,7 +1,7 @@
 {
   "name": "apifm-wxapi",
-  "version": "25.04.17",
-  "description": "编辑用户资料接口 modifyUserInfoV2",
+  "version": "25.04.24",
+  "description": "增加会员卡赠送好友逻辑",
   "main": "miniprogram_dist/index.js",
   "scripts": {
     "dev": "gulp dev --develop",
