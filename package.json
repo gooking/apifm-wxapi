@@ -1,7 +1,7 @@
 {
   "name": "apifm-wxapi",
-  "version": "25.05.06",
-  "description": "增加用户标签认证",
+  "version": "25.05.13",
+  "description": "接口升级",
   "main": "miniprogram_dist/index.js",
   "scripts": {
     "dev": "gulp dev --develop",
