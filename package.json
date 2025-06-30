@@ -1,7 +1,7 @@
 {
   "name": "apifm-wxapi",
-  "version": "25.05.13",
-  "description": "接口升级",
+  "version": "25.06.30",
+  "description": "json接口升级到version 2.0",
   "main": "miniprogram_dist/index.js",
   "scripts": {
     "dev": "gulp dev --develop",
