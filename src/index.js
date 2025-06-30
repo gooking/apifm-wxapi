@@ -1466,6 +1466,24 @@ module.exports = {
   mapQQSearch: (data) => {
     return request('/common/map/qq/search', false, 'post', data)
   },
+  mapQQSearchV2: (data) => {
+    return request('https://common.apifm.com/' + subDomain + '/map/qq/search', false, 'post', data)
+  },
+  mapDistanceNavigationV2: (data) => {
+    return request('https://common.apifm.com/' + subDomain + '/map/qq/distance', false, 'post', data)
+  },
+  mapQQAddressV3: (data) => {
+    return request('https://common.apifm.com/' + subDomain + '/map/qq/address', false, 'post', data)
+  },
+  mapGeocoder: (data) => {
+    return request('https://common.apifm.com/' + subDomain + '/map/geocoder', false, 'post', data)
+  },
+  mapDrive: (data) => {
+    return request('https://common.apifm.com/' + subDomain + '/map/drive', false, 'post', data)
+  },
+  mapAddressToGps: (data) => {
+    return request('https://common.apifm.com/' + subDomain + '/map/addressToGps', false, 'post', data)
+  },
   virtualTraderList: (data) => {
     return request('/virtualTrader/list', true, 'post', data)
   },
