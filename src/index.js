@@ -99,6 +99,9 @@ module.exports = {
   commonIPV2: (ip = '') => {
     return request('https://common.apifm.com/' + subDomain + '/common/ip', false, 'get', { ip })
   },
+  commonIPV3: (ip = '') => {
+    return request('https://common.apifm.com/' + subDomain + '/common/ip/v2', false, 'get', { ip })
+  },
   forexRate: (fromCode, toCode) => {
     return request('/forex/rate', true, 'get', { fromCode, toCode })
   },
