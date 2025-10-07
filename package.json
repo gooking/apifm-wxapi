@@ -1,7 +1,7 @@
 {
   "name": "apifm-wxapi",
-  "version": "25.7.2",
-  "description": "增加commonIPV3",
+  "version": "25.10.7",
+  "description": "userAmountV2 接口更新",
   "main": "miniprogram_dist/index.js",
   "scripts": {
     "dev": "gulp dev --develop",
