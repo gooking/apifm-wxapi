@@ -2029,6 +2029,18 @@ module.exports = {
   goodsVisitLogClear: token => {
     return request('/goods/visitLog/clear', true, 'post', { token })
   },
+  goodsVisitLogV2: data => {
+    return request('https://common.apifm.com/' + subDomain + '/goods/visitLog', false, 'post', data)
+  },
+  goodsVisitLogAddV2: data => {
+    return request('https://common.apifm.com/' + subDomain + '/goods/visitLog/add', false, 'post', data)
+  },
+  goodsVisitLogDeleteV2: data => {
+    return request('https://common.apifm.com/' + subDomain + '/goods/visitLog/delete', false, 'post', data)
+  },
+  goodsVisitLogClearV2: token => {
+    return request('https://common.apifm.com/' + subDomain + '/goods/visitLog/clear', false, 'post', { token })
+  },
   channelDataPush: (key, content) => {
     return request('/channelData/push', true, 'post', { key, content })
   },

@@ -1,7 +1,7 @@
 {
   "name": "apifm-wxapi",
-  "version": "25.10.11",
-  "description": "cashLogsV3 接口更新",
+  "version": "25.10.16",
+  "description": "商品浏览足迹接口升级",
   "main": "miniprogram_dist/index.js",
   "scripts": {
     "dev": "gulp dev --develop",
