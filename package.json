@@ -1,7 +1,7 @@
 {
   "name": "apifm-wxapi",
-  "version": "25.11.5",
-  "description": "押金接口升级",
+  "version": "25.11.7",
+  "description": "提现接口升级",
   "main": "miniprogram_dist/index.js",
   "scripts": {
     "dev": "gulp dev --develop",

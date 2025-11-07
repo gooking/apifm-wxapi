@@ -1,6 +1,7 @@
 /* eslint-disable */
 // 小程序开发api接口工具包，https://github.com/gooking/wxapi
 var API_BASE_URL = 'https://api.it120.cc'
+var COMMON_BASE_URL = 'https://common.apifm.com/'
 var subDomain = '-'
 var merchantId = '0'
 
@@ -85,10 +86,10 @@ module.exports = {
     return request('/common/mobile-segment/next', false, 'post', data)
   },
   queryMobileLocationV2: (mobile = '') => {
-    return request('https://common.apifm.com/' + subDomain + '/common/mobile-segment/location', false, 'get', { mobile })
+    return request(COMMON_BASE_URL + subDomain + '/common/mobile-segment/location', false, 'get', { mobile })
   },
   nextMobileSegmentV2: (data) => {
-    return request('https://common.apifm.com/' + subDomain + '/common/mobile-segment/next', false, 'post', data)
+    return request(COMMON_BASE_URL + subDomain + '/common/mobile-segment/next', false, 'post', data)
   },
   gpsDistance: (data) => {
     return request('/common/map/qq/distance', false, 'post', data)
@@ -97,10 +98,10 @@ module.exports = {
     return request('/common/ip', false, 'get', { ip })
   },
   commonIPV2: (ip = '') => {
-    return request('https://common.apifm.com/' + subDomain + '/common/ip', false, 'get', { ip })
+    return request(COMMON_BASE_URL + subDomain + '/common/ip', false, 'get', { ip })
   },
   commonIPV3: (ip = '') => {
-    return request('https://common.apifm.com/' + subDomain + '/common/ip/v2', false, 'get', { ip })
+    return request(COMMON_BASE_URL + subDomain + '/common/ip/v2', false, 'get', { ip })
   },
   forexRate: (fromCode, toCode) => {
     return request('/forex/rate', true, 'get', { fromCode, toCode })
@@ -814,7 +815,7 @@ module.exports = {
     })
   },
   userAmountV2: (token) => {
-    return request('https://common.apifm.com/' + subDomain + '/user/amount', false, 'get', {
+    return request(COMMON_BASE_URL + subDomain + '/user/amount', false, 'get', {
       token
     })
   },
@@ -924,6 +925,21 @@ module.exports = {
   withDrawSetting: () => {
     return request('/user/withDraw/setting', true, 'get')
   },
+  withDrawApplyV3: (data) => {
+    return request(COMMON_BASE_URL + subDomain + '/user/withdrawal/apply', true, 'post', data)
+  },
+  withDrawDetailV2: (data) => {
+    return request(COMMON_BASE_URL + subDomain + '/user/withdrawal/detail', true, 'get', data)
+  },
+  withDrawLogsV2: (data) => {
+    return request(COMMON_BASE_URL + subDomain + '/user/withdrawal/list', true, 'post', data)
+  },
+  withDrawSettingV2: () => {
+    return request(COMMON_BASE_URL + subDomain + '/user/withdrawal/setting', true, 'get')
+  },
+  wxpayRequestMerchantTransferV2: (data) => {
+    return request(COMMON_BASE_URL + subDomain + '/user/withdrawal/requestMerchantTransfer', true, 'get', data);
+  },
   province: () => {
     return request('/common/region/v2/province', false, 'get')
   },
@@ -955,31 +971,31 @@ module.exports = {
     return request('/common/region/v2/search', false, 'post', data)
   },
   provinceV2: () => {
-    return request('https://common.apifm.com/' + subDomain + '/region/province', false, 'get')
+    return request(COMMON_BASE_URL + subDomain + '/region/province', false, 'get')
   },
   cityV2: () => {
-    return request('https://common.apifm.com/' + subDomain + '/region/city', false, 'get')
+    return request(COMMON_BASE_URL + subDomain + '/region/city', false, 'get')
   },
   districtsV2: data => {
-    return request('https://common.apifm.com/' + subDomain + '/region/districts', false, 'post', data)
+    return request(COMMON_BASE_URL + subDomain + '/region/districts', false, 'post', data)
   },
   streetsV2: data => {
-    return request('https://common.apifm.com/' + subDomain + '/region/streets', false, 'post', data)
+    return request(COMMON_BASE_URL + subDomain + '/region/streets', false, 'post', data)
   },
   nextRegionV2: pid => {
-    return request('https://common.apifm.com/' + subDomain + '/region/child', false, 'get', { pid })
+    return request(COMMON_BASE_URL + subDomain + '/region/child', false, 'get', { pid })
   },
   regionInfoV2: id => {
-    return request('https://common.apifm.com/' + subDomain + '/region/info', false, 'get', { id })
+    return request(COMMON_BASE_URL + subDomain + '/region/info', false, 'get', { id })
   },
   regionInfoBatchV2: ids => {
-    return request('https://common.apifm.com/' + subDomain + '/region/infoBatch', false, 'get', { ids })
+    return request(COMMON_BASE_URL + subDomain + '/region/infoBatch', false, 'get', { ids })
   },
   regionSearchV2: data => {
-    return request('https://common.apifm.com/' + subDomain + '/region/search', false, 'post', data)
+    return request(COMMON_BASE_URL + subDomain + '/region/search', false, 'post', data)
   },
   regionAnalysis: address => {
-    return request('https://common.apifm.com/' + subDomain + '/region/analysis', false, 'post', { address })
+    return request(COMMON_BASE_URL + subDomain + '/region/analysis', false, 'post', { address })
   },
   cashLogs: (data) => {
     return request('/user/cashLog', true, 'post', data)
@@ -988,7 +1004,7 @@ module.exports = {
     return request('/user/cashLog/v2', true, 'post', data)
   },
   cashLogsV3: (data) => {
-    return request('https://common.apifm.com/' + subDomain + '/user/cashLog/v2', false, 'post', data)
+    return request(COMMON_BASE_URL + subDomain + '/user/cashLog/v2', false, 'post', data)
   },
   statisticsComingOut: (data) => {
     return request('/user/statisticsComingOut', true, 'post', data)
@@ -1297,19 +1313,19 @@ module.exports = {
     return request('/deposit/back/apply', true, 'post', { token, id })
   },
   depositListV2: (data) => {
-    return request('https://common.apifm.com/' + subDomain + '/deposit/list', false, 'post', data)
+    return request(COMMON_BASE_URL + subDomain + '/deposit/list', false, 'post', data)
   },
   payDepositV2: (data) => {
-    return request('https://common.apifm.com/' + subDomain + '/deposit/pay', false, 'post', data)
+    return request(COMMON_BASE_URL + subDomain + '/deposit/pay', false, 'post', data)
   },
   payStatusDepositV2: (data) => {
-    return request('https://common.apifm.com/' + subDomain + '/deposit/payStatus', false, 'post', data)
+    return request(COMMON_BASE_URL + subDomain + '/deposit/payStatus', false, 'post', data)
   },
   depositInfoV2: (token, id) => {
-    return request('https://common.apifm.com/' + subDomain + '/deposit/info', false, 'get', { token, id })
+    return request(COMMON_BASE_URL + subDomain + '/deposit/info', false, 'get', { token, id })
   },
   depositBackApplyV2: (token, id) => {
-    return request('https://common.apifm.com/' + subDomain + '/deposit/back/apply', false, 'post', { token, id })
+    return request(COMMON_BASE_URL + subDomain + '/deposit/back/apply', false, 'post', { token, id })
   },
   shopAreaCities: () => {
     return request('/shopArea/cities', true, 'get')
@@ -1387,7 +1403,7 @@ module.exports = {
     return request('/user/modify', true, 'post', data)
   },
   modifyUserInfoV2: (data) => {
-    return request('https://common.apifm.com/' + subDomain + '/user/modify', false, 'post', data)
+    return request(COMMON_BASE_URL + subDomain + '/user/modify', false, 'post', data)
   },
   bindSaleman: data => {
     return request('/user/bindSaleman', true, 'post', data)
@@ -1438,19 +1454,19 @@ module.exports = {
     return request('/json/highlight', true, 'post', { token, id, isHighlight })
   },
   jsonListV3: (data) => {
-    return request('https://common.apifm.com/' + subDomain + '/json/list', true, 'post', data)
+    return request(COMMON_BASE_URL + subDomain + '/json/list', true, 'post', data)
   },
   jsonSetV2: (data) => {
-    return request('https://common.apifm.com/' + subDomain + '/json/set', true, 'post', data)
+    return request(COMMON_BASE_URL + subDomain + '/json/set', true, 'post', data)
   },
   jsonDeleteV2: (data) => {
-    return request('https://common.apifm.com/' + subDomain + '/json/delete', true, 'post', data)
+    return request(COMMON_BASE_URL + subDomain + '/json/delete', true, 'post', data)
   },
   jsonTopv2: (data) => {
-    return request('https://common.apifm.com/' + subDomain + '/json/top', true, 'post', data)
+    return request(COMMON_BASE_URL + subDomain + '/json/top', true, 'post', data)
   },
   jsonHighlightv2: (data) => {
-    return request('https://common.apifm.com/' + subDomain + '/json/highlight', true, 'post', data)
+    return request(COMMON_BASE_URL + subDomain + '/json/highlight', true, 'post', data)
   },
   graphValidateCodeUrl: (key = Math.random()) => {
     const _url = API_BASE_URL + '/' + subDomain + '/verification/pic/get?key=' + key
@@ -1499,22 +1515,22 @@ module.exports = {
     return request('/common/map/qq/search', false, 'post', data)
   },
   mapQQSearchV2: (data) => {
-    return request('https://common.apifm.com/' + subDomain + '/map/qq/search', false, 'post', data)
+    return request(COMMON_BASE_URL + subDomain + '/map/qq/search', false, 'post', data)
   },
   mapDistanceNavigationV2: (data) => {
-    return request('https://common.apifm.com/' + subDomain + '/map/qq/distance', false, 'post', data)
+    return request(COMMON_BASE_URL + subDomain + '/map/qq/distance', false, 'post', data)
   },
   mapQQAddressV3: (data) => {
-    return request('https://common.apifm.com/' + subDomain + '/map/qq/address', false, 'post', data)
+    return request(COMMON_BASE_URL + subDomain + '/map/qq/address', false, 'post', data)
   },
   mapGeocoder: (data) => {
-    return request('https://common.apifm.com/' + subDomain + '/map/geocoder', false, 'post', data)
+    return request(COMMON_BASE_URL + subDomain + '/map/geocoder', false, 'post', data)
   },
   mapDrive: (data) => {
-    return request('https://common.apifm.com/' + subDomain + '/map/drive', false, 'post', data)
+    return request(COMMON_BASE_URL + subDomain + '/map/drive', false, 'post', data)
   },
   mapAddressToGps: (data) => {
-    return request('https://common.apifm.com/' + subDomain + '/map/addressToGps', false, 'post', data)
+    return request(COMMON_BASE_URL + subDomain + '/map/addressToGps', false, 'post', data)
   },
   virtualTraderList: (data) => {
     return request('/virtualTrader/list', true, 'post', data)
@@ -1742,7 +1758,7 @@ module.exports = {
     return request('/site/goods/dynamic', true, 'get', data)
   },
   usersDynamic: (type) => {
-    return request('https://common.apifm.com/' + subDomain + '/site/user/dynamic', false, 'get', { type })
+    return request(COMMON_BASE_URL + subDomain + '/site/user/dynamic', false, 'get', { type })
   },
   fetchSubDomainByWxappAppid: (appid) => {
     return request('/subdomain/appid/wxapp', false, 'get', { appid })
@@ -1885,7 +1901,7 @@ module.exports = {
     return request('/bonusLog/list', true, 'post', data)
   },
   bonusLogV2: (data) => {
-    return request('https://common.apifm.com/' + subDomain + '/bonusLog/list', true, 'post', data)
+    return request(COMMON_BASE_URL + subDomain + '/bonusLog/list', true, 'post', data)
   },
   mtjAsset: (token) => {
     return request('/mtj/asset', true, 'get', { token })
@@ -1906,22 +1922,22 @@ module.exports = {
     return request('/mtj/transfer/logs', true, 'post', data)
   },
   mtjAssetV2: (token) => {
-    return request('https://common.apifm.com/' + subDomain + '/mtj/asset', true, 'get', { token })
+    return request(COMMON_BASE_URL + subDomain + '/mtj/asset', true, 'get', { token })
   },
   mtjSettingV2: () => {
-    return request('https://common.apifm.com/' + subDomain + '/mtj/setting', true, 'get')
+    return request(COMMON_BASE_URL + subDomain + '/mtj/setting', true, 'get')
   },
   mtjLogsV2: (data) => {
-    return request('https://common.apifm.com/' + subDomain + '/mtj/logs', true, 'post', data)
+    return request(COMMON_BASE_URL + subDomain + '/mtj/logs', true, 'post', data)
   },
   mtjStatisticsV2: () => {
-    return request('https://common.apifm.com/' + subDomain + '/site/statistics/mjt', true, 'get')
+    return request(COMMON_BASE_URL + subDomain + '/site/statistics/mjt', true, 'get')
   },
   mtjTransferV2: (data) => {
-    return request('https://common.apifm.com/' + subDomain + '/mtj/transfer', true, 'post', data)
+    return request(COMMON_BASE_URL + subDomain + '/mtj/transfer', true, 'post', data)
   },
   mtjTransferLogsV2: (data) => {
-    return request('https://common.apifm.com/' + subDomain + '/mtj/transfer/logs', true, 'post', data)
+    return request(COMMON_BASE_URL + subDomain + '/mtj/transfer/logs', true, 'post', data)
   },
   wxOpenAuthorization: (data) => {
     return request('/user/wxsns/authorization', true, 'post', data)
@@ -2066,16 +2082,16 @@ module.exports = {
     return request('/goods/visitLog/clear', true, 'post', { token })
   },
   goodsVisitLogV2: data => {
-    return request('https://common.apifm.com/' + subDomain + '/goods/visitLog', false, 'post', data)
+    return request(COMMON_BASE_URL + subDomain + '/goods/visitLog', false, 'post', data)
   },
   goodsVisitLogAddV2: data => {
-    return request('https://common.apifm.com/' + subDomain + '/goods/visitLog/add', false, 'post', data)
+    return request(COMMON_BASE_URL + subDomain + '/goods/visitLog/add', false, 'post', data)
   },
   goodsVisitLogDeleteV2: data => {
-    return request('https://common.apifm.com/' + subDomain + '/goods/visitLog/delete', false, 'post', data)
+    return request(COMMON_BASE_URL + subDomain + '/goods/visitLog/delete', false, 'post', data)
   },
   goodsVisitLogClearV2: token => {
-    return request('https://common.apifm.com/' + subDomain + '/goods/visitLog/clear', false, 'post', { token })
+    return request(COMMON_BASE_URL + subDomain + '/goods/visitLog/clear', false, 'post', { token })
   },
   channelDataPush: (key, content) => {
     return request('/channelData/push', true, 'post', { key, content })
@@ -2096,10 +2112,10 @@ module.exports = {
     return request('/partner/buy', true, 'post', { token })
   },
   partnerMembersStatistics: token => {
-    return request('https://common.apifm.com/' + subDomain + '/partner/members/statistics', false, 'get', { token })
+    return request(COMMON_BASE_URL + subDomain + '/partner/members/statistics', false, 'get', { token })
   },
   partnerMembers: data => {
-    return request('https://common.apifm.com/' + subDomain + '/partner/members', false, 'post', data)
+    return request(COMMON_BASE_URL + subDomain + '/partner/members', false, 'post', data)
   },
   myLiveRooms: data => {
     return request('/liveRooms/my', true, 'post', data)
@@ -2411,31 +2427,31 @@ module.exports = {
     return request('/courseBuyLog/del', true, 'post', { token, orderId })
   },
   courseInfoListV2: data => {
-    return request('https://common.apifm.com/' + subDomain + '/courseInfo/list', false, 'post', data)
+    return request(COMMON_BASE_URL + subDomain + '/courseInfo/list', false, 'post', data)
   },
   courseInfoV2: id => {
-    return request('https://common.apifm.com/' + subDomain + '/courseInfo/info', false, 'get', { id })
+    return request(COMMON_BASE_URL + subDomain + '/courseInfo/info', false, 'get', { id })
   },
   courseBuyLogPublicV2: data => {
-    return request('https://common.apifm.com/' + subDomain + '/courseBuyLog/public', false, 'post', data)
+    return request(COMMON_BASE_URL + subDomain + '/courseBuyLog/public', false, 'post', data)
   },
   courseBuyLogMyV2: data => {
-    return request('https://common.apifm.com/' + subDomain + '/courseBuyLog/my', false, 'post', data)
+    return request(COMMON_BASE_URL + subDomain + '/courseBuyLog/my', false, 'post', data)
   },
   courseInfoBuyV2: data => {
-    return request('https://common.apifm.com/' + subDomain + '/courseBuyLog/buy', false, 'post', data)
+    return request(COMMON_BASE_URL + subDomain + '/courseBuyLog/buy', false, 'post', data)
   },
   courseInfoBuyLogPayV2: (token, orderId) => {
-    return request('https://common.apifm.com/' + subDomain + '/courseBuyLog/pay', false, 'post', { token, orderId })
+    return request(COMMON_BASE_URL + subDomain + '/courseBuyLog/pay', false, 'post', { token, orderId })
   },
   courseInfoBuyLogDetailV2: (token, id, hxNumber = '') => {
-    return request('https://common.apifm.com/' + subDomain + '/courseBuyLog/detail', false, 'get', { token, id, hxNumber })
+    return request(COMMON_BASE_URL + subDomain + '/courseBuyLog/detail', false, 'get', { token, id, hxNumber })
   },
   courseInfoBuyLogCloseV2: (token, orderId) => {
-    return request('https://common.apifm.com/' + subDomain + '/courseBuyLog/close', false, 'post', { token, orderId })
+    return request(COMMON_BASE_URL + subDomain + '/courseBuyLog/close', false, 'post', { token, orderId })
   },
   courseInfoBuyLogDeleteV2: (token, orderId) => {
-    return request('https://common.apifm.com/' + subDomain + '/courseBuyLog/del', false, 'post', { token, orderId })
+    return request(COMMON_BASE_URL + subDomain + '/courseBuyLog/del', false, 'post', { token, orderId })
   },
   // 橱窗
   chuchuanSettingInfo: uid => {
@@ -2567,10 +2583,10 @@ module.exports = {
     return request('/tempData/get', true, 'get', { key })
   },
   tempDataSetV2: (key, content) => {
-    return request('https://common.apifm.com/' + merchantId + '/tempData/set', true, 'post', { key, content })
+    return request(COMMON_BASE_URL + merchantId + '/tempData/set', true, 'post', { key, content })
   },
   tempDataGetV2: key => {
-    return request('https://common.apifm.com/' + merchantId + '/tempData/get', true, 'get', { key })
+    return request(COMMON_BASE_URL + merchantId + '/tempData/get', true, 'get', { key })
   },
   commonDatetime: () => {
     return request('/common/datetime', true, 'get')
@@ -2952,9 +2968,9 @@ module.exports = {
     return request('/cpactivityInfo/pay', true, 'post', data)
   },
   volcesArkCreateChatCompletion: (message) => {
-    return request('https://common.apifm.com/' + subDomain + '/volcesArk/createChatCompletion', false, 'post', { message })
+    return request(COMMON_BASE_URL + subDomain + '/volcesArk/createChatCompletion', false, 'post', { message })
   },
   volcesArkChatCompletionResult: (key) => {
-    return request('https://common.apifm.com/' + subDomain + '/volcesArk/result', false, 'get', { key })
+    return request(COMMON_BASE_URL + subDomain + '/volcesArk/result', false, 'get', { key })
   },
 }
