@@ -1009,6 +1009,9 @@ module.exports = {
   statisticsComingOut: (data) => {
     return request('/user/statisticsComingOut', true, 'post', data)
   },
+  statisticsComingOutV2: (data) => {
+    return request(COMMON_BASE_URL + subDomain + '/user/statisticsComingOut', false, 'post', data)
+  },
   payLogs: (data) => {
     return request('/user/payLogs', true, 'post', data)
   },

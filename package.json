@@ -1,7 +1,7 @@
 {
   "name": "apifm-wxapi",
-  "version": "25.11.10",
-  "description": "成长值、支付宝小程序绑定手机号",
+  "version": "25.11.26",
+  "description": "用户收入支出统计方法升级",
   "main": "miniprogram_dist/index.js",
   "scripts": {
     "dev": "gulp dev --develop",
