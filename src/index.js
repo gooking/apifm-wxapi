@@ -1547,6 +1547,18 @@ module.exports = {
   virtualTraderMyBuyLogs: (data) => {
     return request('/virtualTrader/buy/logs', true, 'post', data)
   },
+  virtualTraderListV2: (data) => {
+    return request(COMMON_BASE_URL + subDomain + '/virtualTrader/list', false, 'post', data)
+  },
+  virtualTraderDetailV2: (token, id) => {
+    return request(COMMON_BASE_URL + subDomain + '/virtualTrader/info', false, 'get', { token, id })
+  },
+  virtualTraderBuyV2: (token, id) => {
+    return request(COMMON_BASE_URL + subDomain + '/virtualTrader/buy', false, 'post', { token, id })
+  },
+  virtualTraderMyBuyLogsV2: (data) => {
+    return request(COMMON_BASE_URL + subDomain + '/virtualTrader/buy/logs', false, 'post', data)
+  },
   queuingTypes: (status = '') => {
     return request('/queuing/types', true, 'get', { status })
   },
