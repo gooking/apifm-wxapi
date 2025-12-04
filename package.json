@@ -1,7 +1,7 @@
 {
   "name": "apifm-wxapi",
-  "version": "25.12.1",
-  "description": "知识付费接口升级",
+  "version": "25.12.4",
+  "description": "购买历史记录接口升级",
   "main": "miniprogram_dist/index.js",
   "scripts": {
     "dev": "gulp dev --develop",
