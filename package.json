@@ -1,7 +1,7 @@
 {
   "name": "apifm-wxapi",
-  "version": "25.12.8",
-  "description": "投票和预约api地址调整",
+  "version": "25.12.9",
+  "description": "积分任务接口升级",
   "main": "miniprogram_dist/index.js",
   "scripts": {
     "dev": "gulp dev --develop",

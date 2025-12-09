@@ -176,10 +176,10 @@ module.exports = {
     return request('/score/expireScorestatistics', true, 'post', data)
   },
   scoreTaskList: token => {
-    return request('/score/taskList', true, 'get', { token })
+    return request(COMMON_BASE_URL + subDomain + '/score/taskList', false, 'get', { token })
   },
   scoreTaskSuccess: (token, type) => {
-    return request('/score/taskSuccess', true, 'post', { token, type })
+    return request(COMMON_BASE_URL + subDomain + '/score/taskSuccess', false, 'post', { token, type })
   },
   kanjiaSet: (goodsId) => {
     return request('/shop/goods/kanjia/set/v2', true, 'get', { goodsId })
