@@ -138,7 +138,7 @@ module.exports = {
     })
   },
   scoreExchangeCash: (token, deductionScore) => {
-    return request('/score/exchange/cash', true, 'post', {
+    return request(COMMON_BASE_URL + subDomain + '/score/exchange/cash', false, 'post', {
       deductionScore,
       token
     })
@@ -158,7 +158,7 @@ module.exports = {
     })
   },
   scoreDeductionRules: (type = '') => {
-    return request('/score/deduction/rules', true, 'get', { type })
+    return request(COMMON_BASE_URL + subDomain + '/score/deduction/rules', false, 'get', { type })
   },
   scoreDailyFixedNum: token => {
     return request('/score/dailyFixedNum', true, 'post', { token })
@@ -1045,7 +1045,7 @@ module.exports = {
     return request('/saleDistribution/apply/v2', true, 'post', data)
   },
   fxSetting: () => {
-    return request('/saleDistribution/setting', true, 'get')
+    return request(COMMON_BASE_URL + subDomain + '/saleDistribution/setting', true, 'get')
   },
   fxBuy: token => {
     return request('/saleDistribution/buy', true, 'post', { token })

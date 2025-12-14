@@ -1,7 +1,7 @@
 {
   "name": "apifm-wxapi",
-  "version": "25.12.9",
-  "description": "积分任务接口升级",
+  "version": "25.12.14",
+  "description": "分销设置接口升级",
   "main": "miniprogram_dist/index.js",
   "scripts": {
     "dev": "gulp dev --develop",
