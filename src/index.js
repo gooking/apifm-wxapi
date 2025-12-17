@@ -107,10 +107,10 @@ module.exports = {
     return request('/forex/rate', true, 'get', { fromCode, toCode })
   },
   queryConfigValue: (key) => {
-    return request('/config/value', true, 'get', { key })
+    return request(COMMON_BASE_URL + subDomain + '/config/value', true, 'get', { key })
   },
   queryConfigBatch: (keys) => {
-    return request('/config/values', true, 'get', { keys })
+    return request(COMMON_BASE_URL + subDomain + '/config/values', true, 'get', { keys })
   },
   scoreRules: (data) => {
     return request('/score/send/rule', true, 'post', data)
@@ -1282,7 +1282,7 @@ module.exports = {
     return request('/newsOwnerUserViewStatistics/list', true, 'post', data)
   },
   cmsPage: (key) => {
-    return request('/cms/page/info/v2', true, 'get', { key })
+    return request(COMMON_BASE_URL + subDomain + '/cms/page/info/v2', true, 'get', { key })
   },
   cmsTags: () => {
     return request('/cms/tags/list', true, 'get', {  })
@@ -2198,11 +2198,17 @@ module.exports = {
   jdvopGoodsListV2: data => {
     return request(`https://jdvop.apifm.com/jdvop/${merchantId}/goods/list`, false, 'post', data)
   },
+  jdvopGoodsListV3: data => {
+    return request(`https://jdvop.apifm.com/jdvop/${merchantId}/goods/v2/list`, false, 'post', data)
+  },
   jdvopGoodsCheckCanBuy: data => {
     return request(`/jdvop/${merchantId}/goods/checkCanBuy`, false, 'post', data)
   },
   jdvopGoodsCheckCanBuyV2: data => {
     return request(`https://jdvop.apifm.com/jdvop/${merchantId}/goods/checkCanBuy`, false, 'post', data)
+  },
+  jdvopGoodsCheckCanBuyV3: data => {
+    return request(`https://jdvop.apifm.com/jdvop/${merchantId}/goods/v2/getSkusAllSaleState`, false, 'post', data)
   },
   jdvopGoodsDetail: goodsId => {
     return request(`/jdvop/${merchantId}/goods/detail`, false, 'get', {
