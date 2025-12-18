@@ -350,7 +350,7 @@ module.exports = {
     })
   },
   login_tt: (code) => {
-    return request('/user/tt/microapp/login', true, 'post', {
+    return request(COMMON_BASE_URL + subDomain + '/user/tt/miniapp/login', false, 'post', {
       code
     })
   },
@@ -412,7 +412,7 @@ module.exports = {
     return request('/user/wxapp/register/complex', true, 'post', data)
   },
   register_tt: (data) => {
-    return request('/user/tt/microapp/register', true, 'post', data)
+    return request(COMMON_BASE_URL + subDomain + '/user/tt/miniapp/register', false, 'post', data)
   },
   registerQ: (data) => {
     return request('/user/q/register', true, 'post', data)
@@ -430,7 +430,7 @@ module.exports = {
     return request('/user/wxapp/authorize', true, 'post', data)
   },
   ttAuthorize: (data) => {
-    return request('/user/tt/microapp/authorize', true, 'post', data)
+    return request(COMMON_BASE_URL + subDomain + '/user/tt/miniapp/authorize', false, 'post', data)
   },
   register_username: (data) => {
     return request('/user/username/register', true, 'post', data)
@@ -783,7 +783,7 @@ module.exports = {
     })
   },
   bindMobileTta: (token, encryptedData, iv, pwd = '') => {
-    return request('/user/tt/microapp/bindMobile', true, 'post', {
+    return request(COMMON_BASE_URL + subDomain + '/user/tt/miniapp/bindMobile', false, 'post', {
       token, encryptedData, iv, pwd
     })
   },
@@ -1107,7 +1107,7 @@ module.exports = {
     return request('https://oss.apifm.com/' + subDomain + '/qrcode/wxa/unlimit', true, 'post', data)
   },
   ttaQrcode: (paramsJson, expireHours) => {
-    return request('/user/tt/microapp/qrcode', true, 'post', {
+    return request(COMMON_BASE_URL + subDomain + '/user/tt/miniapp/qrcode', false, 'post', {
       content: JSON.stringify(paramsJson),
       expireHours
     })
@@ -1607,7 +1607,7 @@ module.exports = {
     return request('/user/delete', true, 'post', { token })
   },
   dynamicUserCode: (token) => {
-    return request('/user/dynamicUserCode', true, 'get', { token })
+    return request(COMMON_BASE_URL + subDomain + '/user/dynamicUserCode', false, 'get', { token })
   },
   userLevelList: (data) => {
     return request('/user/level/list', true, 'post', data)
