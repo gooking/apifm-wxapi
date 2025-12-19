@@ -355,7 +355,7 @@ module.exports = {
     })
   },
   login_q: (code) => {
-    return request('/user/q/login', true, 'post', {
+    return request(COMMON_BASE_URL + subDomain + '/user/q/login', false, 'post', {
       code,
       type: 2
     })
@@ -415,13 +415,13 @@ module.exports = {
     return request(COMMON_BASE_URL + subDomain + '/user/tt/miniapp/register', false, 'post', data)
   },
   registerQ: (data) => {
-    return request('/user/q/register', true, 'post', data)
+    return request(COMMON_BASE_URL + subDomain + '/user/q/register', false, 'post', data)
   },
   qqAuthorize: (data) => {
-    return request('/user/q/authorize', true, 'post', data)
+    return request(COMMON_BASE_URL + subDomain + '/user/q/authorize', false, 'post', data)
   },
   qqQrcode: (content) => {
-    return request('/user/q/qrcode', true, 'post', { content })
+    return request(COMMON_BASE_URL + subDomain + '/user/q/qrcode', false, 'post', { content })
   },
   register_simple: (data) => {
     return request('/user/wxapp/register/simple', true, 'post', data)
