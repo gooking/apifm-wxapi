@@ -763,7 +763,7 @@ module.exports = {
     return request('/userIm/empty', true, 'post', { token, uid })
   },
   videoDetail: (videoId) => {
-    return request('/media/video/detail', true, 'get', {
+    return request(COMMON_BASE_URL + subDomain + '/media/video/detail', false, 'get', {
       videoId
     })
   },
@@ -1231,10 +1231,10 @@ module.exports = {
     return request('/order/refundApply/setBackLogistics', true, 'post', data)
   },
   cmsCategories: () => {
-    return request('/cms/category/list', true, 'get', {})
+    return request(COMMON_BASE_URL + subDomain + '/cms/category/list', false, 'get', {})
   },
   cmsCategoryDetail: (id) => {
-    return request('/cms/category/info', true, 'get', { id })
+    return request(COMMON_BASE_URL + subDomain + '/cms/category/info', false, 'get', { id })
   },
   cmsArticles: (data) => {
     return request('/cms/news/list', true, 'post', data)
