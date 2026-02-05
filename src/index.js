@@ -2,6 +2,7 @@
 // 小程序开发api接口工具包，https://github.com/gooking/wxapi
 var API_BASE_URL = 'https://api.it120.cc'
 var COMMON_BASE_URL = 'https://common.apifm.com/'
+var CMS_BASE_URL = 'https://cms.apifm.com/'
 var subDomain = '-'
 var merchantId = '0'
 
@@ -665,13 +666,13 @@ module.exports = {
     })
   },
   addAddress: (data) => {
-    return request('/user/shipping-address/add', true, 'post', data)
+    return request(COMMON_BASE_URL + subDomain + '/user/shipping-address/add', false, 'post', data)
   },
   updateAddress: (data) => {
-    return request('/user/shipping-address/update', true, 'post', data)
+    return request(COMMON_BASE_URL + subDomain + '/user/shipping-address/update', false, 'post', data)
   },
   deleteAddress: (token, id) => {
-    return request('/user/shipping-address/delete', true, 'post', {
+    return request(COMMON_BASE_URL + subDomain + '/user/shipping-address/delete', false, 'post', {
       id,
       token
     })
@@ -682,15 +683,15 @@ module.exports = {
     })
   },
   queryAddressV2: data => {
-    return request('/user/shipping-address/list/v2', true, 'post', data)
+    return request(COMMON_BASE_URL + subDomain + '/user/shipping-address/list/v2', false, 'post', data)
   },
   defaultAddress: (token) => {
-    return request('/user/shipping-address/default/v2', true, 'get', {
+    return request(COMMON_BASE_URL + subDomain + '/user/shipping-address/default/v2', false, 'get', {
       token
     })
   },
   addressDetail: (token, id) => {
-    return request('/user/shipping-address/detail/v2', true, 'get', {
+    return request(COMMON_BASE_URL + subDomain + '/user/shipping-address/detail/v2', false, 'get', {
       id,
       token
     })
@@ -1243,10 +1244,10 @@ module.exports = {
     return request('/cms/news/list/v2', true, 'post', data)
   },
   cmsArticlesV3: (data) => {
-    return request('https://cms.apifm.com/' + merchantId + '/cms/news/list/v2', true, 'post', data)
+    return request(CMS_BASE_URL + merchantId + '/cms/news/list/v2', true, 'post', data)
   },
   cmsArticleUsefulLogs: (data) => {
-    return request('https://cms.apifm.com/' + merchantId + '/cms/news/useful/logs', false, 'post', data)
+    return request(CMS_BASE_URL + merchantId + '/cms/news/useful/logs', false, 'post', data)
   },
   cmsArticleDetail: (id) => {
     return request('/cms/news/detail', true, 'get', { id })
@@ -1255,34 +1256,34 @@ module.exports = {
     return request('/cms/news/detail/v2', true, 'get', { id, token })
   },
   cmsArticleDetailV3: data => {
-    return request('https://cms.apifm.com/' + merchantId + '/cms/news/detail/v2', true, 'get', data)
+    return request(CMS_BASE_URL + merchantId + '/cms/news/detail/v2', true, 'get', data)
   },
   cmsArticlePreNext: (id) => {
     return request('/cms/news/preNext', true, 'get', { id })
   },
   cmsArticlePreNextV2: (id) => {
-    return request('https://cms.apifm.com/' + merchantId + '/cms/news/preNext', true, 'get', { id })
+    return request(CMS_BASE_URL + merchantId + '/cms/news/preNext', true, 'get', { id })
   },
   cmsArticleCreate: (data) => {
     return request('/cms/news/put', true, 'post', data)
   },
   cmsArticleCreateV2: (data) => {
-    return request('https://cms.apifm.com/' + merchantId + '/cms/news/put', true, 'post', data)
+    return request(CMS_BASE_URL + merchantId + '/cms/news/put', true, 'post', data)
   },
   cmsArticleDelete: (token, id) => {
     return request('/cms/news/del', true, 'post', { token, id })
   },
   cmsArticleDeleteV2: (token, id) => {
-    return request('https://cms.apifm.com/' + merchantId + '/cms/news/del', true, 'post', { token, id })
+    return request(CMS_BASE_URL + merchantId + '/cms/news/del', true, 'post', { token, id })
   },
   cmsArticleUseless: (data) => {
-    return request('https://cms.apifm.com/' + merchantId + '/cms/news/useful', false, 'post', data)
+    return request(CMS_BASE_URL + merchantId + '/cms/news/useful', false, 'post', data)
   },
   cmsArticleModifyExtNumber: (data) => {
     return request('/cms/news/modifyExtNumber', true, 'post', data)
   },
   cmsArticleModifyExtNumberV2: (data) => {
-    return request('https://cms.apifm.com/' + merchantId + '/cms/news/modifyExtNumber', true, 'post', data)
+    return request(CMS_BASE_URL + merchantId + '/cms/news/modifyExtNumber', true, 'post', data)
   },
   newsOwnerUserViewStatistics: (data) => {
     return request('/newsOwnerUserViewStatistics/list', true, 'post', data)
@@ -1294,7 +1295,7 @@ module.exports = {
     return request('/cms/tags/list', true, 'get', {  })
   },
   cmsTagsV2: data => {
-    return request('https://cms.apifm.com/' + merchantId + '/newsTag/list', true, 'post', data)
+    return request(CMS_BASE_URL + merchantId + '/newsTag/list', true, 'post', data)
   },
   cmsNewsSignUsers: (data) => {
     return request('/newsSign/signUsers', true, 'post', data)
@@ -2646,76 +2647,79 @@ module.exports = {
   },
   // 企业应用 组织/成员/网盘
   organizePrices: () => {
-    return request('/organizeInfo/prices', true, 'get')
+    return request(CMS_BASE_URL + subDomain + '/organizeInfo/prices', true, 'get')
   },
   organizeCreate: data => {
-    return request('/organizeInfo/create', true, 'post', data)
+    return request(COMMON_BASE_URL + subDomain + '/organizeInfo/create', true, 'post', data)
   },
   organizeUpgrade: data => {
-    return request('/organizeInfo/upgrade', true, 'post', data)
+    return request(COMMON_BASE_URL + subDomain + '/organizeInfo/upgrade', true, 'post', data)
   },
   organizeModify: data => {
-    return request('/organizeInfo/modify', true, 'post', data)
+    return request(CMS_BASE_URL + subDomain + '/organizeInfo/modify', true, 'post', data)
   },
   organizeJoinKey: data => {
-    return request('/organizeInfo/joinKey', true, 'get', data)
+    return request(CMS_BASE_URL + subDomain + '/organizeInfo/joinKey', true, 'get', data)
   },
   organizeJoin: data => {
-    return request('/organizeInfo/join', true, 'post', data)
+    return request(CMS_BASE_URL + subDomain + '/organizeInfo/join', true, 'post', data)
   },
   organizeGrantAdmin: data => {
-    return request('/organizeInfo/grantAdmin', true, 'post', data)
+    return request(CMS_BASE_URL + subDomain + '/organizeInfo/grantAdmin', true, 'post', data)
   },
   organizeKick: data => {
-    return request('/organizeInfo/kick', true, 'post', data)
+    return request(CMS_BASE_URL + subDomain + '/organizeInfo/kick', true, 'post', data)
   },
   organizeKickAllMembers: data => {
-    return request('/organizeInfo/kickAllMembers', true, 'post', data)
+    return request(CMS_BASE_URL + subDomain + '/organizeInfo/kickAllMembers', true, 'post', data)
   },
   organizeKickSelf: data => {
-    return request('/organizeInfo/kickSelf', true, 'post', data)
+    return request(CMS_BASE_URL + subDomain + '/organizeInfo/kickSelf', true, 'post', data)
   },
   organizeNick: data => {
-    return request('/organizeInfo/nick', true, 'post', data)
+    return request(CMS_BASE_URL + subDomain + '/organizeInfo/nick', true, 'post', data)
   },
   organizeDelete: data => {
-    return request('/organizeInfo/deleteOrganize', true, 'post', data)
+    return request(CMS_BASE_URL + subDomain + '/organizeInfo/deleteOrganize', true, 'post', data)
   },
   organizeMyOrganizeInfo: data => {
-    return request('/organizeInfo/myOrganizeInfo', true, 'post', data)
+    return request(CMS_BASE_URL + subDomain + '/organizeInfo/myOrganizeInfo', true, 'post', data)
   },
   organizeDetail: data => {
-    return request('/organizeInfo/organizeDetail', true, 'get', data)
+    return request(CMS_BASE_URL + subDomain + '/organizeInfo/organizeDetail', true, 'get', data)
   },
   organizeMembers: data => {
-    return request('/organizeInfo/members', true, 'post', data)
+    return request(CMS_BASE_URL + subDomain + '/organizeInfo/members', true, 'post', data)
   },
   organizeNoticeList: data => {
-    return request('/organizeNotice/list', true, 'post', data)
+    return request(CMS_BASE_URL + subDomain + '/organizeNotice/list', true, 'post', data)
   },
   organizeNoticeDetail: data => {
-    return request('/organizeNotice/detail', true, 'get', data)
+    return request(CMS_BASE_URL + subDomain + '/organizeNotice/detail', true, 'get', data)
   },
   organizeNoticeSave: data => {
-    return request('/organizeNotice/save', true, 'post', data)
+    return request(CMS_BASE_URL + subDomain + '/organizeNotice/save', true, 'post', data)
   },
   organizeNoticeDelete: data => {
-    return request('/organizeNotice/del', true, 'post', data)
+    return request(CMS_BASE_URL + subDomain + '/organizeNotice/del', true, 'post', data)
   },
-  organizePanUpload: data => {
-    return request('/organizePan/upload', true, 'post', data)
+  organizePanUploadGetSignature: data => {
+    return request(CMS_BASE_URL + subDomain + '/organizePan/uploadGetSignature', true, 'post', data)
   },
-  organizePanDownload: data => {
-    return request('/organizePan/download', true, 'get', data)
+  organizePanUploadV2: data => {
+    return request(CMS_BASE_URL + subDomain + '/organizePan/upload', true, 'post', data)
+  },
+  organizePanDownloadV2: data => {
+    return request(CMS_BASE_URL + subDomain + '/organizePan/download', true, 'get', data)
   },
   organizePanFiles: data => {
-    return request('/organizePan/files', true, 'post', data)
+    return request(CMS_BASE_URL + subDomain + '/organizePan/files', true, 'post', data)
   },
   organizePanModify: data => {
-    return request('/organizePan/modify', true, 'post', data)
+    return request(CMS_BASE_URL + subDomain + '/organizePan/modify', true, 'post', data)
   },
   organizePanDelete: data => {
-    return request('/organizePan/del', true, 'post', data)
+    return request(CMS_BASE_URL + subDomain + '/organizePan/del', true, 'post', data)
   },
   newsExtFieldList: (token, organizeId, newsId) => {
     return request('/newsExtField/extFields', true, 'get', { token, organizeId, newsId })
@@ -2727,16 +2731,16 @@ module.exports = {
     return request('/newsExtField/setField', true, 'post', data)
   },
   newsExtFieldInit: data => {
-    return request('https://cms.apifm.com/' + subDomain + '/newsExtField/initFields', true, 'post', data)
+    return request(CMS_BASE_URL + subDomain + '/newsExtField/initFields', true, 'post', data)
   },
   newsExtFieldListV2: data => {
-    return request('https://cms.apifm.com/' + subDomain + '/newsExtField/extFields', true, 'get', data)
+    return request(CMS_BASE_URL + subDomain + '/newsExtField/extFields', true, 'get', data)
   },
   newsExtFieldDynamicV2: data => {
-    return request('https://cms.apifm.com/' + subDomain + '/newsExtField/dynamic', true, 'get', data)
+    return request(CMS_BASE_URL + subDomain + '/newsExtField/dynamic', true, 'get', data)
   },
   newsExtFieldSetV2: data => {
-    return request('https://cms.apifm.com/' + subDomain + '/newsExtField/setField', true, 'post', data)
+    return request(CMS_BASE_URL + subDomain + '/newsExtField/setField', true, 'post', data)
   },
   userAttendantList: data => {
     return request('/user/attendant/list', true, 'post', data)
