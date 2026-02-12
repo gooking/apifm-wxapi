@@ -550,7 +550,7 @@ module.exports = {
     return request('/shop/goods/priceMultilevels', true, 'get', data)
   },
   goodsRebate: (token, goodsId) => {
-    return request('/shop/goods/rebate/v2', true, 'get', {
+    return request(COMMON_BASE_URL + subDomain + '/shop/goods/rebate/v2', false, 'get', {
       token, goodsId
     })
   },
@@ -1620,16 +1620,16 @@ module.exports = {
     return request(COMMON_BASE_URL + subDomain + '/user/dynamicUserCode', false, 'get', { token })
   },
   userLevelList: (data) => {
-    return request('/user/level/list', true, 'post', data)
+    return request(COMMON_BASE_URL + subDomain + '/user/level/list', false, 'post', data)
   },
   userLevelDetail: (levelId) => {
-    return request('/user/level/info', true, 'get', { id: levelId })
+    return request(COMMON_BASE_URL + subDomain + '/user/level/info', false, 'get', { id: levelId })
   },
   userLevelPrices: (levelId) => {
-    return request('/user/level/prices', true, 'get', { levelId })
+    return request(COMMON_BASE_URL + subDomain + '/user/level/prices', false, 'get', { levelId })
   },
   userLevelBuy: (token, priceId, isAutoRenew = false, remark = '') => {
-    return request('/user/level/buy', true, 'post', {
+    return request(COMMON_BASE_URL + subDomain + '/user/level/buy', false, 'post', {
       token,
       userLevelPriceId: priceId,
       isAutoRenew,
@@ -1637,7 +1637,7 @@ module.exports = {
     })
   },
   userLevelBuyLogs: (data) => {
-    return request('/user/level/buyLogs', true, 'post', data)
+    return request(COMMON_BASE_URL + subDomain + '/user/level/buyLogs', false, 'post', data)
   },
   messageList: (data) => {
     return request('/user/message/list', true, 'post', data)
