@@ -2655,6 +2655,12 @@ module.exports = {
   organizeUpgrade: data => {
     return request(COMMON_BASE_URL + subDomain + '/organizeInfo/upgrade', true, 'post', data)
   },
+  organizeCreateV2: data => {
+    return request(COMMON_BASE_URL + subDomain + '/organizeInfo/createV2', true, 'post', data)
+  },
+  organizeUpgradeV2: data => {
+    return request(COMMON_BASE_URL + subDomain + '/organizeInfo/upgradeV2', true, 'post', data)
+  },
   organizeModify: data => {
     return request(CMS_BASE_URL + subDomain + '/organizeInfo/modify', true, 'post', data)
   },
@@ -2743,49 +2749,55 @@ module.exports = {
     return request(CMS_BASE_URL + subDomain + '/newsExtField/setField', true, 'post', data)
   },
   userAttendantList: data => {
-    return request('/user/attendant/list', true, 'post', data)
+    return request(COMMON_BASE_URL + subDomain + '/user/attendant/list', false, 'post', data)
   },
   userAttendantDetail: (id, token = '') => {
-    return request('/user/attendant/detail', true, 'get', { id, token })
+    return request(COMMON_BASE_URL + subDomain + '/user/attendant/detail', false, 'get', { id, token })
   },
   userAttendantGoods: (id) => {
-    return request('/user/attendant/goods', true, 'get', { id })
+    return request(COMMON_BASE_URL + subDomain + '/user/attendant/goods', false, 'get', { id })
   },
   userAttendantGoodsSet: (token, ids) => {
-    return request('/user/attendant/goodsSet', true, 'post', { token, ids })
+    return request(COMMON_BASE_URL + subDomain + '/user/attendant/goodsSet', false, 'post', { token, ids })
   },
   userAttendantBindShop: (token, shopId) => {
-    return request('/user/attendant/bindShop', true, 'post', { shopId, token })
+    return request(COMMON_BASE_URL + subDomain + '/user/attendant/bindShop', false, 'post', { shopId, token })
   },
   userAttendantUnBindShop: (token) => {
-    return request('/user/attendant/unbindShop', true, 'post', { token })
+    return request(COMMON_BASE_URL + subDomain + '/user/attendant/unbindShop', false, 'post', { token })
   },
   userAttendantChangeStatus: data => {
-    return request('/user/attendant/changeStatus', true, 'post', data)
+    return request(COMMON_BASE_URL + subDomain + '/user/attendant/changeStatus', false, 'post', data)
   },
   userAttendantDaysTimesAttendant: (goodsId, day) => {
-    return request('/user/attendant/daysTimesAttendant', true, 'get', { goodsId, day })
+    return request(COMMON_BASE_URL + subDomain + '/user/attendant/daysTimesAttendant', false, 'get', { goodsId, day })
   },
   userAttendantDaysTimesAttendantSetQuery: (token, day) => {
-    return request('/user/attendant/daysTimesAttendant/set/query', true, 'get', { token, day })
+    return request(COMMON_BASE_URL + subDomain + '/user/attendant/daysTimesAttendant/set/query', false, 'get', { token, day })
   },
   userAttendantDaysTimesAttendantSet: data => {
-    return request('/user/attendant/daysTimesAttendant/set', true, 'post', data)
+    return request(COMMON_BASE_URL + subDomain + '/user/attendant/daysTimesAttendant/set', false, 'post', data)
   },
   userAttendantListReputation: data => {
     return request('/user/attendant/listReputation', true, 'post', data)
   },
   userAttendantShowPics: id => {
-    return request('/user/attendant/showPics', true, 'get', { id })
+    return request(COMMON_BASE_URL + subDomain + '/user/attendant/showPics', false, 'get', { id })
   },
   userAttendantShowPicsAdd: (token, url) => {
-    return request('/user/attendant/showPicsAdd', true, 'post', { token, url })
+    return request(COMMON_BASE_URL + subDomain + '/user/attendant/showPicsAdd', false, 'post', { token, url })
   },
   userAttendantShowPicsDel: (token, id) => {
-    return request('/user/attendant/showPicsDel', true, 'post', { token, id })
+    return request(COMMON_BASE_URL + subDomain + '/user/attendant/showPicsDel', false, 'post', { token, id })
   },
   userAttendantUpdate: data => {
-    return request('/user/attendant/update', true, 'post', data)
+    return request(COMMON_BASE_URL + subDomain + '/user/attendant/update', false, 'post', data)
+  },
+  userAttendantUpdatePosition: data => {
+    return request(COMMON_BASE_URL + subDomain + '/user/attendant/updatePosition', false, 'post', data)
+  },
+  userAttendantUpdateUseful: data => {
+    return request(COMMON_BASE_URL + subDomain + '/user/attendant/useful', false, 'post', data)
   },
   userAttendantOrderServing: (token, orderId) => {
     return request('/order/serving', true, 'post', { token, orderId })
