@@ -1785,10 +1785,10 @@ module.exports = {
     })
   },  
   goodsDynamic: (type) => {
-    return request('/site/goods/dynamic', true, 'get', { type })
+    return request(COMMON_BASE_URL + subDomain + '/site/goods/dynamic', false, 'get', { type })
   },
   goodsDynamicV2: data => {
-    return request('/site/goods/dynamic', true, 'get', data)
+    return request(COMMON_BASE_URL + subDomain + '/site/goods/dynamic', false, 'get', data)
   },
   usersDynamic: (type) => {
     return request(COMMON_BASE_URL + subDomain + '/site/user/dynamic', false, 'get', { type })
@@ -1991,33 +1991,33 @@ module.exports = {
     return request('/user/wxsns/login', true, 'post', data)
   },
   userAttentioncheck: (token, uid) => {
-    return request('/user/attention/check', true, 'get', {
+    return request(COMMON_BASE_URL + subDomain + '/user/attention/check', false, 'get', {
       token, uid
     })
   },
   userAttentionAdd: (token, uid) => {
-    return request('/user/attention/add', true, 'post', {
+    return request(COMMON_BASE_URL + subDomain + '/user/attention/add', false, 'post', {
       token, uid
     })
   },
   userAttentionRemove: (token, uid) => {
-    return request('/user/attention/remove', true, 'post', {
+    return request(COMMON_BASE_URL + subDomain + '/user/attention/remove', false, 'post', {
       token, uid
     })
   },
   userAttentionMeList: (data) => {
-    return request('/user/attention/attention-me', true, 'post', data)
+    return request(COMMON_BASE_URL + subDomain + '/user/attention/attention-me', false, 'post', data)
   },
   userMyAttentionList: (data) => {
-    return request('/user/attention/my-attention', true, 'post', data)
+    return request(COMMON_BASE_URL + subDomain + '/user/attention/my-attention', false, 'post', data)
   },
   userAttentionDetail: (token, uid) => {
-    return request('/user/attention/detail', true, 'get', {
+    return request(COMMON_BASE_URL + subDomain + '/user/attention/detail', false, 'get', {
       token, uid
     })
   },
   userAttentionStatistics: (token) => {
-    return request('/user/attention/statistics', true, 'get', {
+    return request(COMMON_BASE_URL + subDomain + '/user/attention/statistics', false, 'get', {
       token
     })
   },
