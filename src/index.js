@@ -2094,10 +2094,10 @@ module.exports = {
     return request('/user/paypwd/reset', true, 'post', { mobile, code, pwd })
   },
   adPosition: key => {
-    return request('/site/adPosition/info', true, 'get', { key })
+    return request(COMMON_BASE_URL + subDomain + '/site/adPosition/info', false, 'get', { key })
   },
   adPositionBatch: keys => {
-    return request('/site/adPosition/batch', true, 'get', { keys })
+    return request(COMMON_BASE_URL + subDomain + '/site/adPosition/batch', false, 'get', { keys })
   },
   momentsCategory: () => {
     return request('/momentsCategory/list', true, 'get')
@@ -2190,7 +2190,7 @@ module.exports = {
     return request('/tourJourney/list', true, 'get', { type, refId })
   },
   userBankSelectBanks: () => {
-    return request('/userBank/banks', true, 'get')
+    return request(COMMON_BASE_URL + subDomain + '/userBank/banks', false, 'get')
   },
   userBankInfo: token => {
     return request(COMMON_BASE_URL + subDomain + '/userBank/info', false, 'get', { token })
@@ -3065,6 +3065,18 @@ module.exports = {
   },
   installOrderInfo: data => {
     return request(COMMON_BASE_URL + subDomain + '/fsm/installOrder/info', false, 'get', data)
+  },
+   installOrderShareBind: data => {
+    return request(COMMON_BASE_URL + subDomain + '/fsm/installOrder/shareBind', false, 'post', data)
+  },
+  installOrderBind: data => {
+    return request(COMMON_BASE_URL + subDomain + '/fsm/installOrder/bind', false, 'post', data)
+  },
+  fsmInstallOrderBindList: data => {
+    return request(COMMON_BASE_URL + subDomain + '/fsm/fsmInstallOrderBind/list', false, 'post', data)
+  },
+  fsmInstallOrderSubsidyRecord: data => {
+    return request(COMMON_BASE_URL + subDomain + '/fsm/fsmInstallOrderSubsidyRecord/list', false, 'post', data)
   },
   fsmReadProduct: data => {
     return request(COMMON_BASE_URL + subDomain + '/fsm/readProduct', false, 'get', data)
