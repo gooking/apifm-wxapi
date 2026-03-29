@@ -440,10 +440,10 @@ module.exports = {
     return request('/user/m/register', true, 'post', data)
   },
   bannerTypes: () => {
-    return request('/banner/types', true, 'get')
+    return request(COMMON_BASE_URL + subDomain + '/banner/types', false, 'get')
   },
   banners: (data) => {
-    return request('/banner/list', true, 'get', data)
+    return request(COMMON_BASE_URL + subDomain + '/banner/list', false, 'get', data)
   },
   goodsCategory: () => {
     return request('/shop/goods/category/all', true, 'get')
@@ -3074,6 +3074,9 @@ module.exports = {
   },
   fsmInstallOrderBindList: data => {
     return request(COMMON_BASE_URL + subDomain + '/fsm/fsmInstallOrderBind/list', false, 'post', data)
+  },
+  fsmInstallOrderBindExtendWarranty: data => {
+    return request(COMMON_BASE_URL + subDomain + '/fsm/fsmInstallOrderBind/extendWarranty', false, 'post', data)
   },
   fsmInstallOrderSubsidyRecord: data => {
     return request(COMMON_BASE_URL + subDomain + '/fsm/fsmInstallOrderSubsidyRecord/list', false, 'post', data)
