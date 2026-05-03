@@ -707,7 +707,7 @@ module.exports = {
     })
   },
   goodsDefaultPingtuan: (goodsId) => {
-    return request('/shop/goods/pingtuan/default', true, 'get', {
+    return request(COMMON_BASE_URL + subDomain + '/shop/goods/pingtuan/default', false, 'get', {
       goodsId
     });
   },
@@ -717,19 +717,19 @@ module.exports = {
     });
   },
   pingtuanOpen: (token, goodsId, extJsonStr = '') => {
-    return request('/shop/goods/pingtuan/open', true, 'post', {
+    return request(COMMON_BASE_URL + subDomain + '/shop/goods/pingtuan/open', false, 'post', {
       goodsId,
       token,
       extJsonStr
     })
   },
   pingtuanTuanInfo: (tuanId) => {
-    return request('/shop/goods/pingtuan/tuanInfo', true, 'get', {
+    return request(COMMON_BASE_URL + subDomain + '/shop/goods/pingtuan/tuanInfo', false, 'get', {
       tuanId
     });
   },
   pingtuanList: (data) => {
-    return request('/shop/goods/pingtuan/list/v2', true, 'post', data)
+    return request(COMMON_BASE_URL + subDomain + '/shop/goods/pingtuan/list/v2', false, 'post', data)
   },
   pingtuanJoinUsers: (tuanId) => {
     return request(COMMON_BASE_URL + subDomain + '/shop/goods/pingtuan/joiner', false, 'get', { tuanId })
@@ -3122,5 +3122,71 @@ module.exports = {
   },
   activityMallInfoInfo: (data) => {
     return request(COMMON_BASE_URL + subDomain + '/activityMallInfo/info', false, 'get', data)
+  },
+  coachInfoList: (data) => {
+    return request(COMMON_BASE_URL + subDomain + '/coachInfo/list', false, 'post', data)
+  },
+  coachInfoListReputation: (data) => {
+    return request(COMMON_BASE_URL + subDomain + '/coachInfo/listReputation', false, 'post', data)
+  },
+  coachStudentList: (data) => {
+    return request(COMMON_BASE_URL + subDomain + '/coachStudent/list', false, 'post', data)
+  },
+  coachStudentDetail: (data) => {
+    return request(COMMON_BASE_URL + subDomain + '/coachStudent/detail', false, 'get', data)
+  },
+  trainingList: (data) => {
+    return request(COMMON_BASE_URL + subDomain + '/training/list', false, 'post', data)
+  },
+  trainingSet: (data) => {
+    return request(COMMON_BASE_URL + subDomain + '/training/set', false, 'post', data)
+  },
+  trainingDel: (data) => {
+    return request(COMMON_BASE_URL + subDomain + '/training/del', false, 'post', data)
+  },
+  trainingItems: () => {
+    return request(COMMON_BASE_URL + subDomain + '/training/items', false, 'get')
+  },
+   trainingEnrollment: (data) => {
+    return request(COMMON_BASE_URL + subDomain + '/training/enrollment', false, 'get', data)
+  },
+  trainingEnrollmentSet: (data) => {
+    return request(COMMON_BASE_URL + subDomain + '/training/enrollment/set', false, 'post', data)
+  },
+  trainingComplete: (data) => {
+    return request(COMMON_BASE_URL + subDomain + '/training/complete', false, 'post', data)
+  },
+  trainingPhased: (data) => {
+    return request(COMMON_BASE_URL + subDomain + '/training/phased', false, 'post', data)
+  },
+  trainingPhasedSet: (data) => {
+    return request(COMMON_BASE_URL + subDomain + '/training/phased/set', false, 'post', data)
+  },
+  trainingOpposition: (data) => {
+    return request(COMMON_BASE_URL + subDomain + '/training/opposition', false, 'post', data)
+  },
+  trainingOppositionSet: (data) => {
+    return request(COMMON_BASE_URL + subDomain + '/training/opposition/set', false, 'post', data)
+  },
+  trainingMatch: (data) => {
+    return request(COMMON_BASE_URL + subDomain + '/training/match', false, 'post', data)
+  },
+  trainingMatchSet: (data) => {
+    return request(COMMON_BASE_URL + subDomain + '/training/match/set', false, 'post', data)
+  },
+  workSignList: (data) => {
+    return request(COMMON_BASE_URL + subDomain + '/workSign/list', false, 'post', data)
+  },
+  workSignSign: (data) => {
+    return request(COMMON_BASE_URL + subDomain + '/workSign/sign', false, 'post', data)
+  },
+  riskAliyunGreenCheckText: (data) => {
+    return request(COMMON_BASE_URL + subDomain + '/workSriskAliyunGreenign/check/text', false, 'post', data)
+  },
+  riskAliyunGreenCheckPic: (data) => {
+    return request(COMMON_BASE_URL + subDomain + '/workSriskAliyunGreenign/check/pic', false, 'post', data)
+  },
+  vodBaseAuthAndAddress: (data) => {
+    return request(COMMON_BASE_URL + subDomain + '/vodBase/authAndAddress', false, 'post', data)
   },
 }
