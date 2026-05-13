@@ -3181,12 +3181,39 @@ module.exports = {
     return request(COMMON_BASE_URL + subDomain + '/workSign/sign', false, 'post', data)
   },
   riskAliyunGreenCheckText: (data) => {
-    return request(COMMON_BASE_URL + subDomain + '/workSriskAliyunGreenign/check/text', false, 'post', data)
+    return request(COMMON_BASE_URL + subDomain + '/riskAliyunGreen/check/text', false, 'post', data)
   },
   riskAliyunGreenCheckPic: (data) => {
-    return request(COMMON_BASE_URL + subDomain + '/workSriskAliyunGreenign/check/pic', false, 'post', data)
+    return request(COMMON_BASE_URL + subDomain + '/riskAliyunGreen/check/pic', false, 'post', data)
   },
   vodBaseAuthAndAddress: (data) => {
     return request(COMMON_BASE_URL + subDomain + '/vodBase/authAndAddress', false, 'post', data)
+  },
+  tournamentList: (data) => {
+    return request(COMMON_BASE_URL + subDomain + '/tournament/list', false, 'post', data)
+  },
+  tournamentInfo: (data) => {
+    return request(COMMON_BASE_URL + subDomain + '/tournament/info', false, 'get', data)
+  },
+  tournamentSchedule: (data) => {
+    return request(COMMON_BASE_URL + subDomain + '/tournament/schedule', false, 'post', data)
+  },
+  tournamentInfoSchedule: (data) => {
+    return request(COMMON_BASE_URL + subDomain + '/tournament/infoSchedule', false, 'get', data)
+  },
+  tournamentMembers: (data) => {
+    return request(COMMON_BASE_URL + subDomain + '/tournament/members', false, 'post', data)
+  },
+  tournamentJoin: (data) => {
+    return request(COMMON_BASE_URL + subDomain + '/tournament/join', false, 'post', data)
+  },
+  tournamentDrawNumbers: (data) => {
+    return request(COMMON_BASE_URL + subDomain + '/tournament/draw', false, 'post', data)
+  },
+  tournamentMatchChart: (data) => {
+    return request(COMMON_BASE_URL + subDomain + '/tournament/matchChart', false, 'get', data)
+  },
+  tournamentSubmitScore: (data) => {
+    return request(COMMON_BASE_URL + subDomain + '/tournament/submitScore', false, 'post', data)
   },
 }
