@@ -1,6 +1,6 @@
 {
   "name": "apifm-wxapi",
-  "version": "26.5.23",
+  "version": "26.5.27",
   "description": "接口升级",
   "main": "miniprogram_dist/index.js",
   "scripts": {
