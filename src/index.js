@@ -402,7 +402,7 @@ module.exports = {
     })
   },
   resetPwdUseEmailCode: (email, pwd, code) => {
-    return request('/user/email/reset-pwd', true, 'post', {
+    return request(COMMON_BASE_URL + subDomain + '/user/email/reset-pwd', false, 'post', {
       email, pwd, code
     })
   },
@@ -1515,10 +1515,10 @@ module.exports = {
     return request('/verification/sms/check', true, 'post', { mobile, code })
   },
   mailValidateCode: (mail) => {
-    return request('/verification/mail/get', true, 'get', { mail })
+    return request(COMMON_BASE_URL + subDomain + '/verification/mail/get', false, 'get', { mail })
   },
   mailValidateCodeCheck: (mail, code) => {
-    return request('/verification/mail/check', true, 'post', { mail, code })
+    return request(COMMON_BASE_URL + subDomain + '/verification/mail/check', false, 'post', { mail, code })
   },
   mapDistance: (lat1, lng1, lat2, lng2) => {
     return request('/common/map/distance', false, 'get', { lat1, lng1, lat2, lng2 })
@@ -1774,13 +1774,13 @@ module.exports = {
     return request(COMMON_BASE_URL + subDomain + '/yuyue/fav/check', false, 'get', data)
   },
   register_email: (data) => {
-    return request('/user/email/register', true, 'post', data)
+    return request(COMMON_BASE_URL + subDomain + '/user/email/register', false, 'post', data)
   },
   login_email: (data) => {
-    return request('/user/email/login', true, 'post', data)
+    return request(COMMON_BASE_URL + subDomain + '/user/email/login', false, 'post', data)
   },
   bindEmail: (token, email, code, pwd = '') => {
-    return request('/user/email/bindEmail', true, 'post', {
+    return request(COMMON_BASE_URL + subDomain + '/user/email/bindEmail', false, 'post', {
       token, email, code, pwd
     })
   },  
@@ -2139,19 +2139,19 @@ module.exports = {
     return request('/channelData/pull', true, 'get', { key })
   },
   bindPartner: (token, partnerId) => {
-    return request('/user/bindPartner', true, 'post', { token, uid: partnerId })
+    return request(COMMON_BASE_URL + subDomain + '/user/bindPartner', false, 'post', { token, uid: partnerId })
   },
   partnerSetting: () => {
-    return request('/partner/setting', true, 'get')
+    return request(COMMON_BASE_URL + subDomain + '/partner/setting', false, 'get')
   },
   partnerBindTeamLeader: (token, uid) => {
-    return request('/partner/bindTeamLeader', true, 'post', { token, uid })
+    return request(COMMON_BASE_URL + subDomain + '/partner/bindTeamLeader', false, 'post', { token, uid })
   },
   partnerBuyTeamLeader: token => {
-    return request('/partner/buy', true, 'post', { token })
+    return request(COMMON_BASE_URL + subDomain + '/partner/buy', false, 'post', { token })
   },
   partnerBuyyPartner: token => {
-    return request('/partner/buyPartner', true, 'post', { token })
+    return request(COMMON_BASE_URL + subDomain + '/partner/buyPartner', false, 'post', { token })
   },
   partnerMembersStatistics: token => {
     return request(COMMON_BASE_URL + subDomain + '/partner/members/statistics', false, 'get', { token })
