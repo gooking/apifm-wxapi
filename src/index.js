@@ -742,6 +742,9 @@ module.exports = {
       type
     })
   },
+  friendlyPartnerListV2: (data) => {
+    return request(COMMON_BASE_URL + subDomain + '/friendly-partner/list', false, 'post', data)
+  },
   friendList: (data) => {
     return request('/user/friend/list', true, 'post', data)
   },
@@ -1506,13 +1509,13 @@ module.exports = {
     return request('/common/short-url/expand', false, 'post', { suffix })
   },
   smsValidateCode: (mobile, key = '', picCode = '') => {
-    return request('/verification/sms/get', true, 'get', { mobile, key, picCode })
+    return request(COMMON_BASE_URL + subDomain + '/verification/sms/get', false, 'get', { mobile, key, picCode })
   },
   smsValidateCodeByToken: (token) => {
-    return request('/verification/sms/get-by-token', true, 'get', { token })
+    return request(COMMON_BASE_URL + subDomain + '/verification/sms/get-by-token', false, 'get', { token })
   },
   smsValidateCodeCheck: (mobile, code) => {
-    return request('/verification/sms/check', true, 'post', { mobile, code })
+    return request(COMMON_BASE_URL + subDomain + '/verification/sms/check', false, 'post', { mobile, code })
   },
   mailValidateCode: (mail) => {
     return request(COMMON_BASE_URL + subDomain + '/verification/mail/get', false, 'get', { mail })
