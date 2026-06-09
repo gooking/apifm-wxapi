@@ -580,31 +580,31 @@ module.exports = {
     return request('/shop/goods/fav/list', true, 'post', data)
   },
   goodsFavListV2: data => {
-    return request('/shop/goods/fav/list/v2', true, 'post', data)
+    return request(COMMON_BASE_URL + subDomain + '/shop/goods/fav/list/v2', false, 'post', data)
   },
   goodsFavPut: (token, goodsId) => {
-    return request('/shop/goods/fav/add', true, 'post', {
+    return request(COMMON_BASE_URL + subDomain + '/shop/goods/fav/add', false, 'post', {
       token, goodsId
     })
   },
   goodsFavAdd: data => {
-    return request('/shop/goods/fav/add', true, 'post', data)
+    return request(COMMON_BASE_URL + subDomain + '/shop/goods/fav/add', false, 'post', data)
   },
   goodsFavCheck: (token, goodsId) => {
-    return request('/shop/goods/fav/check', true, 'get', {
+    return request(COMMON_BASE_URL + subDomain + '/shop/goods/fav/check', false, 'get', {
       token, goodsId
     })
   },
   goodsFavCheckV2: data => {
-    return request('/shop/goods/fav/check', true, 'get', data)
+    return request(COMMON_BASE_URL + subDomain + '/shop/goods/fav/check', false, 'get', data)
   },
   goodsFavDelete: (token, id = '', goodsId = '') => {
-    return request('/shop/goods/fav/delete', true, 'post', {
+    return request(COMMON_BASE_URL + subDomain + '/shop/goods/fav/delete', false, 'post', {
       token, id, goodsId
     })
   },
   goodsFavDeleteV2: data => {
-    return request('/shop/goods/fav/delete', true, 'post', data)
+    return request(COMMON_BASE_URL + subDomain + '/shop/goods/fav/delete', false, 'post', data)
   },
   goodsSeckillGrab: (token, goodsId, seconds) => {
     return request('/goods/seckill/grab', true, 'post', { token, goodsId, seconds })
@@ -2162,6 +2162,15 @@ module.exports = {
   partnerMembers: data => {
     return request(COMMON_BASE_URL + subDomain + '/partner/members', false, 'post', data)
   },
+  partnerWithdrawalLogList: data => {
+    return request(COMMON_BASE_URL + subDomain + '/partner/withdrawalLog/list', false, 'post', data)
+  },
+  partnerWithdrawalLogSuccess: data => {
+    return request(COMMON_BASE_URL + subDomain + '/partner/withdrawalLog/success', false, 'post', data)
+  },
+  partnerWithdrawalLogRefuse: data => {
+    return request(COMMON_BASE_URL + subDomain + '/partner/withdrawalLog/refuse', false, 'post', data)
+  },
   myLiveRooms: data => {
     return request('/liveRooms/my', true, 'post', data)
   },
@@ -3141,6 +3150,9 @@ module.exports = {
   coachStudentList: (data) => {
     return request(COMMON_BASE_URL + subDomain + '/coachStudent/list', false, 'post', data)
   },
+  coachStudentMyCoachs: (data) => {
+    return request(COMMON_BASE_URL + subDomain + '/coachStudent/myCoachs', false, 'post', data)
+  },
   coachStudentDetail: (data) => {
     return request(COMMON_BASE_URL + subDomain + '/coachStudent/detail', false, 'get', data)
   },
@@ -3227,6 +3239,12 @@ module.exports = {
   },
   tournamentUpdateScore: (data) => {
     return request(COMMON_BASE_URL + subDomain + '/tournament/updateScore', false, 'post', data)
+  },
+  tournamentMyJoinList: (data) => {
+    return request(COMMON_BASE_URL + subDomain + '/tournament/myJoinList', false, 'post', data)
+  }, 
+  tournamentSetTable: (data) => {
+    return request(COMMON_BASE_URL + subDomain + '/tournament/setTable', false, 'post', data)
   },
   teacherInfoMy: (data) => {
     return request(COMMON_BASE_URL + subDomain + '/teacherInfo/my', false, 'get', data)
