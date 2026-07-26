@@ -2995,37 +2995,37 @@ module.exports = {
     return request('/common/strings/plainText', true, 'post', { content, len })
   },
   blindBoxFriendsMatch: (data) => {
-    return request('/blindBoxFriends/match', true, 'post', data)
+    return request(COMMON_BASE_URL + subDomain + '/blindBoxFriends/match', false, 'post', data)
   },
   blindBoxFriendsPush: (data) => {
-    return request('/blindBoxFriends/push', true, 'post', data)
+    return request(COMMON_BASE_URL + subDomain + '/blindBoxFriends/push', false, 'post', data)
   },
   blindBoxFriendsPay: (data) => {
-    return request('/blindBoxFriends/pay', true, 'post', data)
+    return request(COMMON_BASE_URL + subDomain + '/blindBoxFriends/pay', false, 'post', data)
   },
   blindBoxFriendsChangeStatus: (data) => {
-    return request('/blindBoxFriends/changeStatus', true, 'post', data)
+    return request(COMMON_BASE_URL + subDomain + '/blindBoxFriends/changeStatus', false, 'post', data)
   },
   blindBoxFriendsDelete: (data) => {
-    return request('/blindBoxFriends/delete', true, 'post', data)
+    return request(COMMON_BASE_URL + subDomain + '/blindBoxFriends/delete', false, 'post', data)
   },
   blindBoxFriendsPullLogs: (data) => {
-    return request('/blindBoxFriends/pullLogs', true, 'post', data)
+    return request(COMMON_BASE_URL + subDomain + '/blindBoxFriends/pullLogs', false, 'post', data)
   },
   blindBoxFriendsPushLogs: (data) => {
-    return request('/blindBoxFriends/pushLogs', true, 'post', data)
+    return request(COMMON_BASE_URL + subDomain + '/blindBoxFriends/pushLogs', false, 'post', data)
   },
   blindBoxFriendsRechargeRule: () => {
-    return request('/blindBoxFriends/rechargeRule', true, 'get')
+    return request(COMMON_BASE_URL + subDomain + '/blindBoxFriends/rechargeRule', false, 'get')
   },
   blindBoxFriendsBuyPullTimes: (data) => {
-    return request('/blindBoxFriends/buyPullTimes', true, 'post', data)
+    return request(COMMON_BASE_URL + subDomain + '/blindBoxFriends/buyPullTimes', false, 'post', data)
   },
   blindBoxFriendsUnlock: (data) => {
-    return request('/blindBoxFriends/unlock', true, 'post', data)
+    return request(COMMON_BASE_URL + subDomain + '/blindBoxFriends/unlock', false, 'post', data)
   },
   blindBoxFriendsBalance: (token) => {
-    return request('/blindBoxFriends/balance', true, 'get', { token })
+    return request(COMMON_BASE_URL + subDomain + '/blindBoxFriends/balance', false, 'get', { token })
   },
   cpactivityInfoDetail: (id) => {
     return request(COMMON_BASE_URL + subDomain + '/cpactivityInfo/detail', false, 'get', { id })
@@ -3362,5 +3362,20 @@ module.exports = {
   },
   ventrataBookingsUpdate: (data) => {
     return request(COMMON_BASE_URL + subDomain + '/ventrata/bookingsUpdate', false, 'post', data)
+  },
+  dabAddressList: (data) => {
+    return request(COMMON_BASE_URL + subDomain + '/dab/addressList', false, 'get', data)
+  },
+  dabAddressDetail: (data) => {
+    return request(COMMON_BASE_URL + subDomain + '/dab/addressDetail', false, 'get', data)
+  },
+  dabGetBusinessPartner: (data) => {
+    return request(COMMON_BASE_URL + subDomain + '/dab/getBusinessPartner', false, 'get', data)
+  },
+  dabGetInventories: (data) => {
+    return request(COMMON_BASE_URL + subDomain + '/dab/getInventories', false, 'get', data)
+  },
+  dabGetPrice: (data) => {
+    return request(COMMON_BASE_URL + subDomain + '/dab/getPrice', false, 'get', data)
   },
 }
