@@ -105,13 +105,13 @@ module.exports = {
     return request(COMMON_BASE_URL + subDomain + '/common/ip/v2', false, 'get', { ip })
   },
   forexRate: (fromCode, toCode) => {
-    return request('/forex/rate', true, 'get', { fromCode, toCode })
+    return request(COMMON_BASE_URL + subDomain + '/forex/rate', false, 'get', { fromCode, toCode })
   },
   queryConfigValue: (key) => {
-    return request(COMMON_BASE_URL + subDomain + '/config/value', true, 'get', { key })
+    return request(COMMON_BASE_URL + subDomain + '/config/value', false, 'get', { key })
   },
   queryConfigBatch: (keys) => {
-    return request(COMMON_BASE_URL + subDomain + '/config/values', true, 'get', { keys })
+    return request(COMMON_BASE_URL + subDomain + '/config/values', false, 'get', { keys })
   },
   scoreRules: (data) => {
     return request('/score/send/rule', true, 'post', data)
@@ -309,7 +309,7 @@ module.exports = {
     return request('/pay/wxsph/getpaymentparams', true, 'post', { token, orderId })
   },
   paypalCheckout: (data) => {
-    return request('/pay/paypal/checkout', true, 'post', data)
+    return request(COMMON_BASE_URL + subDomain + '/pay/paypal/checkout', false, 'post', data)
   },
   alipay: (data) => {
     return request('/pay/alipay/semiAutomatic/payurl', true, 'post', data)
@@ -1448,16 +1448,16 @@ module.exports = {
     return request('/barcode/info', true, 'get', { barcode })
   },
   luckyInfo: (id) => {
-    return request('/luckyInfo/info/v2', true, 'get', { id })
+    return request(COMMON_BASE_URL + subDomain + '/luckyInfo/info/v2', false, 'get', { id })
   },
   luckyInfoJoin: (id, token) => {
-    return request('/luckyInfo/join', true, 'post', { id, token })
+    return request(COMMON_BASE_URL + subDomain + '/luckyInfo/join', false, 'post', { id, token })
   },
   luckyInfoJoinMy: (id, token) => {
-    return request('/luckyInfo/join/my', true, 'get', { id, token })
+    return request(COMMON_BASE_URL + subDomain + '/luckyInfo/join/my', false, 'get', { id, token })
   },
   luckyInfoJoinLogs: (data) => {
-    return request('/luckyInfo/join/logs', true, 'post', data)
+    return request(COMMON_BASE_URL + subDomain + '/luckyInfo/join/logs', false, 'post', data)
   },
   jsonList: (data) => {
     return request('/json/list', true, 'post', data)
@@ -2625,7 +2625,7 @@ module.exports = {
     return request(COMMON_BASE_URL + subDomain + '/user/aliapp/authorize', false, 'post', data)
   },
   aliappWebUserAuthorize: data => {
-    return request('/user/aliappweb/authorize', true, 'post', data)
+    return request(COMMON_BASE_URL + subDomain + '/user/aliappweb/authorize', false, 'post', data)
   },
   aliappQrcode: content => {
     return request(COMMON_BASE_URL + subDomain + '/user/aliapp/qrcode', false, 'post', { content })
@@ -3026,6 +3026,9 @@ module.exports = {
   },
   blindBoxFriendsBalance: (token) => {
     return request(COMMON_BASE_URL + subDomain + '/blindBoxFriends/balance', false, 'get', { token })
+  },
+  blindBoxFriendsSetting: () => {
+    return request(COMMON_BASE_URL + subDomain + '/blindBoxFriends/setting', false, 'get')
   },
   cpactivityInfoDetail: (id) => {
     return request(COMMON_BASE_URL + subDomain + '/cpactivityInfo/detail', false, 'get', { id })
