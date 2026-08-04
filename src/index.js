@@ -636,7 +636,7 @@ module.exports = {
     return request('/discounts/send', true, 'post', data)
   },
   exchangeCoupons: (token, number, pwd, extJsonStr = '') => {
-    return request('/discounts/exchange', true, 'post', {
+    return request(COMMON_BASE_URL + subDomain + '/discounts/exchange', false, 'post', {
       token, number, pwd, extJsonStr
     })
   },
@@ -1800,22 +1800,22 @@ module.exports = {
     return request(COMMON_BASE_URL + '/subdomain/appid/wxapp', false, 'get', { appid })
   },
   cmsArticleFavPut: (token, newsId) => {
-    return request('/cms/news/fav/add', true, 'post', { token, newsId })
+    return request(CMS_BASE_URL + subDomain + '/cms/news/fav/add', false, 'post', { token, newsId })
   },
   cmsArticleFavCheck: (token, newsId) => {
-    return request('/cms/news/fav/check', true, 'get', { token, newsId })
+    return request(CMS_BASE_URL + subDomain + '/cms/news/fav/check', false, 'get', { token, newsId })
   },
   cmsArticleFavList: (data) => {
     return request('/cms/news/fav/list', true, 'post', data)
   },
   cmsArticleFavListV2: (data) => {
-    return request('/cms/news/fav/list/v2', true, 'post', data)
+    return request(CMS_BASE_URL + subDomain + '/cms/news/fav/list/v2', false, 'post', data)
   },
   cmsArticleFavDeleteById: (token, id) => {
-    return request('/cms/news/fav/delete', true, 'post', { token, id })
+    return request(CMS_BASE_URL + subDomain + '/cms/news/fav/delete', false, 'post', { token, id })
   },
   cmsArticleFavDeleteByNewsId: (token, newsId) => {
-    return request('/cms/news/fav/delete', true, 'post', { token, newsId })
+    return request(CMS_BASE_URL + subDomain + '/cms/news/fav/delete', false, 'post', { token, newsId })
   },
   shippingCarInfo: (token, type = '') => {
     return request('/shopping-cart/info', true, 'get', {
