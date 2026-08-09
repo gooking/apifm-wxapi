@@ -279,10 +279,10 @@ module.exports = {
     return request('/pay/wxfws/wxapp', true, 'post', data)
   },
   ttpay: (data) => {
-    return request('/pay/tt/microapp', true, 'post', data)
+    return request(COMMON_BASE_URL + subDomain + '/pay/tt/microapp', false, 'post', data)
   },
   ttEcpay: (data) => {
-    return request('/pay/tt/ecpay', true, 'post', data)
+    return request(COMMON_BASE_URL + subDomain + '/pay/tt/ecpay', false, 'post', data)
   },
   payQuery: (token, outTradeId) => {
     return request('/pay/query', true, 'get', { token, outTradeId })
@@ -315,22 +315,22 @@ module.exports = {
     return request('/pay/alipay/semiAutomatic/payurl', true, 'post', data)
   },
   alipayMP: (data) => {
-    return request('/pay/alipay/gate/mp', true, 'post', data)
+    return request(COMMON_BASE_URL + subDomain + '/pay/alipay/gate/mp', false, 'post', data)
   },
   alipayAPP: (data) => {
-    return request('/pay/alipay/gate/app', true, 'post', data)
+    return request(COMMON_BASE_URL + subDomain + '/pay/alipay/gate/app', false, 'post', data)
   },
   alipayQrcode: (data) => {
-    return request('/pay/alipay/gate/qrcode', true, 'post', data)
+    return request(COMMON_BASE_URL + subDomain + '/pay/alipay/gate/qrcode', false, 'post', data)
   },
   alipayQrcode2: (data) => {
-    return request('/pay/alipay/gate/paymentCode', true, 'post', data)
+    return request(COMMON_BASE_URL + subDomain + '/pay/alipay/gate/paymentCode', false, 'post', data)
   },
   alipayH5: (data) => {
-    return request('/pay/alipay/gate/h5', true, 'post', data)
+    return request(COMMON_BASE_URL + subDomain + '/pay/alipay/gate/h5', false, 'post', data)
   },
   alipayPC: (data) => {
-    return request('/pay/alipay/gate/pc', true, 'post', data)
+    return request(COMMON_BASE_URL + subDomain + '/pay/alipay/gate/pc', false, 'post', data)
   },
   kasipayH5: (data) => {
     return request('/pay/kasipay/h5', true, 'post', data)
@@ -1313,13 +1313,13 @@ module.exports = {
     return request('/newsSign/check', true, 'get', { token, newsId })
   },
   invoiceList: (data) => {
-    return request('/invoice/list', true, 'post', data)
+    return request(COMMON_BASE_URL + subDomain + '/invoice/list', false, 'post', data)
   },
   invoiceApply: (data) => {
-    return request('/invoice/apply', true, 'post', data)
+    return request(COMMON_BASE_URL + subDomain + '/invoice/apply', false, 'post', data)
   },
   invoiceDetail: (token, id) => {
-    return request('/invoice/info', true, 'get', { token, id })
+    return request(COMMON_BASE_URL + subDomain + '/invoice/info', false, 'get', { token, id })
   },
   depositList: (data) => {
     return request('/deposit/list', true, 'post', data)
@@ -2600,13 +2600,13 @@ module.exports = {
     return request('/bottleMsg/salvage', true, 'get', { token })
   },
   userInvoiceInfo: token => {
-    return request('/userInvoice/info', true, 'get', { token })
+    return request(COMMON_BASE_URL + subDomain + '/userInvoice/info', false, 'get', { token })
   },
   userInvoiceUnbind: token => {
-    return request('/userInvoice/unbind', true, 'post', { token })
+    return request(COMMON_BASE_URL + subDomain + '/userInvoice/unbind', false, 'post', { token })
   },
   userInvoiceBind: data => {
-    return request('/userInvoice/bind', true, 'post', data)
+    return request(COMMON_BASE_URL + subDomain + '/userInvoice/bind', false, 'post', data)
   },
   goodsLendsList: data => {
     return request('/goodsLends/list', true, 'post', data)
@@ -2944,10 +2944,10 @@ module.exports = {
     return request('/shopIot/execute', true, 'post', data)
   },
   wxTemplateNumberList: (token) => {
-    return request('/wxTemplateNumber/list', true, 'get', { token })
+    return request(COMMON_BASE_URL + subDomain + '/wxTemplateNumber/list', false, 'get', { token })
   },
   wxTemplateNumberSubscribe: (data) => {
-    return request('/wxTemplateNumber/subscribe', true, 'post', data)
+    return request(COMMON_BASE_URL + subDomain + '/wxTemplateNumber/subscribe', false, 'post', data)
   },
   errandsTaskPublish: (data) => {
     return request('/errandsTask/publish', true, 'post', data)
