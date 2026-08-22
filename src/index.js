@@ -2515,22 +2515,22 @@ module.exports = {
   },
   // 橱窗
   chuchuanSettingInfo: uid => {
-    return request('/chuchuan/info', true, 'get', { uid })
+    return request(COMMON_BASE_URL + subDomain + '/chuchuan/info', false, 'get', { uid })
   },
   chuchuanSettingModify: data => {
-    return request('/chuchuan/modify', true, 'post', data)
+    return request(COMMON_BASE_URL + subDomain + '/chuchuan/modify', false, 'post', data)
   },
   chuchuanGoodsList: data => {
-    return request('/chuchuanGoods/list', true, 'post', data)
+    return request(COMMON_BASE_URL + subDomain + '/chuchuanGoods/list', false, 'post', data)
   },
   chuchuanGoodsAdd: data => {
-    return request('/chuchuanGoods/add', true, 'post', data)
+    return request(COMMON_BASE_URL + subDomain + '/chuchuanGoods/add', false, 'post', data)
   },
   chuchuanGoodsRemove: (token, goodsId) => {
-    return request('/chuchuanGoods/remove', true, 'post', { token, goodsId })
+    return request(COMMON_BASE_URL + subDomain + '/chuchuanGoods/remove', false, 'post', { token, goodsId })
   },
   chuchuanGoodsCheck: (token, goodsId) => {
-    return request('/chuchuanGoods/check', true, 'get', { token, goodsId })
+    return request(COMMON_BASE_URL + subDomain + '/chuchuanGoods/check', false, 'get', { token, goodsId })
   },
   // 寄存
   jicunGoodsList: data => {
@@ -2842,16 +2842,16 @@ module.exports = {
     return request('/distributedLock/lock', true, 'get', { key })
   },
   communitySetting: () => {
-    return request('/community/setting', true, 'get')
+    return request(COMMON_BASE_URL + subDomain + '/community/setting', false, 'get')
   },
   communityLeaderApply: data => {
-    return request('/communityLeader/apply', true, 'post', data)
+    return request(COMMON_BASE_URL + subDomain + '/communityLeader/apply', false, 'post', data)
   },
   communityLeaderApplyInfo: token => {
-    return request('/communityLeader/apply/info', true, 'get', { token })
+    return request(COMMON_BASE_URL + subDomain + '/communityLeader/apply/info', false, 'get', { token })
   },
   communityLeaderBuy: token => {
-    return request('/communityLeader/buy', true, 'post', { token })
+    return request(COMMON_BASE_URL + subDomain + '/communityLeader/buy', false, 'post', { token })
   },
   communityOrderFahuo: data => {
     return request('/communityOrder/fahuo', true, 'post', data)
@@ -3380,5 +3380,11 @@ module.exports = {
   },
   dabGetPrice: (data) => {
     return request(COMMON_BASE_URL + subDomain + '/dab/getPrice', false, 'get', data)
+  },
+  yaduoBasicLogin: (data) => {
+    return request(COMMON_BASE_URL + subDomain + '/yaduo/basicLogin', false, 'get', data)
+  },
+  yaduoUnbind: (data) => {
+    return request(COMMON_BASE_URL + subDomain + '/yaduo/unbind', false, 'post', data)
   },
 }
