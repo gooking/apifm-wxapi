@@ -2409,31 +2409,31 @@ module.exports = {
   },
   // 会员卡
   cardList: data => {
-    return request('/card/list', true, 'get', data)
+    return request(COMMON_BASE_URL + subDomain + '/card/list', false, 'get', data)
   },
   cardInfo: id => {
-    return request('/card/info', true, 'get', { id })
+    return request(COMMON_BASE_URL + subDomain + '/card/info', false, 'get', { id })
   },
   cardBuy: (token, id) => {
-    return request('/card/buy', true, 'post', { token, id })
+    return request(COMMON_BASE_URL + subDomain + '/card/buy', false, 'post', { token, id })
   },
   cardMyList: token => {
-    return request('/card/my', true, 'get', { token })
+    return request(COMMON_BASE_URL + subDomain + '/card/my', false, 'get', { token })
   },
   cardMyLogs: data => {
-    return request('/card/logs', true, 'post', data)
+    return request(COMMON_BASE_URL + subDomain + '/card/logs', false, 'post', data)
   },
   cardExchangeFromPwd: data => {
-    return request('/card/exchange', true, 'post', data)
+    return request(COMMON_BASE_URL + subDomain + '/card/exchange', false, 'post', data)
   },
   cardShareOpen: data => {
-    return request('/card/share/open', true, 'post', data)
+    return request(COMMON_BASE_URL + subDomain + '/card/share/open', false, 'post', data)
   },
   cardShareClose: data => {
-    return request('/card/share/close', true, 'post', data)
+    return request(COMMON_BASE_URL + subDomain + '/card/share/close', false, 'post', data)
   },
   cardShareFetch: data => {
-    return request('/card/share/fetch', true, 'post', data)
+    return request(COMMON_BASE_URL + subDomain + '/card/share/fetch', false, 'post', data)
   },
   // 收藏卡片
   collectCardHis: data => {
