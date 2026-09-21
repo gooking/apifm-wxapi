@@ -291,7 +291,7 @@ module.exports = {
     return request('/pay/lcsw/wxapp', true, 'post', data)
   },
   wxpayWepayez: (data) => {
-    return request('/pay/wepayez/wxapp', true, 'post', data)
+    return request(COMMON_BASE_URL + subDomain + '/pay/wepayez/wxapp', false, 'post', data)
   },
   wxpayxpert: (data) => {
     return request(COMMON_BASE_URL + subDomain + '/pay/payxpert/wxapp', false, 'post', data)
@@ -2392,19 +2392,19 @@ module.exports = {
     return request('/cpsJdOrder/detail', true, 'get', { token, id })
   },
   cpsPddBeian: token => {
-    return request('/cpsPddGoods/beian', true, 'get', { token })
+    return request(COMMON_BASE_URL + subDomain + '/cpsPddGoods/beian', false, 'get', { token })
   },
   cpsPddGoodsDetail: data => {
-    return request('/cpsPddGoods/detail', true, 'get', data)
+    return request(COMMON_BASE_URL + subDomain + '/cpsPddGoods/detail', false, 'get', data)
   },
   cpsPddGoodsShotUrl: (token, goodsSign) => {
-    return request('/cpsPddGoods/shotUrl', true, 'get', { token, goodsSign })
+    return request(COMMON_BASE_URL + subDomain + '/cpsPddGoods/shotUrl', false, 'get', { token, goodsSign })
   },
   cpsPddOrders: data => {
-    return request('/cpsPddOrder/list', true, 'post', data)
+    return request(COMMON_BASE_URL + subDomain + '/cpsPddOrder/list', false, 'post', data)
   },
   cpsPddOrderDetail: (token, id) => {
-    return request('/cpsPddOrder/detail', true, 'get', { token, id })
+    return request(COMMON_BASE_URL + subDomain + '/cpsPddOrder/detail', false, 'get', { token, id })
   },
   cpsTaobaoGoodsDetail: data => {
     return request('/cpsTaobaoGoods/detail', true, 'get', data)
