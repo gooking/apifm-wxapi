@@ -1608,13 +1608,13 @@ module.exports = {
     return request(COMMON_BASE_URL + subDomain + '/virtualTrader/buy/logs', false, 'post', data)
   },
   queuingTypes: (status = '') => {
-    return request('/queuing/types', true, 'get', { status })
+    return request(COMMON_BASE_URL + subDomain + '/queuing/types', false, 'get', { status })
   },
   queuingGet: (token, typeId, mobile = '') => {
-    return request('/queuing/get', true, 'post', { token, typeId, mobile })
+    return request(COMMON_BASE_URL + subDomain + '/queuing/get', false, 'post', { token, typeId, mobile })
   },
   queuingMy: (token, typeId = '', status = '') => {
-    return request('/queuing/my', true, 'get', { token, typeId, status })
+    return request(COMMON_BASE_URL + subDomain + '/queuing/my', false, 'get', { token, typeId, status })
   },
   idcardCheck: (token, name, idCardNo) => {
     return request(COMMON_BASE_URL + subDomain + '/user/idcard', false, 'post', { token, name, idCardNo })
@@ -2199,25 +2199,25 @@ module.exports = {
     return request(COMMON_BASE_URL + subDomain + '/partner/withdrawalLog/refuse', false, 'post', data)
   },
   myLiveRooms: data => {
-    return request('/liveRooms/my', true, 'post', data)
+    return request(COMMON_BASE_URL + subDomain + '/liveRooms/my', false, 'post', data)
   },
   liveRooms: data => {
-    return request('/liveRooms/list', true, 'post', data)
+    return request(COMMON_BASE_URL + subDomain + '/liveRooms/list', false, 'post', data)
   },
   myLiveRoomsInfo: (token, id) => {
-    return request('/liveRooms/my/info', true, 'get', { token, id })
+    return request(COMMON_BASE_URL + subDomain + '/liveRooms/my/info', false, 'get', { token, id })
   },
   liveRoomsInfo: (token, id) => {
-    return request('/liveRooms/info', true, 'get', { token, id })
+    return request(COMMON_BASE_URL + subDomain + '/liveRooms/info', false, 'get', { token, id })
   },
   liveRoomGoodsMainly: data => {
-    return request('/liveRooms/goods/mainly', true, 'post', data)
+    return request(COMMON_BASE_URL + subDomain + '/liveRooms/goods/mainly', false, 'post', data)
   },
   stopLiveRoom: (token, id) => {
-    return request('/liveRooms/my/stop', true, 'post', { token, id })
+    return request(COMMON_BASE_URL + subDomain + '/liveRooms/my/stop', false, 'post', { token, id })
   },
   likeLiveRoom: (token, id) => {
-    return request('/liveRooms/like', true, 'post', { token, id })
+    return request(COMMON_BASE_URL + subDomain + '/liveRooms/like', false, 'post', { token, id })
   },
   liveRoomOnlineUsers: (token, roomId) => {
     return request('/websocket/rest/liveRoom/onlines', false, 'get', { token, roomId })
@@ -2365,25 +2365,25 @@ module.exports = {
   },
   // cps
   cpsJdGoodsCategory: (parentId, grade) => {
-    return request('/cpsJdGoods/category', true, 'get', { parentId, grade })
+    return request(COMMON_BASE_URL + subDomain + '/cpsJdGoods/category', false, 'get', { parentId, grade })
   },
   cpsJdGoodsSearch: data => {
-    return request('/cpsJdGoods/search', true, 'post', data)
+    return request(COMMON_BASE_URL + subDomain + '/cpsJdGoods/search', false, 'post', data)
   },
   cpsJdGoodsDetail: data => {
-    return request('/cpsJdGoods/detail', true, 'get', data)
+    return request(COMMON_BASE_URL + subDomain + '/cpsJdGoods/detail', false, 'get', data)
   },
   cpsJdGoodsSetExt: data => {
-    return request('/cpsJdGoods/ext/set', true, 'post', data)
+    return request(COMMON_BASE_URL + subDomain + '/cpsJdGoods/ext/set', false, 'post', data)
   },
   cpsJdGoodsQueryExt: skuId => {
-    return request('/cpsJdGoods/ext/query', true, 'get', { skuId })
+    return request(COMMON_BASE_URL + subDomain + '/cpsJdGoods/ext/query', false, 'get', { skuId })
   },
   cpsJdGoodsShotUrl: (token, skuId) => {
-    return request('/cpsJdGoods/shotUrl', true, 'get', { token, skuId })
+    return request(COMMON_BASE_URL + subDomain + '/cpsJdGoods/shotUrl', false, 'get', { token, skuId })
   },
   cpsJdGoodsShotUrlSite: (token, materialUrl, couponUrl) => {
-    return request('/cpsJdGoods/shotUrl/site', true, 'post', { token, materialUrl, couponUrl })
+    return request(COMMON_BASE_URL + subDomain + '/cpsJdGoods/shotUrl/site', false, 'post', { token, materialUrl, couponUrl })
   },
   cpsJdOrders: data => {
     return request('/cpsJdOrder/list', true, 'post', data)
@@ -2407,13 +2407,13 @@ module.exports = {
     return request(COMMON_BASE_URL + subDomain + '/cpsPddOrder/detail', false, 'get', { token, id })
   },
   cpsTaobaoGoodsDetail: data => {
-    return request('/cpsTaobaoGoods/detail', true, 'get', data)
+    return request(COMMON_BASE_URL + subDomain + '/cpsTaobaoGoods/detail', false, 'get', data)
   },
   cpsTaobaoGoodsShotUrl: (token, content) => {
-    return request('/cpsTaobaoGoods/shotUrl', true, 'post', { token, content })
+    return request(COMMON_BASE_URL + subDomain + '/cpsTaobaoGoods/shotUrl', false, 'post', { token, content })
   },
   cpsTaobaoGoodsKouling: (token, content) => {
-    return request('/cpsTaobaoGoods/kouling', true, 'post', { token, content })
+    return request(COMMON_BASE_URL + subDomain + '/cpsTaobaoGoods/kouling', false, 'post', { token, content })
   },
   // 回收
   recycleOrders: data => {
