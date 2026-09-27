@@ -2887,31 +2887,31 @@ module.exports = {
     return request('/user/wxmp/openid', true, 'get', { code })
   },
   listingSet: () => {
-    return request('/listingSet/info', true, 'get')
+    return request(COMMON_BASE_URL + subDomain + '/listingSet/info', false, 'get')
   },
   listingMyListing: (token) => {
-    return request('/listingInfo/myListing', true, 'get', { token })
+    return request(COMMON_BASE_URL + subDomain + '/listingInfo/myListing', false, 'get', { token })
   },
   listingSave: data => {
-    return request('/listingInfo/save', true, 'post', data)
+    return request(COMMON_BASE_URL + subDomain + '/listingInfo/save', false, 'post', data)
   },
   listingDetail: (id) => {
-    return request('/listingInfo/detail', true, 'get', { id })
+    return request(COMMON_BASE_URL + subDomain + '/listingInfo/detail', false, 'get', { id })
   },
   listingCancel: (token, id) => {
-    return request('/listingInfo/cancel', true, 'post', { token, id })
+    return request(COMMON_BASE_URL + subDomain + '/listingInfo/cancel', false, 'post', { token, id })
   },
   listingSuccess: (token, id) => {
-    return request('/listingInfo/success', true, 'post', { token, id })
+    return request(COMMON_BASE_URL + subDomain + '/listingInfo/success', false, 'post', { token, id })
   },
   listingDelete: (token, id) => {
-    return request('/listingInfo/delete', true, 'post', { token, id })
+    return request(COMMON_BASE_URL + subDomain + '/listingInfo/delete', false, 'post', { token, id })
   },
   listingAddGoods: data => {
-    return request('/listingInfo/addGoods', true, 'post', data)
+    return request(COMMON_BASE_URL + subDomain + '/listingInfo/addGoods', false, 'post', data)
   },
   listingRemoveGoods: data => {
-    return request('/listingInfo/removeGoods', true, 'post', data)
+    return request(COMMON_BASE_URL + subDomain + '/listingInfo/removeGoods', false, 'post', data)
   },
   listingJoinList: data => {
     return request('/listingInfo/joinList', true, 'post', data)
@@ -2941,19 +2941,19 @@ module.exports = {
     return request('/order/keloop/courierTag', true, 'get', data)
   },
   workingHoursMySubmitLogs: data => {
-    return request('/workingHours/mySubmitLogs', true, 'post', data)
+    return request(COMMON_BASE_URL + subDomain + '/workingHours/mySubmitLogs', false, 'post', data)
   },
   workingHoursSubmit: data => {
-    return request('/workingHours/submit', true, 'post', data)
+    return request(COMMON_BASE_URL + subDomain + '/workingHours/submit', false, 'post', data)
   },
   workingHoursBossReport: data => {
-    return request('/workingHours/bossReport', true, 'post', data)
+    return request(COMMON_BASE_URL + subDomain + '/workingHours/bossReport', false, 'post', data)
   },
   workingHoursMyProject: data => {
-    return request('/workingHours/myProject', true, 'post', data)
+    return request(COMMON_BASE_URL + subDomain + '/workingHours/myProject', false, 'post', data)
   },
   workingHoursProjectInfo: code => {
-    return request('/workingHours/project', true, 'get', { code })
+    return request(COMMON_BASE_URL + subDomain + '/workingHours/project', false, 'get', { code })
   },
   bestpayProCreateOrder: data => {
     return request('/pay/bestpay/proCreateOrder', true, 'post', data)
