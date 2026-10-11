@@ -501,7 +501,7 @@ module.exports = {
     })
   },
   goodsShopStores: (goodsId) => {
-    return request('/shop/goods/goodsShopStores', true, 'get', {
+    return request(COMMON_BASE_URL + subDomain + '/shop/goods/goodsShopStores', false, 'get', {
       goodsId
     })
   },
@@ -653,15 +653,15 @@ module.exports = {
     return request(COMMON_BASE_URL + subDomain + '/discounts/hx', false, 'post', data)
   },
   noticeList: (data) => {
-    return request('/notice/list', true, 'post', data)
+    return request(COMMON_BASE_URL + subDomain + '/notice/list', false, 'post', data)
   },
   noticeLastOne: (type = '') => {
-    return request('/notice/last-one', true, 'get', {
+    return request(COMMON_BASE_URL + subDomain + '/notice/last-one', false, 'get', {
       type
     })
   },
   noticeDetail: (id) => {
-    return request('/notice/detail', true, 'get', {
+    return request(COMMON_BASE_URL + subDomain + '/notice/detail', false, 'get', {
       id
     })
   },
@@ -1629,10 +1629,10 @@ module.exports = {
     return request(COMMON_BASE_URL + subDomain + '/userTag/list', false, 'post', data)
   },
   userTagCertificateQuery: (token) => {
-    return request('/userTag/certificate/query', true, 'get', { token })
+    return request(COMMON_BASE_URL + subDomain + '/userTag/certificate/query', false, 'get', { token })
   },
   userTagCertificate: (data) => {
-    return request('/userTag/certificate', true, 'post', data)
+    return request(COMMON_BASE_URL + subDomain + '/userTag/certificate', false, 'post', data)
   },
   bindSeller: data => {
     return request('/user/bindSeller', true, 'post', data)
@@ -2130,13 +2130,13 @@ module.exports = {
     return request(COMMON_BASE_URL + subDomain + '/site/adPosition/batch', false, 'get', { keys })
   },
   momentsCategory: () => {
-    return request('/momentsCategory/list', true, 'get')
+    return request(COMMON_BASE_URL + subDomain + '/momentsCategory/list', false, 'get')
   },
   momentsList: data => {
-    return request('/moments/list', true, 'post', data)
+    return request(COMMON_BASE_URL + subDomain + '/moments/list', false, 'post', data)
   },
   momentsdetail: id => {
-    return request('/moments/detail', true, 'get', { id })
+    return request(COMMON_BASE_URL + subDomain + '/moments/detail', false, 'get', { id })
   },
   goodsVisitLog: data => {
     return request('/goods/visitLog', true, 'post', data)
@@ -3178,13 +3178,13 @@ module.exports = {
     return request(COMMON_BASE_URL + subDomain + '/coachInfo/my', false, 'get', data)
   },
   coachStudentList: (data) => {
-    return request(COMMON_BASE_URL + subDomain + '/coachStudent/list', false, 'post', data)
+    return request(COMMON_BASE_URL + subDomain + '/coachStudent/list/v2', false, 'post', data)
   },
   coachStudentMyCoachs: (data) => {
     return request(COMMON_BASE_URL + subDomain + '/coachStudent/myCoachs', false, 'post', data)
   },
   coachStudentDetail: (data) => {
-    return request(COMMON_BASE_URL + subDomain + '/coachStudent/detail', false, 'get', data)
+    return request(COMMON_BASE_URL + subDomain + '/coachStudent/detail/v2', false, 'get', data)
   },
   trainingList: (data) => {
     return request(COMMON_BASE_URL + subDomain + '/training/list', false, 'post', data)
@@ -3281,6 +3281,9 @@ module.exports = {
   },
   teacherStudentList: (data) => {
     return request(COMMON_BASE_URL + subDomain + '/teacherStudent/list', false, 'post', data)
+  },
+  teacherStudentListV2: (data) => {
+    return request(COMMON_BASE_URL + subDomain + '/teacherStudent/v2/list', false, 'post', data)
   },
   teacherStudentSignLogsList: (data) => {
     return request(COMMON_BASE_URL + subDomain + '/teacherStudent/myStudentSignLogs', false, 'post', data)
