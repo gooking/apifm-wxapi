@@ -117,18 +117,18 @@ module.exports = {
     return request(COMMON_BASE_URL + subDomain + '/score/send/rule', false, 'post', data)
   },
   scoreSignRules: () => {
-    return request('/score/sign/rules', true, 'get', {})
+    return request(COMMON_BASE_URL + subDomain + '/score/sign/rules', false, 'get', {})
   },
   scoreSign: (token) => {
-    return request('/score/sign', true, 'post', {
+    return request(COMMON_BASE_URL + subDomain + '/score/sign', false, 'post', {
       token
     })
   },
   scoreSignLogs: (data) => {
-    return request('/score/sign/logs', true, 'post', data)
+    return request(COMMON_BASE_URL + subDomain + '/score/sign/logs', false, 'post', data)
   },
   scoreTodaySignedInfo: (token) => {
-    return request('/score/today-signed', true, 'get', {
+    return request(COMMON_BASE_URL + subDomain + '/score/today-signed', false, 'get', {
       token
     })
   },
@@ -174,7 +174,7 @@ module.exports = {
     return request('/score/myStatistics', true, 'get', data)
   },
   expireScorestatistics: (data) => {
-    return request('/score/expireScorestatistics', true, 'post', data)
+    return request(COMMON_BASE_URL + subDomain + '/score/expireScorestatistics', false, 'post', data)
   },
   scoreTaskList: token => {
     return request(COMMON_BASE_URL + subDomain + '/score/taskList', false, 'get', { token })
@@ -486,12 +486,12 @@ module.exports = {
     return request('/shop/goods/detail', true, 'get', data)
   },
   goodsLimitations: (goodsId, priceId = '') => {
-    return request('/shop/goods/limitation', true, 'get', {
+    return request(COMMON_BASE_URL + subDomain + '/shop/goods/limitation', false, 'get', {
       goodsId, priceId
     })
   },
   goodsLimitationsV2: (goodsId, propertyChildIds = '') => {
-    return request('/shop/goods/limitation', true, 'get', {
+    return request(COMMON_BASE_URL + subDomain + '/shop/goods/limitation', false, 'get', {
       goodsId, propertyChildIds
     })
   },
@@ -1043,22 +1043,22 @@ module.exports = {
     return request('/config/vipLevel', true, 'get')
   },
   fxApply: (token, name, mobile) => {
-    return request('/saleDistribution/apply', true, 'post', { token, name, mobile })
+    return request(COMMON_BASE_URL + subDomain + '/saleDistribution/apply', false, 'post', { token, name, mobile })
   },
   fxApplyV2: data => {
-    return request('/saleDistribution/apply/v2', true, 'post', data)
+    return request(COMMON_BASE_URL + subDomain + '/saleDistribution/apply/v2', false, 'post', data)
   },
   fxSetting: () => {
-    return request(COMMON_BASE_URL + subDomain + '/saleDistribution/setting', true, 'get')
+    return request(COMMON_BASE_URL + subDomain + '/saleDistribution/setting', false, 'get')
   },
   fxBuy: token => {
-    return request('/saleDistribution/buy', true, 'post', { token })
+    return request(COMMON_BASE_URL + subDomain + '/saleDistribution/buy', false, 'post', { token })
   },
   fxApplyProgress: (token) => {
-    return request('/saleDistribution/apply/progress', true, 'get', { token })
+    return request(COMMON_BASE_URL + subDomain + '/saleDistribution/apply/progress', false, 'get', { token })
   },
   fxApplyProgressV2: (token) => {
-    return request('/saleDistribution/apply/progress/v2', true, 'get', { token: token });
+    return request(COMMON_BASE_URL + subDomain + '/saleDistribution/apply/progress/v2', false, 'get', { token: token });
   },
   fxMembers: (data) => {
     return request('/saleDistribution/members', true, 'post', data)
@@ -1070,12 +1070,12 @@ module.exports = {
     return request('/saleDistribution/commission/freeze', true, 'get', { token })
   },
   fxSaleroomRankTotal: (page, pageSize) => {
-    return request('/saleDistribution/sale-room-rank/total', true, 'get', {
+    return request(COMMON_BASE_URL + subDomain + '/saleDistribution/sale-room-rank/total', false, 'get', {
       page, pageSize
     })
   },
   fxSaleroomRankTotalTeam: (page, pageSize) => {
-    return request('/saleDistribution/sale-room-rank/team/total', true, 'get', {
+    return request(COMMON_BASE_URL + subDomain + '/saleDistribution/sale-room-rank/team/total', false, 'get', {
       page, pageSize
     })
   },
@@ -1409,19 +1409,25 @@ module.exports = {
     return request('/shop/subshop/listReputation', true, 'post', data)
   },
   shopPicList: (data) => {
-    return request('/shop/subshop/shopPics', true, 'post', data)
+    return request(COMMON_BASE_URL + subDomain + '/shop/subshop/shopPics', false, 'post', data)
+  },
+  shopPicAdd: (data) => {
+    return request(COMMON_BASE_URL + subDomain + '/shop/subshop/addShopPic', false, 'post', data)
+  },
+  shopPicDelete: (data) => {
+    return request(COMMON_BASE_URL + subDomain + '/shop/subshop/delShopPic', false, 'post', data)
   },
   shopFavPut: (token, shopId) => {
-    return request('/shop/fav/add', true, 'post', { token, shopId })
+    return request(COMMON_BASE_URL + subDomain + '/shop/fav/add', false, 'post', { token, shopId })
   },
   shopFavCheck: (token, shopId) => {
-    return request('/shop/fav/check', true, 'get', { token, shopId })
+    return request(COMMON_BASE_URL + subDomain + '/shop/fav/check', false, 'get', { token, shopId })
   },
   shopFavList: (data) => {
-    return request('/shop/fav/list', true, 'post', data)
+    return request(COMMON_BASE_URL + subDomain + '/shop/fav/list', false, 'post', data)
   },
   shopFavDelete: (token, shopId) => {
-    return request('/shop/fav/delete', true, 'post', { token, shopId })
+    return request(COMMON_BASE_URL + subDomain + '/shop/fav/delete', false, 'post', { token, shopId })
   },
   userAttendantFavPut: (token, attendantId) => {
     return request('/userAttendantFav/add', true, 'post', { token, attendantId })
@@ -1670,13 +1676,13 @@ module.exports = {
     return request(COMMON_BASE_URL + subDomain + '/user/level/buyLogs', false, 'post', data)
   },
   messageList: (data) => {
-    return request('/user/message/list', true, 'post', data)
+    return request(COMMON_BASE_URL + subDomain + '/user/message/list', false, 'post', data)
   },
   messageRead: (token, id) => {
-    return request('/user/message/read', true, 'post', { token, id })
+    return request(COMMON_BASE_URL + subDomain + '/user/message/read', false, 'post', { token, id })
   },
   messageDelete: (token, id) => {
-    return request('/user/message/del', true, 'post', { token, id })
+    return request(COMMON_BASE_URL + subDomain + '/user/message/del', false, 'post', { token, id })
   },
   bindOpenid: (token, code) => { // SDK文档到这里
     return request('/user/wxapp/bindOpenid', true, 'post', {
@@ -1924,31 +1930,31 @@ module.exports = {
     return request(COMMON_BASE_URL + subDomain + '/peisong/member/statistics', false, 'post', data)
   },
   peisongOrdersGrabbing: (token) => {
-    return request('/peisong/order/grabbing', true, 'get', { token })
+    return request(COMMON_BASE_URL + subDomain + '/peisong/order/grabbing', false, 'get', { token })
   },
   peisongOrders: (data) => {
-    return request('/peisong/order/list', true, 'post', data)
+    return request(COMMON_BASE_URL + subDomain + '/peisong/order/list', false, 'post', data)
   },
   peisongOrderGrab: (data) => {
-    return request('/peisong/order/grab', true, 'post', data)
+    return request(COMMON_BASE_URL + subDomain + '/peisong/order/grab', false, 'post', data)
   },
   peisongOrderDetail: (token, id) => {
-    return request('/peisong/order/detail', true, 'get', { token, id })
+    return request(COMMON_BASE_URL + subDomain + '/peisong/order/detail', false, 'get', { token, id })
   },
   peisongOrderEstimatedCompletionTime: (data) => {
-    return request('/peisong/order/estimatedCompletionTime', true, 'post', data)
+    return request(COMMON_BASE_URL + subDomain + '/peisong/order/estimatedCompletionTime', false, 'post', data)
   },
   peisongStartService: (data) => {
-    return request('/peisong/order/start-service', true, 'post', data)
+    return request(COMMON_BASE_URL + subDomain + '/peisong/order/start-service', false, 'post', data)
   },
   peisongEndService: (data) => {
-    return request('/peisong/order/end-service', true, 'post', data)
+    return request(COMMON_BASE_URL + subDomain + '/peisong/order/end-service', false, 'post', data)
   },
   peisongEndServiceRemark: (token, id, remarkEnd) => {
-    return request('/peisong/order/end-service/remarkEnd', true, 'post', { token, id, remarkEnd })
+    return request(COMMON_BASE_URL + subDomain + '/peisong/order/end-service/remarkEnd', false, 'post', { token, id, remarkEnd })
   },
   peisongOrderAllocation: (token, id, uid) => {
-    return request('/peisong/order/allocation', true, 'post', {
+    return request(COMMON_BASE_URL + subDomain + '/peisong/order/allocation', false, 'post', {
       token, id, uid
     })
   },
@@ -3458,5 +3464,17 @@ module.exports = {
   },
   tgBotPayStar: (data) => {
     return request(COMMON_BASE_URL + subDomain + '/tg/bot/pay/star', false, 'post', data)
+  },
+  gameUserEnergyNeonBlockRush: (data) => {
+    return request(COMMON_BASE_URL + subDomain + '/gameUserEnergy/neonBlockRush', false, 'get', data)
+  },
+  neonBlockRushStart: (data) => {
+    return request(COMMON_BASE_URL + subDomain + '/neonBlockRush/start', false, 'post', data)
+  },
+  neonBlockRushFinish: (data) => {
+    return request(COMMON_BASE_URL + subDomain + '/neonBlockRush/finish', false, 'post', data)
+  },
+  neonBlockRushWeeklyLeaderboard: (data) => {
+    return request(COMMON_BASE_URL + subDomain + '/neonBlockRush/weeklyLeaderboard', false, 'post', data)
   },
 }
