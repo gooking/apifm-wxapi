@@ -339,7 +339,7 @@ module.exports = {
     return request(COMMON_BASE_URL + subDomain + '/pay/sandpay/hmpay/jsapi', false, 'post', data)
   },
   login_wx: (code) => {
-    return request('/user/wxapp/login', true, 'post', {
+    return request(COMMON_BASE_URL + subDomain + '/user/wxapp/login', false, 'post', {
       code,
       type: 2
     })
@@ -362,20 +362,20 @@ module.exports = {
     })
   },
   loginWxaMobile: (code, encryptedData, iv) => {
-    return request('/user/wxapp/login/mobile', true, 'post', {
+    return request(COMMON_BASE_URL + subDomain + '/user/wxapp/login/mobile', false, 'post', {
       code,
       encryptedData,
       iv
     })
   },
   loginWxaMobileV2: data => {
-    return request('/user/wxapp/login/mobile', true, 'post', data)
+    return request(COMMON_BASE_URL + subDomain + '/user/wxapp/login/mobile', false, 'post', data)
   },
   loginWxaMobileV3: data => {
-    return request('/user/wxapp/login/mobile/v2', true, 'post', data)
+    return request(COMMON_BASE_URL + subDomain + '/user/wxapp/login/mobile/v2', false, 'post', data)
   },
   fetchWxaMobile: (code) => {
-    return request('/user/wxapp/getMobile', true, 'get', { code })
+    return request(COMMON_BASE_URL + subDomain + '/user/wxapp/getMobile', false, 'get', { code })
   },
   login_username: (data) => {
     return request(COMMON_BASE_URL + subDomain + '/user/username/login', false, 'post', data)
@@ -386,18 +386,18 @@ module.exports = {
     })
   },
   login_mobile: (mobile, pwd, deviceId = '', deviceName = '') => {
-    return request('/user/m/login', true, 'post', {
+    return request(COMMON_BASE_URL + subDomain + '/user/m/login', false, 'post', {
       mobile, pwd, deviceId, deviceName
     })
   },
   loginMobileV2: data => {
-    return request('/user/m/login', true, 'post', data)
+    return request(COMMON_BASE_URL + subDomain + '/user/m/login', false, 'post', data)
   },
   loginMobileSmsCode: data => {
-    return request('/user/m/loginMobile', true, 'post', data)
+    return request(COMMON_BASE_URL + subDomain + '/user/m/loginMobile', false, 'post', data)
   },
   resetPwdUseMobileCode: (mobile, pwd, code) => {
-    return request('/user/m/reset-pwd', true, 'post', {
+    return request(COMMON_BASE_URL + subDomain + '/user/m/reset-pwd', false, 'post', {
       mobile, pwd, code
     })
   },
@@ -409,8 +409,11 @@ module.exports = {
   wxmpAuth: data => {
     return request('/user/wxmp/auth', true, 'post', data)
   },
+  wxmpLogin: data => {
+    return request('/user/wxmp/login', true, 'post', data)
+  },
   register_complex: (data) => {
-    return request('/user/wxapp/register/complex', true, 'post', data)
+    return request(COMMON_BASE_URL + subDomain + '/user/wxapp/register/complex', false, 'post', data)
   },
   register_tt: (data) => {
     return request(COMMON_BASE_URL + subDomain + '/user/tt/miniapp/register', false, 'post', data)
@@ -425,10 +428,10 @@ module.exports = {
     return request(COMMON_BASE_URL + subDomain + '/user/q/qrcode', false, 'post', { content })
   },
   register_simple: (data) => {
-    return request('/user/wxapp/register/simple', true, 'post', data)
+    return request(COMMON_BASE_URL + subDomain + '/user/wxapp/register/simple', false, 'post', data)
   },
   authorize: (data) => {
-    return request('/user/wxapp/authorize', true, 'post', data)
+    return request(COMMON_BASE_URL + subDomain + '/user/wxapp/authorize', false, 'post', data)
   },
   ttAuthorize: (data) => {
     return request(COMMON_BASE_URL + subDomain + '/user/tt/miniapp/authorize', false, 'post', data)
@@ -437,7 +440,7 @@ module.exports = {
     return request(COMMON_BASE_URL + subDomain + '/user/username/register', false, 'post', data)
   },
   register_mobile: (data) => {
-    return request('/user/m/register', true, 'post', data)
+    return request(COMMON_BASE_URL + subDomain + '/user/m/register', false, 'post', data)
   },
   bannerTypes: () => {
     return request(COMMON_BASE_URL + subDomain + '/banner/types', false, 'get')
@@ -496,7 +499,7 @@ module.exports = {
     })
   },
   goodsAddition: (goodsId) => {
-    return request('/shop/goods/goodsAddition', true, 'get', {
+    return request(COMMON_BASE_URL + subDomain + '/shop/goods/goodsAddition', false, 'get', {
       goodsId
     })
   },
@@ -544,7 +547,7 @@ module.exports = {
     })
   },
   goodsPriceFreight: (data) => {
-    return request('/shop/goods/price/freight', true, 'get', data)
+    return request(COMMON_BASE_URL + subDomain + '/shop/goods/price/freight', false, 'get', data)
   },
   goodsPriceMultilevels: (data) => {
     return request(COMMON_BASE_URL + subDomain + '/shop/goods/priceMultilevels', false, 'get', data)
@@ -772,17 +775,17 @@ module.exports = {
     })
   },
   bindMobileWxa: (token, encryptedData, iv, pwd = '') => {
-    return request('/user/wxapp/bindMobile', true, 'post', {
+    return request(COMMON_BASE_URL + subDomain + '/user/wxapp/bindMobile', false, 'post', {
       token, encryptedData, iv, pwd
     })
   },
   bindMobileWxapp: (token, code, encryptedData, iv, pwd = '') => {
-    return request('/user/wxapp/bindMobile', true, 'post', {
+    return request(COMMON_BASE_URL + subDomain + '/user/wxapp/bindMobile', false, 'post', {
       token, code, encryptedData, iv, pwd
     })
   },
   bindMobileWxappV2: (token, code, pwd = '') => {
-    return request('/user/wxapp/bindMobile/v2', true, 'post', {
+    return request(COMMON_BASE_URL + subDomain + '/user/wxapp/bindMobile/v2', false, 'post', {
       token, code, pwd
     })
   },
@@ -792,7 +795,7 @@ module.exports = {
     })
   },
   bindMobileSms: (token, mobile, code, pwd = '') => {
-    return request('/user/m/bind-mobile', true, 'post', {
+    return request(COMMON_BASE_URL + subDomain + '/user/m/bind-mobile', false, 'post', {
       token, mobile, code, pwd
     })
   },
@@ -1061,7 +1064,7 @@ module.exports = {
     return request(COMMON_BASE_URL + subDomain + '/saleDistribution/apply/progress/v2', false, 'get', { token: token });
   },
   fxMembers: (data) => {
-    return request('/saleDistribution/members', true, 'post', data)
+    return request(COMMON_BASE_URL + subDomain + '/saleDistribution/members', false, 'post', data)
   },
   fxCommisionLog: (data) => {
     return request('/saleDistribution/commision/log', true, 'post', data)
@@ -1091,7 +1094,7 @@ module.exports = {
     return request(COMMON_BASE_URL + subDomain + '/saleDistribution/upgrade', false, 'post', { token })
   },
   fxMembersStatistics: token => {
-    return request('/saleDistribution/members/statistics', true, 'get', { token })
+    return request(COMMON_BASE_URL + subDomain + '/saleDistribution/members/statistics', false, 'get', { token })
   },
   fxMyCommisionStatistics: (token, days) => {
     return request(COMMON_BASE_URL + subDomain + '/saleDistribution/my/commision', false, 'get', { token, days })
@@ -1385,22 +1388,22 @@ module.exports = {
     return request(COMMON_BASE_URL + subDomain + '/shopArea/detail', false, 'get', { id })
   },
   fetchShopsCities: () => {
-    return request('/shop/subshop/cities', true, 'get')
+    return request(COMMON_BASE_URL + subDomain + '/shop/subshop/cities', false, 'get')
   },
   fetchShops: (data) => {
-    return request('/shop/subshop/list', true, 'post', data)
+    return request(COMMON_BASE_URL + subDomain + '/shop/subshop/list', false, 'post', data)
   },
   fetchShopsV2: (data) => {
-    return request('/shop/subshop/list/v2', true, 'post', data)
+    return request(COMMON_BASE_URL + subDomain + '/shop/subshop/list/v2', false, 'post', data)
   },
   fetchMyShops: (token) => {
-    return request('/shop/subshop/my', true, 'get', { token })
+    return request(COMMON_BASE_URL + subDomain + '/shop/subshop/my', false, 'get', { token })
   },
   shopSubdetail: (id) => {
-    return request('/shop/subshop/detail/v2', true, 'get', { id })
+    return request(COMMON_BASE_URL + subDomain + '/shop/subshop/detail/v2', false, 'get', { id })
   },
   shopSubApply: (data) => {
-    return request('/shop/subshop/apply', true, 'post', data)
+    return request(COMMON_BASE_URL + subDomain + '/shop/subshop/apply', false, 'post', data)
   },
   pickPoints: (data) => {
     return request(COMMON_BASE_URL + subDomain + '/shop/subshop/pickPoints', false, 'post', data)
@@ -1641,7 +1644,7 @@ module.exports = {
     return request(COMMON_BASE_URL + subDomain + '/userTag/certificate', false, 'post', data)
   },
   bindSeller: data => {
-    return request('/user/bindSeller', true, 'post', data)
+    return request(COMMON_BASE_URL + subDomain + '/user/bindSeller', false, 'post', data)
   },
   loginout: (token) => {
     return request(COMMON_BASE_URL + subDomain + '/user/loginout', false, 'get', { token })
@@ -1685,7 +1688,7 @@ module.exports = {
     return request(COMMON_BASE_URL + subDomain + '/user/message/del', false, 'post', { token, id })
   },
   bindOpenid: (token, code) => { // SDK文档到这里
-    return request('/user/wxapp/bindOpenid', true, 'post', {
+    return request(COMMON_BASE_URL + subDomain + '/user/wxapp/bindOpenid', false, 'post', {
       token, code,
       type: 2
     })
@@ -1696,10 +1699,10 @@ module.exports = {
     })
   },
   bindOpenidV11: data => {
-    return request('/user/wxapp/bindOpenid', true, 'post', data)
+    return request(COMMON_BASE_URL + subDomain + '/user/wxapp/bindOpenid', false, 'post', data)
   },
   encryptedData: (code, encryptedData, iv) => {
-    return request('/user/wxapp/decode/encryptedData', true, 'post', {
+    return request(COMMON_BASE_URL + subDomain + '/user/wxapp/decode/encryptedData', false, 'post', {
       code, encryptedData, iv
     })
   },
@@ -2857,7 +2860,7 @@ module.exports = {
     return request('/order/rejectOrder', true, 'post', { token, orderId })
   },
   userAttendantOrderSuccess: (token, orderId) => {
-    return request('/order/success', true, 'post', { token, orderId })
+    return request(COMMON_BASE_URL + subDomain + '/order/success', false, 'post', { token, orderId })
   },
   shopCategory: () => {
     return request(COMMON_BASE_URL + subDomain + '/shopCategory/all', false, 'get')
@@ -2890,7 +2893,7 @@ module.exports = {
     return request(COMMON_BASE_URL + subDomain + '/communityLeader/buy', false, 'post', { token })
   },
   communityOrderFahuo: data => {
-    return request('/communityOrder/fahuo', true, 'post', data)
+    return request(COMMON_BASE_URL + subDomain + '/communityOrder/fahuo', false, 'post', data)
   },
   wxmpOpenid: code => {
     return request('/user/wxmp/openid', true, 'get', { code })
