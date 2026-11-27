@@ -449,16 +449,16 @@ module.exports = {
     return request(COMMON_BASE_URL + subDomain + '/banner/list', false, 'get', data)
   },
   goodsCategory: () => {
-    return request('/shop/goods/category/all', true, 'get')
+    return request(COMMON_BASE_URL + subDomain + '/shop/goods/category/all', false, 'get')
   },
   goodsCategoryV2: (shopId = '') => {
-    return request('/shop/goods/category/all', true, 'get', { shopId })
+    return request(COMMON_BASE_URL + subDomain + '/shop/goods/category/all', false, 'get', { shopId })
   },
   goodsCategoryDetail: (id) => {
-    return request('/shop/goods/category/info', true, 'get', { id })
+    return request(COMMON_BASE_URL + subDomain + '/shop/goods/category/info', false, 'get', { id })
   },
   goodsCategoryDetailV2: (data) => {
-    return request('/shop/goods/category/info', true, 'get', data)
+    return request(COMMON_BASE_URL + subDomain + '/shop/goods/category/info', false, 'get', data)
   },
   goods: (data) => {
     if (!data) {
@@ -468,7 +468,7 @@ module.exports = {
     if (shopIds) {
       data.shopId = shopIds
     }
-    return request('/shop/goods/list', true, 'post', data)
+    return request(COMMON_BASE_URL + subDomain + '/shop/goods/list', false, 'post', data)
   },
   goodsv2: (data) => {
     if (!data) {
@@ -478,15 +478,15 @@ module.exports = {
     if (shopIds) {
       data.shopId = shopIds
     }
-    return request('/shop/goods/list/v2', true, 'post', data)
+    return request(COMMON_BASE_URL + subDomain + '/shop/goods/list/v2', false, 'post', data)
   },
   goodsDetail: (id, token = '') => {
-    return request('/shop/goods/detail', true, 'get', {
+    return request(COMMON_BASE_URL + subDomain + '/shop/goods/detail', false, 'get', {
       id, token
     })
   },
   goodsDetailV2: data => {
-    return request('/shop/goods/detail', true, 'get', data)
+    return request(COMMON_BASE_URL + subDomain + '/shop/goods/detail', false, 'get', data)
   },
   goodsLimitations: (goodsId, priceId = '') => {
     return request(COMMON_BASE_URL + subDomain + '/shop/goods/limitation', false, 'get', {
@@ -525,21 +525,21 @@ module.exports = {
     return request(COMMON_BASE_URL + subDomain + '/shop/goods/useful', false, 'post', data)
   },
   pushNewGoods: data => {
-    return request('/shop/goods/putOrUpdate', true, 'post', data)
+    return request(COMMON_BASE_URL + subDomain + '/shop/goods/putOrUpdate', false, 'post', data)
   },
   mygoods: data => {
-    return request('/shop/goods/mygoods', true, 'post', data)
+    return request(COMMON_BASE_URL + subDomain + '/shop/goods/mygoods', false, 'post', data)
   },
   deleteMyGoods: (token, id) => {
-    return request('/shop/goods/del', true, 'post', { token, id })
+    return request(COMMON_BASE_URL + subDomain + '/shop/goods/del', false, 'post', { token, id })
   },
   goodsPrice: (goodsId, propertyChildIds) => {
-    return request('/shop/goods/price', true, 'post', {
+    return request(COMMON_BASE_URL + subDomain + '/shop/goods/price', false, 'post', {
       goodsId, propertyChildIds
     })
   },
   goodsPriceV2: data => {
-    return request('/shop/goods/price', true, 'post', data)
+    return request(COMMON_BASE_URL + subDomain + '/shop/goods/price', false, 'post', data)
   },
   goodsPriceDaily: (goodsId, priceId = '') => {
     return request(COMMON_BASE_URL + subDomain + '/shop/goods/price/day', false, 'get', {
@@ -914,7 +914,7 @@ module.exports = {
     return request('/order/set', true, 'get')
   },
   orderRefunds: (token, orderId) => {
-    return request('/order/refund', true, 'get', {
+    return request(COMMON_BASE_URL + subDomain + '/order/refund', false, 'get', {
       token,
       orderId
     })
@@ -1067,10 +1067,10 @@ module.exports = {
     return request(COMMON_BASE_URL + subDomain + '/saleDistribution/members', false, 'post', data)
   },
   fxCommisionLog: (data) => {
-    return request('/saleDistribution/commision/log', true, 'post', data)
+    return request(COMMON_BASE_URL + subDomain + '/saleDistribution/commision/log', false, 'post', data)
   },
   fxCommisionFreezeAmount: (token) => {
-    return request('/saleDistribution/commission/freeze', true, 'get', { token })
+    return request(COMMON_BASE_URL + subDomain + '/saleDistribution/commission/freeze', false, 'get', { token })
   },
   fxSaleroomRankTotal: (page, pageSize) => {
     return request(COMMON_BASE_URL + subDomain + '/saleDistribution/sale-room-rank/total', false, 'get', {
@@ -1100,16 +1100,16 @@ module.exports = {
     return request(COMMON_BASE_URL + subDomain + '/saleDistribution/my/commision', false, 'get', { token, days })
   },
   fxGoods: data => {
-    return request('/saleDistribution/goods', true, 'post', data)
+    return request(COMMON_BASE_URL + subDomain + '/saleDistribution/goods', false, 'post', data)
   },
   fxTeamReport: data => {
-    return request('/saleDistribution/team/report', true, 'post', data)
+    return request(COMMON_BASE_URL + subDomain + '/saleDistribution/team/report', false, 'post', data)
   },
   fxCities: token => {
-    return request('/saleDistribution/city/list', true, 'get', { token })
+    return request(COMMON_BASE_URL + subDomain + '/saleDistribution/city/list', false, 'get', { token })
   },
   fxCityReport: data => {
-    return request('/saleDistribution/city/report', true, 'post', data)
+    return request(COMMON_BASE_URL + subDomain + '/saleDistribution/city/report', false, 'post', data)
   },
   goodsSellNumberStatistics: (page, pageSize, goodsId = '') => {
     return request(COMMON_BASE_URL + subDomain + '/site/goods/statistics', false, 'get', {
@@ -1245,24 +1245,24 @@ module.exports = {
     return request(COMMON_BASE_URL + subDomain + '/dfs/gallery', false, 'post', data)
   },
   refundApply: (data) => {
-    return request('/order/refundApply/apply', true, 'post', data)
+    return request(COMMON_BASE_URL + subDomain + '/order/refundApply/apply', false, 'post', data)
   },
   refundApplyDetail: (token, orderId, orderGoodsId = '') => {
-    return request('/order/refundApply/info', true, 'get', {
+    return request(COMMON_BASE_URL + subDomain + '/order/refundApply/info', false, 'get', {
       token,
       orderId,
       orderGoodsId
     })
   },
   refundApplyCancel: (token, orderId, orderGoodsId = '') => {
-    return request('/order/refundApply/cancel', true, 'post', {
+    return request(COMMON_BASE_URL + subDomain + '/order/refundApply/cancel', false, 'post', {
       token,
       orderId,
       orderGoodsId
     })
   },
   refundApplySetBackLogistics: (data) => {
-    return request('/order/refundApply/setBackLogistics', true, 'post', data)
+    return request(COMMON_BASE_URL + subDomain + '/order/refundApply/setBackLogistics', false, 'post', data)
   },
   cmsCategories: () => {
     return request(COMMON_BASE_URL + subDomain + '/cms/category/list', false, 'get', {})
@@ -1854,12 +1854,12 @@ module.exports = {
     return request(CMS_BASE_URL + subDomain + '/cms/news/fav/delete', false, 'post', { token, newsId })
   },
   shippingCarInfo: (token, type = '') => {
-    return request('/shopping-cart/info', true, 'get', {
+    return request(COMMON_BASE_URL + subDomain + '/shopping-cart/info', false, 'get', {
       token, type
     })
   },
   shippingCarInfoAddItem: (token, goodsId, number, sku, addition, type = '') => {
-    return request('/shopping-cart/add', true, 'post', {
+    return request(COMMON_BASE_URL + subDomain + '/shopping-cart/add', false, 'post', {
       token,
       goodsId,
       number,
@@ -1869,25 +1869,25 @@ module.exports = {
     })
   },
   shippingCarInfoAddItemV2: data => {
-    return request('/shopping-cart/add', true, 'post', data)
+    return request(COMMON_BASE_URL + subDomain + '/shopping-cart/add', false, 'post', data)
   },
   shippingCarInfoModifyNumber: (token, key, number, type = '') => {
-    return request('/shopping-cart/modifyNumber', true, 'post', {
+    return request(COMMON_BASE_URL + subDomain + '/shopping-cart/modifyNumber', false, 'post', {
       token, key, number, type
     })
   },
   shippingCarInfoRemoveItem: (token, key, type = '') => {
-    return request('/shopping-cart/remove', true, 'post', {
+    return request(COMMON_BASE_URL + subDomain + '/shopping-cart/remove', false, 'post', {
       token, key, type
     })
   },
   shippingCartSelected: (token, key, selected, type = '') => {
-    return request('/shopping-cart/select', true, 'post', {
+    return request(COMMON_BASE_URL + subDomain + '/shopping-cart/select', false, 'post', {
       token, key, selected, type
     })
   },
   shippingCarInfoRemoveAll: (token, type = '') => {
-    return request('/shopping-cart/empty', true, 'post', {
+    return request(COMMON_BASE_URL + subDomain + '/shopping-cart/empty', false, 'post', {
       token, type
     })
   },
